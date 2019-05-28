@@ -7,12 +7,104 @@
     <title>Intro to HTML</title>
 </head>
 <body>
-    <h1>HTML: HyperText Markup Language</h1>
+
+    <!-- THIS IS A COMMENT
+    The following HTML tags are our header tags -->
+    <h1 id="top"> <abbr title="HyperText Markup Language">HTML</abbr></h1>
     <h2>this is an H2 element</h2>
     <h3>H3</h3>
     <h4>H4</h4>
     <h5>H5</h5>
     <h6>H6</h6>
+
+    <p>This is a paragraph tag </p>
+    test - This is not a paragraph tag 
+
+    <br>
+    <hr>
+    <br>
+
+    <h4>Lists</h4>
+    <p>There are two types of lists: ordered list (with numbers) and unordered lists (bullets)</p>
+    
+    <ol>
+        <li>This is a list item in an <i>ordered</i> list</li>
+        <li>another item
+            <ol type="a"> 
+                <li>is this making a sublist?</li>
+                <li>it is!</li>
+            </ol>
+        </li>
+        <li>another item</li>
+    </ol>
+
+    <ul>
+        <li>This is a list item in an <i>unordered</i> list</li>
+        <li>More things</li>
+    </ul>
+    
+
+    <h4>Tables</h4>
+    <h4>Tables have a lot of distinct elements that create them 
+        some include table, thead, tbody, tr, th, td
+    </h4>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>  
+                <th>School</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Genesis</td>
+                <td>Bonds</td>
+                <td>Duke</td>
+            </tr>
+            <tr>
+                <td>Kris</td>
+                <td>Lord</td>
+                <td>ISU</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <h4>Some tags that you may need to know for more enriching applications</h4>
+    <ul>
+        <li>The <abbr title="ABBREVIATION">abbr tag</abbr>: 
+            this represents the abbreviation element which 
+            helps provide more info on some text</li>
+        <li>Iframes are elements that allow you to bring in 
+            a view of an entire web page in your site
+        </li>
+        <li>
+            <iframe src="https://www.revature.com" frameborder="2px"></iframe>
+        </li>
+        <li>A <a href="https://www.w3schools.com/html/html_links.asp">hyperlink</a>
+            , one of the most important types of elements, 
+            allows you to link another page to your page. With hyperlinks, we 
+            can click text, buttons, or images and open another site.
+            In order to use hyperlinks, we use the a tag which is actually 
+            the anchor tag with an attribute of href. The Anchor tag simply takes
+            you to another location, for example the <a href="#top">top of the page</a>
+        </li>
+        <li>Images allow us to add pictures (and gifs!) to our HTML page. The img 
+            tag uses an src attribute for the source of your media (can be local 
+            or can be from the internet) and the alt attribute which holds the text 
+            alternative for an image. There are also other attributes you can add such 
+            as width, height, border, etc.
+        </li>
+        <li>
+            <img height="500px"
+             src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/3/35/IronMan-EndgameProfile.jpg/revision/latest/scale-to-width-down/2000?cb=20190423175213"
+             alt="The man, the myth, the legend">
+        </li>
+    </ul>   
+
+
+
     
 </body>
 </html>
