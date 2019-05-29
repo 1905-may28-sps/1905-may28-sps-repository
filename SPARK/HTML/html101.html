@@ -1,24 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Intro to HTML</title>
+
+    <!-- here, we will apply CSS from the style tag in our HTML page-->
+    <style>
+        /* This is a CSS comment 
+        below, we will style our web page
+
+        A CSS rule declaration consists of the following
+        selector {
+            property: value; 
+        }
+
+        */
+        
+        /* style by element type */
+        h4, h5 {
+            border: 5px hotpink ridge;
+        }
+
+        /* style by class -- uses .class */
+        .special {
+            color: red;
+        }
+
+        /* style by id -- uses #id */
+        #top {
+            text-decoration: underline;
+            /* the !important flag makes the rule highest priority */
+            background-color: yellow !important; 
+        }
+
+        /* we can combine selectors too! */
+        li.special {
+            text-decoration: line-through;
+        }
+
+        /* select all elements (e2) inside of element (e1) by saying e1 e2 */
+        ol li{
+            /* this will only style list items inside of an ordered list */
+            text-decoration: underline overline;
+        }
+
+        /* select element (e2) that appears immediately after element (e1) 
+        by e1 + e2 */
+        ul + h4 {
+            background-color: green;
+        }
+
+        /* style all odd or even types of an element */
+        li:nth-child(even) {
+            color: peru;
+        }
+    </style>
+
 </head>
+
 <body>
 
     <!-- THIS IS A COMMENT
     The following HTML tags are our header tags -->
-    <h1 id="top"> <abbr title="HyperText Markup Language">HTML</abbr></h1>
+
+    <h1 id="top" style="background-color: #3179b2; font-style: italic;"> 
+        <abbr title="HyperText Markup Language">HTML</abbr></h1>
     <h2>this is an H2 element</h2>
-    <h3>H3</h3>
+    <h3>H3</h3> <h3>to the right</h3>
     <h4>H4</h4>
     <h5>H5</h5>
     <h6>H6</h6>
 
-    <p>This is a paragraph tag </p>
-    test - This is not a paragraph tag 
+    <p class="special">This is a paragraph tag </p>
+    test - This is not a paragraph tag
 
     <br>
     <hr>
@@ -26,13 +83,13 @@
 
     <h4>Lists</h4>
     <p>There are two types of lists: ordered list (with numbers) and unordered lists (bullets)</p>
-    
+
     <ol>
         <li>This is a list item in an <i>ordered</i> list</li>
         <li>another item
-            <ol type="a"> 
+            <ol type="a">
                 <li>is this making a sublist?</li>
-                <li>it is!</li>
+                <li class="special">it is!</li>
             </ol>
         </li>
         <li>another item</li>
@@ -40,19 +97,19 @@
 
     <ul>
         <li>This is a list item in an <i>unordered</i> list</li>
-        <li>More things</li>
+        <li class="special">More things</li>
     </ul>
-    
+
 
     <h4>Tables</h4>
-    <h4>Tables have a lot of distinct elements that create them 
+    <h4>Tables have a lot of distinct elements that create them
         some include table, thead, tbody, tr, th, td
     </h4>
     <table>
         <thead>
             <tr>
                 <th>First Name</th>
-                <th>Last Name</th>  
+                <th>Last Name</th>
                 <th>School</th>
             </tr>
         </thead>
@@ -73,38 +130,48 @@
     <br>
     <h4>Some tags that you may need to know for more enriching applications</h4>
     <ul>
-        <li>The <abbr title="ABBREVIATION">abbr tag</abbr>: 
-            this represents the abbreviation element which 
+        <li>The <abbr title="ABBREVIATION">abbr tag</abbr>:
+            this represents the abbreviation element which
             helps provide more info on some text</li>
-        <li>Iframes are elements that allow you to bring in 
+        <li>Iframes are elements that allow you to bring in
             a view of an entire web page in your site
         </li>
         <li>
             <iframe src="https://www.revature.com" frameborder="2px"></iframe>
         </li>
         <li>A <a href="https://www.w3schools.com/html/html_links.asp">hyperlink</a>
-            , one of the most important types of elements, 
-            allows you to link another page to your page. With hyperlinks, we 
+            , one of the most important types of elements,
+            allows you to link another page to your page. With hyperlinks, we
             can click text, buttons, or images and open another site.
-            In order to use hyperlinks, we use the a tag which is actually 
+            In order to use hyperlinks, we use the a tag which is actually
             the anchor tag with an attribute of href. The Anchor tag simply takes
             you to another location, for example the <a href="#top">top of the page</a>
         </li>
-        <li>Images allow us to add pictures (and gifs!) to our HTML page. The img 
-            tag uses an src attribute for the source of your media (can be local 
-            or can be from the internet) and the alt attribute which holds the text 
-            alternative for an image. There are also other attributes you can add such 
+        <li>Images allow us to add pictures (and gifs!) to our HTML page. The img
+            tag uses an src attribute for the source of your media (can be local
+            or can be from the internet) and the alt attribute which holds the text
+            alternative for an image. There are also other attributes you can add such
             as width, height, border, etc.
         </li>
-        <li>
-            <img height="500px"
-             src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/3/35/IronMan-EndgameProfile.jpg/revision/latest/scale-to-width-down/2000?cb=20190423175213"
-             alt="The man, the myth, the legend">
-        </li>
-    </ul>   
+        <div>
+            <li>
+                <img height="500px" src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/3/35/IronMan-EndgameProfile.jpg/revision/latest/scale-to-width-down/2000?cb=20190423175213"
+                    alt="The man, the myth, the legend">
+            </li>
+            <li>The div element - used to group multiple elements together to apply
+                styling or javascript. The div element itself has no stylistic or
+                behavioral properties other than to serve as a grouping for other elements
+            </li>
+            <li>There also exists the span element which is essentially an in-line 
+                version of div. <span id="mySpan">This allows us to group a particular line of text 
+                and add styling or JS to it </span>
+            </li>   
+        </div>
+    </ul>
 
 
 
-    
+
 </body>
+
 </html>
