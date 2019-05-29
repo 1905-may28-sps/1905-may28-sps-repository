@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About the box model</title>
+
+    <style>
+        #myText {
+            display: inline-block; /* allows us to set width and height of element
+            it does not add a line break after the element */
+            padding: 10px 30px; /* don't have to specify padding-left, padding-right etc
+            can simply say padding: top right bottom left */
+            border: 5px solid black;
+            margin-bottom: 50px;
+            background-color: blue; /* colors the padding of the box */
+        }
+        /* p:not(#myText){
+           margin-top: 30px; 
+        } */
+    </style>
+</head>
+<body>
+<h1>CSS Box Model</h1>
+<p><i>The CSS Box Model is a set of rules which determine the dimensions
+    of every element in a web page. It gives each box (both inline and 
+    block) four properties which define the space they take up. 
+</i></p>    
+<ul>
+    <li><b>Content</b>- the text, image, or other media content in the element</li>
+    <li><b>Padding</b>- this space between the box's content and its border</li>
+    <li><b>Border</b> - the line between the box's padding and margin</li>
+    <li><b>Margin</b>- the space between the box and its surrounding boxes</li>
+    <li><img src="https://cdn-images-1.medium.com/max/880/1*_Q0vGWv0CTxyZhF8hl5AfA.png"
+         alt="box model" height="300px"></li>
+    <li><img src="https://css-tricks.com/wp-content/csstricks-uploads/thebox.png" 
+        alt="another box model image" height="300px">
+    </li>
+</ul>
+<br>
+<hr>
+
+<p id="myText">this is text</p>
+<p>this is also text</p>
+
+</body>
+</html>
