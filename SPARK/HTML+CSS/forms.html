@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exploring forms</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+</head>
+<body>
+    <!--
+        ABOUT FORMS:
+
+        - Forms are special HTML elements that allow you to 
+        send SYNCHRONOUS requests 
+        - The form tag itself has an action attribute which holds
+        the url of the server location to send the request
+        and a method attribute which is the type
+        of HTTP verb to send
+        - Forms can only send GET or POST requests
+        - omitting the method attribute gives the form the default 
+        method type of GET
+        - input fields in a form MUST use the name attribute NOT id
+        (technically, we can use both but without the name attribute
+        the field will not be seen as a parameter and will not be sent
+        to the server as one to be retrieved) 
+    -->
+
+    <div class="jumbotron container form-group">
+        <input type="text" class="form-control col-4"
+            placeholder="Username">
+        <input type="text">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>
