@@ -150,11 +150,11 @@ for(let x of arr){ //FOR EACH LOOP. for every element in arr
 //FOR IN - iterate over properties of an object
 console.log("FOR IN LOOP");
 var obj = {
-    name : 'Genesis Bonds',
+    name : 'Ge3nesis Bonds',
     job : 'Lead Trainer', 
     bio : 'I really like food'
 };
 
-for(var prop in obj){
-    console.log(obj[prop]);
+for(let prop in obj){
+    console.log(obj[prop]);//MUST use obj[p] notation NOT obj.p notation
 }
