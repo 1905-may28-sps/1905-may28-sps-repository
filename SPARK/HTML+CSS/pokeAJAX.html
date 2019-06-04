@@ -155,6 +155,44 @@
          
             </div>
         
+            <script>
+            window.onload = function(){
+                document.getElementById('pokemonGo')
+                    .addEventListener('click', getPokemon);
+            }
+
+            //INTRO TO AJAX!
+            function getPokemon(){
+                var pokemonId = document.getElementById('pokeId').value;
+                //STEP 1 - create our XMLHttpRequest object, xhr
+                var xhr = new XMLHttpRequest();
+                //STEP 2 - define functionality for response
+                // does not HAVE to be written second. but usually is 
+                // we MUST use the onreadystatechange property to manipulate response
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            var pokemonText = xhr.responseText;
+                            pokemon = JSON.parse(pokemonText); //made this a global var on purpose
+                            console.log(pokemonText);
+                        }
+                        else if(xhr.status == 400){
+                            //client error
+                            console.log("ERROR");
+                        }
+                    }
+                }
+                //STEP 3 - open request (configure it)
+                xhr.open('GET', `https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+                //STEP 4 - send request
+                xhr.send();
+            }
+            
+            
+            
+            
+
+            </script>
     
 </body>
 </html>
