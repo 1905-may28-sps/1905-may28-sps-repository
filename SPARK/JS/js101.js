@@ -1,3 +1,4 @@
+//var undeclaredVar;
 /*
 JavaScript is a scripting language used for 
 client side operations
@@ -56,6 +57,7 @@ if(condition){ //if(condition){do something}
 }
 
 //IF-ELSE IF
+console.log(num);
 var num = 10;
 var outcome;
 if(num < 0){
@@ -165,3 +167,5 @@ for(let prop in obj){
 5 == '5'; //true, becuase == uses type coercion 
 
 5 === '5' //false, does not use type coercion, so type matters
+
+undeclaredVar = 10; //GLOBAL VARIABLE

@@ -5,9 +5,13 @@
         .addEventListener('click', findSum);
     document.getElementById('avgArraySubmit')
         .addEventListener('click', findAverage);    
+    document.getElementById('sortArraySubmit')
+        .addEventListener('click', sortArray); 
+    document.getElementById('findPalindrome')
+        .addEventListener('click', palindrome);
 }
 
-function findSum(){
+function getArray(){
     var numString = document.getElementById('arrNums').value;
     console.log(numString);
     /*
@@ -18,17 +22,58 @@ function findSum(){
     use regular expressions. see this site for more info:
     http://classyfunction.com/javascript-split-with-multiple-delimiters/
     */
-    var arr = numString.split(' ');
-    console.log(arr);
+    var stringArr = numString.split(' ');
+    var arr = [];
+    for(let num of stringArr){
+        //https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
+        arr.push(Number(num));
+    }
+    return arr;
+}
+
+
+function findSum(){
+    var arr = getArray();
     var sum = 0;
     for(let num of arr){
         //https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
-        sum+= Number(num);
+        sum+= num;
     }
-    document.getElementById('arrOutput').innerHTML = sum;
+    document.getElementById('arrOutput').innerHTML =
+     `<i>The sum of the elements in this array is <b>${sum}</b></i>`;
 }
 
 
 function findAverage(){
-    
+    var arr = getArray();
+    var sum = 0;
+    for(let num of arr){
+        //https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
+        sum+= num;
+    }
+    document.getElementById('arrOutput').innerHTML =
+    `<i>The average of the elements in this array is 
+    <b>${sum/arr.length}</b></i>`;
+
+}
+
+function sortArray(){ // 1 5 34 5  -> 100 101 340 500
+    var arr = getArray();
+    arr.sort(function(a, b) {
+        return a - b;
+    }); 
+    console.log(arr);
+}
+
+function palindrome(){
+    var text = document.getElementById('palindromeInput').value;
+    text = text.toLowerCase();
+    var isValid = true;
+    for(let i = 0; i < text.length/2; i++){
+        if(text.charAt(i)!=text.charAt(text.length-1-i)) {
+            isValid = false;
+        }
+    }
+
+    document.getElementById('palindromeOut').innerHTML = isValid;
 }
