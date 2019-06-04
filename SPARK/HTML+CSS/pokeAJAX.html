@@ -17,6 +17,33 @@
     crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
+    <style>
+        @font-face {
+            font-family: Pokemon;
+            src: url(fonts/PokemonSolid.ttf);
+        }
+
+        h3,
+        h1 {
+            font-family: Pokemon;
+            color: #F8D50A !important;
+        }
+
+        h1 {
+            letter-spacing: 4px;
+            -webkit-text-stroke-width: 5px;
+            -webkit-text-stroke-color: #36459A;
+            text-shadow: 2px 0 0 #36459A !important;
+        }
+
+      
+        #pokeDiv {
+            background-image: url("https://vignette3.wikia.nocookie.net/youtubepoop/images/4/4c/Pokeball.png/revision/latest?cb=20150418234807") !important;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+
 
 </head>
 <body>
@@ -102,6 +129,30 @@
                 <li> If we have more than one AJAX task on a page, define one function for executing XHR and one function to handle 
                     each of the tasks and pass to the xhr function as a callback
                 </li>
+            </div>
+
+            <hr>
+            <br>
+
+            <div class="jumbotron" id="pokeDiv">
+                <h3>Using</h3>
+                <h1> RESTful PoKéMoN </h1>
+                <h3>API</h3>
+            </div>
+            <div class="jumbotron" >
+                <h4>Leverage AJAX to get info on pokemon!</h4>
+                <input type="number" id="pokeId" class="form-control col-2">
+                <button id="pokemonGo" class="btn btn-primary">Go!</button>
+                <hr>
+                <div class="text-center">
+                    <!-- Using the data returned from our AJAX request, 
+                    we will populate the following fields with our 
+                    requested pokemon's name and image-->
+
+                    <img id="pokemonImg" alt="" src="">
+                    <h3 id="pokemonName"></h3>
+                </div>
+         
             </div>
         
     
