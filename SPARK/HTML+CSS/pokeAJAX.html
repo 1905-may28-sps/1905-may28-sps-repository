@@ -173,8 +173,8 @@
                     if(xhr.readyState == 4){
                         if(xhr.status == 200){
                             var pokemonText = xhr.responseText;
-                            pokemon = JSON.parse(pokemonText); //made this a global var on purpose
-                            console.log(pokemonText);
+                            var pokemon = JSON.parse(pokemonText);
+                            setPokemonValues(pokemon); //update html with pokemon info
                         }
                         else if(xhr.status == 400){
                             //client error
@@ -186,6 +186,14 @@
                 xhr.open('GET', `https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
                 //STEP 4 - send request
                 xhr.send();
+            }
+
+            function setPokemonValues(pokemon){
+                //method to update the DOM with our pokemon's info
+                document.getElementById('pokemonName').innerHTML = pokemon.name;
+                var pokeImage = document.getElementById('pokemonImg');
+                pokeImage.setAttribute('src', pokemon.sprites.front_shiny);
+                pokeImage.setAttribute('alt', pokemon.name);
             }
             
             
