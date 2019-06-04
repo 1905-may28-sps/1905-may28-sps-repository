@@ -158,3 +158,10 @@ var obj = {
 for(let prop in obj){
     console.log(obj[prop]);//MUST use obj[p] notation NOT obj.p notation
 }
+
+
+//OPERATORS
+
+5 == '5'; //true, becuase == uses type coercion 
+
+5 === '5' //false, does not use type coercion, so type matters
