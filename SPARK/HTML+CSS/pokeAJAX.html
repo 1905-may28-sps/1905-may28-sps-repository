@@ -149,8 +149,9 @@
                     we will populate the following fields with our 
                     requested pokemon's name and image-->
 
-                    <img id="pokemonImg" alt="" src="">
-                    <h3 id="pokemonName"></h3>
+                    <img id="pokemonImg" alt="" src=""> 
+                    <h3 id="pokemonName">   </h3>
+                    <h3>Pokemon weight is <span id="pokeWeight"></span> </h3>
                 </div>
          
             </div>
@@ -188,12 +189,15 @@
                 xhr.send();
             }
 
-            function setPokemonValues(pokemon){
+            function setPokemonValues(pokemonObj){
                 //method to update the DOM with our pokemon's info
-                document.getElementById('pokemonName').innerHTML = pokemon.name;
-                var pokeImage = document.getElementById('pokemonImg');
-                pokeImage.setAttribute('src', pokemon.sprites.front_shiny);
-                pokeImage.setAttribute('alt', pokemon.name);
+                document.getElementById('pokemonName').innerHTML = pokemonObj.name;
+                // var pokeImage = document.getElementById('pokemonImg');
+                // pokeImage.setAttribute('src', pokemonObj.sprites.front_shiny);
+                // pokeImage.setAttribute('alt', pokemonObj.name);
+
+                document.getElementById('pokemonImg').setAttribute('src', pokemonObj.sprites.front_shiny);
+                document.getElementById('pokemonImg').setAttribute('alt', pokemonObj.name);
             }
             
             

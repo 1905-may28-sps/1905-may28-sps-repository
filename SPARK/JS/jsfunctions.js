@@ -9,6 +9,28 @@
         .addEventListener('click', sortArray); 
     document.getElementById('findPalindrome')
         .addEventListener('click', palindrome);
+    document.getElementById('doFizz').addEventListener('click', fizzbuzz);
+}
+
+function fizzbuzz(){
+    //clear list each time button is pressed 
+    var list = document.getElementById('fizzOut');
+
+    while(list.firstChild){
+        list.removeChild(list.firstChild);
+    }
+
+    //fizzbuzz functionality 
+    var n = document.getElementById('fizzIn').value;
+    for(let i = 1; i <= n; i++){
+        var item = document.createElement('li');
+        if(i % 15 == 0 ) item.innerHTML = 'FizzBuzz';
+        else if (i % 3 == 0) item.innerHTML = 'Fizz';
+        else if (i % 5 == 0) item.innerHTML = 'Buzz';
+        else item.innerHTML = i;
+        list.appendChild(item);
+    }
+
 }
 
 function getArray(){
