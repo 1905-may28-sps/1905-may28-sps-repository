@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX Introduction</title>
+</head>
+
+<body>
+    <hr>
+    <div>
+        <h1>Using Restful Pokemon API</h1>
+    </div>
+    <div>
+        <h4>Leverage AJAX to get info on pokemon</h4>
+        <input type="number" id="pokeId">
+        <button id="pokemonGo">Go</button>
+        <div>
+            <!--Using the data returned from our AJAX Request, we will populate 
+        the following fields with out 
+    requested pokemons name and image-->
+            <img id="pokemonImg" src="" alt="">
+            <h3 id="pokemonName"></h3>
+            <h3 id="pokemonweight"></h3>
+            
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            document.getElementById("pokemonGo").addEventListener("click", getPokemon);
+        }
+        //Intro to AJAX
+        function getPokemon() {
+            var pokemonId = document.getElementById("pokeId").value;
+            //step 1 - create our XMLHttpRequest object, xhr
+            var xhr = new XMLHttpRequest();
+            //step 2 - define functionality for response 
+            // does not have to be written second,but usually is
+            //must use the onreadystatechange property to manipulate response 
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var pokemonText = xhr.responseText;
+                        var pokemon = JSON.parse(pokemonText);
+                        //success
+                        updateDOM(pokemon);
+                    }
+                    else if (xhr.status == 400) {
+                        //client error
+                        console.log("error");
+                    }
+                }
+            }
+            //step 3 - open request (configure it)
+            xhr.open("GET", `https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+
+            //step 4 - send request
+            xhr.send();
+        }
+
+        function updateDOM(pokemon) {
+            document.getElementById("pokemonName").innerHTML = pokemon.name;
+            document.getElementById("pokemonweight").innerHTML = pokemon.weight;
+            
+            var image = document.getElementById("pokemonImg");
+            image.setAttribute("src", pokemon.sprites.front_default);
+            image.setAttribute("alt", pokemon.name);
+
+        }
+
+    </script>
+</body>
+
+</html>

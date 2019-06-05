@@ -1,0 +1,90 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Star Wars</title>
+    <style>
+        h4 {
+            color: yellow;
+        }
+
+        h1 {
+            color: yellow;
+        }
+
+        h2 {
+            color: yellow;
+        }
+
+        .charPicture {
+            width: 300px;
+            height: 300px;
+            margin-right: 800px;
+            margin-top: 100px;
+        }
+    </style>
+
+</head>
+
+<body style="background: black">
+    <div style="text-align: center">
+        <h1>Star Wars Characters!!</h1>
+        <h2>Enter a number and a character's details will arise</h2>
+    </div>
+    <div style="text-align: center">
+        <input type="text" id="numInput" class="inputBox">
+        <button id="lookUpButt">Enter</button>
+        <div style="text-align: center">
+            <h4 id="numOutput"></h4>
+            <h4 id="heightOut"></h4>
+            <h4 id="massOut"></h4>
+            <h4 id="hairCol"></h4>
+            <h4 id="sexOut"></h4>
+        </div>
+
+    </div>
+    <div>
+        <img class="charPicture"
+            src="https://pixel.nymag.com/imgs/daily/vulture/2016/12/15/15-star-wars-best-moments-2.w700.h700.jpg"
+            alt="DarthVader">
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("lookUpButt").addEventListener("click", dudeLookUp);
+        }
+        function dudeLookUp() {
+            var person = document.getElementById("numInput").value;
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var personText = xhr.responseText;
+                        var person = JSON.parse(personText);
+                        console.log(person);
+                        updateInfo(person);
+                    }
+                    else if (xhr.status == 400) {
+                        console.log("Error");
+                    }
+                }
+            }
+            xhr.open("GET", `https://swapi.co/api/people/${person}`);
+
+            xhr.send();
+
+            function updateInfo(person) {
+                document.getElementById("numOutput").innerHTML = person.name;
+                document.getElementById("heightOut").innerHTML = person.height + " cm";
+                document.getElementById("massOut").innerHTML = person.mass + " kg";
+                document.getElementById("hairCol").innerHTML = "Hair color: " + person.hair_color + " Eye color : " + person.eye_color;
+                document.getElementById("sexOut").innerHTML = "sex: " + person.gender + " D.o.b.: " + person.birth_year;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>exploring Forms</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<!--forms are special html elements that allow you to send scynchronous 
+requests 
+the form tag itself has action attribute which holds the url of the server location
+and method attribute which is the tyoe of http verd to send
+Forms can only send GET and POST requests default is GET
+Input fields in a form must use the name attribute not id 
+we can use both but wihtout name field will not be seen as a parameter 
+and will not be sent to the server as one to be retrieved-->
+
+
+
+
+<body>
+    <form action="" method="" class="jumbotron container form-group">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" placeholder="Username" name="username">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" placeholder="password" name="pw">
+        </div>
+        <div>
+            <button type="button" class="btn btn-secondary">Submit</button>
+        </div>
+
+
+    </form>
+
+    <form action="" method="" style="padding-block:unset ;background: beige; text-align:center; ">
+        <div>
+            <input type="number" placeholder="00" name="num">
+        </div>
+        <div>
+            <input type="email" placeholder="emailaddress" name="email">
+        </div>
+        <div>
+            <input type="color" placeholder="color" name="color">
+        </div>
+        <div>
+            <input type="radio" name="rad">
+        </div>
+    </form>
+
+</body>
+
+</html>

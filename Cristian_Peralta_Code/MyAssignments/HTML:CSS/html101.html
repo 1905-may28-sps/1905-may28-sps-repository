@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=" viewport" content="width=device-width, intial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie = edge">
+    <title>Intro to HTML</title>
+
+    <!--This is an internal style sheet-->
+    <style>
+        /*this is a css comment and below are css selectors*/
+        /*element*/
+        h4,h5{
+            border: solid 10px black;
+        }
+        /*class*/
+        .special{
+            color:red;
+        }
+        /*id*/
+        #main{
+            text-decoration: underline !important;
+        }
+        /*any h4 that is special this is a combo selector*/
+        h4.special{
+            text-decoration: line-through;
+        }
+        /*select all elements inside of element by saying it*/
+        ol li{
+            text-decoration: underline overline;
+        }
+        /* select element that appears right after another element by "" + ""*/
+        ul + h4{
+            background-color: blue;
+        }
+        /* style all odd or even types of elements*/
+        li:nth-child(even){
+            color:darkgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <!--This is a comment-->
+    <H1 id="main" class="Top" style="color:blueviolet; font-style: italic;">HTML: Hyper Text Markup Language</H1>
+    <h2>This is an H2 element</h2>
+    <h3>H3</h3>
+    <h4>H4</h4>
+    <h5>H5</h5>
+    <h6>H6</h6>
+    <p class="special">This is a paragraph tag</p>
+    <br>
+    <hr>
+    <h4 class="special">These are lists</h4>
+    <p>There are two types of lists ordered lists and unordered lists</p>
+    <ol>
+        <li>This is a list item in an <i>ordered list</i></li>
+        <li>Another item</li>
+        <li>Another item</li>
+        <ol>
+            <li>this is a sublist</li>
+        </ol>
+        <li class="special">Another item</li>
+        <ol type="a">
+            <li>to make it alphabetical use the type</li>
+            <li>now each one comes out as a letter instead of number</li>
+        </ol>
+    </ol>
+    <ul>
+        <li>This is a list item in an <i>unordered list</i></li>
+        <li>More things blah blah</li>
+    </ul>
+    <h4>Tables</h4>
+    <h4>Tables have alot of distinct elements that create them some include table,tbdoy,tr,th,td</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>First name </th>
+                <th>Last name</th>
+                <th>School</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cristian</td>
+                <td>Peralta</td>
+                <td>Queens College</td>
+            </tr>
+            <tr>
+                <td>semoure</td>
+                <td>Butts</td>
+                <td>LIU</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <br>
+    <h4>Some tags that you may use to enrich applications</h4>
+    <ul>
+        <li>The <abbr title="Abbreviation">abbr</abbr> tag</li>
+        <li>Iframes are elements that allow you to bring in a view of an entire web page in your site</li>
+        <li>
+            <iframe src="https://www.revature.com" frameborder="2px"></iframe>
+        </li>
+        <li>A <a href="https://www.astrology.com/horoscope/daily.html">hyperlink</a>, one of the most important types of
+            elements, allows
+            you to link another page to your page. with hyperlinks, we click text, buttons
+            or images and open another site. In order to use hyperlinks,we use the a tag which is actually
+            the anchor tag with an attribute of href. The anchor tag simply takes you to another <a
+                href="#Top">location</a>
+        </li>
+        <li>Images allow us to add pictures and gifs to our html page The img tag uses
+            an src attribute for the sourcse of the media can be local or from the internet
+            and the alt attribute holds text alternative for an image. There are also
+            other attributes you can add such as width, height, border, etc.
+        </li>
+        <div>
+            <li>
+                <img height="300px"
+                    src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/3/35/IronMan-EndgameProfile.jpg/revision/latest/scale-to-width-down/2000?cb=20190423175213"
+                    alt="The man, the myth, the legend">
+            </li>
+            <li>The div element is used to group multiple elemetns together to apply
+                styling or javascript. the div element itself has no stylistic or behavioral
+                properties other than to serve as a grouping for other elements.
+            </li>
+            <li>There also exists the span element which is essentially an inline
+                version of div. <span id="mySpan">This allows us to group a particular
+                    line and add styling or js to it</span>
+            </li>
+        </div>
+    </ul>
+</body>
+
+</html>
