@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Genesis",
+      "lastName": "Bonds",
+      "username": "gen123",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "firstName": "Jon",
+      "lastName": "Doe",
+      "username": "iLoveJane",
+      "password": "anonym0us"
+    },
+    {
+      "firstName": "Ravi",
+      "lastName": "Singh",
+      "username": "rsingh1",
+      "password": "abc",
+      "id": 3
+    },
+    {
+      "firstName": "123",
+      "lastName": "xncncgj",
+      "username": "gen",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "firstName": "Daniel",
+      "lastName": "Molinaro",
+      "username": "dmolinaro127",
+      "password": "1234",
+      "id": 5
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "balance": 99999.99
+    }
+  ]
+}
