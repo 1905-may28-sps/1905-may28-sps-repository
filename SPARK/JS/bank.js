@@ -102,5 +102,34 @@ function login(){
     later make a homepage for the user
     */
 
-    console.log('loggging in');
+    //get username and password from input fields 
+    //make sure fields are not empty 
+    //send request to get user by username, then validate the user
+
+    var name = document.getElementById('logUser').value;
+    var pass = document.getElementById('logPass').value;
+
+    if(name == null || name.trim() == '' || pass == null || pass.trim() == ''){
+        // must fill out form, add message to dom
+
+    }
+    
+    else{
+        //send request 
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                //get user 
+                //validate to see if exists. if no, incorect login
+                //if yes, check password
+            }
+        }
+
+        xhr.open('GET', `http://localhost:3000/users?username=${name}`);
+
+        xhr.send();
+
+
+    }
 }
