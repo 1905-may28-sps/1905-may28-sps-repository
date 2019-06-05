@@ -51,13 +51,33 @@ function register(){
         username: document.getElementById('username').value,
         password: document.getElementById('password').value
     }
-
+    
+    var empty = false;
     for(let prop in userObj){
         if(userObj[prop] == null || userObj[prop].trim() == ''){
+            empty = true;
             document.getElementById('message').innerHTML = 
             'Sorry, please fill out form completely';
-            document.getElementById('register').setAttribute('disabled', "true");
         }
     }
-    console.log(JSON.stringify(userObj));
+    if(empty == false){
+        //send request. and clear message field
+        document.getElementById('message').innerHTML = '';
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            // process response -- after we make sure the user was created, we go to a new page
+            if(xhr.readyState == 4){
+                console.log(xhr.status);
+            }
+        }
+
+        xhr.open('POST', 'http://localhost:3000/users');
+
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        //this send method is sending our user as a JSON string in the POST req body
+        xhr.send(JSON.stringify(userObj));
+
+    }
 }
