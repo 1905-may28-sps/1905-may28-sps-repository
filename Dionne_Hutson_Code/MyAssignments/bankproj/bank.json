@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "name",
+      "lastName": "last",
+      "username": "user",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "firstName": "Jon",
+      "lastName": "Doe",
+      "username": "iLoveJane",
+      "password": "anonym0us"
+    },
+    {
+      "firstName": "afa",
+      "lastName": "afsafs",
+      "username": "ur",
+      "password": "afaf",
+      "id": 3
+    },
+    {
+      "firstName": "d",
+      "lastName": "d",
+      "username": "s",
+      "password": "a",
+      "id": 4
+    },
+    {
+      "firstName": "a",
+      "lastName": "a",
+      "username": "a",
+      "password": "a",
+      "id": 5
+    },
+    {
+      "firstName": "d",
+      "lastName": "h",
+      "username": "u",
+      "password": "p",
+      "id": 6
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "balance": 99999.99
+    }
+  ]
+}

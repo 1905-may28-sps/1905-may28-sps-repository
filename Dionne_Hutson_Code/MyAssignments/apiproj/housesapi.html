@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jepordish</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <body style="background-color:blue;font-family: 'gyparody', sans-serif;">
+
+        <div>
+                <h4>Find out info about jepordy questions
+                    <select id="loc">
+                        <option value="random">Random</option>
+                        <option value="categories">Category</option>
+                    </select>
+                        
+
+                </h4>
+               
+                <div class="text-center">
+                    
+                   <h1 id="feildId"></h1>
+                    <h4 id="feild1"></h4>
+                 
+                    <h6 id="feild2"></h6>
+                    <h6 id="feild3"></h6>
+                </div>
+
+                
+
+    </div>
+        
+
+<div >
+        <script>
+            
+            
+            //SENDING REQUEST
+            window.onload=function(){
+                document.getElementById('loc').addEventListener('dblclick',getObj2);
+            }
+            
+            function getObj2(){
+                var select=document.getElementById('loc')
+                var text=select.options[select.selectedIndex].value;
+                alert(text);
+                //1. create xmlhttorequest object
+                var xhr=new XMLHttpRequest();
+                //2. define functionality for response(efine function that will handle esponse)
+                xhr.onreadystatechange=function(){
+                    //whenever ready state changes we check if it is 4
+                    if(xhr.readyState==4){// can also do an && if stament to see if status 
+                        if(xhr.status==200){
+                            //sucess
+                            var respText=xhr.responseText;
+                            var obj=JSON.parse(respText);//this is global on purpose
+                            console.log(obj);
+                            setObjValues(obj,text);
+
+                        }
+                        else if (xhr.status==400){
+                            //client error
+                            console.log("ERROr");
+
+                        }
+                    }
+                }
+
+
+                //3. open request; configure it// give it info need//back ticks ` allow us to put variable and expression in {}//the s in https is for secure method and url
+                xhr.open('GET',`http://jservice.io/api/${text}`);
+
+                //4. send request//int the case the request body() is empty because it is a get request
+                xhr.send();
+            }
+
+            function setObjValues(myObj,text){
+                console.log(text);
+
+                document.getElementById('feildId').innerHTML=myObj[0].id;//we know that the object we pass in will //have  a name property
+
+
+                
+                if(text=="random"){
+                    
+                   document.getElementById('feild1').innerHTML=myObj[0].question;
+                    document.getElementById('feild2').innerHTML=myObj[0].answer;
+
+
+                }else if(text=="categories"){
+                    console.log(myObj[0].title);
+                document.getElementById('feild1').innerHTML=myObj[0].title;
+                document.getElementById('feild2').innerHTML=myObj[0].clues_count;
+                }
+                
+
+
+            }
+
+        //Intro toAJAX
+        </script>
+        </div>
+    
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+              
+    
+</body>
+</html>
