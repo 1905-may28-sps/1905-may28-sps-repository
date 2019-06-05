@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>R&M</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   
+    <style>
+
+
+    </style>
+</head>
+<body>
+       
+        <div class="jumbotron jumbotron-fluid bg-dark text-white">
+                <div class="container">
+                  <h1 class="display-4">Rick and Morty</h1>
+                  
+                </div>
+              </div>
+
+            <div class="jumbotron" id="r&mDiv">
+                <h3> Rick and Morty characters</h3>
+                <input type="number" id="charId" class="form-control col-2">
+                <button id="charGo" class="btn btn-primary">select</button>
+                <hr>
+                <div class="text-center">
+                        <img id="charImg" alt="" src="">
+                        <h3 id="charName"></h3>
+                        <h4 id="status"></h4>
+                        <h4 id="species"></h4>
+                </div>
+
+
+            </div>
+            <script>
+                
+                    window.onload = function () {
+                        document.getElementById('charGo').addEventListener('click',getChar);
+                        
+                    }
+                    function getChar() {
+                        var characterId = document.getElementById('charId').value;
+
+                        //STEP 1 - create our XMLHttpRequest object
+                                 var xhr = new XMLHttpRequest();
+                       //STEP  2 - new define functionality for response
+            //does not HAVE to be written second but usually is
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState ==4) {
+                                if (xhr.status ==200) {
+                                    //success
+                                    var charText = xhr.responseText;
+                                     character = JSON.parse(charText);
+                                    console.log(charText);
+                                    setCharacterValues(character);
+                                    
+                                }
+                                else if(xhr.status ==400){
+                        //client error
+                        console.log('Error')
+                    }
+                                
+                            }
+                            
+                        }
+                        xhr.open('Get', `https://rickandmortyapi.com/api/character/${characterId}`);
+                      xhr.send();
+                    }
+
+                        function setCharacterValues(character) {
+                            document.getElementById('charName').innerHTML = character.name;
+                            var image = document.getElementById('charImg');
+                            image.setAttribute('src',character.image);
+                            image.setAttribute('alt', character.name);
+                            document.getElementById('status').innerHTML = character.status;
+                            document.getElementById('species').innerHTML = character.species;
+
+                        }
+
+            </script>
+
+
+
+
+              <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+              <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

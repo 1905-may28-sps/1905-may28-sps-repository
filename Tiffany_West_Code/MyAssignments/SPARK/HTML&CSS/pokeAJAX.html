@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX Introduction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+    <style>
+            @font-face {
+                font-family: Pokemon;
+                src: url(fonts/PokemonSolid.ttf);
+            }
+            h3,
+            h1 {
+                font-family: Pokemon;
+                color: #F8D50A !important;
+            }
+            h1 {
+                letter-spacing: 4px;
+                -webkit-text-stroke-width: 5px;
+                -webkit-text-stroke-color: #36459A;
+                text-shadow: 2px 0 0 #36459A !important;
+            }
+          
+            #pokeDiv {
+                background-image: url("https://vignette3.wikia.nocookie.net/youtubepoop/images/4/4c/Pokeball.png/revision/latest?cb=20150418234807") !important;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        </style>
+</head>
+<body>
+
+    
+        <div class="jumbotron">
+                <h1>AJAX: Asynchronous JavaScript And XML</h1>
+                <h5>About AJAX</h5>
+                <ul>
+                    <li>NOT a programming language! It is a series of interactions between<br>
+                         JavaScript, the HTML DOM, and the XMLHttpRequest
+                        object from the browser
+                    </li>
+                    <li>It is "asynchronous" because AJAX can exchange information with a <br>
+                        server "behind the scenes" -- meaning, there is no need to reload <br>
+                        the page in order to display the content received from the response
+                    </li>
+                    <li>Requests will not have to wait for a response from a prior request<br>
+                        in order to be sent
+                    </li>
+                </ul>
+                <h5>About the XMLHttpRequest object</h5>
+                <ul>
+                    <li>Supported by most modern browsers *cough* dont use IE *cough*</li>
+                    <li>Used to exchange data with a server</li>
+                    <li>
+                        <code>
+                    var xhr = new XMLHttpRequest();
+                </code>
+                    </li>
+                    <li>The object has various methods and properties</li>
+                    <li>
+                        <b>Important Methods</b>
+                        <ul>
+                            <li>
+                                <code>new XMLHttpRequest()</code> --> creates new object</li>
+                            <li>
+                                <code>abort()</code> --> cancels the current request</li>
+                            <li>
+                                <code>getAllResponseHeaders()</code> &
+                                <code>getResponseHeader()</code> --> get response metadata</li>
+                            <li>
+                                <code>open(method, url, async, username, pwd)</code> -> specify request;
+                                <ul>
+                                    <li>method = HTTP verb</li>
+                                    <li>URL = location to send request</li>
+                                    <li>async = whether to execute request asynchronously or not; usually true</li>
+                                    <li>username and password = optional server credentials</li>
+                                </ul>
+                            </li>
+                            <li><code>send(content)</code> -> send the request. content = request body; optional</li>
+                            <li><code>setRequestHeader()</code>--> set name/value pair in request header</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Important Properties:</b>
+                        <ul>
+                            <li>onreadystatechange - defines a function to be executed when the ready state property changes</li>
+                            <li>readyState - holds the XHR status
+                                <ul>
+                                    <li>0 - request not initialized </li>
+                                    <li>1 - server connection established</li>
+                                    <li>2 - request received</li>
+                                    <li>3 - server is processing request</li>
+                                    <li>4 - response is ready</li>
+                                </ul>
+                            </li>
+                            <li>responseText - response body as string</li>
+                            <li>responseXML - response body as XML</li>
+                            <li>status - HTTP response code (200)</li>
+                            <li>statusText - HTTP response text (OK) </li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+                <h5>AJAX Workflow</h5>
+                <ol>
+                    <li>create XMLHttpRequest object</li>
+                    <li>define onreadystatechange function</li>
+                    <li>open request</li>
+                    <li>send request</li>
+                </ol>
+                <li> If we have more than one AJAX task on a page, define one function for executing XHR and one function to handle 
+                    each of the tasks and pass to the xhr function as a callback
+                </li>
+            </div>
+        <hr>
+        <br>
+        <div class="jumbotron" id="pokeDiv">
+                <h3>Using</h3>
+                <h1> RESTful PoKéMoN </h1>
+                <h3>API</h3>
+            </div>
+
+        <div class="jumbotron">
+                <h4>Leverage AJAX to get info on pokemon!</h4>
+                <input type="number" id="pokeId" class="form-control col-2">
+                <button id="pokemonGo" class="btn btn-primary">Go!</button>
+                <hr>
+                <div class="text-center">
+                        <img id="pokemonImg" alt="" src="">
+                        <h3 id="pokemonName"></h3>
+                        <h4 id="height"></h4>
+                </div>
+                  
+                </div>
+
+        <script>
+        window.onload = function (){
+                document.getElementById('pokemonGo').addEventListener('click',getPokemon);
+
+            
+        }
+        //INTRO TO AJAX!
+        function getPokemon() {
+          var pokemondId =  document.getElementById('pokeId').value;
+            
+            //STEP 1 - create our XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            //STEP  2 - new define functionality for response
+            //does not HAVE to be written second but usually is
+            xhr.onreadystatechange= function () {
+                if (xhr.readyState ==4) {
+                    if (xhr.status ==200) {
+                        //success
+                        var pokemonText = xhr.responseText;
+                        var pokemon = JSON.parse(pokemonText); //made this glabal on purpose
+                        console.log(pokemonText);
+                       setPokemonValues(pokemon);
+                    }
+                    else if(xhr.status ==400){
+                        //client error
+                        console.log('Error')
+                    }
+                    
+                }    
+            }
+
+            //STEP 3 - open request configure it
+xhr.open('Get',`https://pokeapi.co/api/v2/pokemon/${pokemondId}`);
+            //STEP 4 - send request
+            xhr.send();
+        }
+
+        function setPokemonValues(pokemon) {
+            document.getElementById('pokemonName').innerHTML = pokemon.name;
+            var image = document.getElementById('pokemonImg');
+            image.setAttribute('src', pokemon.sprites.front_shiny);
+            image.setAttribute('alt', pokemon.name);
+            document.getElementById('height').innerHTML = pokemon.height;
+        }
+        
+        
+        
+        </script>
+    
+</body>
+</html>

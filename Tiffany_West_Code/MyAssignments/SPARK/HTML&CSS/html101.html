@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Intro to HTML</title>
+</head>
+<body>
+    <!-- these are comments
+    -->
+
+    <style>
+    /* CSS comments
+
+    */
+    /* style by element*/
+    h4, h3{
+        border: 5px gold ridge;
+    }
+    /* style by class*/
+    .special {
+        color: deeppink;
+    }
+    p.special {
+        text-decoration: line-through;
+    }
+    /* style by id*/
+    #top {
+        text-decoration: underline;
+        background-color: darkolivegreen !important; 
+    }
+
+    ol li{
+        color: wheat;
+        text-decoration: underline;
+    }
+    hr + h4{
+        background-color: greenyellow;
+    }
+
+    /*style nth-child by even or odd*/
+    li:nth-child(even){
+       color: khaki;
+    }
+       thead > tr{
+        color: firebrick;   
+       }
+    </style>
+
+    <h1 id="top" style="background-color:cornsilk; font-style: italic" >HTML: Hyper Text Mark Up Language</h1>
+    <h2>this is element h2</h2>
+    <h3>H3</h3>
+
+
+    <p> this is a paragraph.</p>
+    <br>
+    <hr>
+
+    <p class="special">
+        there are two types of list, ordered and unordered list.
+    </p>
+
+    <ol>
+        <li> this is an ordered list</li>
+    <ol type="a">
+        <li>ordered list inside an ordered list</li>
+    </ol>
+        <li> this is an ordered list</li>
+
+        <li> this is an ordered list</li>
+
+    </ol>
+<ul>
+<li>this is a list item </li>
+<li>this is a <i>list</i> item </li>
+<ol type="i"> 
+
+    <li>ordered list inside an unordered list</li>
+    <li>ordered list inside an unordered list</li>
+</ol>
+<li>this is a list item </li>
+<li>this is a list item </li>
+
+</ul>
+
+<hr>
+<div>
+<h4>Tables</h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>  First name</th>
+            <th>   Last name </th>
+            <th>   School </th>
+        </tr>
+    </thead>
+    <tbody>
+            
+
+        <tr>
+            <td>Kris</td>
+            <td>Lord</td>
+            <td>ISU</td>
+        </tr>
+        <tr>
+                <td>Genesis</td>
+                <td>Bonds</td>
+                <td>Duke</td>
+            </tr>
+
+        </tbody>
+</table>
+</div>
+<hr>
+ <h4> more tags</h4>
+ <ul>
+        <li>The <abbr title="ABBREVIATION">abbr tag</abbr>: 
+            this represents the abbreviation element which 
+            helps provide more info on some text</li>
+        <li>Iframes are elements that allow you to bring in 
+            a view of an entire web page in your site
+        </li>
+     <li> 
+         <iframe src="https://www.Revature.com" frameborder= "2px">
+        </iframe>
+     </li>
+     <l1>
+         hyperlinks
+         <a href="https://www.Revature.com">hyperlink</a> , <a href="#top">top</a>
+     </l1>
+     <li>A <a href="https://www.w3schools.com/html/html_links.asp">hyperlink</a>
+        , one of the most important types of elements, 
+        allows you to link another page to your page. With hyperlinks, we 
+        can click text, buttons, or images and open another site.
+        In order to use hyperlinks, we use the a tag which is actually 
+        the anchor tag with an attribute of href. The Anchor tag simply takes
+        you to another location, for example the <a href="#top">top of the page</a>
+    </li>
+    <li class="special">Images allow us to add pictures (and gifs!) to our HTML page. The img 
+        tag uses an src attribute for the source of your media (can be local 
+        or can be from the internet) and the alt attribute which holds the text 
+        alternative for an image. There are also other attributes you can add such 
+        as width, height, border, etc.
+    </li>
+
+     <li> <img height="500px" width="400px"
+         src="https://www.goldderby.com/wp-content/uploads/2019/05/avengers-endgame.jpg" alt="Heros"></li>
+         <li>Div element</li>
+         <li>span tag is used to group <span style="color:aqua"> in-line </span> elements</li>
+ </ul>
+
+
+
+
+</body>
+</html>

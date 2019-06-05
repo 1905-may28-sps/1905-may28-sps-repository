@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Students</title>
+</head>
+<body>
+    <div class="jumbotron">
+    <h1>DOM Manupulation with JavaScript</h1>
+        <h3>Student Listings</h3>
+        <input type="text" id="name" class="form-control col-8" placeholder="Student Name" required>
+        <input type="text" id="school" class="form-control col-8" placeholder="Student School" required>
+        <button id="addStudent" class="btn btn-primary">Add!</button>
+
+<br>
+        <table class="table" id="studentTable">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>School</th>
+            </tr>
+        </table>
+
+
+    </div>
+    <script>
+           
+            window.onload = function () {
+                var id=1000;
+                document.getElementById('addStudent').addEventListener('click',function () 
+                {
+                    //function to add student data to table
+
+                    //get input values
+                    var name = document.getElementById('name').value;
+                    var school = document.getElementById('school').value;
+
+                    if (name.trim()=='' || school.trim()==' ') {
+                        alert('please fully fill out the form!') 
+                    }else{
+
+                    //create row cells
+                    var cell1 = document.createElement('td');
+                    var cell2 = document.createElement('td');
+                    var cell3 = document.createElement('td');
+
+                    //add data to cells
+                    cell1.innerHTML = ++id; //id++
+                    cell2.innerHTML = name;
+                    cell3.innerHTML = school;
+
+                    //create row, then append cells to row
+                    var row = document.createElement("tr");
+                    row.appendChild(cell1);
+                    row.appendChild(cell2);
+                    row.appendChild(cell3);
+
+                    //add row to table
+                    document.getElementById('studentTable').appendChild(row);
+
+                    //clear input fields
+                    document.getElementById('name').value = ' ';
+                    document.getElementById('school').value = ' ';
+                    }
+                });
+            }
+
+         
+
+    </script>
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
