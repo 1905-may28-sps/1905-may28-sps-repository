@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Kemi",
+      "lastName": "Olatunji",
+      "username": "kemkem",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "firstName": "Jon",
+      "lastName": "Doe",
+      "username": "iLoveJane",
+      "password": "anonym0us"
+    },
+    {
+      "firstName": "Jhene",
+      "lastName": "Aiko",
+      "username": "Shawn",
+      "password": "1234",
+      "id": 3
+    },
+    {
+      "firstName": "Jojo",
+      "lastName": "Anna",
+      "username": "jojo1",
+      "password": "90210",
+      "id": 4
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "balance": 99999.99
+    }
+  ]
+}
