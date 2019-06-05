@@ -5,6 +5,7 @@ window.onload = function(){
     document.getElementById('register').addEventListener('click', register);
     document.getElementById('username')
         .addEventListener('blur', validateUsername);
+    document.getElementById('goToLogin').addEventListener('click', showLoginView );
 
 }
 
@@ -70,6 +71,7 @@ function register(){
             // process response -- after we make sure the user was created, we go to a new page
             if(xhr.readyState == 4){
                 console.log(xhr.status);
+                showLoginView();
             }
         }
 
@@ -81,4 +83,21 @@ function register(){
         xhr.send(JSON.stringify(userObj));
 
     }
+}
+
+function showLoginView(){
+    document.getElementById('registrationForm').remove();
+    document.getElementById('loginForm').removeAttribute('hidden');
+    //add listener for login button
+}
+
+function login(){
+    /*
+    This function will retrieve user by username, then compare password 
+    if no user w username exists, simply let user know theire credentials are invalid
+    if user exists but pw doesnt match, do the same thing
+
+    if user exists and password DOES match, console.log success, we will 
+    later make a homepage for the user
+    */
 }
