@@ -3,6 +3,43 @@ window.onload = function(){
     //call a function that obtains all fields from inputs
     //make an object with these fields. stringify it. print it to console
     document.getElementById('register').addEventListener('click', register);
+    document.getElementById('username')
+        .addEventListener('blur', validateUsername);
+
+}
+
+function validateUsername(){
+    var username = document.getElementById('username').value;
+    /* Using AJAX -- we are going to send a get request
+    to our JSON server to see if any users exist with the username 
+
+    we know that if no user exists, our response body will be 
+    an empty array, and if a user exists we will get back 
+    an array with a user object
+    */
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        console.log(xhttp.readyState)
+        if(xhttp.readyState == 4){
+            //here, we can process response
+            console.log(xhttp.status);
+            var userArr = JSON.parse(xhttp.responseText);
+            if(userArr.length == 0){
+                //no user w username exists. we're good
+                document.getElementById('message').innerHTML = '';
+                document.getElementById('register').removeAttribute('disabled');
+            }
+            else{
+                //username is taken. must let user know and disable our button
+                document.getElementById('message').innerHTML = 
+                    'Sorry, that username is taken! Please try again!';
+                document.getElementById('register').setAttribute('disabled', "true");
+            }
+        }
+    }
+    xhttp.open("GET", `http://localhost:3000/users?username=${username}`);
+    xhttp.send();
 
 }
 
@@ -13,6 +50,14 @@ function register(){
         lastName : document.getElementById('lastname').value,
         username: document.getElementById('username').value,
         password: document.getElementById('password').value
+    }
+
+    for(let prop in userObj){
+        if(userObj[prop] == null || userObj[prop].trim() == ''){
+            document.getElementById('message').innerHTML = 
+            'Sorry, please fill out form completely';
+            document.getElementById('register').setAttribute('disabled', "true");
+        }
     }
     console.log(JSON.stringify(userObj));
 }
