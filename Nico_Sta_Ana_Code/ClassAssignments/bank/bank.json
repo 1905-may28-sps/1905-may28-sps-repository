@@ -1,0 +1,116 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Nico",
+      "lastName": "Sta. Ana",
+      "username": "Nstaana",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "firstName": "John",
+      "lastName": "Snow",
+      "username": "JSnow",
+      "password": "ghost"
+    },
+    {
+      "firstName": "paolo",
+      "lastName": "gonzalez",
+      "username": "pgonz",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "firstName": "john",
+      "lastName": "snow",
+      "username": "jsnow",
+      "password": "password",
+      "id": 4
+    },
+    {
+      "firstName": "john",
+      "lastName": "snow",
+      "username": "JSnow",
+      "password": "password",
+      "id": 5
+    },
+    {
+      "firstName": "josh",
+      "lastName": "cruz",
+      "username": "bok",
+      "password": "123",
+      "id": 6
+    },
+    {
+      "firstName": "nico",
+      "lastName": "s",
+      "username": "nicotest1",
+      "password": "pass",
+      "id": 7
+    },
+    {
+      "firstName": "nico",
+      "lastName": "s",
+      "username": "123",
+      "password": "123",
+      "id": 8
+    },
+    {
+      "firstName": "n",
+      "lastName": "s",
+      "username": "ns",
+      "password": "pass",
+      "id": 9
+    },
+    {
+      "firstName": "test",
+      "lastName": "test",
+      "username": "test",
+      "password": "123",
+      "id": 10
+    },
+    {
+      "firstName": "test",
+      "lastName": "test",
+      "username": "test3",
+      "password": "werd",
+      "id": 11
+    },
+    {
+      "firstName": "nico",
+      "lastName": "s",
+      "username": "username",
+      "password": "werd",
+      "id": 12
+    },
+    {
+      "firstName": "nicot",
+      "lastName": "test",
+      "username": "username2",
+      "password": "sdlkfjs",
+      "id": 13
+    },
+    {
+      "firstName": "test",
+      "lastName": "test",
+      "username": "username3",
+      "password": "test",
+      "id": 14
+    },
+    {
+      "firstName": "nico",
+      "lastName": "sta ana",
+      "username": "safwe",
+      "password": "cwecw",
+      "id": 15
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "balance": 9999.99
+    }
+  ]
+}

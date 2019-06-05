@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movies API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <style>
+    
+    
+    
+    
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1>Movies API</h1>
+        <input type="text" name="" id="titleInput" placeholder="Title" class="form-control col-2">
+        <button id="movieTitleButton" class="btn btn-primary">Search</button>
+
+        <div class="movieOutput">
+            
+
+            
+            <img src="" alt="" id="poster">
+            <div id="movieName"></div>
+            <div id="year"></div>
+            <div id="rated"></div>
+            <!-- <div id ="runtime"></div> -->
+            <div id="plot"></div>
+     
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // API URL http://www.omdbapi.com/?apikey=9d39a29c&t=lord+of+the+rings
+
+        window.onload = function () {
+            document.getElementById("movieTitleButton").addEventListener('click', getMovie)
+
+
+        }
+
+        function getMovie() {
+            var movieTitle = document.getElementById("titleInput").value;
+            console.log(movieTitle);
+
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        // success
+                        var movieText = xhr.responseText;
+                        var movie = JSON.parse(movieText);
+                        console.log(movie);
+                        // console.log(movie.Year);
+
+
+                        // UPDATE DOM FUNCTION
+                        updateDOM(movie);
+
+                        var image = document.getElementById("poster");
+                        console.log(movie.Poster);
+                        image.setAttribute('src', movie.Poster);
+                    }
+                    else if (xhr.status == 400) {
+                        throw error;
+                        console.log(error);
+                    }
+                }
+            }
+
+
+            // OPEN REQUEST ... VERB AND ADDRESS
+            xhr.open('GET', 'http://www.omdbapi.com/?apikey=9d39a29c&t=' + movieTitle)
+
+            xhr.send();
+
+
+        }
+
+        function updateDOM(movie) {
+            document.getElementById("movieName").innerHTML = movie.Title;
+            document.getElementById("year").innerHTML = movie.Year;
+            document.getElementById("rated").innerHTML = movie.Rated;
+            document.getElementById("plot").innerHTML = movie.Plot;
+
+            // var poster = document.getElementbyId("poster");
+
+        }
+
+    </script>
+</body>
+
+</html>
