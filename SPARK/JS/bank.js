@@ -52,6 +52,7 @@ function register(){
         password: document.getElementById('password').value
     }
     
+    //validate that fields are not empty 
     var empty = false;
     for(let prop in userObj){
         if(userObj[prop] == null || userObj[prop].trim() == ''){
