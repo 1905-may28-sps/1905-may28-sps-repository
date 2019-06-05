@@ -89,6 +89,7 @@ function showLoginView(){
     document.getElementById('registrationForm').remove();
     document.getElementById('loginForm').removeAttribute('hidden');
     //add listener for login button
+    document.getElementById('login').addEventListener('click', login);
 }
 
 function login(){
@@ -100,4 +101,6 @@ function login(){
     if user exists and password DOES match, console.log success, we will 
     later make a homepage for the user
     */
+
+    console.log('loggging in');
 }

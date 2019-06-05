@@ -41,6 +41,13 @@
       "username": "test",
       "password": "test",
       "id": 6
+    },
+    {
+      "firstName": "nico",
+      "lastName": "sta ana",
+      "username": "nico",
+      "password": "nico",
+      "id": 7
     }
   ],
   "accounts": [
