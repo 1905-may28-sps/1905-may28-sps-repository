@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+       crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+       crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+       crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="jumbotron">
+        <input type="text" id="newItem" class="form-control col-6" placeholder="New Item...">
+        <button id="add" class="btn btn-primary">Add Item</button>
+        <br>
+        <div class="row">
+
+            <div class="col">
+                <h3>To Do List</h3>
+                <br>
+                <ul id="toDo">
+                    <li>Study! Because work matters</li>
+                    <li>Watch black mirror</li>
+                </ul>
+                
+            </div>
+            <div class="col">
+                    <h3>COMPLETED TASKS</h3>
+                    <br>
+                    <ul id="done"> 
+                        <li>Finished AJAX Assignment</li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    
+    <script>
+    //add items with jQuery less typing them 
+    window.onload = function () {
+       $('#add').on('click',function(){
+           var item =$('#newItem').val();
+           var listItem =$(`<li>${item}<li>`);
+            $('#toDo').append(listItem);
+            $('#newItem').val('');
+
+       });
+        $('#toDo').on('click','li',function()
+        {
+            $('#done').append(this);
+        })
+    }
+
+    
+    </script>
+</body>
+</html>
