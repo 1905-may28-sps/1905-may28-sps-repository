@@ -134,7 +134,13 @@
                     var listItem = $(`<li>${item}</li>`);
                     $('#toDo').append(listItem);
                     $('#newItem').val('');
-                });
+                }); 
+
+                $('#toDo').on('click', 'li', function(){
+                    $('#done').append(this);
+                
+                    //console.log('list item was clicked');
+                }) 
 
             }
 

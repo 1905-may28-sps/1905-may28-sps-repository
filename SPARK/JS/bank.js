@@ -7,6 +7,8 @@ window.onload = function(){
         .addEventListener('blur', validateUsername);
     document.getElementById('goToLogin').addEventListener('click', showLoginView );
 
+
+    ///GOING TO START USING jQUERY FOR ELEMENT SELECTION! BE AWARE!
 }
 
 function validateUsername(){
@@ -126,14 +128,14 @@ function login(){
                 //if yes, check password
                 var userArr = JSON.parse(xhr.responseText);
                 if(userArr.length == 0){
-                    //no user found
+                    $('#logMessage').html('Invalid credentials! Please Try again');
                 }
                 else{
                     if(userArr[0].password == pass){
-                        //login success, and log their first and last name
+                        loadHomePage(userArr[0]);
                     }
                     else{
-                        //login fail
+                        $('#logMessage').html('Invalid credentials! Please Try again');
                     }
                 }
             }
@@ -145,4 +147,57 @@ function login(){
 
 
     }
+}
+
+/*
+Load user home page function 
+- hide/remove login functionality 
+- display user name 
+- display user accounts 
+- allow user to create new accoutns 
+*/
+function loadHomePage(user){
+    $('#homePage').removeAttr('hidden');
+    $('#loginForm').remove();
+    $('#greeting').html(`Welcome, ${user.firstName} ${user.lastName}`);
+    loadUserAccounts(user);
+
+
+}
+
+function loadUserAccounts(user){
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 ){
+            /*
+            Must do anything with accounts in this readtstatechange function 
+            OR must call other functions from inside of here
+            */
+            console.log(xhr.status); //debug
+            var accounts = JSON.parse(xhr.responseText);
+            if(accounts.length == 0){
+                $('$accountMessage').html = 'You have no accounts! Get banking!';
+            }
+            else{
+                $('#accounts').removeAttr('hidden');
+                //loop through each account
+                for(let account of accounts){
+                   let row = $(`<tr id=${account.id}>
+                        <td> ${account.id}</td>
+                        <td> ${account.balance}</td>
+                        </tr>`)
+                    $('#accounts').append(row);
+                }
+            }
+
+            //add on click function to rows 
+            $('#accounts').on('click', 'tr', function(){
+                console.log($(this).attr('id'));
+            })
+        }
+    }
+    xhr.open('GET', `http://localhost:3000/accounts?userId=${user.id}`);
+    xhr.send();
+
 }
