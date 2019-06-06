@@ -113,15 +113,36 @@ function login() {
     }
 
     else {
-        //send request 
+        //send request  here
         var xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 //get user 
+                //console.log(xhr.status);
+            var userArr = JSON.parse(xhr.responseText);
+            if(userArr.length == 0){
+                document.getElementById('messagelog').innerHTML = 'wrong username';
+            }
+            else{
+                //username is taken. must let user know and disable our button
+                document.getElementById('messagelog').innerHTML = 
+                    'ok you got a username, but do you have the password?';
+                    var passArr = JSON.parse(xhr.responseText);
+                    if (passArr ==0) {
+                        document.getElementById('messagelog').innerHTML= 'password missing';
+                    }
+                    else{
+                        document.getElementById('messagelog').innerHTML= 'login successful';
+                        document.getElementById('loginForm').remove();
+                        document.getElementById('homePage').removeAttribute('hidden');
+                                          }
+            }
                 //validate to see if exists. if no, incorect login
-                //if yes, check password     console.log(xhttp.status);
-          
+                //if yes, check password    
+
+                 console.log(xhttp.status);
+              
             }
         }
 
