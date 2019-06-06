@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My IPA Request</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+        <style>
+            #gotDiv {
+                background-image: url(https://m.media-amazon.com/images/M/MV5BMjA5NzA5NjMwNl5BMl5BanBnXkFtZTgwNjg2OTk2NzM@._V1_.jpg) !important;
+                background-position: center;
+                
+            }
+            
+            #gotSnow {
+                background-image:url(https://image.syracuse.com/home/syr-media/width600/img/weather_impact/photo/snow-in-pennellvillejpg-098780c3fb812957.jpg);
+
+
+            }
+        
+        </style>
+
+</head>
+<body>
+
+    <div class="jumbotron" id="gotDiv">
+        <h1 style="color: antiquewhite">Game of Thrones API</h1>
+        <h3 style="color:azure">Find your Character</h3>
+        </div>
+
+        <div class="jumbotron" id="gotSnow">
+            <h2>Choose your Character</h2>
+            <input type="number" id="gotId" class= "form-control col-2">
+            <button id="gotGo" class="btn btn-primary">SUBMIT</button>
+            <hr>
+            <hr>
+
+            <h3 id="charName"></h3>
+            <h3 id="charImg" src=""></h3>
+            <h3 id="charGender"></h3>
+            <h3 id="char"></h3>
+        </div>
+        
+    
+<script>
+    window.onload = function() {
+        document.getElementById("gotGo").addEventListener('click', getGot);
+    }
+
+    function getGot() {
+        var goThrones = document.getElementById("gotId").value;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4) {
+                if(xhr.status == 200){
+                    var gotText = xhr.responseText;
+                    var got1 = JSON.parse(gotText);
+                    setGotValues(got1);
+                    console.log(got1);
+
+                } else if (kxr.status==400){
+                    alert("ERROR Try Again")
+                }
+            }
+        }
+        xhr.open('GET', `https://anapioficeandfire.com/api/characters/${goThrones}`);
+        xhr.send();
+        
+    }
+    function setGotValues(got1){
+        document.getElementById("charName").innerHTML = got1.name;
+        document.getElementById("charGender").innerHTML = got1.gender;
+    }
+
+</script>
+    
+</body>
+</html>
