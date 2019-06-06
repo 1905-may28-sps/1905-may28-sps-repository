@@ -40,11 +40,28 @@ function intToHex(){
 }
 
 function hexToInt(){
-    var hex = document.getElementById("conversionInput").value;
+    var hex = document.getElementById("conversionInput").value.toLowerCase();
     var num = 0;
-    for(var i = 0; i < hex.length; i++){
+    for(let i = 0; i < hex.length; i++){
+        var char = hex.charAt(hex.length-1-i);
+        //char is a string. check if converting it to a num == NaN, meaning it's a letter:
+        if(isNaN(Number(char))){
+            switch(char){
+                case 'a': char = 10; break;
+                case 'b': char = 11; break;
+                case 'c': char = 12; break;
+                case 'd': char = 13; break;
+                case 'e': char = 14; break;
+                case 'f': char = 15; break;
+            }
+        }
         
+        //must use Math.pow(num, power) as num^power works w bits 
+        num+=((Number(char))*(Math.pow(16,i)));
     }
+    console.log(num);
+    document.getElementById('convOut').innerHTML = num;
+
 
     
 }
