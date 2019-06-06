@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pokemon VS Mode</title>
+    <link rel="stylesheet" href="pokeApiStyles.css">
 </head>
 <body>
-    
+
+    <h1 class="title">Pokemon VS Mode</h1>
+
+    <div class="pokemon-list">
+        <div class="pokemon">
+            <img src="ivisaur.png" alt="photo">
+            <p>Pokemon 1</p>
+        </div>
+        <div class="vs">VS.</div>
+        <div class="pokemon">
+                <img src="ivisaur.png" alt="photo">
+                <p>Pokemon 1</p>
+            </div>
+    </div>
     <script>
         //create dynamic id to generate different poke monsters
     function consultPokemon(id) {
@@ -19,8 +33,16 @@
             })
         })
     }
-        consultPokemon(26)
 
+        //create a diff function which calls multiple sets of data
+        function consultPokemons() {
+            let primeId = Math.round(Math.random() * 150)
+            let secondId = Math.round(Math.random() * 150)
+
+            consultPokemon(primeId, 1)
+            consultPokemon(secondId, 2)
+        }
+        console.log()
         
     </script>
     
