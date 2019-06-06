@@ -1,0 +1,29 @@
+.options{ 
+   
+    display: block;
+    justify-content: center;
+    
+    
+
+}
+.container{
+    justify-content: center;
+text-align: center;
+
+
+}
+
+body{display:block;
+    justify-content: center;
+    text-align: center;
+    margin: 100px 100px 100px 100px;
+}
+
+table{justify-content: center;
+text-align: center;
+border: thin;}
+th{
+    background-color: aquamarine !important;
+}
+
+img{border-radius: 5px}
