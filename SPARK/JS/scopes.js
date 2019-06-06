@@ -1,6 +1,6 @@
 /*
 UNDERSTANDING VARIABLE SCOPES
-- Scope refers to the visibility of vairables 
+- Scope refers to the visibility of variables
 - Basically, which part of your program can see or use the variable 
 - in JavaScript, we can delcare variables in three ways: using the 
     let, const, or var keywords. They each allow us to do differnt things
@@ -13,7 +13,7 @@ UNDERSTANDING VARIABLE SCOPES
 so what does any of this mean...
 
 */
-
+test();
 //GLOBAL
 var global = "this is a globally scoped varibale as it has "+
     "been declared outside of any function or block. This varibale "+
@@ -34,10 +34,10 @@ function test(){
     "function. This value cannot change once we initialize it (which is " +
     "what we are doing now by setting the variable = to something)";
 
-
+    alsoGlobal = "This is also a globally scoped variable as it is never declared";
     if(true){
         //Everything between the above and below curly braces is a BLOCK of code
-        var notBlockScope = "Even though this is declared within this " + 
+        var notBlockScopeButFunctionScope = "Even though this is declared within this " + 
         "block of code, it is NOT block scoped. Why? becuase VAR only " + 
         "lets us define GLOBAL and FUNCTION scoped variables. We can access " + 
         "this variable notBlockScope anywhere in our function test()";
@@ -48,5 +48,12 @@ function test(){
         "them with LET within a BLOCK";
 
         const blockScopeConst = "this is a block scoped constant value";
+
+        thisIsGlobal = "this variable is never declared so its global";
     }
+
+    console.log(functionScope);
 }
+
+
+console.log(functionScope); //will not work. not defined
