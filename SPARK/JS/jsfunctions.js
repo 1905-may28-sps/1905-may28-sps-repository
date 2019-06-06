@@ -10,6 +10,52 @@
     document.getElementById('findPalindrome')
         .addEventListener('click', palindrome);
     document.getElementById('doFizz').addEventListener('click', fizzbuzz);
+    document.getElementById('intHex').addEventListener('click', intToHex);
+    document.getElementById('hexInt').addEventListener('click', hexToInt);
+    document.getElementById('intBin').addEventListener('click', intToBin);
+    document.getElementById('binInt').addEventListener('click', binToInt);
+}
+
+function intToHex(){
+    var num = Number(document.getElementById("conversionInput").value);
+    console.log(num);
+    var out =  "";
+    while(num>0){
+        var rem = num%16;
+        if(rem<10) out = rem+out;
+        else{
+            switch(rem){
+                case 10: out = 'a'+ out; break;
+                case 11: out = 'b'+ out; break;
+                case 12: out = 'c'+ out; break;
+                case 13: out = 'd'+ out; break;
+                case 14: out = 'e'+ out; break;
+                case 15: out = 'f'+ out; break;
+            }
+        }
+        num = (num-rem)/16;
+    }
+    console.log(out);
+    document.getElementById('convOut').innerHTML = out;
+}
+
+function hexToInt(){
+    var hex = document.getElementById("conversionInput").value;
+    var num = 0;
+    for(var i = 0; i < hex.length; i++){
+        
+    }
+
+    
+}
+
+function intToBin(){
+    var num = Number(document.getElementById("conversionInput"));
+    console.log(num);
+}
+
+function binToInt(){
+
 }
 
 function fizzbuzz(){

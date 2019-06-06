@@ -92,15 +92,15 @@ function showLoginView(){
     document.getElementById('login').addEventListener('click', login);
 }
 
-function login(){
-    /*
-    This function will retrieve user by username, then compare password 
+  /* This function will retrieve user by username, then compare password 
     if no user w username exists, simply let user know theire credentials are invalid
     if user exists but pw doesnt match, do the same thing
 
     if user exists and password DOES match, console.log success, we will 
     later make a homepage for the user
-    */
+*/
+function login(){
+  
 
     //get username and password from input fields 
     //make sure fields are not empty 
@@ -115,14 +115,27 @@ function login(){
     }
     
     else{
-        //send request 
+        //send request
         var xhr = new XMLHttpRequest();
+        
 
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4){
                 //get user 
                 //validate to see if exists. if no, incorect login
                 //if yes, check password
+                var userArr = JSON.parse(xhr.responseText);
+                if(userArr.length == 0){
+                    //no user found
+                }
+                else{
+                    if(userArr[0].password == pass){
+                        //login success, and log their first and last name
+                    }
+                    else{
+                        //login fail
+                    }
+                }
             }
         }
 
