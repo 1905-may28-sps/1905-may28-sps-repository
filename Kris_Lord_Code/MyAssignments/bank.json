@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Kris",
+      "lastName": "Lord",
+      "username": "kris123",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "firstName": "Alan",
+      "lastName": "Jackson",
+      "username": "alan123",
+      "password": "456"
+    },
+    {
+      "firstname": "Da",
+      "lastname": "Man",
+      "username": "daMan",
+      "password": "1234566",
+      "id": 3
+    },
+    {
+      "firstname": "test",
+      "lastname": "test",
+      "username": "test",
+      "password": "test",
+      "id": 4
+    },
+    {
+      "firstName": "Kris",
+      "lastName": "LOrd",
+      "username": "krsi123",
+      "password": "123",
+      "id": 5
+    },
+    {
+      "firstName": "Kris",
+      "lastName": "Lord",
+      "username": "kris1234",
+      "password": "678",
+      "id": 6
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "balance": 99999.99
+    }
+  ]
+}

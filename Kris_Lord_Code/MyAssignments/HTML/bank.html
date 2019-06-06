@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RevatureBank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1>Welcome to RevatureBank!</h1>
+        <hr>
+        <br>
+        <div id="registrationForm">
+            <h3>Register Below</h3>
+            <input type="text" id="firstname" placeholder="First Name" class="form-control col-4">
+            <input type="text" id="lastname" placeholder="Last Name" class="form-control col-4">
+            <input type="text" id="username" placeholder="Username" class="form-control col-4">
+            <input type="password" id="password" placeholder="Password" class="form-control col-4">
+            <button id="register" class="btn btn-submit" style="border: 2px navy solid">Register</button>
+            <hr>
+            <div id="message" style="color:red; font-size:20pt; font-style:bold;"></div>
+            <i id="goToLogin" style="text-decoration:underline">Already a user? Go to Login Form</i>
+        </div>
+
+        <div id="loginForm" hidden="true">
+            <h3>Log In</h3>
+            <input type="text" id="logUser" placeholder="Username" class="form-control col-4">
+            <input type="password" id="logPass" placeholder="Password" class="form-control col-4">
+            <button id="login" class="btn btn-submit" style="border: 2px navy solid">Login</button>
+            <div id="messageLogin" style="color:red; font-size:20pt; font-style:bold;"></div>
+        </div>
+
+        <div id="homePage" hidden="true">
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col" style="background-color:royalblue;">
+                            <nav>
+                                <ul class="nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link"><b><i>Revature</i></b></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-9" style="background-color: orangered;">
+                            <nav>
+                                <ul class="nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="account.html">Bank Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="account.html">Accounts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="profile.html">Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="bank.html">LOG OUT</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="container jumbotron">
+                    <h1>Account Summary</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-9">
+                                <table class="table table-hover table-light">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Account Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td row-span="4" scope="row"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"><span id="balance"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Statements</th>
+                                            <th>Transfers</th>
+                                            <th>Investments</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+
+        </div>
+
+    </div>
+
+    <script src="../JS/bank.js" type="text/javascript"></script>
+</body>
+
+</html>
