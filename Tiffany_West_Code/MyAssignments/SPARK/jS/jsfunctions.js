@@ -102,5 +102,25 @@ function fibo() {
        
    }
 
+function intToHex {
+    var numString = document.getElementById('convInput').value;
+    console.log(num);
+    var out = "";
+    while(num>0){
+        var rem = num%16;
+        if (rem<10)  
+            
+        
+    }
+
+
+
+    document.getElementById('convOut')
+}
  
+
+function intBin() {
+
+    
+}
  
