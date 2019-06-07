@@ -40,7 +40,7 @@ function validateUsername() {
             }
         }
     }
-    xhttp.open("GET", `http://localhost:3000/users?username=${username}`);
+    xhttp.open("GET", `http://localhost:3000/users/?username=${username}`);
     xhttp.send();
 
 }
@@ -144,7 +144,7 @@ function login() {
             }
         }
 
-        xhr.open('GET', `http://localhost:3000/users?username=${name}`);
+        xhr.open('GET', `http://localhost:3000/users/?username=${name}`);
 
         xhr.send();
     }
