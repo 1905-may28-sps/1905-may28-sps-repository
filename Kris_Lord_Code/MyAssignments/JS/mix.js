@@ -27,8 +27,9 @@ window.onload = function () {
                                 ${liq.type}
                                 </li>`);
                     //then append to list
-                }
                     $('#liquor').append(li);
+                }
+                    
                 }
                     //after you create list items
                     $('#mixTable').on('click', 'li', function(){var id = $(this).attr('id'); 
