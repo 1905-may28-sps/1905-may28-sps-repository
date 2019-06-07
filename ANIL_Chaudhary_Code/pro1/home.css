@@ -1,0 +1,23 @@
+.jumbotron{
+    max-height:1in;
+     padding-top:8px;
+  background-color:lightblue;
+  text-align: center;
+  }
+  .container{
+      text-align: center;
+      background-color:lightblue;
+     align-self: center;
+  }
+  #register, #adminLogin, #getStudent, #masterUpdate{
+      background-color: blue;
+      color: beige;
+
+  }
+     main {
+         margin-left :4in;
+         background-color:lightblue;
+     }  
+  body {
+    background-color:lightblue; 
+  }

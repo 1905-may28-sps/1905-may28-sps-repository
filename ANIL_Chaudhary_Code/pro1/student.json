@@ -1,0 +1,59 @@
+{
+    "students": [
+        {
+            "id": 1,
+            "firstName": "Anil",
+            "lastName": "Chaudhary",
+            "username": "akc",
+            "password": "123"
+        },
+        {
+            "id": 2,
+            "firstName": "Keni",
+            "lastName": "Olatunjr",
+            "username": "keni",
+            "password": "anonym0us"
+        },
+        {
+            "firstName": "Billy",
+            "lastName": "Clara",
+            "username": "billy",
+            "password": "test",
+            "id": 5
+        },
+        {
+            "firstName": "Viji",
+            "lastName": "P",
+            "username": "test",
+            "password": "test",
+            "id": 6
+        },
+        {
+            "firstName": "Nico",
+            "lastName": "sta ana",
+            "username": "nico",
+            "password": "nico",
+            "id": 7
+        }
+    ],
+        "grades": [
+        {
+            "Id": 1,
+            "maths": "A",
+            "english": "A+",
+            "computer": "B"
+        },
+        {
+            "Id": 2,
+            "maths": "B",
+            "english": "A",
+            "computer": "B"
+        },
+        {
+            "Id": 3,
+            "maths": "A",
+            "english": "B+",
+            "computer": "A"
+        }
+    ]
+}
