@@ -13,7 +13,7 @@
         <h1>i-Mixer</h1>
         <hr>
         <br>
-        <table class="table table-hover">
+        <table id="mixTable" class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" width=10%>Customer #</th>
@@ -25,42 +25,42 @@
                     <th scope="col" width=10%>Cost</th>
                 </tr>
             </thead>
-            <tbody id="new">
+            <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                    <th id="new" scope="row">1</th>
                     <td>
                         <ul id="liquor">
-                            <li>Rum</li>
+                            <!-- <li>Rum</li>
                             <li>Whiskey</li>
                             <li>Tequila</li>
                             <li>Cognac</li>
-                            <li>Vodka</li>
+                            <li>Vodka</li> -->
                         </ul>
                     </td>
                     <td>
                         <ul id="juice">
-                            <li>orange</li>
+                            <!-- <li>orange</li>
                             <li>pineapple</li>
                             <li>cranberry</li>
-                            <li>lemonade</li>
+                            <li>lemonade</li> -->
                         </ul>
                     </td>
                     <td>
                         <ul id="soda">
-                            <li>sprite</li>
+                            <!-- <li>sprite</li>
                             <li>coke</li>
                             <li>ginger ale</li>
-                            <li>seltzer</li>
+                            <li>seltzer</li> -->
                         </ul>
                     </td>
                     <td>
                         <ul id="type">
-                            <li>shaken</li>
+                            <!-- <li>shaken</li>
                             <li>on the rocks</li>
                             <li>frozen</li>
                             <li>stirred</li>
                             <li>popscicles</li>
-                            <li>jello</li>
+                            <li>jello</li> -->
                         </ul>
                     </td>
                     </td>
@@ -70,107 +70,13 @@
                         <ul class="drink">
                         </ul>
                     <td><ul>
-                        <li>cost</li>
+                        <li><button class="btn-primary btn" id="reset">Reset</button></li>
+                        <li id="cost">cost = </li>
                         <li><button class="btn-primary btn" id="order">Order</button></li>
                     </ul>
                 </td>
                 </tr>
-                <!-- <tr>
-                    <th scope="row">2</th>
-                    <td>
-                        <ul id="liquor">
-                            <li>Rum</li>
-                            <li>Whiskey</li>
-                            <li>Tequila</li>
-                            <li>Cognac</li>
-                            <li>Vodka</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul id="juice">
-                            <li>orange</li>
-                            <li>pineapple</li>
-                            <li>cranberry</li>
-                            <li>lemonade</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul id="soda">
-                            <li>sprite</li>
-                            <li>coke</li>
-                            <li>ginger ale</li>
-                            <li>seltzer</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul id="type">
-                            <li>shaken</li>
-                            <li>on the rocks</li>
-                            <li>frozen</li>
-                            <li>stirred</li>
-                            <li>popscicles</li>
-                            <li>jello</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul class="drink">
-                        </ul>
-                    </td>
-                    <td><ul>
-                            <li>cost</li>
-                            <li><button class="btn-primary btn" id="order">Order</button></li>
-                        </ul></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>
-                        <ul id="liquor">
-                            <li>Rum</li>
-                            <li>Whiskey</li>
-                            <li>Tequila</li>
-                            <li>Cognac</li>
-                            <li>Vodka</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul id="juice">
-                            <li>orange</li>
-                            <li>pineapple</li>
-                            <li>cranberry</li>
-                            <li>lemonade</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul id="soda">
-                            <li>sprite</li>
-                            <li>coke</li>
-                            <li>ginger ale</li>
-                            <li>seltzer</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul id="type">
-                            <li>shaken</li>
-                            <li>on the rocks</li>
-                            <li>frozen</li>
-                            <li>stirred</li>
-                            <li>popscicles</li>
-                            <li>jello</li>
-                        </ul>
-                    </td>
-                    </td>
-                    </ul>
-                    </td>
-                    <td>
-                        <ul class="drink">
-
-                        </ul>
-                    <td><ul>
-                            <li>cost</li>
-                            <li><button class="btn-primary btn" id="order">Order</button></li>
-                        </ul></td>
-                </tr> -->
-            </tbody>
+                </tbody>
         </table>
     </div>
 
