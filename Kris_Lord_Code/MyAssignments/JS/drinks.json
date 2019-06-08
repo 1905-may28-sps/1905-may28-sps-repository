@@ -1,0 +1,112 @@
+{
+    "liquor": [{
+            "id": 1,
+            "name": "Captian Morgan",
+            "type": "Rum",
+            "price": 5.00
+        },
+        {
+            "id": 2,
+            "name": "Southern Comfort",
+            "type": "Whiskey",
+            "price": 5.00
+        },
+        {
+            "id": 3,
+            "name": "Patron",
+            "type": "Tequila",
+            "price": 10.00
+        },
+        {
+            "id": 4,
+            "name": "D'usse",
+            "type": "Cognac",
+            "price": 10.00
+        },
+        {
+            "id": 5,
+            "name": "Grey Goose",
+            "type": "Vodka",
+            "price": 10.00
+        }
+    ],
+    "juice": [{
+            "id": 1,
+            "name": "Orange",
+            "price": 3.00
+        },
+        {
+            "id": 2,
+            "name": "Pineapple",
+            "price": 2.00
+        },
+        {
+            "id": 3,
+            "name": "Cranberry",
+            "price": 3.00
+        },
+        {
+            "id": 4,
+            "name": "Lemonade",
+            "price": 3.00
+        }
+    ],
+    "soda": [{
+            "id": 1,
+            "name": "Sprite",
+            "price": 1.00
+        },
+        {
+            "id": 2,
+            "name": "Coke",
+            "price": 1.00
+        },
+        {
+            "id": 3,
+            "name": "Ginger-Ale",
+            "price": 1.00
+        },
+        {
+            "id": 4,
+            "name": "Seltzer",
+            "price": 1.00
+        }
+    ],
+    "type": [{
+            "id": 1,
+            "name": "Shaken",
+            "img": "https://behindthebar.com/wp/wp-content/uploads/behindthebar/2016/09/shaken-cocktail-1000x667.jpg",
+            "price": 3.00
+        },
+        {
+            "id": 2,
+            "name": "On the Rocks",
+            "img": "http://media.oregonlive.com/ent_impact_dining/photo/redjpg-2ab2b05fc0df3859.jpg",
+            "price": 2.00
+        },
+        {
+            "id": 3,
+            "name": "Frozen",
+            "img": "https://pbs.twimg.com/media/DBBPvKKXUAAZ-Xy.jpg",
+            "price": 3.00
+        },
+        {
+            "id": 4,
+            "name": "Stirred",
+            "img": "https://images.food52.com/bywqLjznECWHmVAfsvGHuOc-GL4=/b7b58a7d-f2c7-460e-af8f-f2a304a2e7a6--13586764603_b3461d6efd_b.jpg",
+            "price": 2.00
+        },
+        {
+            "id": 5,
+            "name": "Popsicle",
+            "img": "https://www.mamalovesfood.com/wp-content/uploads/2017/06/Strawberry_Lime_Popsicle_Spritzer-683x1024.jpg",
+            "price": 5.00
+        },
+        {
+            "id": 6,
+            "name": "Jello",
+            "img": "https://hips.hearstapps.com/del.h-cdn.co/assets/15/42/1280x640/landscape-1444942234-delish-glow-food-jello-shots-recipe.jpg?resize=1200:*",
+            "price": 3.00
+        }
+    ]
+}
