@@ -1,0 +1,33 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "name": "name",
+      "username": "username",
+      "password": "password",
+      "stock": [
+        {
+          "portfolioId": 1,
+          "stockName": "General Motors",
+          "stockSymbol": "GM",
+          "numShare": 1,
+          "pps": 6,
+          
+        }
+      ]
+    },
+    {
+      "name": "one",
+      "username": "one",
+      "password": "one",
+      "stock": {
+        "stockName": "one",
+        "stockSymbol": "one",
+        "numShare": "1",
+        "pps": "2",
+        
+      },
+      "id": 2
+    }
+  ]
+}
