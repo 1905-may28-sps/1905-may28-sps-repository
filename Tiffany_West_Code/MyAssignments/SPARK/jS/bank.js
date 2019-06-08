@@ -126,8 +126,8 @@ function login() {
             }
             else{
                 //username is taken. must let user know and disable our button
-                document.getElementById('messagelog').innerHTML = 
-                    'ok you got a username, but do you have the password?';
+                //document.getElementById('messagelog').innerHTML = 
+                  //  'ok you got a username, but do you have the password?';
                     var passArr = JSON.parse(xhr.responseText);
                     if (passArr ==0) {
                         document.getElementById('messagelog').innerHTML= 'password missing';

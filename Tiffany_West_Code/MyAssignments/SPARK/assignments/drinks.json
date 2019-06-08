@@ -1,5 +1,5 @@
 {
-    "liqour": [{
+    "liquor": [{
             "id": 1,
             "name": "Captian Morgan",
             "type": "Rum",
@@ -107,6 +107,23 @@
             "name": "Jello",
             "im": "https://hips.hearstapps.com/del.h-cdn.co/assets/15/42/1280x640/landscape-1444942234-delish-glow-food-jello-shots-recipe.jpg?resize=1200:*",
             "price": 3.00
+        }
+    ],
+    "patrons":[
+        {
+            "id":100,
+            "codeName": "flygirltiff",
+            "password": "123pass"
+        },
+        {
+            "id":101,
+            "codeName": "drKris",
+            "password": "pass123"
+        },
+        {
+            "id":100,
+            "codeName": "BestTrainer",
+            "password": "Genesis"
         }
     ]
 }
