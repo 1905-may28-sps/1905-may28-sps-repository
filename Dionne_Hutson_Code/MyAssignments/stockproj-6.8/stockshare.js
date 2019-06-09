@@ -10,9 +10,11 @@ window.onload = function () {
     document.getElementById('nah').addEventListener('click',getBasicPort);
 
 
-    document.getElementById('mainPort').addEventListener('click',showPort);
+    //document.getElementById('mainPort').addEventListener('click',showPort);
     document.getElementById('username').addEventListener('mouseout',validateUsername);
-    
+    ///
+    document.getElementById('dropdownMenuButton').addEventListener('click',greeting);
+    document.getElementById('netb').addEventListener('click',netf);
     
 
     document.getElementById('addToPort').addEventListener('click', addToPort);
@@ -23,6 +25,7 @@ window.onload = function () {
 }
 var user2="";
 var addProfile=false;
+
 function validateUsername(){
     var username = document.getElementById('username').value;
     var xhr = new XMLHttpRequest();
@@ -99,7 +102,8 @@ function getPortfolio(){
         
                         if(pass==userArr[0].password){
                             console.log("WHooo");
-                         portView(userArr[0].name,userArr[0].stock.stockName,userArr[0].stock.stockSymbol,userArr[0].stock.numShare,userArr[0].stock.pps,userArr[0].stock.net);
+                            portView();
+                         
                          console.log(userArr[0].stock.stockSymbol+"getPortfolio");
                          
                          addProfile=true;
@@ -133,24 +137,30 @@ function getBasicPort(){
 
 
 }
-function portView(portName,portSym,portNum,portPPS){
+
+function greeting(){
+    document.getElementById('heading').removeAttribute('hidden');
+     document.getElementById('heading').innerHTML="Hello, "+user2;
+     console.log(user2);
+}
+
+
+function netf(){
+    document.getElementById('netv').removeAttribute('hidden');
+    document.getElementById('netv').innerHTML="Your net gain is: "+net2;
+     console.log(net2+"in netunct");
+}
+
+
+function portView(){
     
     getBasicPort();
     addFromPort();
 
-    let a= Number(portNum);
-    let b=Number(portPPS);
-    console.log(portSym+"portView");
-    let c=portSym;
-    
-
-    document.getElementById('heading').innerHTML="Hello, "+portName;
+   
    
 }
-function showPort(){
-    document.getElementById('heading').removeAttribute('hidden');
-    
-}
+
 
 function addFromPort() {
     
@@ -197,7 +207,7 @@ function addFromPort() {
                      
                              document.getElementById('stockTable2').appendChild(row);
                             }else{
-                                alert("not ready");
+                                console.log("not ready");
                             }
                         }
     
@@ -210,7 +220,9 @@ function addFromPort() {
     
 
 
+                    
 function addToPort() {
+    if (addProfile){
             if (document.getElementById('name').value != "" && document.getElementById('stock').value != "") {
                 var shares = prompt("Enter the # of shares");
                     var row = document.createElement("tr");
@@ -282,7 +294,8 @@ function addToPort() {
                // updateStock(name,stock,shares,price);
                
                     }
-                }
+                }else{alert("Signup to add to portfolio");}
+            }
 
 
     function addStock() {
@@ -325,9 +338,9 @@ function addToPort() {
             } else
                 window.alert("Enter 'Stock Name' and 'Stock ID'")
     }
-
+var net2=0;
     function refresh() {
-        var net2=0;
+        net2=0;
 
             var stockId = document.getElementById("stockTable").rows[1].cells[1].innerHTML;
             console.log(document.getElementById("stockTable").rows[1].cells[1].innerHTML+"row");
@@ -364,6 +377,7 @@ function addToPort() {
                         console.log(net2+"anet");
                         net2+=a;
                         console.log(net2+"a");
+                        
 
                     }
                 }
@@ -373,59 +387,4 @@ function addToPort() {
 
         
               
-   /*  function updateStock(name,stock,share,price){
-       console.log(name);
-       console.log(stock);
-       console.log(price);
-       console.log(share);
-                console.log(user2);
-             //geting my variables from profile
-    let portObj={
-    stock:{
-    stockName : name,
-    stockSymbol : stock,
-    numShare: share,
-    pps : price
-    }
-   
-    };
-    //
-    //AJAX
-    var xhr=new XMLHttpRequest();
-    xhr.onreadystatechange=function(){
-        if(xhr.readyState==4){
-          console.log("put");       
-          
-        }
-
-    }
-    xhr.open("POST",`http://localhost:3000/portfolio/?username=${user2}`);
-
-
-    xhr.setRequestHeader('Content-Type','application/json');
-    xhr.send(JSON.stringify(portObj));
- }
- */
-
-      
-
-                
-        
-        
-        
-        
-        
-        
-        
-
-
-
-
-
-
-
-    
-   
-
-
-///
+  
