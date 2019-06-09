@@ -12,7 +12,7 @@
           "stockSymbol": "GM",
           "numShare": 1,
           "pps": 6,
-          
+          "net": 0
         }
       ]
     },
@@ -25,9 +25,30 @@
         "stockSymbol": "one",
         "numShare": "1",
         "pps": "2",
-        
+        "net": "3"
       },
       "id": 2
+    },
+    {
+      "stock": {
+        "stockName": "j",
+        "stockSymbol": "k",
+        "numShare": "j"
+      },
+      "id": 3
+    },
+    {
+      "name": "two",
+      "username": "two",
+      "password": "two",
+      "stock": {
+        "stockName": "two",
+        "stockSymbol": "GM",
+        "numShare": "5",
+        "pps": "52",
+        "net": "4"
+      },
+      "id": 4
     }
   ]
 }
