@@ -21,6 +21,9 @@ window.onload = function () {
     document.getElementById('addStock').addEventListener('click',addStock); 
     document.getElementById('refresh').addEventListener('click', refresh);
 
+
+
+
 }
 var user2="";
 var addProfile=false;
@@ -248,13 +251,12 @@ function addToPort() {
                             var stock = JSON.parse(stockText);
                             console.log(stock);
                             updateTable(stock)
-                            $("td").on('dblclick',function(){
-                                a=$(this).clone();
+                            $("tr").on('dblclick',function(){
+                               /*  a=$(this).clone();
                                 console.log(a);
-                                console.log(typeof a);
-                                $('#heading').append(a);
-                                console.log(typeof this);
-                                console.log(this);
+                                console.log(typeof a); */
+                                $(this).remove();
+                                alert("SOLD!");
                             })
 
                         }
