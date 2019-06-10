@@ -183,7 +183,7 @@ function loadUserAccounts(user){
                 $('#accounts').removeAttr('hidden');
                 //loop through each account
                 for(let account of accounts){
-                   let row = $(`<tr id=${account.id}>
+                   let row = $(`<tr id="test${account.id}">
                         <td> ${account.id}</td>
                         <td> ${account.balance}</td>
                         </tr>`)
@@ -193,7 +193,10 @@ function loadUserAccounts(user){
 
             //add on click function to rows 
             $('#accounts').on('click', 'tr', function(){
-                console.log($(this).attr('id'));
+                var id = $(this).attr('id');
+                console.log(id);
+                //now allow user to update balance for selected element
+              //  $(`tr#${id}`).attr('style', 'background-color: green');
             })
         }
     }
@@ -201,3 +204,6 @@ function loadUserAccounts(user){
     xhr.send();
 
 }
+
+
+
