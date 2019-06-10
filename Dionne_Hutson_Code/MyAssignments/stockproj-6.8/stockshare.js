@@ -20,7 +20,6 @@ window.onload = function () {
     document.getElementById('addToPort').addEventListener('click', addToPort);
     document.getElementById('addStock').addEventListener('click',addStock); 
     document.getElementById('refresh').addEventListener('click', refresh);
-    
 
 }
 var user2="";
@@ -144,10 +143,9 @@ function greeting(){
      console.log(user2);
 }
 
-
 function netf(){
     document.getElementById('netv').removeAttribute('hidden');
-    document.getElementById('netv').innerHTML="Your net gain since you last refreshed is: "+net2;
+    document.getElementById('netv').innerHTML="Your net gain since is: "+net2;
      console.log(net2+"in netunct");
 }
 
