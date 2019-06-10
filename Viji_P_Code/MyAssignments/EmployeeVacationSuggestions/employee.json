@@ -1,0 +1,54 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "empFirstname": "Viji",
+      "empLastname": "Lake",
+      "empUsername": "viji123",
+      "empPassword": "123",
+      "email": "abc@gmail.com",
+      "contact": "111-111-1111"
+    },
+    {
+      "id": 2,
+      "empFirstname": "Billy",
+      "empLastname": "Clara",
+      "empUsername": "billy123",
+      "empPassword": "345",
+      "email": "xyz@gmail.com",
+      "contact": "222-222-2222"
+    },
+    {
+      "empFirstname": "Anil",
+      "empLastname": "Kumar",
+      "empUsername": "ail123",
+      "empPassword": "anil",
+      "email": "anil@gmail.com",
+      "contact": "3333333",
+      "id": 3
+    },
+    {
+      "empFirstname": "Nico",
+      "empLastname": "Sta",
+      "empUsername": "nico1",
+      "empPassword": "nico1",
+      "email": "nico@gmail.com",
+      "contact": "222222",
+      "id": 4
+    },
+    {
+      "id": 1,
+      "address": "Abc street",
+      "city" : "Manhattan",
+      "state": "NY",
+      "zipcode":"11111"
+      },
+      {
+        "id": 2,
+      "address": "Xyz Ave",
+      "city" : "Manhattan",
+      "state": "NY",
+      "zipcode":"11001"
+      }
+  ]
+}
