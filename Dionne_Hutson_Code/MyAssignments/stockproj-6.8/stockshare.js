@@ -147,7 +147,7 @@ function greeting(){
 
 function netf(){
     document.getElementById('netv').removeAttribute('hidden');
-    document.getElementById('netv').innerHTML="Your net gain is: "+net2;
+    document.getElementById('netv').innerHTML="Your net gain since you last refreshed is: "+net2;
      console.log(net2+"in netunct");
 }
 
@@ -194,7 +194,7 @@ function addFromPort() {
                              cellb.innerHTML =userArr[0].stock.stockSymbol.toUpperCase();
                             cellc.innerHTML = userArr[0].stock.numShare;
                              celld.innerHTML =userArr[0].stock.pps;
-                             celle.innerHTML = userArr[0].stock.numShare*userArr[0].stock.pps;
+                             celle.innerHTML =userArr[0].stock.numShare*userArr[0].stock.pps;
                              cellf.innerHTML =userArr[0].stock.net;
                             
                              row.appendChild(cella);
@@ -340,7 +340,7 @@ function addToPort() {
     }
 var net2=0;
     function refresh() {
-        net2=0;
+        
 
             var stockId = document.getElementById("stockTable").rows[1].cells[1].innerHTML;
             console.log(document.getElementById("stockTable").rows[1].cells[1].innerHTML+"row");
