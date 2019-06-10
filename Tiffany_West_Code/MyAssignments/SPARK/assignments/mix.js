@@ -57,6 +57,7 @@ window.onload = function () {
         }
     }
 
+    
     function liquor() {
     
         var xhr = new XMLHttpRequest();
