@@ -42,9 +42,11 @@ function register() {
 
     var user = {
         firstName: document.getElementById('firstname').value,
+        middleName: document.getElementById('middlename').value,
         lastName: document.getElementById('lastname').value,
-        username: document.getElementById('username').value,
-        password: document.getElementById('password').value
+        age: document.getElementById('age').value,
+        email: document.getElementById('email').value,
+        gender: document.getElementById('gender').value,
 
 
     }
@@ -74,7 +76,7 @@ function register() {
 
             }
         }
-        xhr.open('POST', 'http://localhost:3000/users');
+        xhr.open('POST', 'http://localhost:3000/');
 
         xhr.setRequestHeader('content-Type', 'application/json');
 
