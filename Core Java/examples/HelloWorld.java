@@ -12,7 +12,7 @@ public class HelloWorld {
 
 
 /*
-Welcome to Java! This is our first Jaca class 
+Welcome to Java! This is our first Java class 
 
 It is important to note that the name of the .java file must 
 be the same name as the public class in that file 
