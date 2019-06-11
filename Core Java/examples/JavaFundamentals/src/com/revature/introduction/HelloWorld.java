@@ -18,12 +18,14 @@ public class HelloWorld {
 	 * However, the array does not have to be called args, 
 	 * and it can use something called varags (to be discussed later)
 	 */
-	public static void main(String arguments[]) {
+	public static void main(String myParam[]) {
 		//This prints text out in the console on a new line 
 		//In Java, we must use double quotes for strings
 		System.out.println("Hello World");
 		
-		for(String str : arguments) {
+		
+	
+		for(String str : myParam) {
 			//println = print+"\n"
 			System.out.print(str+"\n");
 		}
