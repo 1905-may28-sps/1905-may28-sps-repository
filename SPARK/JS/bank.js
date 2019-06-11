@@ -34,7 +34,7 @@ function validateUsername(){
             else{
                 //username is taken. must let user know and disable our button
                 document.getElementById('message').innerHTML = 
-                    'Sorry, that username is taken! Please try again!';
+                    'test Sorry, that username is taken! Please try again!';
                 document.getElementById('register').setAttribute('disabled', "true");
             }
         }
@@ -84,7 +84,7 @@ function register(){
 
     }
 }
-
+//hidding the register form and revealing the login view
 function showLoginView(){
     document.getElementById('registrationForm').remove();
     document.getElementById('loginForm').removeAttribute('hidden');

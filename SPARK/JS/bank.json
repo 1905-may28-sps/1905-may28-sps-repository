@@ -48,6 +48,13 @@
       "username": "nico",
       "password": "nico",
       "id": 7
+    },
+    {
+      "firstName": "duck",
+      "lastName": "sauce",
+      "username": "acruz",
+      "password": "888",
+      "id": 8
     }
   ],
   "accounts": [
