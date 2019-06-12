@@ -36,13 +36,6 @@
       "id": 5
     },
     {
-      "firstName": "test",
-      "lastName": "test",
-      "username": "test",
-      "password": "test",
-      "id": 6
-    },
-    {
       "firstName": "nico",
       "lastName": "sta ana",
       "username": "nico",
@@ -62,6 +55,11 @@
       "id": 1,
       "userId": 1,
       "balance": 99999.99
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "balance": 100
     }
   ]
 }
