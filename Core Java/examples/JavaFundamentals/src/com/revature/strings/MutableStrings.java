@@ -21,6 +21,9 @@ public class MutableStrings {
 		System.out.println(sb);
 		sb.reverse();
 		System.out.println(sb);
+		
+		StringBuffer sb2 = new StringBuffer("test");
+		sb2.append("testing");
 	}
 
 }
