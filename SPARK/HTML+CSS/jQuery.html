@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <h1>
+        <i>Understanding jQuery</i>
+    </h1>
+    <img src="https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/jquery-logo.jpg" />
+
+    <div id="accordion">
+        <h3>About jQuery</h3>
+        <div class="jumbotron">
+            jQuery is a lightweight, "write less do more" JavaScript library. Its purpose is to simplify the use of
+            JavaScrpit in websites
+            The library contains the following features:
+            <ul>
+                <li>HTML/DOM manipulation</li>
+                <li>CSS manipulation</li>
+                <li>HTML event methods</li>
+                <li>Effects and animations</li>
+                <li>AJAX</li>
+                <li>Utilities</li>
+                <li>plugins for various extra features</li>
+            </ul>
+            <hr> The basic syntax for jQuery is
+            <code>$(selector).action()</code>
+            <ul>
+                <li> $ - symbol to access/define jQuery</li>
+                <li> selector - how we access HTML elements. These are the same as the CSS selectors. These can be in
+                    either single('')
+                    or double("") quotes
+                </li>
+                <li> action() - function to be performed on selected element(s)</li>
+            </ul>
+
+            <hr> Common
+            <a href="https://www.quackit.com/css/selectors/">Selectors</a>:
+            <ul>
+                <li>
+                    <code>$('E')</code> -
+                    <b>Element</b> selector - selects all elements of type E. </li>
+                <li>
+                    <code>$('#id')</code> -
+                    <b>ID </b>selector - selects element by ID.</li>
+                <li>
+                    <code>$('.class')</code> -
+                    <b>Class</b> selector- selects all elements of a particular class</li>
+                <li>
+                    <code>$('this')</code> - selects the current HTML element</li>
+                <li>
+                    <code>$('*')</code> - selects all elements</li>
+                <li>
+                    <code>$('E.class')</code> - selects all elements of a particular tag type and class</li>
+                <li>
+                    <code>$('E F')</code> and
+                    <code>$('E >> F')</code> - select all child F elements of E. These both do the same thing but the
+                    latter was introducd </li>
+                <li>
+                    <code>$('E > F')</code> -
+                    <b>Child</b> selector - selects all F elements that are
+                    <i>direct children</i> of E element(s)</li>
+                <li>
+                    <code>$('E + F')</code> -
+                    <b>Adjacent sibling</b> selector - selects all F elements that immediately follow E element(s)</li>
+                <li>
+                    <code>$(':not(E)')</code> - selects all elements that are not of the selection in the parenthesis</li>
+
+            </ul>
+        </div>
+
+        <hr>
+        <br>
+
+        <div class="jumbotron">
+            <input type="text" id="newItem" class="form-control col-6" placeholder="New Item...">
+            <button id="add" class="btn btn-primary">Add Item</button>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <h3>TO DO LIST</h3>
+                    <br>
+                    <ul id="toDo">
+                        <li>Study! Because work matters</li>
+                        <li>Watch black mirror</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>COMPLETED TASKS</h3>
+                    <br>
+                    <ul id="done">
+                        <li>Finished AJAX Assignment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            //ADDING ITEMS WITH VANILLA JS
+            /*
+            window.onload = function () {
+                document.getElementById('add').addEventListener('click', function () {
+                    var item = document.getElementById('newItem').value;
+                    var li = document.createElement('li');
+                    li.innerHTML = item;
+                    document.getElementById('toDo').appendChild(li);
+                    document.getElementById('newItem').value = '';
+                });
+            }*/
+
+            //ADD ITEMS WITH JQUERY
+            window.onload = function(){
+                $('#add').on('click', function(){
+                    var item = $('#newItem').val();
+                    var listItem = $(`<li>${item}</li>`);
+                    $('#toDo').append(listItem);
+                    $('#newItem').val('');
+                }); 
+
+                $('#toDo').on('click', 'li', function(){
+                    $('#done').append(this);
+                
+                    //console.log('list item was clicked');
+                }) 
+
+            }
+
+
+
+        </script>
+
+</body>
+
+</html>
