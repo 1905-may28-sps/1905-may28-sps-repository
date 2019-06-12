@@ -10,6 +10,69 @@
     document.getElementById('findPalindrome')
         .addEventListener('click', palindrome);
     document.getElementById('doFizz').addEventListener('click', fizzbuzz);
+    document.getElementById('intHex').addEventListener('click', intToHex);
+    document.getElementById('hexInt').addEventListener('click', hexToInt);
+    document.getElementById('intBin').addEventListener('click', intToBin);
+    document.getElementById('binInt').addEventListener('click', binToInt);
+}
+
+function intToHex(){
+    var num = Number(document.getElementById("conversionInput").value);
+    console.log(num);
+    var out =  "";
+    while(num>0){
+        var rem = num%16;
+        if(rem<10) out = rem+out;
+        else{
+            switch(rem){
+                case 10: out = 'a'+ out; break;
+                case 11: out = 'b'+ out; break;
+                case 12: out = 'c'+ out; break;
+                case 13: out = 'd'+ out; break;
+                case 14: out = 'e'+ out; break;
+                case 15: out = 'f'+ out; break;
+            }
+        }
+        num = (num-rem)/16;
+    }
+    console.log(out);
+    document.getElementById('convOut').innerHTML = out;
+}
+
+function hexToInt(){
+    var hex = document.getElementById("conversionInput").value.toLowerCase();
+    var num = 0;
+    for(let i = 0; i < hex.length; i++){
+        var char = hex.charAt(hex.length-1-i);
+        //char is a string. check if converting it to a num == NaN, meaning it's a letter:
+        if(isNaN(Number(char))){
+            switch(char){
+                case 'a': char = 10; break;
+                case 'b': char = 11; break;
+                case 'c': char = 12; break;
+                case 'd': char = 13; break;
+                case 'e': char = 14; break;
+                case 'f': char = 15; break;
+            }
+        }
+        
+        //must use Math.pow(num, power) as num^power works w bits 
+        num+=((Number(char))*(Math.pow(16,i)));
+    }
+    console.log(num);
+    document.getElementById('convOut').innerHTML = num;
+
+
+    
+}
+
+function intToBin(){
+    var num = Number(document.getElementById("conversionInput"));
+    console.log(num);
+}
+
+function binToInt(){
+
 }
 
 function fizzbuzz(){
