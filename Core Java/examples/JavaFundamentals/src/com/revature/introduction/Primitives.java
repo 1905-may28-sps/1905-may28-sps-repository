@@ -27,9 +27,7 @@ public class Primitives {
 	
 	
 	public static void main(String[] args) {
-		int x = 32768;
-		short s = (short) x;
-		System.out.println(s);
+		System.out.println(numToChar(200));
 	}
 	
 	static void intro() {
@@ -101,13 +99,13 @@ public class Primitives {
 		int decimal = 10;
 		
 		//BINARY (base 2; val 0-1; 0b101 or 0B101)
-		int binary = 0b10101011;
+		int binary = 0B10101011;
 		
 		//OCTAL (base 8; 0-7)
 		int octal = 012347;
 		
 		//HEXADECIMAL (base 16; 0-9, a-f)
-		int hex = 0xa13f5;
+		int hex = 0Xa13f5;
 		
 	}
 
