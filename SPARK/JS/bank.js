@@ -7,6 +7,8 @@ window.onload = function(){
         .addEventListener('blur', validateUsername);
     document.getElementById('goToLogin').addEventListener('click', showLoginView );
 
+
+    ///GOING TO START USING jQUERY FOR ELEMENT SELECTION! BE AWARE!
 }
 
 function validateUsername(){
@@ -92,15 +94,15 @@ function showLoginView(){
     document.getElementById('login').addEventListener('click', login);
 }
 
-function login(){
-    /*
-    This function will retrieve user by username, then compare password 
+  /* This function will retrieve user by username, then compare password 
     if no user w username exists, simply let user know theire credentials are invalid
     if user exists but pw doesnt match, do the same thing
 
     if user exists and password DOES match, console.log success, we will 
     later make a homepage for the user
-    */
+*/
+function login(){
+  
 
     //get username and password from input fields 
     //make sure fields are not empty 
@@ -115,14 +117,27 @@ function login(){
     }
     
     else{
-        //send request 
+        //send request
         var xhr = new XMLHttpRequest();
+        
 
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4){
                 //get user 
                 //validate to see if exists. if no, incorect login
                 //if yes, check password
+                var userArr = JSON.parse(xhr.responseText);
+                if(userArr.length == 0){
+                    $('#logMessage').html('Invalid credentials! Please Try again');
+                }
+                else{
+                    if(userArr[0].password == pass){
+                        loadHomePage(userArr[0]);
+                    }
+                    else{
+                        $('#logMessage').html('Invalid credentials! Please Try again');
+                    }
+                }
             }
         }
 
@@ -133,3 +148,62 @@ function login(){
 
     }
 }
+
+/*
+Load user home page function 
+- hide/remove login functionality 
+- display user name 
+- display user accounts 
+- allow user to create new accoutns 
+*/
+function loadHomePage(user){
+    $('#homePage').removeAttr('hidden');
+    $('#loginForm').remove();
+    $('#greeting').html(`Welcome, ${user.firstName} ${user.lastName}`);
+    loadUserAccounts(user);
+
+
+}
+
+function loadUserAccounts(user){
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 ){
+            /*
+            Must do anything with accounts in this readtstatechange function 
+            OR must call other functions from inside of here
+            */
+            console.log(xhr.status); //debug
+            var accounts = JSON.parse(xhr.responseText);
+            if(accounts.length == 0){
+                $('$accountMessage').html = 'You have no accounts! Get banking!';
+            }
+            else{
+                $('#accounts').removeAttr('hidden');
+                //loop through each account
+                for(let account of accounts){
+                   let row = $(`<tr id="test${account.id}">
+                        <td> ${account.id}</td>
+                        <td> ${account.balance}</td>
+                        </tr>`)
+                    $('#accounts').append(row);
+                }
+            }
+
+            //add on click function to rows 
+            $('#accounts').on('click', 'tr', function(){
+                var id = $(this).attr('id');
+                console.log(id);
+                //now allow user to update balance for selected element
+              //  $(`tr#${id}`).attr('style', 'background-color: green');
+            })
+        }
+    }
+    xhr.open('GET', `http://localhost:3000/accounts?userId=${user.id}`);
+    xhr.send();
+
+}
+
+
+
