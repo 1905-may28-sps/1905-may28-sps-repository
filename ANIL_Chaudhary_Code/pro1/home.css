@@ -9,7 +9,7 @@
       background-color:lightblue;
      align-self: center;
   }
-  #register, #adminLogin, #getStudent, #masterUpdate{
+  #register, #adminLogin, #getStudent, #masterUpdate, #getGrades,#studentLogin, #login{
       background-color: blue;
       color: beige;
 
@@ -21,3 +21,7 @@
   body {
     background-color:lightblue; 
   }
+.btn {
+  background-color: blue;
+      color: beige;
+}

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../pro1/home.css">
 </head>
 
-<body>
+<body style="background-color: bisque">
   <div class="jumbotron">
     <h1>My University</h1>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -38,83 +38,71 @@
     </i>
   </div>
   <hr>
-  <!-- In order to have columns with bootstrap, we must make them
-    children of a row.-->
 
-  <div class="jumbotron container">
+
+  <div class="jumbotron container" style="background-color:bisque">
     <div class="row" style="text-align: center">
       <div class="col-6" style="background-color: yellow">
-          <a href="Home.html" style="text-decoration: underline"><i>If you are not an Administrator Click here !</i></a>
       </div>
-        <hr>    
-      
-    <div>
+    </div>
     <h3>Administrator Section</h3>
-  <main>
-  <div id="registrationForm" >
-   
-    <hr>
-    
-    <div>
-      <table>
-          
-        <tr>
-          <td>
-            <label for="username">Username</label>
-          </td>
-          <td>
-            <input type="text" id="username" placeholder="Enter Username here">
-          </td>
-        </tr>
-        <div>
+
+    <main style="background-color: bisque">
+
+      <div id="dataForm">
+        <table>
+          <tr>
+            <td>
+              <label for="username">User Name</label>
+            </td>
+            <td>
+              <input type="text" id="userneme" placeholder="User Name">
+            </td>
+          </tr>
           <tr>
             <td>
               <label for="password">Password</label>
             </td>
             <td>
-              <input type="password" id="password" placeholder="Enter Password">
+              <input type="password" id="password" placeholder="password">
             </td>
           </tr>
+          <hr>
+          </tr>
           <td>
-            </td>
-            <td>
-              <button id="adminLogin" class="btn btn-submit">Log In</button>
-              </td>
-              </table>
-        </div>
-        <div></div>
-        </div>
-                <hr>
-        <span id="message"></span><br>
-    </div>
-  </div>
-</main>
-  <div id="loginForm" hidden="true">
-    <input type="text" id="logUser" placeholder="Username" class="form-control col-4">
-    <input type="password" id="logPass" placeholder="Password" class="form-control col-4">
-    <button id="login" class="btn btn-submit" style="border: 2px navy solid">Login</button>
-    <span id="message1"></span>
-  </div>
+          </td>
+          <td>
+            <button id="login" class="btn btn-submit">Log In</button><span id="message"></span>
+          </td>
+          </tr>
+          
+        </table>
+    </main>
+    <section>
+      <br>
+      <div id="adminRole" hidden="true">
+        <a href="viewAdminSt.html">1. View Students</a><br>
+        <a href="viewAdminGr.html">2. View Grades</a><br>
+        <a href="addGrades.html">3. Add Grades</a><br>
+      </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 
-  <div id="homePage" hidden="true">
-    <h4>Hello<span id="welcomeMsg"></span></h4>
-  </div>
-  </div>
+    <script>
+      document.getElementById('login').addEventListener('click', adminAction);
+      function adminAction() {
+      adminRole.hidden = false;
+      }
+    </script>
 
-  <script src="../pro1/student.js" type="text/javascript"></script>
-  </div>
-  </div>
-
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
 </body>
 
 </html>

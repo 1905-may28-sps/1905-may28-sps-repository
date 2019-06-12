@@ -1,59 +1,122 @@
 {
-    "students": [
-        {
-            "id": 1,
-            "firstName": "Anil",
-            "lastName": "Chaudhary",
-            "username": "akc",
-            "password": "123"
-        },
-        {
-            "id": 2,
-            "firstName": "Keni",
-            "lastName": "Olatunjr",
-            "username": "keni",
-            "password": "anonym0us"
-        },
-        {
-            "firstName": "Billy",
-            "lastName": "Clara",
-            "username": "billy",
-            "password": "test",
-            "id": 5
-        },
-        {
-            "firstName": "Viji",
-            "lastName": "P",
-            "username": "test",
-            "password": "test",
-            "id": 6
-        },
-        {
-            "firstName": "Nico",
-            "lastName": "sta ana",
-            "username": "nico",
-            "password": "nico",
-            "id": 7
-        }
-    ],
-        "grades": [
-        {
-            "Id": 1,
-            "maths": "A",
-            "english": "A+",
-            "computer": "B"
-        },
-        {
-            "Id": 2,
-            "maths": "B",
-            "english": "A",
-            "computer": "B"
-        },
-        {
-            "Id": 3,
-            "maths": "A",
-            "english": "B+",
-            "computer": "A"
-        }
-    ]
+  "users": [
+    {
+      "firstName": "Billy",
+      "lastName": "Clara",
+      "username": "billy",
+      "password": "test",
+      "id": 5
+    },
+    {
+      "firstName": "Viji",
+      "lastName": "P",
+      "username": "1",
+      "password": "1",
+      "id": 6
+    },
+    {
+      "firstName": "Nico",
+      "lastName": "sta ana",
+      "username": "nico",
+      "password": "nico",
+      "id": 7
+    },
+    {
+      "firstName": "Peter",
+      "lastName": "Holland",
+      "username": "kemi",
+      "password": "1",
+      "id": 8
+    },
+    {
+      "firstName": "Ashraf",
+      "lastName": "Khan",
+      "username": "ashraf",
+      "password": "1",
+      "id": 13
+    },
+    {
+      "firstName": "Ronald",
+      "lastName": "Robert",
+      "username": "9",
+      "password": "9",
+      "id": 14
+    },
+    {
+      "firstName": "Peter",
+      "lastName": "Scotch",
+      "username": "4",
+      "password": "4",
+      "id": 15
+    },
+    {
+      "firstName": "Margret",
+      "lastName": "Alva",
+      "username": "3",
+      "password": "3",
+      "id": 16
+    },
+    {
+      "firstName": "Robert",
+      "lastName": "Vadhre",
+      "username": "8",
+      "password": "8",
+      "id": 19
+    },
+    {
+      "firstName": "Kartik",
+      "lastName": "Chaudhary",
+      "username": "kartik",
+      "password": "123",
+      "id": 20
+    },
+    {
+      "firstName": "Keni",
+      "lastName": "Olantujr",
+      "username": "7",
+      "password": "7",
+      "id": 21
+    },
+    {
+      "firstName": "Alka",
+      "lastName": "Chaudhary",
+      "username": "10",
+      "password": "10",
+      "id": 22
+    }
+  ],
+  "grades": [
+    {
+      "Id": 1,
+      "userId": "21",
+      "period": "Q1",
+      "maths": "A",
+      "english": "A+",
+      "computer": "B"
+    },
+    {
+      "Id": 2,
+      "userId": "21",
+      "period": "Q2",
+      "maths": "B",
+      "english": "A",
+      "computer": "B"
+    },
+    {
+      "Id": 3,
+      "userId": "15",
+      "period": "Q1",
+      "maths": "A",
+      "english": "B+",
+      "computer": "A"
+    },
+    {
+      "Id": 5,
+      "userId": "15",
+      "period": "Q2",
+      "maths": "A",
+      "english": "B+",
+      "computer": "A"
+    }
+  ]
 }
