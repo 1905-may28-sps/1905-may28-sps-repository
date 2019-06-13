@@ -1,5 +1,7 @@
 package com.revature.exceptions;
 
+import java.io.FileNotFoundException;
+
 public class UnderstandingExceptions {
 
 
@@ -14,6 +16,15 @@ public class UnderstandingExceptions {
 	 * method that it is thrown in further throw it up 
 	 * the stack or "propagate" it. (also known as ducking)
 	 * 
+	 * Topics to cover:
+	 * - Throwable API
+	 * - Errors vs Exceptions 
+	 * - RuntimeExceptions(unchecked) vs compile-time(checked)
+	 * - how to handle exceptions - catch vs throw 
+	 * - throw vs throws 
+	 * - try-catch, try-catch-finally 
+	 * - create our own exceptions
+	 * - common exceptions to know 
 	 */
 
 	public static void main(String[] args) {
@@ -27,6 +38,17 @@ public class UnderstandingExceptions {
 			System.out.println(args[10]);
 			
 			Integer.parseInt("test");
+			
+			/*
+			 * the throw keyword allows us to instantiate 
+			 * exceptions and throw them up the call stack 
+			 * at the line it is written 
+			 * 
+			 * If we want to catch non-RuntimeExceptions 
+			 * that are not thrown from another method, we 
+			 * must throw it ourselves as we see here
+			 */
+			throw new FileNotFoundException();
 		}
 		catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("caught aioobe");
@@ -34,7 +56,16 @@ public class UnderstandingExceptions {
 		catch(NumberFormatException e) {
 			System.out.println("CAUGHT NFE");
 		}
+		catch(NullPointerException e) {
+			
+		}
+		catch(NegativeArraySizeException e) {
+			
+		}
+		catch(FileNotFoundException e) {}
+			
 		catch(Exception e) {
+		
 			System.out.println("WE CAUGHT AN EXCEPTION!!!!");
 			//	e.printStackTrace();
 		}
@@ -42,5 +73,21 @@ public class UnderstandingExceptions {
 		System.out.println("made to end of method2");
 	}
 
+	static void compileExceptionThrows() throws FileNotFoundException {
+		/*
+		 * For any method that could potentially cause
+		 * an excpetion, we can make it "THROWS" an exception 
+		 * which basically makes the method that calls it 
+		 * have to "handle"
+		 */
+		System.out.println("Here, we never actually encounter "
+				+ "something that throws an exception, but "
+				+ "lets pretend that this method does something "
+				+ "risky with files. We can say that our method"
+				+ "throws FNFE to ensure that any method calling "
+				+ "it is PREPARED for a FNFE");
+		
+		
+	}
 
 }
