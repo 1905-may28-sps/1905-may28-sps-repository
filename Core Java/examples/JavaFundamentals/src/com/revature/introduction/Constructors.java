@@ -19,6 +19,12 @@ public class Constructors {
 	 * if we put neither, the first line is an 
 	 * implicit call to the super class's no argument constructor
 	 * 
+	 * 
+	 * 
+	 * more info:
+	 * https://www.dummies.com/programming/java/how-to-use-a-constructor-in-java/
+	 * 
+	 * 
 	 * 	 */
 	
 	private String name;
