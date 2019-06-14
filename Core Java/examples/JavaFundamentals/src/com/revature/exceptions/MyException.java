@@ -9,14 +9,17 @@ package com.revature.exceptions;
  * a constructor calling the super(message) constructor
  */
 public class MyException extends Exception {
-
+	
 	public MyException() {
 		super("This is my custom exception message!");
 	}
+	
+
 	
 	@Override
 	public synchronized Throwable initCause(Throwable cause) {
 		// TODO Auto-generated method stub
 		return super.initCause(cause);
 	}
+
 }
