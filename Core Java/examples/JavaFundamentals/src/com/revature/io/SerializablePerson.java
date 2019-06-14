@@ -3,10 +3,17 @@ package com.revature.io;
 import java.io.Serializable;
 
 public class SerializablePerson implements Serializable {
+
+
+//	private static final long serialVersionUID = -4481734381900408956L;
+
+	//private static final long serialVersionUID = -4953431933722666794L;
 	
+	  private static final long serialVersionUID = -4953431933722666794L;
+	  
 	private String name;
 	private String dob;
-	private long ssn;
+	private transient long ssn;
 	
 	public SerializablePerson(String name, String dob, long ssn) {
 		super();
