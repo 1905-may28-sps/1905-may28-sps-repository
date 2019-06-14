@@ -23,14 +23,6 @@ public class SerializablePerson implements Serializable {
 		this.name = name;
 	}
 
-	public String getDob() {
-		return dob;
-	}
-
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
-
 	public long getSsn() {
 		return ssn;
 	}
@@ -38,7 +30,15 @@ public class SerializablePerson implements Serializable {
 	public void setSsn(long ssn) {
 		this.ssn = ssn;
 	}
+
+	public String getDob() {
+		return dob;
+	}
 	
+	@Override
+	public String toString() {
+		return "name=" + name + ", dob=" + dob + ", ssn=" + ssn;
+	}
 	
 	
 
