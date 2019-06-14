@@ -79,7 +79,7 @@ class B extends A{
 
 class C extends B{
 	
-	private static C c = new C();
+//	private static C c = new C();
 	
 	private C(){
 		//super();
