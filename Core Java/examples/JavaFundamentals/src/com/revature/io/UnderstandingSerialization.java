@@ -1,12 +1,14 @@
 package com.revature.io;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class UnderstandingSerialization {
-	
+
 	/*
 	 * Serialization is the conversion of the 
 	 * state of an object into a byte stream
@@ -53,19 +55,22 @@ public class UnderstandingSerialization {
 	 * objects
 	 * 
 	 */
-	
+
 	static String filePath = "src/com/revature/io/serializedObject.txt";
 	public static void main(String[] args) {
+
+//		SerializablePerson p = new SerializablePerson("Gen", "6/17", 928937461L);
+//		System.out.println(p);
+//		serializeObject(p);
 		
-		SerializablePerson p = new SerializablePerson("Gen", "6/17", 928937461L);
-		System.out.println(p);
-		serializeObject(p);
+		SerializablePerson deserialized = (SerializablePerson)deserializeObject();
+		System.out.println(deserialized);
 	}
-	
+
 	static void serializeObject(Object obj) {
 		try(ObjectOutputStream outputStream = new ObjectOutputStream(
 				new FileOutputStream(filePath))){
-			
+
 			outputStream.writeObject(obj);			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -73,6 +78,25 @@ public class UnderstandingSerialization {
 			e.printStackTrace();
 		} 
 	}
-	
+
+	static Object deserializeObject() {
+
+		Object obj = null;
+		try(ObjectInputStream ois = new ObjectInputStream(
+				new FileInputStream(filePath))){
+			
+			obj = ois.readObject();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return obj;
+	}
+
 
 }
