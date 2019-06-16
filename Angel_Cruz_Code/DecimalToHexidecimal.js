@@ -22,3 +22,4 @@ function intoHex(){
     document.getElementById('convOut').innerHTML = out;
     num+=((Number(char))*Math.pow(16,i)); // should use a tripple perentacies
 }
+console.log("Test");
