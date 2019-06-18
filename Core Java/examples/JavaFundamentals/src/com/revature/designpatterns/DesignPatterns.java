@@ -1,6 +1,12 @@
 package com.revature.designpatterns;
 
 public class DesignPatterns {
+	/*
+	 * A design pattern is a solution (or general approach to solving) 
+	 * a common problem in coding
+	 * 
+	 * 
+	 */
 	
 	public static void main(String[] args) {
 	
