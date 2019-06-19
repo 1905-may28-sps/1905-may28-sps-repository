@@ -55,10 +55,10 @@ select * from artist where lower(name) = 'buddy guy';
 update artist 
 set name = (select upper(name) from artist where  lower(name) = 'buddy guy' )
 where  lower(name) = 'buddy guy';
-
+ 
 select length(name) from genre;
 
-select count(name)  from genre;
+select count(name) AS Numgenres from genre;
 
 
 /*  VIEW
@@ -76,5 +76,46 @@ select * from special_artist;
 
 create view special_album as 
 select * from album where length(title) > 40;
+
+/*  A join is a means for combining columns from one or more tables
+by using values common to each
+There are lots of types of joins - full joins, inner joins, left joins, 
+right joins, cross joins, natural joins, self joins, and more 
+*/
+select * from invoiceline;
+select * from track;
+
+-- inner join 
+select al.title AS album, art.name as "ARTIST NAME"
+from album al
+join artist art
+on al.artistid = art.artistid;
+
+
+select art.id as "ARTISTS ARTID", al.artistid as "ALBUMS ART ID", art.artist,  al.title
+from special_artist art
+full outer join special_album al
+on al.artistid = art.id
+WHERE al.artistid is null;
+
+select * from special_album;
+select * from special_artist;
+
+
+
+--Natural join - where Oracle attempts to match columns based on names
+select * from artist natural join album;
+
+-- Cross join - cartesian product of two tables 
+select al.title, art.name 
+from album al, artist art;
+
+
+--joining more than two tables
+select track.name as TRACKNAME, album.title, artist.name 
+from track 
+join album on track.albumid = album.albumid 
+join artist on artist.artistid = album.artistid;
+
 
 
