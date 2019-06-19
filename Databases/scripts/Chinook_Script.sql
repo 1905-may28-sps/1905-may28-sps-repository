@@ -1,13 +1,14 @@
 /*******************************************************************************
    Create Tables
-********************************************************************************/
+   DDL - Data Definition Language
+*******************************************************************************/
 CREATE TABLE Album
 (
     AlbumId NUMBER NOT NULL,
     Title VARCHAR2(160) NOT NULL,
     ArtistId NUMBER NOT NULL,
     CONSTRAINT PK_Album PRIMARY KEY  (AlbumId)
-);
+); 
 
 CREATE TABLE Artist
 (
