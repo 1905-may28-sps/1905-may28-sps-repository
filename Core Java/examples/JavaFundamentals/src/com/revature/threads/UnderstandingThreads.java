@@ -3,9 +3,9 @@ package com.revature.threads;
 public class UnderstandingThreads {
 	/*
 	 * Thread - a single path of execution in your code
-	 * Multithreading - multiple flows of control in program execution
+	 * Multi-threading - multiple flows of control in program execution
 	 * 	- each thread gets its own stack and follows its own
-	 * 	  sequence of method calls with associated variabls 
+	 * 	  sequence of method calls with associated variables 
 	 * We create a separate thread of execution by either
 	 * implementing the Runnable interface or by extending
 	 * the thread class. There are nuances associated w both 
@@ -77,6 +77,24 @@ public class UnderstandingThreads {
 		}
 		System.out.println("REGULAR THREAD");
 	
+	}
+	
+	
+	
+	void testLambda() {
+		
+		Runnable runnableInstance = () -> {
+			//Here, we are overriding the run method of Runnable
+			// and creating an instance of something that is Runnable
+			for(int i = 0; i < 25; i++) {
+				System.out.println(i + ": LAMBDA THREAD");
+			}
+		};
+		
+		Thread t = new Thread(runnableInstance);
+		t.start();
+		
+		
 	}
 
 }
