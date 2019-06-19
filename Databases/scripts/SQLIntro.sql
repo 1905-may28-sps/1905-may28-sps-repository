@@ -112,10 +112,27 @@ from album al, artist art;
 
 
 --joining more than two tables
-select track.name as TRACKNAME, album.title, artist.name 
+select track.name as TRACKNAME, album.title, artist.name, genre.name as genre, 
+playlist.NAME as playlist, invoice.BILLINGCITY
 from track 
 join album on track.albumid = album.albumid 
-join artist on artist.artistid = album.artistid;
+join artist on artist.artistid = album.artistid
+join genre on genre.genreid = track.genreid
+join playlisttrack on playlisttrack.TRACKID = track.trackid
+join playlist on playlist.PLAYLISTID = playlisttrack.PLAYLISTID
+join mediatype on mediatype.MEDIATYPEID = track.MEDIATYPEID
+join invoiceline on invoiceline.TRACKID = track.trackid
+join invoice on invoice.INVOICEID = invoiceline.INVOICEID
+join customer on invoice.CUSTOMERID = customer.CUSTOMERID
+join employee on employee.EMPLOYEEID = customer.SUPPORTREPID;
 
 
+
+-- self join -- join column from one table to another column in the same table 
+select minion.lastname as minion, boss.lastname as boss
+from employee minion
+join employee boss 
+on minion.reportsto = boss.employeeid;
+
+select * from employee;
 
