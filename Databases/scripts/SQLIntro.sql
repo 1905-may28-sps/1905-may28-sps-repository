@@ -136,3 +136,22 @@ on minion.reportsto = boss.employeeid;
 
 select * from employee;
 
+
+----------------- aggregate functions with joins and group by
+select  genre.name, count(track.trackid)
+from track 
+join genre
+on track.genreid = genre.genreid
+where length(genre.name) < 6 -- individual conditions of tables
+group by genre.name
+having count(track.trackid) > 100; -- for aggregate function
+
+
+-- count songs in each album 
+select album.title, count(track.trackid) as Numsongs 
+from album
+join track on track.albumid = album.albumid
+group by album.title
+order by album.title;
+
+
