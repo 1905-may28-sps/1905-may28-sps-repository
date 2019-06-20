@@ -1,16 +1,16 @@
 package com.revature.app;
 
-import java.util.List;
-
-import com.revature.dao.GenreDAO;
-import com.revature.pojos.Genre;
+import com.revature.dao.AuthorDAO;
 
 public class Demo {
 
 	public static void main(String[] args) {
-		GenreDAO dao = new GenreDAO();
-		List<Genre> genres = dao.findAll();
-		System.out.println(genres);
+//		GenreDAO dao = new GenreDAO();
+//		List<Genre> genres = dao.findAll();
+//		System.out.println(genres);
+		
+		AuthorDAO dao = new AuthorDAO();
+		System.out.println(dao.findAll());
 
 	}
 
