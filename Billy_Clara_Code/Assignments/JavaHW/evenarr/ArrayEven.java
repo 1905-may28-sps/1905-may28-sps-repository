@@ -10,10 +10,12 @@ public class ArrayEven {
 		//for (int a = 0; a < array.length; a++) {
 		    arr = arr + 1;
 		    
-		    if(arr%2 == 0) {
+		    if(arr%2 == arr) {
 		    	System.out.println(array);
 		    }
 		}
 	}
+
+	
 }
 
