@@ -9,7 +9,7 @@ public class sortAlgorithm {
 		int Length = Bubblesort.length;
 		for(int i = 0;i < Length - 1; i++ );
 			for(int x = 0; x < length-i-1; x++)
-				// error !
+				// syntax error on line 11, revisit this
 				if(Bubblesort[] > Bubblesort[x+1]) {
 					
 				}
