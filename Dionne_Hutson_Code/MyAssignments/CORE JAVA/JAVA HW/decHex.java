@@ -14,7 +14,7 @@ public class decHex {
 
 	}
 
-	private static void decHexMeth(int whole) {
+	public static String decHexMeth(int whole) {
 		// TODO Auto-generated method stub
 		String output="";
 
@@ -48,7 +48,7 @@ public class decHex {
 
 		}
 		System.out.println(output);
-		
+		return output;
 		
 	}
 

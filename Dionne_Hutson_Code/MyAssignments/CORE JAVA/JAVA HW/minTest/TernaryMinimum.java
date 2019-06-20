@@ -1,3 +1,4 @@
+package com.revature.minTest;
 import java.util.Scanner;
 
 public class TernaryMinimum {
