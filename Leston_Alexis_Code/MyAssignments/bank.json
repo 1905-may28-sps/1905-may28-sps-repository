@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "leston",
+      "lastName": "alexis",
+      "userName": "les123",
+      "passWord": "123"
+    },
+    {
+      "id": 2,
+      "firstName": "Chloe",
+      "lastName": "Thomass",
+      "userName": "chl123",
+      "passWord": "321"
+    },
+    {
+      "firstName": "kyle",
+      "lastName": "james",
+      "userName": "kyle123",
+      "passWord": "1234",
+      "id": 3
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "balance": 99999.99
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "balance": 999.99
+    }
+  ]
+}

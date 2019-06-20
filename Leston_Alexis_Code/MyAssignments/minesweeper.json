@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "leston06",
+      "password": "leo123",
+      "highScore": "0"
+    },
+    {
+      "username": "leston1",
+      "password": "leo123",
+      "highScore": "0",
+      "id": 2
+    },
+    {
+      "username": "les12",
+      "password": "leo1234",
+      "highScore": "0",
+      "id": 3
+    }
+  ],
+  "scores": [
+    {
+      "id": 1,
+      "score": "15"
+    },
+    {
+      "score": 26,
+      "id": 2
+    },
+    {
+      "score": 0,
+      "id": 3
+    },
+    {
+      "score": 11,
+      "id": 4
+    },
+    {
+      "score": 25,
+      "id": 5
+    },
+    {
+      "score": 1,
+      "id": 6
+    },
+    {
+      "score": 23,
+      "id": 7
+    },
+    {
+      "score": 16,
+      "id": 8
+    },
+    {
+      "score": 46,
+      "id": 9
+    },
+    {
+      "score": 36,
+      "id": 10
+    },
+    {
+      "score": 1,
+      "id": 11
+    },
+    {
+      "score": 21,
+      "id": 12
+    },
+    {
+      "score": 37,
+      "id": 13
+    }
+  ]
+}
