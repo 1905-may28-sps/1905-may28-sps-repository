@@ -11,11 +11,20 @@ public class stringArrayList {
 
 	      List<String> wordList = Arrays.asList(names);  
 		
-		
-		
-//		Do palindrome logic
+
 		System.out.println(wordList.toString());
 		
+		   for(int i = 0; i < wordList.size();i++) {
+			   String words = wordList.get(i);
+			   String wordReversed = new StringBuilder(words).reverse().toString();
+			   
+			   if(words.equals(wordReversed)) {
+				   System.out.println("is a palindrome: " + wordList.get(i) );
+			   }else {
+				   System.out.println("Not palindrome: " + wordList.get(i));
+			   }
+		   }
+		   
 
 	}
 
