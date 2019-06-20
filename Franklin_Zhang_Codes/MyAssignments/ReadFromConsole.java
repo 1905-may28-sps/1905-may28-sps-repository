@@ -56,7 +56,25 @@ public class ReadFromConsole {
 		}
 		static void hexToDec() {
 			System.out.println("Enter a Numerical number: ");
-			String HexString = scan.nextLine();
+			String hexVal = scan.nextLine();
+		}
+		int out = 0;
+		for(int i = 0; i < hexVal.length(); i++) {
+			char ch = hexVal.charAt(hexVal.length()-i-1);
+			String curr = "" + ch;
+			try {
+				int num = Integer.parseInt(curr);
+				out += num*Math.pow(16, i);
+			}
+			catch(NumberFormatException e) {
+				//means char is a-f
+				int num = ((int)(ch))-87;
+				out += num*Math.pow(16, i);
+			}
+			
+		}
+		System.out.println(hexVal + " -> Decimal: " + out);
+			
 		}
 		
 		
