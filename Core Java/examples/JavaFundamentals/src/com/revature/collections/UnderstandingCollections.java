@@ -27,6 +27,7 @@ public class UnderstandingCollections {
 	
 	public static void main(String[] args) {
 		listExample();
+		arrayExample();
 	}
 	
 	public static void listExample() {

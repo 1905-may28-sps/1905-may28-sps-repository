@@ -6,6 +6,7 @@ public class ArrayCodingChallenges {
 	
 	public static void main(String[] args) {
 		System.out.println(testMax());
+		usingArraysClass();
 	}
 	/*
 	 * Find largest number in an array
@@ -33,6 +34,12 @@ public class ArrayCodingChallenges {
 	static int secondLargest(int[] arr) {
 		Arrays.sort(arr);
 		return arr[arr.length-2];
+	}
+	
+	static void usingArraysClass() {
+		int arr[] = {10, 3, 1000, 0, 2, -2, 4};
+		Arrays.sort(arr);
+		System.out.println(Arrays.toString(arr));
 	}
 	
 

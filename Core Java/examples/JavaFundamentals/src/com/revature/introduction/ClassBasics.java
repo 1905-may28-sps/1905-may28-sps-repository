@@ -56,6 +56,7 @@ public class ClassBasics {
 		 */
 		ClassBasics cb = new ClassBasics();
 		cb.notStatic();
+		ClassBasics.getCurrentTime();
 		
 	}
 	

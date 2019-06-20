@@ -6,6 +6,9 @@ public class MyApp {
 	 * other classes and the differences between instance 
 	 * and static scoped fields
 	 */
+	
+	
+	
 
 	public static void main(String[] args) {
 		/*
@@ -49,7 +52,6 @@ public class MyApp {
 		ClassBasics.staticVar = "We can access static fields directly from the class, "
 				+ "instead of from the instance";
 		//ClassBasics.instanceVar = "not accessible from the class, only from instance";
-		
 		System.out.println(myInstance.instanceVar);
 		System.out.println(myInstance.staticVar);
 		System.out.println(secondInstance.instanceVar);
