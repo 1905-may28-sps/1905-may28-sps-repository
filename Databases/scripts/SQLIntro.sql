@@ -136,3 +136,38 @@ on minion.reportsto = boss.employeeid;
 
 select * from employee;
 
+
+--aggregate functions with joins and group by
+select genre.name, count(track.trackid)
+from track
+join genre
+on track.genreid = genre.genreid
+where length(genre.name) < 6
+group by genre.name
+having count(track.trackid) > 100;
+
+
+select album.title, count(track.albumid)
+from track
+join album
+on track.albumid = album.albumid
+--where length(genre.name) < 6
+group by album.title
+having count(album.albumid) > 10;
+
+
+/*
+set operators
+union  A + B = AB --total number of entities (rows)
+union all
+intersect -- similar
+minus  A - B
+*/
+
+select * from employee;
+select * from employee where title like 'S%' -- 2 3 4 5
+
+select * from employee where birthdate > '01-JAN-70'; -- 3 6 7
+
+
+
