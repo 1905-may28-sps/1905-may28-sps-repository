@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes for Your Day</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+    <style>
+    body {
+        text-align: center;
+    }
+
+.quote-panel {
+    border-radius: 31%;
+    padding:107px;
+    border-style: solid;
+    text-align: center;
+}
+
+.quote-header{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    margin: 25px auto;
+}
+
+
+    </style>
+
+</head>
+<body>
+    <header class="qoute header">
+        <h1><b>Quotes For Your Day</b></h1>
+    </header>
+<div class="jumbotron">
+    <section  id="main-quote-box" class="quote-panel">
+        <div id="quoteField"><h2> Your Quotes!</h2>
+            <h3 id="quote"></h3>
+            <h3 id="author"></h3>
+            <h3 id="category"></h3>
+            <h3 id="title"></h3>
+            <h3 id="date"></h3>
+        </div>
+
+    </section>
+</div>
+
+<input type="number" name="quoteNumber" id="quoteId" class="form-control col-3">
+<button id="new-quote-button" class="btn btn-success">New Quote!</button>
+
+<script>
+      window.onload = function () {
+            document.getElementById('new-quote-button').addEventListener('click', getQuote);
+        }
+
+
+        // INTO TO AJAX!
+
+        function getQuote() {
+            var quoteId = document.getElementById('quoteId').value;
+
+            var url='http://quotes.rest/qod.json?category=management ';
+
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var quoteText = xhr.responseText;
+                        console.log(quoteText);
+                        var data = JSON.parse(quoteText);
+                        console.log(data.contents.quotes[0].quote);
+                        var quote = data.contents.quotes[0]
+                        showQuote(data);
+                    } else if (xhr.status == 400) {
+                    }
+                }
+            }
+
+            xhr.open('GET', url);
+
+            xhr.send();
+
+            function showQuote(data){
+                document.getElementById('category').innerHTML = data.contents.quotes[0].category;
+                document.getElementById('title').innerHTML = data.contents.quotes[0].title;
+                document.getElementById('date').innerHTML = data.contents.quotes[0].data;
+                document.getElementById('quote').innerHTML = data.contents.quotes[0].quote;
+                document.getElementById('author').innerHTML = data.contents.quotes[0].author;
+            }
+
+
+        }
+
+        
+
+
+</script>
+
+</body>
+</html>

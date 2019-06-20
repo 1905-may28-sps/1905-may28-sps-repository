@@ -16,26 +16,36 @@ public class CodeChallengeSecondToLargest {
 		
 		System.out.println( "second largest value is " + arr[arr.length-2]);
 		
-//		getSecondLargest(10, 4, 6, 45, 76, 89, 100, 59, 345);
+		
+		getSecondLargest(arr);
+		
 
 		
 
 	}
 	
 	
-	public static int getSecondLargest (int[] arr) {
-		
-		int largest = 0;
-		
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] > largest) {
-				largest = arr[i];
-			}
+	
+	public static void getSecondLargest(int[] arr) {
+	int largest = 0;
+	int secondLargest = 0;
+	
+	for (int i = 0; i < arr.length; i++) {
+
+		if (arr[i] > largest) {
+			secondLargest = largest;
+			largest = arr[i];
+
+		} else if (arr[i] > secondLargest) {
+			secondLargest = arr[i];
+
 		}
-		return largest;
-
 	}
-	
+
+	System.out.println("The largest number in this array is: " + largest);
+	System.out.println("The Second largest number in this array is: " + secondLargest);
+
+}
 			
 
 	

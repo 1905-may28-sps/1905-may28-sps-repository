@@ -1,0 +1,124 @@
+{
+  "trainers": [
+    {
+      "id": 1,
+      "firstName": "Mike",
+      "lastName": "Jordan",
+      "town": "Pallet Town",
+      "username": "Mjordan",
+      "password": "MJ23"
+    },
+    {
+      "id": 2,
+      "firstName": "Kevin",
+      "lastName": "Smith",
+      "town": "Azalea Town",
+      "username": "KSmith",
+      "password": "KS123"
+    },
+    {
+      "id": 3,
+      "firstName": "Jordan",
+      "lastName": "Haskins",
+      "town": "Lavender Town",
+      "username": "JHaskins",
+      "password": "JH456"
+    },
+    {
+      "firstName": "sfgsdg",
+      "lastName": "fgsdfgsd",
+      "town": "dfgsdfgds",
+      "userName": "sgsdfgsfdasg",
+      "password": "asdgasdfgs",
+      "id": 4
+    },
+    {
+      "firstName": "sdfsd",
+      "lastName": "adfasda",
+      "town": "fasdfsd",
+      "userName": "sdfgasdf",
+      "password": "asgfsdgs",
+      "id": 5
+    },
+    {
+      "firstName": "asdDS",
+      "lastName": "SADasd",
+      "town": "adsaSDas",
+      "userName": "adsaDa",
+      "password": "daasffdssdf",
+      "id": 6
+    },
+    {
+      "firstName": "bob",
+      "lastName": "Marley",
+      "town": "Brooklyn Town",
+      "userName": "BMarley",
+      "password": "BM12",
+      "id": 7
+    },
+    {
+      "firstName": "sfsdfa",
+      "lastName": "asdfasddsfasd",
+      "town": "dsfasdfdsfd",
+      "userName": "MJordan",
+      "password": "dfgfdsd",
+      "id": 8
+    },
+    {
+      "firstName": "fsfgsfsfdgsd",
+      "lastName": "sfdgsdfgsd",
+      "town": "sfgsdfgsd",
+      "userName": "Mjordan",
+      "password": "dfasdfa",
+      "id": 9
+    },
+    {
+      "firstName": "dasfasdf",
+      "lastName": "dfsadfa",
+      "town": "sdfasdf",
+      "userName": "MJordan",
+      "password": "adfasdfs",
+      "id": 10
+    },
+    {
+      "firstName": "fsda",
+      "lastName": "asdfsd",
+      "town": "adsfsd",
+      "userName": "KSmith",
+      "password": "sfsffs",
+      "id": 11
+    },
+    {
+      "firstName": "sggsdfgsddf",
+      "lastName": "sdgfsfdgsdgf",
+      "town": "sdfgsdfgssdgf",
+      "userName": "KSmith",
+      "password": "sfsgdf",
+      "id": 12
+    },
+    {
+      "firstName": "fasdfa",
+      "lastName": "dsgasdg",
+      "town": "asdfas",
+      "userName": "MJordan",
+      "password": "dfsgdfgsd",
+      "id": 13
+    },
+    {
+      "firstName": "fasdfas",
+      "lastName": "afdasf",
+      "town": "afadsfa",
+      "userName": "MJordan",
+      "password": "afsasdd",
+      "id": 14
+    },
+    {
+      "firstName": "angel",
+      "lastName": "cruz",
+      "town": "Brooklyn",
+      "userName": "ac",
+      "password": "123",
+      "id": 15
+    }
+  ]
+}

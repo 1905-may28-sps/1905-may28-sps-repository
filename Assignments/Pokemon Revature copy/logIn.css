@@ -1,0 +1,41 @@
+body{
+        background-color: lightgray; 
+         background-image: 
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRIxlnIo5rUeBhfDxuF4TsZgj_OdIbBINSzuS-eAtJAdFL_zct");
+        height: 930px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    
+}
+
+.content-text {
+    color: white;
+    background-color: black;
+}
+
+.h3, h3 {
+    font-size: 1.75rem;
+    width: 41%;
+}
+
+.h4, h4 {
+    font-size: 1.5rem;
+    width: 43%;
+}
+
+.col{
+    padding-left: 103px;
+    
+}
+
+.col-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 43.333333%;
+}
+
+.registerationForm {
+    background-color: rgba(110, 99, 99, 0.637);
+}

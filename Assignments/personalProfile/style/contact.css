@@ -1,0 +1,38 @@
+.split {
+    position: relative;
+    width: 50%;
+    float: left;
+    height: 100%;
+    z-index: 1010101010
+}
+
+.topnav {
+    overflow: hidden;
+    /* background-color: #333; */
+    background-color: #ddd;
+}
+
+.topnav a {
+    float: left;
+    /* color: #f2f2f2; */
+    color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    color: white;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+label {
+    color:white;
+}

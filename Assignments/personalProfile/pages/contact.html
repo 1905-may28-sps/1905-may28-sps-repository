@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; margin: 0;">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact</title>
+</head>
+<link rel="stylesheet" href="../style/contact.css">
+
+<body style=" background-color: lightgray; 
+background-image: 
+url('../images/codeImage2.jpg');
+height: 500px;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+height: 100%;
+margin: 0;"> 
+    <header>
+        <!-- <nav class="topnav" style=" overflow: hidden;
+        background-color: #ddd;">
+            <a href="home.html" style=" float: left; color: #333; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px;">Home</a>
+            <a href="aboutMe.html" style=" float: left; color: #333; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px;"> About</a>
+            <a href="content.html" style=" float: left; color: #333; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px;">Contact</a>
+        </nav> -->
+        <nav class="topnav">
+            <a href="home.html">Home</a>
+            <a href="aboutMe.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main class="main-container" >
+        <h1 style="color: white">Please Feel Free To Contact Me</h1>
+        <div class="container" style="width:100%; background-color:tomato">
+            <div class="split">
+                    <h2 style="color:white; font-size: 32px;">Form</h2>
+                <form action="home.html" action="../pages/contact.html">
+                    <!-- <div>
+                        <label for="firstname" style="color: white">First Name <span></span></label>
+                        <input id="firstname" required="required" type="text">
+                    </div>
+                    <div>
+                        <label for="middlename">Middle Name <span></span></label>
+                        <input type="text" required="required" id="middlename">
+                    </div>
+                    <div>
+                        <label for="lastname">Last Name</label>
+                        <input id="lastname" required="required" type="text">
+                    </div>
+                    <div>
+                        <label for="email"><span></span>E-Mail</label>
+                        <input type="text" required="required" name="email" id="email">
+                    </div>
+                    <div>
+                        <label for="age"><span>*</span>Age</label>
+                        <input id="age" type="number" max="120" min="15">
+                    </div> -->
+                    <fieldset>
+                        <legend style="color:white"> Please Fill Form</legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="firstname" > First Name</label><span>*</span>
+                                </td>
+                                <td>
+                                    <input type="text" required id="firstname" name="firstname">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                            <tr>
+                                <td>
+                                    <label for="middlename" > Middle Name</label><span>*</span>
+                                </td>
+                                <td>
+                                    <input type="text" required id="middlename" name="middlename">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="lastname" > Last Name</label><span>*</span>
+                                </td>
+                                <td>
+                                    <input type="text" required id="lastname" name="lastname">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="email" >E-Mail</label><span>*</span>
+                                </td>
+                                <td>
+                                    <input type="email" required id="email" name="email">
+                                </td>
+                            </tr>
+                           
+
+                    <tr>
+                        <td><label for="gender" class="imp">Gender <span>:</span></label></td>
+                        <td>
+                        <label for="male">Male</label>
+                        <input id="male" name="gender" value="male" type="radio">
+                        <label for="female">Female</label>
+                        <input id="female" name="gender" value="female" type="radio">
+                        <label for="other">Other</label>
+                        <input id="other" name="gender" value="other" type="radio">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="msg">Message for me</label></td>
+                        <td><textarea required rows="16" cols="65"></textarea></td>
+                    </tr>
+                    </table>
+                    </fieldset>
+                    <div>
+                        <input type="submit"     style=" height: 34px;
+                        width: 100px;
+                        padding: 10px 8px 10px 8px;
+                        padding: 10, 8, 10, 8;
+                        padding-top: 10;
+                        margin: 16px;
+                        background-color: #009fff;
+                        color: white;
+                        border-radius: 58px;"/>
+                    </div>
+            </div>
+            <div class="split">
+                <h2 style="color:white; font-size: 32px; padding-left: 168px ">Contact Info:</h2>
+                <address style="
+                    color: white;
+                    margin: -2px;
+                    font-size: 20px;
+                    padding-left: 180px;
+                    padding-top: 25px;">
+                    <strong> My Office Address:</strong><br>
+                    <a style="color:yellowgreen" href="https://www.google.com/maps/place/Empire+State+Building/@40.74844,-73.985664,15z/data=!4m5!3m4!1s0x89c259a9b3117469:0xd134e199a405a163!8m2!3d40.7484405!4d-73.9856644">20
+                    W 34th St,</a><br>
+                    New York,<br>
+                    NY 10001 <br><br>
+                </address>
+                <h3 style="color: white; font-style: italic; font-size:25; padding-left: 168px">Email:ldankwah26@gmail.com </p>
+            </div>
+        </div>
+        </form>
+        </div>
+    </main>
+
+    <footer style=" display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 49px;
+    overflow: hidden;
+background-color: #ddd;">&copy; all rights reserved by Housley Dankwah</footer></body>
+
+</html>

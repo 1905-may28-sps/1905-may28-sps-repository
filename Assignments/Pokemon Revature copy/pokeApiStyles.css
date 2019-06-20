@@ -1,0 +1,43 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-image: url('https://vignette.wikia.nocookie.net/archie-sonic-pokemon/images/2/2f/Pewter_Gym_battlefield_PO.png/revision/latest?cb=20131230141351');
+    background-repeat: no-repeat;
+    background-position:  center;
+    background-attachment: fixed;
+    /* color: white; */
+}
+
+.title {
+    text-align: center;
+    padding: 16px;
+    font-family:Arial, Helvetica, sans-serif;
+    color: white;
+}
+.pokemon-list {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    max-width: 800px;
+    margin: auto;
+}
+.pokemon {
+    /* border: 1px solid #333; */
+    padding: 10px;
+    text-align: center;
+}
+.vs {
+    text-align: center;
+    margin: auto;
+    font-size: 24px;
+    font-family:Arial, Helvetica, sans-serif;
+    color: white;
+}
+img {
+    width: 100%;
+}
+h3 {
+    
+    width:50%;
+    display:inline-block;
+    
+}

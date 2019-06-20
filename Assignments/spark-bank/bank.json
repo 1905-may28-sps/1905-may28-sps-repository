@@ -1,0 +1,114 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Housley",
+      "lastName": "Dankwah",
+      "username": "hous123",
+      "password": "126"
+    },
+    {
+      "id": 2,
+      "firstName": "Michael",
+      "lastName": "Jordan",
+      "username": "MJ23",
+      "password": "23"
+    },
+    {
+      "firstName": "sdaf",
+      "lastName": "sa",
+      "username": "1234",
+      "password": "qwert",
+      "id": 3
+    },
+    {
+      "firstName": "rwerwrtafs",
+      "lastName": "fgasg",
+      "username": "Housley",
+      "password": "dsfd",
+      "id": 4
+    },
+    {
+      "firstName": "rwerwrtafs",
+      "lastName": "fgasg",
+      "username": "Housley",
+      "password": "dsfd",
+      "id": 5
+    },
+    {
+      "firstName": "Patrick ",
+      "lastName": "Asare",
+      "username": "Pat12",
+      "password": "nice",
+      "id": 6
+    },
+    {
+      "firstName": "Mickey",
+      "lastName": "Mouse",
+      "username": "MM12",
+      "password": "mikcey1",
+      "id": 7
+    },
+    {
+      "firstName": "ben",
+      "lastName": "chin",
+      "username": "bchin1",
+      "password": "b123",
+      "id": 8
+    },
+    {
+      "firstName": "Bill",
+      "lastName": "Kim",
+      "username": "Bkim",
+      "password": "Bkim",
+      "id": 9
+    },
+    {
+      "firstName": "frank",
+      "lastName": "jones",
+      "username": "Fjones",
+      "password": "f123",
+      "id": 10
+    },
+    {
+      "firstName": "fsaf",
+      "lastName": "dsfadfasadg",
+      "username": "dasdasdfg",
+      "password": "sgas",
+      "id": 11
+    },
+    {
+      "firstName": "qwert",
+      "lastName": "qwert",
+      "username": "qwert",
+      "password": "qwert",
+      "id": 12
+    },
+    {
+      "firstName": "Bill",
+      "lastName": "Clinton",
+      "username": "BClinton",
+      "password": "B123",
+      "id": 13
+    },
+    {
+      "firstName": "dsfsd",
+      "lastName": "sdfasd",
+      "username": "hous123",
+      "password": "fsfsaggf",
+      "id": 14
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "balance": 99999999.99
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "balance": 23445566.99
+    }
+  ]
+}
