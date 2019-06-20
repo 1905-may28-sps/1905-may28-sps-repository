@@ -31,7 +31,7 @@ public class Roman {
 			case 9:
 			roman=roman.concat("I");// by putting the break lower we can do IX if stead of making 9=IX break 10=X
 			case 0:
-				roman=roman.concat("X");
+				roman=roman.concat("X");// concat adds to end of string
 				break;
 			case 8:
 				roman=roman.concat("I");
@@ -40,7 +40,7 @@ public class Roman {
 			case 6:
 				roman=roman.concat("I");
 		case 5:
-			roman="V"+roman;
+			roman="V"+roman;// string +string add to front of string
 			break;
 		case 4:
 			roman="IV";

@@ -14,9 +14,9 @@ public class NFactorial {
 		System.out.println(nfact(n));
 	}
 	public static int nfact(int n) {
-		int x=1;
+		int x=1;// since were multiplying x being 1 is not important
 		for (int i=1;i<=n;i++) {
-			x=i*x;
+			x=i*x;// multiply x by the previous value and store it in x
 			
 		}
 		
