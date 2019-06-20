@@ -137,6 +137,7 @@ on minion.reportsto = boss.employeeid;
 select * from employee;
 
 
+<<<<<<< HEAD
 --aggregate functions with joins and group by
 select genre.name, count(track.trackid)
 from track
@@ -171,3 +172,38 @@ select * from employee where birthdate > '01-JAN-70'; -- 3 6 7
 
 
 
+=======
+----------------- aggregate functions with joins and group by
+select  genre.name, count(track.trackid)
+from track 
+join genre
+on track.genreid = genre.genreid
+where length(genre.name) < 6 -- individual conditions of tables
+group by genre.name
+having count(track.trackid) > 100; -- for aggregate function
+
+
+-- count songs in each album 
+select album.title, count(track.trackid) as Numsongs 
+from album
+join track on track.albumid = album.albumid
+group by album.title
+order by album.title;
+
+
+/*
+SET OPERATORS 
+UNION -- A + B - AB
+UNION ALL -- A + B
+INTERSECT  -- AB
+MINUS -- A - B
+*/
+
+select distinct title from employee;
+
+select * from employee where title like 'S%' 
+UNION select * from employee where birthdate > '01-JAN-70'-- 2 3 4 5
+minus (
+select * from employee where birthdate > '01-JAN-70'
+INTERSECT select * from employee where title like 'S%');  -- 3 6 7
+>>>>>>> f9c435c5fe3dc7f684d85a78a67bba44647c715c
