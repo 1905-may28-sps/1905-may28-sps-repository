@@ -5,15 +5,16 @@ public class IfEven {
 	//if the num entered is even it will equal itself since integers 
 	//can only display whole numbers when divided.
 	
-	static boolean ifEven(int num) {
-		return ((num/2)*2 == num);
+	static String ifEven(int num) {
+		String result ="odd";
+		if ((num/2)*2 == num) {
+			result="even";
+		}
+		return result;
 	}
 	public static void main(String[] args) {
-		int num=5;
-		if (ifEven(num)==true) {
-			System.out.println("even");
-		}
-		else
-			System.out.println("Not even");
+		int x = 0;
+		String ans=ifEven(x);
+		System.out.println(ans);
 	}	
 }
