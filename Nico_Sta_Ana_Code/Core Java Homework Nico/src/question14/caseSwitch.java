@@ -11,16 +11,22 @@ public class caseSwitch {
 	
 	static Scanner scan = new Scanner(System.in);
 	
+	
+	//square root method
 	public static void squareRoot() {
 		System.out.println("Enter a number please");
+		//set a as user input
 		String a = scan.nextLine();
 		
+		//parseDouble string a into a double 
 		Double result = Double.parseDouble(a);
 		
 		System.out.println(Math.sqrt(result));
 		
 		
 	}
+	
+	//display date method
 	
 	public static void displayDate() {
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
@@ -29,12 +35,16 @@ public class caseSwitch {
 		
 	}
 	
+	// split string method
 	public static void splitString() {
 		String stringToSplit = "I am learning Core Java";
+		//tempyArray is an empty string array
         String[] tempArray;
         
+        //set delimiter (what you want to split by) 
         String delimiter = " ";
         tempArray = stringToSplit.split(delimiter);
+        //for loop through string
         for (int i = 0; i < tempArray.length; i++)
             System.out.println(tempArray[i]);
         

@@ -7,11 +7,13 @@ import java.util.List;
 
 public class q7Comparator extends Employee {
 	
+	private int id;
 	private String name;
 	private String department;
 	private int age;
 	
-	 public void Employee(String name, String department, int age) {
+	 public void Employee(int id, String name, String department, int age) {
+		 	this.id = id;
 	        this.name = name;
 	        this.department = department;
 	        this.age = age;
@@ -20,6 +22,13 @@ public class q7Comparator extends Employee {
 	 
 	 
 
+	 public int getId () {
+		 return id;
+	 }
+	 
+	 public int setId() {
+		 this.id = id;
+	 }
 	
 	public String getName() {
 		return name;
@@ -65,44 +74,43 @@ public class q7Comparator extends Employee {
 		this.age = age;
 	}
 
+public static void sortEmployee() {
+	List<Employee> employees = new ArrayList<>();
+	
+	
+	employees.add(new Employee("Nico", "department 1", 28));
+	employees.add(new Employee("Billy", "department 2", 26));
+	
+	System.out.println("Employess before sorting : " + employees);
+	
+	
+	 Collections.sort(employees);
 
+     System.out.println("\nEmployees (After Sorting) : " + employees);
+     
+     Comparator<Employee> employeeNameComparator = new Comparator<Employee>() {
+            @Override
+            public int compare(Employee e1, Employee e2) {
+                return e1.getName().compareTo(e2.getName());
+            }
+        };
+        
+        
+        // Sort employees by Name
+        Collections.sort(employees, Comparator.comparing(Employee::getName));
+        System.out.println("\nEmployees (Sorted by Name) : " + employees);
+
+}
 
 
 
 	public static void main(String[] args) {
 		
+		sortEmployee();
 		
-		
-		
-		List<Employee> employees = new ArrayList<>();
-		
-		
-//		Why isn't this working???
-//		employees.add(new Employee("Nico", "department 1", 28));
-//		employees.add(new Employee("Billy", "department 2", 26));
-		employees.add(new Employee("Nico", "department 1", 28));
-		employees.add(new Employee("Billy", "department 2", 26));
-		
-		System.out.println("Employess before sorting : " + employees);
-		
-		
-		 Collections.sort(employees);
-
-	     System.out.println("\nEmployees (After Sorting) : " + employees);
-	     
-	     Comparator<Employee> employeeNameComparator = new Comparator<Employee>() {
-	            @Override
-	            public int compare(Employee e1, Employee e2) {
-	                return e1.getName().compareTo(e2.getName());
-	            }
-	        };
-	        
-	        
-	        // Sort employees by Name
-	        Collections.sort(employees, Comparator.comparing(Employee::getName));
-	        System.out.println("\nEmployees (Sorted by Name) : " + employees);
-
-
+//end of main
 	}
 	
+	
+	//end of class
 }

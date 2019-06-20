@@ -3,9 +3,13 @@ package q6isEven;
 public class isEven {
 	
 	static boolean isEven(int n) {
+		
+		//set default boolean as true
 		boolean isEven = true;
 		
+		//for loop through each number
 		for (int i = 1; i <= n; i ++) {
+			//every other number is even start at 1
 			isEven = !isEven;
 		}
 		
