@@ -1,4 +1,3 @@
-package com.revature.nfactorialTest;
 import java.util.Scanner;
 
 public class NFactorial {

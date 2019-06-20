@@ -1,4 +1,3 @@
-package com.revature.romantest;
 import java.util.Scanner;
 
 public class Roman {
@@ -12,7 +11,7 @@ public class Roman {
 		scan=new Scanner(System.in);
 		num=scan.nextInt();
 		// TODO Auto-generated method stub
-		roman(num);
+		System.out.println(roman(num));
 
 	}
 	static String roman(int num) {
@@ -30,7 +29,7 @@ public class Roman {
 	
 			switch(rem) {
 			case 9:
-			roman=roman.concat("I");
+			roman=roman.concat("I");// by putting the break lower we can do IX if stead of making 9=IX break 10=X
 			case 0:
 				roman=roman.concat("X");
 				break;

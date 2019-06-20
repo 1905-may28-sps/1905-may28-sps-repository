@@ -15,27 +15,28 @@ public class BubbleSort {
         }
 	}
 	public static int[] bubbleSort(int[] arr) {
-		int j=0;
-		do {
+		int j=0;//j is a counter for the while loop
+		
+		do {// we want to sort the array at least once
 		for (int i=0; i<arr.length;i++) {
 			int a=arr[i];
 			
-			if(i<arr.length-1) {
+			if(i<arr.length-1) {// we dont want to get an array out of bounds exception
 				int b=arr[i+1];
-			if (a>b) {
+			if (a>b) {// if they are unsorted switch them
 				arr[i+1]=a;
 				arr[i]=b;;
 						
 			}
 		} 
 		}j++;
-		}while (j<arr.length);
+		}while (j<arr.length);// we sort multiple times in case a value that is smaller comes later and a value that is higher comes earlier, so these values will get closer to eachother and eventually get to the right position
 		
 		return arr;
 	}
 	
 	
-		public static boolean test(){
+		public static boolean test(){// test to see idf each unsorted array equals a sorted array(arr6) arr 5 might be the most important because on the first run will be 1,3,2,4,5 and we want 1,2,3,4,5
 			
 			int[] arr1= {1,4,2,3,5};
 			int[] arr2= {1,3,2,4,5};

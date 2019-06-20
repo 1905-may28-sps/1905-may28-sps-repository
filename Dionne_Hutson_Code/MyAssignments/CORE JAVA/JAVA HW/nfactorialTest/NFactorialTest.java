@@ -1,4 +1,3 @@
-package com.revature.nfactorialTest;
 import static org.junit.Assert.*;
 
 import org.junit.Assert;

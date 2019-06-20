@@ -21,7 +21,7 @@ static int length;
 		switch(option) {
 		case "1":
 			System.out.println("You chose to find the Square Root. Enter a number");
-			num=scan.nextInt();
+			num=scan.nextInt();// ask for a number
 			System.out.println(Math.sqrt(num));
 			
 			break;
@@ -31,7 +31,7 @@ static int length;
 			break;
 		case "3":
 			String str="I am learning Core Java";
-			String[] strArr=str.split(" ");
+			String[] strArr=str.split(" ");// split by space
 			break;
 		default: System.out.println("You did not enter 1 or 2 try again");
 		//tryAgain();

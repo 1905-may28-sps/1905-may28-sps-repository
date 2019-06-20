@@ -16,12 +16,14 @@ public class ArrList19 {
 
 	}
 	public static List<Integer> listFill(){
+		//filling list
 		for (int i=1; i<=10;i++) {
 			list.add(i);	
 		}	
 	return list;	
 	}
 	public static int evenSum(List<Integer> list) {
+		//even mod 2=0 
 		int sum=0;
 		for (int i=0; i<list.size();i++) {
 			int a=list.get(i);	
@@ -34,6 +36,7 @@ public class ArrList19 {
 		
 	}
 	public static int oddSum(List<Integer> list) {
+		//odd mod 2==1
 		int sum=0;
 		for (int i=0; i<list.size();i++) {
 			int a=list.get(i);	
@@ -46,6 +49,8 @@ public class ArrList19 {
 		
 	}
 	public static List<Integer> noPrime(List<Integer> list) {
+		//for a list 1-10 I know that the prime numbers are 2,3,5,7
+		//I dont know a mathmathical way to exclude these numbers so I do so manually
 		List<Integer> noPrime=new ArrayList<>();
 		for (int i=0; i<list.size();i++) {
 			int a=list.get(i);

@@ -19,15 +19,15 @@ public class storePalArrList {
 		word.add("billy");
 		word.add("did");
 		List<String> palw=palStore(word);
-		System.out.println(palw.size());
+		System.out.println(palw);
 	}
 	public static List<String> palStore(List<String> word) {
 		
-		for(int i=0; i<word.size();i++) {
+		for(int i=0; i<word.size();i++) {//loop to get index i array
 			boolean valid=true;
 			String checkWord=word.get(i);
 			
-			for (int j=0;j<checkWord.length()/2; j++) {
+			for (int j=0;j<checkWord.length()/2; j++) {//loop to get character in string from index in array
 				if(checkWord.charAt(j)!=checkWord.charAt(checkWord.length()-j-1)){
 					
 					valid=false;	

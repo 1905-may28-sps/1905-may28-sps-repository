@@ -1,4 +1,3 @@
-package com.revature.interestTest;
 
 
 import org.junit.Assert;
