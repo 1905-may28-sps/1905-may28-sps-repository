@@ -256,7 +256,7 @@ function addToPort() {
                                 console.log(a);
                                 console.log(typeof a); */
                                 $(this).remove();
-                                alert("SOLD!");
+                                alert("SOLD!")
                             })
 
                         }
