@@ -32,4 +32,27 @@ public class AuthorDAO {
 		}
 		return authors;
 	}
+	
+	
+	
+	//CREATE 
+	/*
+	 * Prepared Statement
+	 */
+	
+	public Author save(Author auth) {
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return auth;
+	}
+	
+	
+	
+	
+	
+	
+	
 }

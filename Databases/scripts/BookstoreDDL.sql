@@ -36,14 +36,16 @@ insert into store_genre (genre_id, name) values(1,'Romance');
 insert into store_genre (name) values('Children');
 -- 'Genesis'); DROP TABLE STORE_GENRE;--
 
-
+commit;
 /*
 A SEQUENCE is an object that lives in the db that serves as a variable 
 this can be used for many things, we will increment this variable and 
 select it into our PK values upon creating a new row in our table 
 with TRIGGERs
 */
-CREATE SEQUENCE GENRE_SEQ;
+CREATE SEQUENCE AUTHOR_SEQ;
+
+
 --THE FOLLOWING IS WHAT IS PROCESSED IMPLICITLY W DEFAULT VALUES 
    CREATE SEQUENCE  "DEMO1905MAY28SPS"."GENRE_SEQ"  
    MINVALUE 1 
@@ -63,22 +65,28 @@ CREATE SEQUENCE GENRE_SEQ;
    BLOCK OF PL/SQL CODE THAT ALLOWS US TO 'TRIGGER' AN EVENT OR PROCESS 
    UPON A PARTICULAR DML COMMAND 
    */
-   CREATE OR REPLACE TRIGGER GEN_TRIGGER -- Create [or replace] trigger triggerName -- declare and name
-   BEFORE INSERT ON STORE_GENRE -- [before/after] [dml command] on [table] -- when will this execute
+   CREATE OR REPLACE TRIGGER AUTH_TRIGGER -- Create [or replace] trigger triggerName -- declare and name
+   BEFORE INSERT ON STORE_AUTHOR -- [before/after] [dml command] on [table] -- when will this execute
    FOR EACH ROW -- necessary to change table row values 
    BEGIN
       -- here is where we write what we want to do when trigger is fired 
-      SELECT GENRE_SEQ.NEXTVAL --  ++GENRE_SEQ
-      INTO :NEW.GENRE_ID -- : represents a placeholder value
+      SELECT AUTHOR_SEQ.NEXTVAL --  ++GENRE_SEQ
+      INTO :NEW.AUTHOR_ID -- : represents a placeholder value
       FROM DUAL;
    END;
 /
 select * from store_genre;
+
+SELECT AUTHOR_SEQ.NEXTVAL FROM DUAL;
 
 
 
 --- DUAL TABLE -- dummy table that serves as placeholder for select statements w no table
 select * from dual;
 
+INSERT INTO STORE_AUTHOR (FIRST_NAME, LAST_NAME, BIO)
+VALUES ('J.K.', 'Rowling', 'Amazing author of the reknown Harry Potter Series and more');
 
+select * from store_author;
+commit;
 
