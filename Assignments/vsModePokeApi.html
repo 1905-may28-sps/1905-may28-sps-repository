@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon VS Mode</title>
+    <link rel="stylesheet" href="pokeApiStyles.css">
+</head>
+<body>
+
+    <h1 class="title">Pokemon VS Mode<h4 class="title">By: Angel Cruz</h4></h1>
+    
+    <!--list of Pokemon-->
+    <div class="pokemon-list" id="listPokemon">
+        <div class="pokemon" id="pokemon-1">
+            <img src="" alt="">
+            <p></p>
+        </div>
+        <div class="vs">VS.</div>
+        <div class="pokemon" id="pokemon-2">
+                <img src="" alt="">
+                <p></p>
+            </div>
+    </div>
+    <script>
+        let list = document.getElementById("listPokemon")
+        //create dynamic id to generate different poke monsters
+    function consultPokemon(id, num) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        .then(function (response){
+            response.json()
+            .then(function(pokemon){
+                createPokemon(pokemon, num)
+            })
+        })
+    }
+
+        //create a diff function which calls multiple sets of data
+        function consultPokemons() {
+            let primeId = Math.round(Math.random() * 150)
+            let secondId = Math.round(Math.random() * 150)
+
+            consultPokemon(primeId, 1)
+            consultPokemon(secondId, 2)
+        }
+        
+    function createPokemon(pokemon, num) {
+        let item = list.querySelector(`#pokemon-${num}`)
+        
+        let image = item.getElementsByTagName("img")[0]
+        image.setAttribute("src", pokemon.sprites.front_default)
+
+        let name  = item.getElementsByTagName("p")[0] 
+        name.textContent = pokemon.name
+        
+    }
+    consultPokemons();
+    </script>
+    
+</body>
+</html>
