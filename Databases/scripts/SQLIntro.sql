@@ -155,3 +155,18 @@ group by album.title
 order by album.title;
 
 
+/*
+SET OPERATORS 
+UNION -- A + B - AB
+UNION ALL -- A + B
+INTERSECT  -- AB
+MINUS -- A - B
+*/
+
+select distinct title from employee;
+
+select * from employee where title like 'S%' 
+UNION select * from employee where birthdate > '01-JAN-70'-- 2 3 4 5
+minus (
+select * from employee where birthdate > '01-JAN-70'
+INTERSECT select * from employee where title like 'S%');  -- 3 6 7
