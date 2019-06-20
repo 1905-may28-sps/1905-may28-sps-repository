@@ -49,7 +49,7 @@ public class ConnectionFactory {
 			
 			//the following line of code instantiates the driver by its class name
 			try {
-				prop.load(new FileReader("db.properties"));
+				prop.load(new FileReader("src/com/revature/util/db.properties"));
 				
 				String driver = prop.getProperty("driver");
 				String url = prop.getProperty("url");

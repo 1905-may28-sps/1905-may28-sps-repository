@@ -32,7 +32,9 @@ CREATE TABLE STORE_BOOK_AUTHOR(
 
 select * from store_genre;
 insert into store_genre (genre_id, name) values(1,'Romance');
-insert into store_genre (name) values('Horror');
+
+insert into store_genre (name) values('Children');
+-- 'Genesis'); DROP TABLE STORE_GENRE;--
 
 
 /*
