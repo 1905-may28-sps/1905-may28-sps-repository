@@ -1,6 +1,7 @@
 package com.revature.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,6 +19,7 @@ public class AuthorDAO {
 		
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			Statement st = conn.createStatement();
+			
 			ResultSet rs = st.executeQuery("select * from store_author");
 			while(rs.next()) {
 				Author a = new Author();
@@ -42,7 +44,53 @@ public class AuthorDAO {
 	
 	public Author save(Author auth) {
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			/*
+			 * Connection has a property of autoCommit set to true
+			 * which automatically commits your changes before it closes
+			 * if we want to do some sort of error checking before we commit, 
+			 * we must setAutoCommit to false
+			 * 
+			 * ie conn.setAutoCommit(false);
+			 */
+	
+			/*
+			 * Prepared statements allow us to replace variables with ? to 
+			 * be able to have variable arguments and prevent SQL injection
+			 * 
+			 * Also, when inserting data into our DB, we want to obtain the 
+			 * automatically generated ID. we do this by "preparing" our 
+			 * PreparedStatement with the name(s) of the keys (columns) that 
+			 * will be automatically generated, and obtaining them from the
+			 * ResultSet returned from ps.getGeneratedKeys() method
+			 */
 			
+			String sql = "INSERT INTO STORE_AUTHOR (FIRST_NAME, LAST_NAME, BIO) VALUES (?, ?, ?)";
+			String[] generatedKeys = {"AUTHOR_ID"}; //takes an array just in case we have more than 1 key
+			
+			PreparedStatement ps = conn.prepareStatement(sql, generatedKeys);
+			ps.setString(1, auth.getFirstName());
+			ps.setString(2, auth.getLastName());
+			ps.setString(3, auth.getBio());
+			
+			
+			/*
+			 * executeQuery returns RESULT SET 
+			 * executeUpdate returns NUM ROWS AFFECTED
+			 * we do not have to do anything w the number of rows 
+			 * but we can 
+			 * 
+			 * ie. int NumRowsAffected = ps.executeUpdate();
+			 */
+			 ps.executeUpdate();
+			 
+			 /*
+			  * get autogenerateed ID
+			  */
+			 
+			 ResultSet pk = ps.getGeneratedKeys();
+			 pk.next();
+			 auth.setId(pk.getInt(1));
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
