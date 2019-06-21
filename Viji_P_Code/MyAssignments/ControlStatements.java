@@ -6,9 +6,9 @@ public class ControlStatements {
 	 * When we need to execute a set of statements based 
 	 * on a condition then we need to use control flow 
 	 * statements. For example, if a number is greater than 
-	 * zero then we want to print “Positive Number” but if 
-	 * it is less than zero then we want to print “Negative 
-	 * Number”. In this case we have two print statements in 
+	 * zero then we want to print ï¿½Positive Numberï¿½ but if 
+	 * it is less than zero then we want to print ï¿½Negative 
+	 * Numberï¿½. In this case we have two print statements in 
 	 * the program, but only one print statement executes at 
 	 * a time based on the input value. We will see how to 
 	 * write such type of conditions in the java program 
