@@ -1,6 +1,7 @@
 package com.revature.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,5 +56,28 @@ public class GenreDAO {
 		
 		return genres;
 	}
+	
+	public Genre findById(int id) {
+		Genre g = null;
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String query  = "select * from store_genre where genre_id = ?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet result = ps.executeQuery();
+			while(result.next()) {
+				g = new Genre();
+				g.setId(result.getInt(1));
+				g.setName(result.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return g;
+	}
 
 }
+
+
+
+
+

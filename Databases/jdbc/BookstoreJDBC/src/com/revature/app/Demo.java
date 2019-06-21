@@ -3,14 +3,18 @@ package com.revature.app;
 import java.util.Scanner;
 
 import com.revature.dao.AuthorDAO;
+import com.revature.dao.GenreDAO;
 import com.revature.pojos.Author;
 
 public class Demo {
 	
 	static Scanner scan = new Scanner(System.in);
 	static AuthorDAO authDao = new AuthorDAO();
+	static GenreDAO gDao = new GenreDAO();
+	
+	
 	public static void main(String[] args) {
-		addAuthor();
+		System.out.println(gDao.findById(1));
 
 	}
 	
