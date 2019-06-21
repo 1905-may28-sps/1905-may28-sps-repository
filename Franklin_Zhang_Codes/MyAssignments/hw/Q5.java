@@ -24,20 +24,34 @@ public class Q5 {
 		    Integer num = Integer.valueOf(stringNum);
 		    return num;
 		}
-		
-		
-		
 		public static void main(String[] args) {
+			//using try to test Junit for failure... but will never happen do to if else statement...
+			//try {
 			String ChosenWord = str();
 			int num=idx();
-			try {
+			System.out.println(subString(ChosenWord,num));
+			//}catch(StringIndexOutOfBoundsException e){
+				//System.out.println(" Number chosen is more then length of word cannot display more.");
+				
+			//}
+		}
+		
+		
+		public static String subString(String ChosenWord, int num) {
+			
+			String x="";
+			if (num<=ChosenWord.length()) {
 				for (int i =0; i<num; i++) {
-					System.out.print(ChosenWord.charAt(i));	
+					//System.out.print(ChosenWord.charAt(i));	
+					x=x.concat(String.valueOf(ChosenWord.charAt(i)));
 				}
 			}
-			catch(StringIndexOutOfBoundsException e){
-				System.out.println(" Number chosen is more then length of word cannot display more.");
-				}
+			else {
+				System.out.println("Number choosen is larger then length of word please try again");
+				main(null);
+			}
+			return x;
+			
 			}
 		}
 	

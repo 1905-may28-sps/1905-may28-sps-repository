@@ -12,18 +12,23 @@ import java.util.Scanner;
 public class Q17 {
 	
 	public static Double Principal() {
+		//try {
 		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 	    System.out.println("Please enter your Principal amount: ");
 	    String stringNum = myObj.nextLine();  // Read user input
 	    Double prin = Double.valueOf(stringNum);
 	    return prin;
+		//}catch(NumberFormatException e){
+	    //    System.out.println("Your input is invalid, please try again!");
+	    //    Principal();
+		//}
 	}
 	
-	public static Float Rate() {
+	public static Double Rate() {
 		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 	    System.out.println("Please enter what %: ");
 	    String stringNum = myObj.nextLine();  // Read user input
-	    Float rate = Float.valueOf(stringNum+"f");
+	    Double rate = Double.valueOf(stringNum);
 	    return rate;   
 	}
 	public static Integer Years() {
@@ -32,26 +37,25 @@ public class Q17 {
 	    String stringNum = myObj.nextLine();  // Read user input
 	    Integer yr = Integer.valueOf(stringNum);
 	    return yr;
-}
+	}
+	
 	public static void main(String[] args) {
-		
-		//try to see if user enters valid entries, if any incorrect entry
 		try {
 		double prin=Principal();
-		float rate=Rate()/100;
+		double rate=Rate()/100;
 		int yr=Years();
-		float interest = (float) (prin*rate*yr);
-		System.out.println("Your interest is: "+interest);
+		double x= simpInte(prin, rate, yr);
+		System.out.println(x);
 		}
-		//does not let user continue if enter invalid
-		catch(NumberFormatException e){
-	        System.out.println("Your input is invalid, please try again!");
+		catch (NumberFormatException e) {
+			System.out.println("Your input is invalid, terminating program!");
 		}
-		
 	}
-	  
-	    
-	
-	
 
-}
+	
+	public static double simpInte(double pri, double rate, int yr) {
+				
+		double interest=(double) (pri*rate*yr);
+		return interest;
+		}
+}	
