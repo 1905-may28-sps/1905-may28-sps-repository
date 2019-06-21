@@ -137,32 +137,25 @@
       "middlename": "Alan",
       "lastname": "Lord",
       "age": 37,
+      "gender": "male",
       "email": "krislord@hotmail.com",
       "message": "Hello"
     },
     {
-      "firstName": "hekko",
-      "middleName": "beii",
-      "lastName": "fa",
-      "age": "37",
-      "email": "krislord@hotmail.com",
+      "firstName": "Genesis",
+      "lastName": "Bonds",
+      "age": "80",
+      "email": "genesisbonds@revature.com",
+      "message": "Lover of all things luxury!!!",
       "id": 2
     },
     {
       "firstName": "John",
-      "middleName": "Adams",
-      "lastName": "Adams",
-      "age": "87",
+      "lastName": "Doe",
+      "age": "67",
       "email": "johnadams@google.com",
+      "message": "Trying to find my place in this world!",
       "id": 3
-    },
-    {
-      "firstName": "John",
-      "middleName": "Adams",
-      "lastName": "Adams",
-      "age": "87",
-      "email": "johnadams@google.com",
-      "id": 4
     }
   ]
 }
