@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.revature.dao.AuthorDAO;
 import com.revature.dao.GenreDAO;
 import com.revature.pojos.Author;
+import com.revature.pojos.Genre;
 
 public class Demo {
 	
@@ -14,8 +15,9 @@ public class Demo {
 	
 	
 	public static void main(String[] args) {
-		System.out.println(gDao.findById(1));
-
+		Genre g = gDao.findById(1);
+		System.out.println(g);
+		System.out.println(gDao.update(g, "nameChange"));
 	}
 	
 	
