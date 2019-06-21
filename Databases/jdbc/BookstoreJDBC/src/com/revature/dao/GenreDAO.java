@@ -57,6 +57,20 @@ public class GenreDAO {
 		return genres;
 	}
 	
+	/*
+	 * CALLABLE STATEMENT
+	 * - statement that we use to call stored procedures and functions 
+	 * - must use registerOutParameter function for OUT params
+	 * - can still use setInt/String/etc for in params or output values 
+	 */
+	public List<Genre> getAllCallable(){
+		List<Genre> genres = new ArrayList<Genre>();
+		
+		
+		
+		return null;
+	}
+	
 	public Genre findById(int id) {
 		Genre g = null;
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
