@@ -18,7 +18,6 @@ public class Demo {
 		Genre g = gDao.findById(1);
 		System.out.println(g);
 		System.out.println(gDao.update(g, "nameChange"));
-
 	}
 	
 	

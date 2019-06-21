@@ -76,7 +76,7 @@ public class GenreDAO {
 	}
 	
 	public Genre update(Genre g, String nameChange) {
-		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+		try(Connection conn = ConnectionFactory.getInstance().getConnection();){
 			PreparedStatement ps = conn
 					.prepareStatement("update store_genre set name = ? where genre_id  = ?");
 			ps.setString(1, nameChange);
