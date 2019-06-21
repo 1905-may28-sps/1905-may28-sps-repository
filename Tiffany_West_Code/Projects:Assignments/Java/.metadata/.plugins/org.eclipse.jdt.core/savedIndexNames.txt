@@ -1,0 +1,19 @@
+INDEX VERSION 1.131+/Users/tiffanywest/git_repositories/1905-may28-sps-repository/Tiffany_West_Code/Projects:Assignments/Java/.metadata/.plugins/org.eclipse.jdt.core
+3780035385.index
+2904964497.index
+3893856077.index
+3123363929.index
+3594666622.index
+3959967961.index
+869832556.index
+1683684277.index
+873324747.index
+1215656348.index
+2023917755.index
+156682323.index
+668649811.index
+1605413916.index
+3864469908.index
+2581410578.index
+1271342938.index
+453627884.index

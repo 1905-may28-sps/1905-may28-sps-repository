@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/Users/tiffanywest/git_repositories/1905-may28-sps-repository/Tiffany_West_Code/Projects"/>
+		<item value="/Users/tiffanywest/git_repositories/1905-may28-sps-repository/Tiffany_West_Code/Projects:Assignments/Project0"/>
+		<item value="/Users/tiffanywest/git_repositories/1905-may28-sps-repository/Tiffany_West_Code"/>
+		<item value="/Users/tiffanywest/git_repositories/1905-may28-sps-repository/Tiffany_West_Code/Projects:Assignments/Java"/>
+		<item value="/Users/tiffanywest/git_repositories/1905-may28-sps-repository/Tiffany_West_Code/Projects:Assignments"/>
+	</list>
 	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.JavaProjectWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+		</list>
 	</section>
 </section>

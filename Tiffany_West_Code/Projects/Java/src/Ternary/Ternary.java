@@ -1,0 +1,18 @@
+package Ternary;
+
+public class Ternary {
+
+	public static void main(String[] args) {
+
+		
+		MinValues(19,45);
+	}
+
+	public static int MinValues(int i, int j) {
+
+		int min = (i<j)? i:j;
+		System.out.println("the min  of " + i + " and " + j + " is: " + min );
+		return min;
+	}
+
+}
