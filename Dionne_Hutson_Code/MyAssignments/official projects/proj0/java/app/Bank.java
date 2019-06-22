@@ -9,6 +9,9 @@ public class Bank {
 		
 			
 		UserDAO.crelogopt();
+		
+		UserDAO.logOut();
+		
 
 	}
 		
