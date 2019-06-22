@@ -49,7 +49,7 @@ public class UserDAO {
 		
 //		User newUser=new User();
 		if(fn != null && !fn.equals("")&&ln != null && !ln.equals("")&&un != null && !un.equals("")&&pass != null && !pass.equals("")){
-			
+		if(!validUsername(un))	{
 		newUser.setFn(fn);
 		newUser.setLn(ln);
 		newUser.setUn(un);
@@ -58,7 +58,11 @@ public class UserDAO {
 		System.out.println("Sucessful Creation!");
 		System.out.println(newUser);
 		postLog(un);
-		
+		}
+		else {
+			System.out.println("This Username is Taken");
+			createAcc();
+		}
 		}else {
 			System.out.println("Please Enter Valid Inputs");
 			crelogopt();
@@ -98,18 +102,66 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	
 	
 
-		public static void logIn() {
+	public static void logIn() {
 			scan=new Scanner(System.in);
 			System.out.println("Enter your username.");
 			un=scan.nextLine();
 			System.out.println("Enter your password. ");
 			pass=scan.nextLine();
+			if(validUsername(un)&&validPass(un,pass)) {
 			System.out.println("Sucessfull Log In!");
 			
 			
+			postLog(un);}else {
+				
+				logIn();
+			}
 			
-			postLog(un);
 		}
+	public static boolean validUsername(String un) {
+		
+		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+			String query="select USERNAME From Bank_User WHERE lower(USERNAME)=?";
+			
+			PreparedStatement ps=conn.prepareStatement(query);
+			ps.setString(1,un);
+			ResultSet rs=ps.executeQuery();
+		
+			if(rs.next()) {
+			if(rs.getString(1).equalsIgnoreCase(un)) {
+				return true;
+			}else {
+				System.out.println("Invalid Username");
+				return false;}
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public static boolean validPass(String un, String pass) {
+		
+		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+			String query="select password From Bank_User WHERE lower(USERNAME)=?";
+			
+			PreparedStatement ps=conn.prepareStatement(query);
+			ps.setString(1,un);
+			ResultSet rs=ps.executeQuery();
+		
+			if(rs.next()) {
+			if(rs.getString(1).equals(pass)) {
+				return true;
+			}else {
+				System.out.println("Invalid Password");
+				return false;}
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return false;
+	}
 	 public static void postLog(String un) {
 		  scan=new Scanner(System.in);
 		  System.out.println("Woud you like to (1) Create New Account, (2) View Account Balance(3)Log Out");//account as in bank account
@@ -136,7 +188,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 		 newUser.setPass(null);
 		 newUser.setUn(null);
 		 System.out.println("Goodbye, Your Money is safe with us!");
-		 crelogopt();
+		 break;
 		 case "2":
 			 default:
 			 postLog(un);
