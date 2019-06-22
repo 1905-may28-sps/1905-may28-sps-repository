@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.revature.pojo.Account;
-import com.revature.pojo.User;
 import com.revature.util.ConnectionFactory;
 
 public class AccountDAO {
@@ -49,7 +48,7 @@ public class AccountDAO {
 			newAcc = save(newAcc);
 			System.out.println("Sucessful Creation!");
 			System.out.println(newAcc);
-			
+			UserDAO.postLog(un);
 			}else {
 				System.out.println("Please Enter Valid Inputs");
 				createSpecAcc(username);
@@ -84,10 +83,34 @@ public class AccountDAO {
 				return acc;
 				}
 	
-	public void viewBal() {
-		scan=new Scanner(System.in);
+	public Account viewBal(String un) {
 		System.out.println("Enter account name, that you would like to see");
 		an=scan.nextLine();
+		
+		Account a= null;
+		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)=? AND lower(ACCOUNT_NAME)=? "; 
+			PreparedStatement ps=conn.prepareStatement(query);
+			ps.setString(1,un);//number,value
+			ps.setString(2,an);
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next()) {//or if
+				a=new Account();
+				a.setId(rs.getInt(1));
+				a.setType(rs.getString(2));
+				a.setName(rs.getString(3));
+				a.setBal(rs.getDouble(4));
+				a.setUsername(rs.getString(5));
+			}
+			
+			System.out.println(a);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {UserDAO.postLog(un);}
+		
+		return a;
 		
 		
 	}

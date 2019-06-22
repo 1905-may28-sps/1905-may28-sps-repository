@@ -57,6 +57,7 @@ public class UserDAO {
 		newUser = save(newUser);
 		System.out.println("Sucessful Creation!");
 		System.out.println(newUser);
+		postLog(un);
 		
 		}else {
 			System.out.println("Please Enter Valid Inputs");
@@ -116,7 +117,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			
 			switch (opt) {
 			case "1":AccountDAO.createSpecAcc(un);break;
-			case "2":aDAO.viewBal();break;
+			case "2":aDAO.viewBal(un);break;
 			case "3":logOut();break;
 			default:postLog(un);
 			}
@@ -124,12 +125,23 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 
 }
 	 public static void logOut() {
+		 System.out.println("Would you like to log out (1)Yes (2)No");
+		 opt=scan.nextLine();
+		 switch (opt) {
+		 case "1":
+		 System.out.println("Logging out...");
 		 newUser.setFn(null);
 		 newUser.setId(0);
 		 newUser.setLn(null);
 		 newUser.setPass(null);
 		 newUser.setUn(null);
-		 
+		 System.out.println("Goodbye, Your Money is safe with us!");
+		 crelogopt();
+		 case "2":
+			 default:
+			 postLog(un);
+			 break;
+		 }
 		
 	}
 }
