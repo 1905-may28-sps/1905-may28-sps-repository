@@ -3,7 +3,7 @@ package com.revature.pojo;
 public class Account {
 	private String type;
 	private double bal;
-	private String name;// needs to be a list
+	
 	private String username;
 	private int id;
 
@@ -11,11 +11,10 @@ public class Account {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Account(String type, double bal, String name, String username, int id) {
+	public Account(String type, double bal, String username, int id) {
 		super();
 		this.type = type;
 		this.bal = bal;
-		this.name = name;
 		this.username = username;
 		this.id = id;
 	}
@@ -36,13 +35,6 @@ public class Account {
 		this.bal = bal;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getUsername() {
 		return username;
@@ -62,8 +54,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [type=" + type + ", bal=" + bal + ", name=" + name + ", username=" + username + ", id=" + id
-				+ "]";
+		return "Account " + id + ": type=" + type + " bal=" + bal + "\n";
 	}
 
 	

@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ public class AccountDAO {
 	static String ln;
 	static String un;
 	static String pass;
-	static String an;
+	static int id;
 	static double transact;
 	static String opt;
 	static double balance;
@@ -28,24 +29,30 @@ public class AccountDAO {
 	public static Account newAcc=new Account();
 	
 	
-
+	public static double myDoub() {
+		double doub = 0;
+		try {
+		doub=Double.parseDouble(scan.nextLine());
+		return doub;
+		}catch(NumberFormatException e) {
+			System.out.println("Enter a Double value");
+			doub=myDoub();
+		}
+		return doub;
+	}
 
 	public static void createSpecAcc(String un) {
 		username=un;
 		System.out.println("Choose Account Type (1) Checkings (2) Savings");
-		opt=scan.nextLine();
-		
-		System.out.println("Enter unique account name?");
-		an=scan.nextLine();
-		System.out.println(an);
+		opt=accType();
+	
 		System.out.println("Enter an initial balance, if you are not going to add anything just put 0.");
-		balance=scan.nextDouble();
+		balance=myDoub();
 		System.out.println("Creating Your Account...");	
 		
-		if(accType(opt) != null && !accType(opt).equals("")&&an != null && !an.equals("")&&un != null && !un.equals("")){
+		if(opt != null && !opt.equals("")&&un != null && !un.equals("")){
 			
-			newAcc.setType(accType(opt));
-			newAcc.setName(an);
+			newAcc.setType(opt);
 			newAcc.setBal(balance);
 			newAcc.setUsername(un);
 			newAcc = save(newAcc);
@@ -55,22 +62,32 @@ public class AccountDAO {
 			}else {
 				System.out.println("Please Enter Valid Inputs");
 				createSpecAcc(username);
+				
 			}
 	}
-	
+	public static String accType() {
+		String type=scan.nextLine();
+		switch (type) {
+		case "1":return "Checking";
+		case "2":return "Savings";
+		default: 
+			System.out.println("You have entered an invalid value. ");
+			System.out.println("Choose Account Type (1) Checkings (2) Savings");
+			return accType();}
+		
+	}
 	public static Account save(Account acc) {
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 					
 					
 					//conn.setAutoCommit(false);
 					
-					String sql="insert into BaNK_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_NAME,ACCOUNT_BALANCE,USERNAME) VALUES (?,?,?,?)";
+					String sql="insert into BaNK_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_BALANCE,USERNAME) VALUES (?,?,?)";
 					String[] generatedKeys= {"ACCOUNT_ID"};
 					PreparedStatement ps=conn.prepareStatement(sql, generatedKeys);
 					ps.setString(1,acc.getType());
-					ps.setString(2,acc.getName());
-					ps.setDouble(3,acc.getBal());
-					ps.setString(4,acc.getUsername());
+					ps.setDouble(2,acc.getBal());
+					ps.setString(3,acc.getUsername());
 					
 					ps.executeUpdate();
 					
@@ -87,24 +104,23 @@ public class AccountDAO {
 				}
 	
 	public Account viewBal(String un) {
-		System.out.println("Enter account name, that you would like to see");
-		an=scan.nextLine();
+		System.out.println("Enter account id, that you would like to see");
+		id=scan.nextInt();
 		
 		Account a= null;
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
-			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)=? AND lower(ACCOUNT_NAME)=? "; 
+			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)=? AND ACCOUNT_ID=? "; 
 			PreparedStatement ps=conn.prepareStatement(query);
 			ps.setString(1,un);//number,value
-			ps.setString(2,an);
+			ps.setInt(2,id);
 			ResultSet rs=ps.executeQuery();
 			
 			while(rs.next()) {//or if
 				a=new Account();
 				a.setId(rs.getInt(1));
 				a.setType(rs.getString(2));
-				a.setName(rs.getString(3));
-				a.setBal(rs.getDouble(4));
-				a.setUsername(rs.getString(5));
+				a.setBal(rs.getDouble(3));
+				a.setUsername(rs.getString(4));
 			}
 			
 			System.out.println(a);
@@ -118,14 +134,7 @@ public class AccountDAO {
 		
 	}
 	
-	public static String accType(String type) {
-		switch (type) {
-		case "1":return "Checking";
-		case "2":return "Savings";
-		default: createSpecAcc(username);
-		}
-		return null;
-	}
+	
 	
 	public static List<Account> viewAllAcc(String un){
 		List<Account> accs=new ArrayList<Account> ();
@@ -135,7 +144,7 @@ public class AccountDAO {
 		Statement st=conn.createStatement();
 		ResultSet rs=st.executeQuery(query);
 		while(rs.next()) {
-			Account temp=new Account(rs.getString(2),rs.getDouble(4),rs.getString(3),rs.getString(5),rs.getInt(1));
+			Account temp=new Account(rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getInt(1));
 			accs.add(temp);
 		}
 		
@@ -147,6 +156,38 @@ public class AccountDAO {
 		UserDAO.postLog(un);}
 	
 	return accs;
+	}
+
+	
+	
+	public static void deposit(String un) {
+		System.out.println("Enter the id of the account you would like to make a deposit in:");
+		id=scan.nextInt();
+		System.out.println("Enter the amount you would like to deposit");
+		balance=myDoub();	
+		System.out.println("Making a Deposit...");
+		try (Connection conn=ConnectionFactory.getInstance().getConnection()){
+			String query=" {call deposit(?,?,?) }";//calling call statement
+			
+					CallableStatement cs=conn.prepareCall(query);
+					cs.setString(1,un);
+					cs.setInt(2,id);
+					cs.setDouble(3, balance);
+					
+				// if we had an in parameter we woulD still do cs.setInt	BUT HERE WERE SPECIFYING THE OUT PARAMETER
+					cs.execute();
+					System.out.println("Deposit Complete");
+					
+					
+		} catch (SQLException e) {
+			System.out.println("Unsucessful Deposit");
+			e.printStackTrace();
+		}finally {
+			UserDAO.postLog(un);
+		}
+		
+		
+		
 	}
 	
 }

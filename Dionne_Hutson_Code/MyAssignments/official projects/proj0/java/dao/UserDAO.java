@@ -108,12 +108,15 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			un=scan.nextLine();
 			System.out.println("Enter your password. ");
 			pass=scan.nextLine();
+			System.out.println("Logging in..");
+			
+			
 			if(validUsername(un)&&validPass(un,pass)) {
 			System.out.println("Sucessfull Log In!");
 			
 			
 			postLog(un);}else {
-				
+
 				logIn();
 			}
 			
@@ -130,12 +133,12 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			if(rs.next()) {
 			if(rs.getString(1).equalsIgnoreCase(un)) {
 				return true;
+			}
 			}else {
 				System.out.println("Invalid Username");
 				return false;}
-			}
 		} catch (SQLException e) {
-			
+			System.out.println("Invalid Username");
 			e.printStackTrace();
 		}
 		return false;
@@ -164,14 +167,15 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	}
 	 public static void postLog(String un) {
 		  scan=new Scanner(System.in);
-		  System.out.println("Woud you like to (1) Create New Account, (2) View Account Balance(3) View All Accounts (4) Log Out");//account as in bank account
+		  System.out.println("Woud you like to (1) Create New Account, (2) View Account Balance(3) View All Accounts (4) Make a Deposit (5)Log Out");//account as in bank account
 		  opt=scan.nextLine();	
 			
 			switch (opt) {
 			case "1":AccountDAO.createSpecAcc(un);break;
 			case "2":aDAO.viewBal(un);break;
 			case "3":AccountDAO.viewAllAcc(un); break;
-			case "4":logOut();break;
+			case "4":AccountDAO.deposit(un);break;
+			case "5":logOut();break;
 			default:postLog(un);
 			}
 	
