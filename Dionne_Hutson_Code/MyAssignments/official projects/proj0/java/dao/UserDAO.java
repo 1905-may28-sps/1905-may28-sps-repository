@@ -164,13 +164,14 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	}
 	 public static void postLog(String un) {
 		  scan=new Scanner(System.in);
-		  System.out.println("Woud you like to (1) Create New Account, (2) View Account Balance(3)Log Out");//account as in bank account
+		  System.out.println("Woud you like to (1) Create New Account, (2) View Account Balance(3) View All Accounts (4) Log Out");//account as in bank account
 		  opt=scan.nextLine();	
 			
 			switch (opt) {
 			case "1":AccountDAO.createSpecAcc(un);break;
 			case "2":aDAO.viewBal(un);break;
-			case "3":logOut();break;
+			case "3":AccountDAO.viewAllAcc(un); break;
+			case "4":logOut();break;
 			default:postLog(un);
 			}
 	

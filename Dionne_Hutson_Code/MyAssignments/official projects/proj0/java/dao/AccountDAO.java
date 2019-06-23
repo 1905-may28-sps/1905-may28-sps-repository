@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.pojo.Account;
@@ -124,6 +127,26 @@ public class AccountDAO {
 		return null;
 	}
 	
+	public static List<Account> viewAllAcc(String un){
+		List<Account> accs=new ArrayList<Account> ();
 	
+	try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+		String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)='"+un+"'";
+		Statement st=conn.createStatement();
+		ResultSet rs=st.executeQuery(query);
+		while(rs.next()) {
+			Account temp=new Account(rs.getString(2),rs.getDouble(4),rs.getString(3),rs.getString(5),rs.getInt(1));
+			accs.add(temp);
+		}
+		
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}finally {
+		System.out.println(accs);
+		UserDAO.postLog(un);}
+	
+	return accs;
+	}
 	
 }
