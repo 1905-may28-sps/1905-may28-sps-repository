@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.app.OverdraftException;
 import com.revature.pojo.Account;
 import com.revature.util.ConnectionFactory;
 
@@ -27,12 +28,13 @@ public class AccountDAO {
 	static Scanner scan= new Scanner(System.in);
 	static String username;
 	public static Account newAcc=new Account();
-	
+	static Scanner scanD= new Scanner(System.in);
 	
 	public static double myDoub() {
+		scanD= new Scanner(System.in);
 		double doub = 0;
 		try {
-		doub=Double.parseDouble(scan.nextLine());
+		doub=Double.parseDouble(scanD.nextLine());
 		return doub;
 		}catch(NumberFormatException e) {
 			System.out.println("Enter a Double value");
@@ -102,11 +104,7 @@ public class AccountDAO {
 				}
 				return acc;
 				}
-	
-	public Account viewBal(String un) {
-		System.out.println("Enter account id, that you would like to see");
-		id=scan.nextInt();
-		
+	public static double viewBal(String un, int id) {
 		Account a= null;
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)=? AND ACCOUNT_ID=? "; 
@@ -123,16 +121,47 @@ public class AccountDAO {
 				a.setUsername(rs.getString(4));
 			}
 			
-			System.out.println(a);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}finally {UserDAO.postLog(un);}
 		
-		return a;
+		return a.getBal();
 		
 		
 	}
+//	public Account viewBal(String un) {
+//		System.out.println("Enter account id, that you would like to see");
+//		id=scan.nextInt();
+//		
+//		Account a= null;
+//		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+//			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)=? AND ACCOUNT_ID=? "; 
+//			PreparedStatement ps=conn.prepareStatement(query);
+//			ps.setString(1,un);//number,value
+//			ps.setInt(2,id);
+//			ResultSet rs=ps.executeQuery();
+//			
+//			while(rs.next()) {//or if
+//				a=new Account();
+//				a.setId(rs.getInt(1));
+//				a.setType(rs.getString(2));
+//				a.setBal(rs.getDouble(3));
+//				a.setUsername(rs.getString(4));
+//			}
+//			
+//			System.out.println(a);
+//		} catch (SQLException e) {
+//			
+//			e.printStackTrace();
+//		}finally {UserDAO.postLog(un);}
+//		
+//		return a;
+//		
+//		
+//	}
+
+	
 	
 	
 	
@@ -164,17 +193,15 @@ public class AccountDAO {
 		System.out.println("Enter the id of the account you would like to make a deposit in:");
 		id=scan.nextInt();
 		System.out.println("Enter the amount you would like to deposit");
-		balance=myDoub();	
+		double deposit=myDoub();
+		if(deposit>=0) {
 		System.out.println("Making a Deposit...");
 		try (Connection conn=ConnectionFactory.getInstance().getConnection()){
 			String query=" {call deposit(?,?,?) }";//calling call statement
-			
 					CallableStatement cs=conn.prepareCall(query);
 					cs.setString(1,un);
 					cs.setInt(2,id);
-					cs.setDouble(3, balance);
-					
-				// if we had an in parameter we woulD still do cs.setInt	BUT HERE WERE SPECIFYING THE OUT PARAMETER
+					cs.setDouble(3, deposit);
 					cs.execute();
 					System.out.println("Deposit Complete");
 					
@@ -184,7 +211,48 @@ public class AccountDAO {
 			e.printStackTrace();
 		}finally {
 			UserDAO.postLog(un);
+		}	
+		}else {
+			System.out.println("You cannot deposit an amount less than $0.00");
+			UserDAO.postLog(un);
+			
 		}
+	}
+	public static void withdrawl(String un) {
+		System.out.println("Enter the id of the account you would like to make a withdrawl from:");
+		id=scan.nextInt();
+		System.out.println("Enter the amount you would like to withdraw");
+		double withdraw=myDoub();
+		if (withdraw>=0) {
+		try {	
+		if (withdraw<=viewBal(un,id)) {
+		System.out.println("Making a Withdrawl...");
+		try (Connection conn=ConnectionFactory.getInstance().getConnection()){
+			String query=" {call withdraw(?,?,?) }";//calling call statement
+					CallableStatement cs=conn.prepareCall(query);
+					cs.setString(1,un);
+					cs.setInt(2,id);
+					cs.setDouble(3, withdraw);
+					cs.execute();
+					System.out.println("Withdrawl Complete");
+					
+					
+		} catch (SQLException e) {
+			System.out.println("Unsucessful Withdrawl");
+			e.printStackTrace();
+		}finally {
+			UserDAO.postLog(un);
+		}
+		}else {throw new OverdraftException();}
+		}catch(OverdraftException e) {
+			System.out.println("This withdrawl amount exceeds your balance");
+			UserDAO.postLog(un);
+		}
+		}else {
+			System.out.println("You cannot withdraw an amount less than $0.00");
+			UserDAO.postLog(un);
+		}
+		
 		
 		
 		

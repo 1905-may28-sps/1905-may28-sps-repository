@@ -26,6 +26,7 @@ public class UserDAO {
 	public static User newUser=new User();
 	
 	public static void crelogopt() {
+		
 		System.out.println("Enter 1 if you want to create an account with us. Enter 2 if you want to log into an account");
 		opt=scan.nextLine();	
 		
@@ -45,11 +46,11 @@ public class UserDAO {
 		un=scan.nextLine();
 		System.out.println("Enter a password. It could be as weak as you want, but remember this is your bank.");
 		pass=scan.nextLine();
-		System.out.println("Creating your account...");
 		
 //		User newUser=new User();
 		if(fn != null && !fn.equals("")&&ln != null && !ln.equals("")&&un != null && !un.equals("")&&pass != null && !pass.equals("")){
 		if(!validUsername(un))	{
+			System.out.println("Creating your account...");
 		newUser.setFn(fn);
 		newUser.setLn(ln);
 		newUser.setUn(un);
@@ -60,7 +61,7 @@ public class UserDAO {
 		postLog(un);
 		}
 		else {
-			System.out.println("This Username is Taken");
+			System.out.println("This Username is Taken\nLets try again!");
 			createAcc();
 		}
 		}else {
@@ -108,7 +109,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			un=scan.nextLine();
 			System.out.println("Enter your password. ");
 			pass=scan.nextLine();
-			System.out.println("Logging in..");
+			System.out.println("Logging in...");
 			
 			
 			if(validUsername(un)&&validPass(un,pass)) {
@@ -135,10 +136,8 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 				return true;
 			}
 			}else {
-				System.out.println("Invalid Username");
 				return false;}
 		} catch (SQLException e) {
-			System.out.println("Invalid Username");
 			e.printStackTrace();
 		}
 		return false;
@@ -167,15 +166,16 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	}
 	 public static void postLog(String un) {
 		  scan=new Scanner(System.in);
-		  System.out.println("Woud you like to (1) Create New Account, (2) View Account Balance(3) View All Accounts (4) Make a Deposit (5)Log Out");//account as in bank account
+		  System.out.println("Woud you like to (1) Create New Account, (2) View Account Balance(3) View All Accounts \n(4) Make a Deposit (5)Make a Withdrawl (6)Log Out");//account as in bank account
 		  opt=scan.nextLine();	
 			
 			switch (opt) {
 			case "1":AccountDAO.createSpecAcc(un);break;
-			case "2":aDAO.viewBal(un);break;
+			//case "2":aDAO.viewba(un);break;
 			case "3":AccountDAO.viewAllAcc(un); break;
 			case "4":AccountDAO.deposit(un);break;
-			case "5":logOut();break;
+			case "5":AccountDAO.withdrawl(un);
+			case "6":logOut();break;
 			default:postLog(un);
 			}
 	
