@@ -30,6 +30,7 @@ public class AccountDAO {
 	static String username;
 	public static Account newAcc=new Account();
 	static Scanner scanD= new Scanner(System.in);
+	
 
 	public static double myDoub() {
 		scanD= new Scanner(System.in);
@@ -40,7 +41,7 @@ public class AccountDAO {
 			if(doub>=0) {
 			return doub;}
 			else {
-				System.out.println("This value cannot be less than zero\nEnter a value greater than or equal to zero");
+				System.out.println("This value cannot be less than zero Enter a value greater than or equal to zero");
 				return myDoub();
 				
 			}
@@ -67,11 +68,11 @@ public class AccountDAO {
 	}
 	public static void createSpecAcc(String un) {
 		username=un;
-		System.out.println("Choose the Numerical Value Associated with Your Desired Account Type:");
+		System.out.println("Choose the numerical value associated with your desired account type:");
 		showAccType();
 		opt=accType();
 
-		System.out.println("Enter an initial balance, if you are not going to add anything just put 0.");
+		System.out.println("Enter an initial balance If you are not going to add money please put 0.");
 		balance=myDoub();
 		System.out.println("Creating Your Account...");	
 
@@ -93,12 +94,12 @@ public class AccountDAO {
 	public static String accType() {
 		Scanner scant= new Scanner(System.in);
 		String type=scant.nextLine();
-		scant.close();
+		
 		switch (type) {
 		case "1":return "CHECKING";
 		case "2":return "SAVINGS";
 		default: 
-			System.out.println("You have entered an invalid value. ");
+			System.out.println("You have entered an invalid value ");
 			System.out.println("Choose:");
 			showAccType();
 			return accType();}
@@ -159,7 +160,7 @@ public class AccountDAO {
 	}
 	public static Account viewSAcc(String un) {
 		Account a= null;
-		System.out.println("Enter account id, that you would like to see");
+		System.out.println("Enter account id that you would like to see");
 		try {
 		id=scan.nextInt();
 		
@@ -191,7 +192,7 @@ public class AccountDAO {
 
 		
 		}catch(InputMismatchException e) {
-			System.out.println("Invalid ID form.\nTry again");
+			System.out.println("Invalid ID form.\nTry Again");
 			UserDAO.postLog(un);
 		}
 return a;
@@ -221,13 +222,14 @@ return a;
 		return accs;
 	}
 
-
-
 	public static void deposit(String un) {
+		Scanner scanid=new Scanner(System.in);
 		System.out.println("Enter the id of the account you would like to make a deposit in:");
-		id=scan.nextInt();
+		try {
+		id=scanid.nextInt();
 		System.out.println("Enter the amount you would like to deposit");
 		double deposit=myDoub();
+		
 		if (validId(un,id)) {
 		
 			System.out.println("Making a Deposit...");
@@ -244,19 +246,27 @@ return a;
 			} catch (SQLException e) {
 				System.out.println("Unsucessful Deposit");
 				e.printStackTrace();
-			}finally {
-				UserDAO.postLog(un);
 			}	
 		
-		}else {
-			UserDAO.postLog(un);}
+		}
+		}catch(InputMismatchException e) {
+			System.out.println("This is an invalid ID form\nTry Again");
+			
+		
+		}finally {
+			UserDAO.postLog(un);
+
+		}
 	}
 	public static void withdrawl(String un) {
-		System.out.println("Enter the id of the account you would like to make a withdrawl from:");
-		id=scan.nextInt();
+		Scanner scanid=new Scanner(System.in);
+		
+		System.out.println("Enter the ID of the account you would like to make a withdrawl from:");
+		try {
+		id=scanid.nextInt();
 		System.out.println("Enter the amount you would like to withdraw");
 		double withdraw=myDoub();
-		try {
+		
 		if (validId(un,id)) {
 				try {	
 					if (withdraw<=viewBal(un,id)) {
@@ -273,28 +283,27 @@ return a;
 
 						} catch (SQLException e) {
 							System.out.println("Unsucessful Withdrawl");
-							e.printStackTrace();
-						}finally {
-							UserDAO.postLog(un);
+				
 						}
 					}else {
 						throw new OverdraftException();}
 				}catch(OverdraftException e) {
-					
-					UserDAO.postLog(un);
+		
 				}
 			
 
 		}else {
 			UserDAO.postLog(un);}
 		}catch(InputMismatchException e) {
-			System.out.println("This is an invalid ID form.\nTry again");
-			withdrawl(un);
+			System.out.println("This is an invalid ID form\nTry Again");
+			
+		}finally {
+			UserDAO.postLog(un);
+
 		}
 
 
 	}
-
 
 	public static boolean validId(String un,int id) {
 

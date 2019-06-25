@@ -27,7 +27,7 @@ public class UserDAO {
 	
 	public static void crelogopt() {
 		
-		System.out.println("Enter 1 if you want to create an account with us. Enter 2 if you want to log into an account");
+		System.out.println("Enter 1 If You Want to Enroll with Our Bank Enter 2 If You Want to Log In");
 		opt=scan.nextLine();	
 		
 		switch (opt) {
@@ -38,31 +38,31 @@ public class UserDAO {
 	}
 	public static void createAcc() {
 		scan=new Scanner(System.in);
-		System.out.println("Welcome! Enter your first name?");
+		System.out.println("Welcome! Enter your first name");
 		fn=scan.nextLine();
-		System.out.println("Enter your last name?");
+		System.out.println("Enter your last name");
 		ln=scan.nextLine();
-		System.out.println("Enter a username (if this is taken you cannot use it).");
+		System.out.println("Enter a unique username");
 		un=scan.nextLine();
-		System.out.println("Enter a password. It could be as weak as you want, but remember this is your bank.");
+		System.out.println("Enter a password It could be as weak as you want, but remember this is a bank");
 		pass=scan.nextLine();
 		
 //		User newUser=new User();
 		if(fn != null && !fn.equals("")&&ln != null && !ln.equals("")&&un != null && !un.equals("")&&pass != null && !pass.equals("")){
 		if(!validUsername(un))	{
-			System.out.println("Creating your account...");
+			System.out.println("Registering your account...");
 		newUser.setFn(fn);
 		newUser.setLn(ln);
 		newUser.setUn(un);
 		newUser.setPass(pass);
 		newUser = save(newUser);
-		System.out.println("Your account has been created, with the information provided below.");
+		System.out.println("Your account has been created, with the information provided below");
 		System.out.println(newUser);
-		System.out.println("You are already logged in "+fn);
+		System.out.println("You are already logged in "+fn+" Please enjoy your banking experience");
 		postLog(un);
 		}
 		else {
-			System.out.println("This Username is Taken\nLet's try again!");
+			System.out.println("Oh No! This username is taken\nLet's try again!");
 			createAcc();
 		}
 		}else {
@@ -100,15 +100,12 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 		}
 		return user;
 		}
-		
-	
-	
 
 	public static void logIn() {
 			scan=new Scanner(System.in);
-			System.out.println("Enter your username.");
+			System.out.println("Enter your username");
 			un=scan.nextLine();
-			System.out.println("Enter your password. ");
+			System.out.println("Enter your password");
 			pass=scan.nextLine();
 			System.out.println("Logging in...");
 			
@@ -118,7 +115,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			
 			
 			postLog(un);}else {
-				System.out.println("Invalid Username or Password");
+				System.out.println("Invalid Username and/or Password");
 
 				logIn();
 			}
@@ -168,7 +165,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	}
 	 public static void postLog(String un) {
 		  scan=new Scanner(System.in);
-		  System.out.println("Woud you like to (1) Create New Account, (2) View Specific Account Details (3) View All Accounts \n(4) Make a Deposit (5)Make a Withdrawl (6)Log Out");//account as in bank account
+		  System.out.println("Woud you like to (1) Create a New Account, (2) View Specific Account Details (3) View All Accounts \n(4) Make a Deposit (5)Make a Withdrawl (6)Log Out");//account as in bank account
 		  opt=scan.nextLine();	
 			
 			switch (opt) {
@@ -194,7 +191,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 		 newUser.setLn(null);
 		 newUser.setPass(null);
 		 newUser.setUn(null);
-		 System.out.println("Goodbye, Your Money is safe with us!");
+		 System.out.println("Your money is safe with us "+un+" Goodbye!");
 		 break;
 		 case "2":
 			 default:
