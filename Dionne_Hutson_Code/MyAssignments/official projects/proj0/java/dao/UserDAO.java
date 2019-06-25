@@ -56,12 +56,13 @@ public class UserDAO {
 		newUser.setUn(un);
 		newUser.setPass(pass);
 		newUser = save(newUser);
-		System.out.println("Sucessful Creation!");
+		System.out.println("Your account has been created, with the information provided below.");
 		System.out.println(newUser);
+		System.out.println("You are already logged in "+fn);
 		postLog(un);
 		}
 		else {
-			System.out.println("This Username is Taken\nLets try again!");
+			System.out.println("This Username is Taken\nLet's try again!");
 			createAcc();
 		}
 		}else {
@@ -113,7 +114,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			
 			
 			if(validUsername(un)&&validPass(un,pass)) {
-			System.out.println("Sucessfull Log In!");
+			System.out.println("Welcome, "+un);
 			
 			
 			postLog(un);}else {

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -50,9 +51,24 @@ public class AccountDAO {
 		return doub;
 	}
 
+	public static void showAccType() {
+		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+			String query="select*from bank_type";
+			Statement statement=conn.createStatement();
+			ResultSet rs=statement.executeQuery(query);
+			while(rs.next()) {
+				System.out.println(rs.getInt(1)+" "+rs.getString(2));
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
 	public static void createSpecAcc(String un) {
 		username=un;
-		System.out.println("Choose Account Type (1) Checkings (2) Savings");
+		System.out.println("Choose the Numerical Value Associated with Your Desired Account Type:");
+		showAccType();
 		opt=accType();
 
 		System.out.println("Enter an initial balance, if you are not going to add anything just put 0.");
@@ -75,14 +91,21 @@ public class AccountDAO {
 		}
 	}
 	public static String accType() {
-		String type=scan.nextLine();
+		Scanner scant= new Scanner(System.in);
+		String type=scant.nextLine();
+		scant.close();
 		switch (type) {
-		case "1":return "Checking";
-		case "2":return "Savings";
+		case "1":return "CHECKING";
+		case "2":return "SAVINGS";
 		default: 
 			System.out.println("You have entered an invalid value. ");
-			System.out.println("Choose Account Type (1) Checkings (2) Savings");
+			System.out.println("Choose:");
+			showAccType();
 			return accType();}
+		
+	
+		
+		
 
 	}
 	public static Account save(Account acc) {
@@ -135,12 +158,14 @@ public class AccountDAO {
 
 	}
 	public static Account viewSAcc(String un) {
-		System.out.println("Enter account id, that you would like to see");
-		id=scan.nextInt();
 		Account a= null;
+		System.out.println("Enter account id, that you would like to see");
+		try {
+		id=scan.nextInt();
+		
+		
 		if (validId(un, id)) {
 
-			
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)=? AND ACCOUNT_ID=? "; 
 			PreparedStatement ps=conn.prepareStatement(query);
@@ -164,25 +189,30 @@ public class AccountDAO {
 	}else {
 		UserDAO.postLog(un);}
 
-		return a;
-
-
+		
+		}catch(InputMismatchException e) {
+			System.out.println("Invalid ID form.\nTry again");
+			UserDAO.postLog(un);
+		}
+return a;
 	}
-
+///used to be a statement
 	public static List<Account> viewAllAcc(String un){
 		List<Account> accs=new ArrayList<Account> ();
 
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
-			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)='"+un+"'";
-			Statement st=conn.createStatement();
-			ResultSet rs=st.executeQuery(query);
+			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)=?";
+			PreparedStatement ps=conn.prepareStatement(query);
+			ps.setString(1,un);
+			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				Account temp=new Account(rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getInt(1));
 				accs.add(temp);
 			}
+			
 
 		} catch (SQLException e) {
-
+			System.out.println("No accounts have been created");
 			e.printStackTrace();
 		}finally {
 			System.out.println(accs);
@@ -226,6 +256,7 @@ public class AccountDAO {
 		id=scan.nextInt();
 		System.out.println("Enter the amount you would like to withdraw");
 		double withdraw=myDoub();
+		try {
 		if (validId(un,id)) {
 				try {	
 					if (withdraw<=viewBal(un,id)) {
@@ -247,7 +278,6 @@ public class AccountDAO {
 							UserDAO.postLog(un);
 						}
 					}else {
-						System.out.println("This withdrawl amount exceeds your balance");
 						throw new OverdraftException();}
 				}catch(OverdraftException e) {
 					
@@ -257,6 +287,10 @@ public class AccountDAO {
 
 		}else {
 			UserDAO.postLog(un);}
+		}catch(InputMismatchException e) {
+			System.out.println("This is an invalid ID form.\nTry again");
+			withdrawl(un);
+		}
 
 
 	}

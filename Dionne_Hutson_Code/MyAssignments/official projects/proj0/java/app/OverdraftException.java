@@ -10,7 +10,7 @@ public class OverdraftException extends Exception {
 	public OverdraftException() {
 		super();
 		// TODO Auto-generated constructor stub
-		System.out.println("trying message");
+		System.out.println("This withdrawl amount exceeds your balance");
 	}
 
 
