@@ -117,6 +117,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			
 			
 			postLog(un);}else {
+				System.out.println("Invalid Username or Password");
 
 				logIn();
 			}
@@ -166,15 +167,15 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	}
 	 public static void postLog(String un) {
 		  scan=new Scanner(System.in);
-		  System.out.println("Woud you like to (1) Create New Account, (2) View Account Balance(3) View All Accounts \n(4) Make a Deposit (5)Make a Withdrawl (6)Log Out");//account as in bank account
+		  System.out.println("Woud you like to (1) Create New Account, (2) View Specific Account Details (3) View All Accounts \n(4) Make a Deposit (5)Make a Withdrawl (6)Log Out");//account as in bank account
 		  opt=scan.nextLine();	
 			
 			switch (opt) {
 			case "1":AccountDAO.createSpecAcc(un);break;
-			//case "2":aDAO.viewba(un);break;
+			case "2":AccountDAO.viewSAcc(un);break;
 			case "3":AccountDAO.viewAllAcc(un); break;
 			case "4":AccountDAO.deposit(un);break;
-			case "5":AccountDAO.withdrawl(un);
+			case "5":AccountDAO.withdrawl(un);break;
 			case "6":logOut();break;
 			default:postLog(un);
 			}
