@@ -161,13 +161,13 @@ public class AccountDAO {
 	public static Account viewSAcc(String un) {
 		Account a= null;
 		System.out.println("Enter account id that you would like to see");
-		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+		try {
 		id=scan.nextInt();
 		
 		
 		if (validId(un, id)) {
 
-		
+		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			String query="SELECT * FROM BANK_ACCOUNT WHERE  lower(USERNAME)=? AND ACCOUNT_ID=? "; 
 			PreparedStatement ps=conn.prepareStatement(query);
 			ps.setString(1,un);//number,value
@@ -180,17 +180,22 @@ public class AccountDAO {
 				a.setType(rs.getString(2));
 				a.setBal(rs.getDouble(3));
 				a.setUsername(rs.getString(4));
-				System.out.println(a);
 			}
-		}else {
-		System.out.println("This account does not belong to you");}
+
+			System.out.println(a);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {UserDAO.postLog(un);}
+	}else {
+		System.out.println("You have not created any accounts yet");
+		UserDAO.postLog(un);}
 
 		
-		}catch (SQLException e) {
-			e.printStackTrace();
 		}catch(InputMismatchException e) {
 			System.out.println("Invalid ID form.\nTry Again");
-		}finally {UserDAO.postLog(un);}
+			UserDAO.postLog(un);
+		}
 return a;
 	}
 ///used to be a statement
@@ -221,7 +226,7 @@ return a;
 	public static void deposit(String un) {
 		Scanner scanid=new Scanner(System.in);
 		System.out.println("Enter the id of the account you would like to make a deposit in:");
-		try (Connection conn=ConnectionFactory.getInstance().getConnection()) {
+		try {
 		id=scanid.nextInt();
 		System.out.println("Enter the amount you would like to deposit");
 		double deposit=myDoub();
@@ -229,7 +234,7 @@ return a;
 		if (validId(un,id)) {
 		
 			System.out.println("Making a Deposit...");
-			
+			try (Connection conn=ConnectionFactory.getInstance().getConnection()){
 				String query=" {call deposit(?,?,?) }";//calling call statement
 				CallableStatement cs=conn.prepareCall(query);
 				cs.setString(1,un);
@@ -239,12 +244,12 @@ return a;
 				System.out.println("Deposit Complete");
 
 
-				
-		}
-		}catch (SQLException e) {
+			} catch (SQLException e) {
 				System.out.println("Unsucessful Deposit");
-			
-	}catch(InputMismatchException e) {
+			}	
+		
+		}
+		}catch(InputMismatchException e) {
 			System.out.println("This is an invalid ID form\nTry Again");
 			
 		
@@ -257,16 +262,16 @@ return a;
 		Scanner scanid=new Scanner(System.in);
 		
 		System.out.println("Enter the ID of the account you would like to make a withdrawl from:");
-		try(Connection conn=ConnectionFactory.getInstance().getConnection()) {
+		try {
 		id=scanid.nextInt();
 		System.out.println("Enter the amount you would like to withdraw");
 		double withdraw=myDoub();
 		
 		if (validId(un,id)) {
-					
+				try {	
 					if (withdraw<=viewBal(un,id)) {
 						System.out.println("Making a Withdrawl...");
-						
+						try (Connection conn=ConnectionFactory.getInstance().getConnection()){
 							String query=" {call withdraw(?,?,?) }";//calling call statement
 							CallableStatement cs=conn.prepareCall(query);
 							cs.setString(1,un);
@@ -275,14 +280,20 @@ return a;
 							cs.execute();
 							System.out.println("Withdrawl Complete");
 
-					}else {
-						throw new OverdraftException();}
-	
-			}else {}	
-		}catch (SQLException e) {
+
+						} catch (SQLException e) {
 							System.out.println("Unsucessful Withdrawl");
 				
-		}catch(OverdraftException e) {
+						}
+					}else {
+						throw new OverdraftException();}
+				}catch(OverdraftException e) {
+		
+				}
+			
+
+		}else {
+			}
 		}catch(InputMismatchException e) {
 			System.out.println("This is an invalid ID form\nTry Again");
 			
