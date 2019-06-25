@@ -54,7 +54,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account " + id + ": type=" + type + " bal=" + bal + "\n";
+		return  type+" Account " + id + ": Balance=" + bal + "\n";
 	}
 
 	

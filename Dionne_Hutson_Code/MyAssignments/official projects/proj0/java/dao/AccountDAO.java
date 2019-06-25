@@ -188,6 +188,7 @@ public class AccountDAO {
 			e.printStackTrace();
 		}finally {UserDAO.postLog(un);}
 	}else {
+		System.out.println("You have not created any accounts yet");
 		UserDAO.postLog(un);}
 
 		
@@ -245,7 +246,6 @@ return a;
 
 			} catch (SQLException e) {
 				System.out.println("Unsucessful Deposit");
-				e.printStackTrace();
 			}	
 		
 		}
@@ -293,7 +293,7 @@ return a;
 			
 
 		}else {
-			UserDAO.postLog(un);}
+			}
 		}catch(InputMismatchException e) {
 			System.out.println("This is an invalid ID form\nTry Again");
 			
