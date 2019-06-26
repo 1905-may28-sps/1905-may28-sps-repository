@@ -1,0 +1,60 @@
+package com.revature.doa;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.pojos.Type;
+import com.revature.util.ConnectionFactory;
+
+public class TypeDAO {
+
+	
+	
+	public List<Type> findAll(){
+		List<Type> types = new ArrayList<Type>();
+		
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			Statement st = conn.createStatement();
+			
+			ResultSet rs = st.executeQuery("select * from bank_account_type");
+			
+			while(rs.next()) {
+				Type t = new Type();
+				t.setId(rs.getInt(1));
+				t.setType(rs.getString(2));
+				types.add(t);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return types;
+		
+	}
+	
+	public Type listType(int id) {
+		Type g = null;
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String query  = "select type from bank_account_type";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet result = ps.executeQuery();
+			while(result.next()) {
+				g = new Type();
+				g.setId(result.getInt(1));
+				g.setType(result.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return g;
+	}
+}

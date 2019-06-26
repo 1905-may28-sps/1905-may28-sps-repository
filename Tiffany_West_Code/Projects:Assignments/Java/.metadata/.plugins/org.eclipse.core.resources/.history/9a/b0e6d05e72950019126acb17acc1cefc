@@ -1,0 +1,97 @@
+package com.revature.bankApp;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.revature.doa.TypeDAO;
+import com.revature.doa.UserDAO;
+import com.revature.pojos.Type;
+import com.revature.pojos.User;
+
+public class app {
+
+	static Scanner scan = new Scanner(System.in);
+	static UserDAO userDao = new UserDAO();
+	
+	
+	public static void main(String[] args) {
+		
+		
+		welcomeView();
+		
+		
+		
+		//list Account types might have to put this in a switch statement
+		TypeDAO tdao = new TypeDAO();
+		List<Type> types =tdao.findAll();
+	//System.out.println("Account Types: " + types );
+		
+	}
+	
+	
+	public static void welcomeView() {
+		
+		System.out.println("Welcome to West Investments, would you like to sign in "
+				+ "or create an account?\n "
+				+ "Press 1 : Sign-In \n "
+				+ "Press 2 : Create a New Account");
+		String welcome = scan.nextLine();
+		switch(welcome) {
+		case "1": signIn();
+		break;
+		case "2": createAccount();
+		break;
+		default:
+			System.out.println("please enter 1 or 2");
+			welcomeView();
+		}
+		
+	}
+
+	static void signIn() {
+		System.out.println("sign in method here");
+		
+		System.out.println("Enter your username");
+		String un = scan.nextLine();
+		System.out.println("Enter your password");
+		String pw = scan.nextLine();
+		
+		User authUser = new User();
+		authUser = userDao.login(authUser);
+		System.out.println(authUser);
+		
+	}
+	
+	
+	
+	  static void createAccount() {
+		  	System.out.println("Follow these instructions to create an account");
+		  	System.out.println("First Name: ");
+		  	String fn = scan.nextLine();
+		  	System.out.println("Last Name: ");
+		  	String ln = scan.nextLine();
+		  	System.out.println("Choose a username: ");
+		  	String un = scan.nextLine();
+		  	System.out.println("Choose a password: ");
+		  	String pw = scan.nextLine();
+		  	
+		  	User newUser = new User();
+		  	
+		  	if(fn !=null && !fn.equals("")) newUser.setFirstName(fn);
+		  	if(ln !=null && !ln.equals("")) newUser.setLastName(ln);
+		  	if(un !=null && !un.equals("")) newUser.setUserName(un);
+		  	if(pw !=null && !pw.equals("")) newUser.setPassword(pw);
+
+		  		
+		  	newUser = userDao.addUser(newUser);
+		  	System.out.println(newUser);
+		  	
+		  	//if (fn==null || fn.isEmpty()) 
+		  	//put this in a try catch  finally to make sure the input isn't null or empty
+		  	
+		  	
+		  	//after account is created go back to the welcome view to sign in
+		}
+	
+	
+}

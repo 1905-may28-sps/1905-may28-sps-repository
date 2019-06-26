@@ -1,0 +1,55 @@
+package com.revature.bankApp;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.revature.doa.TypeDAO;
+import com.revature.pojos.Type;
+
+public class app {
+
+	static Scanner scan = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		
+		
+		welcomeView();
+		
+		
+		
+		//list Account types might have to put this in a switch statement
+		TypeDAO tdao = new TypeDAO();
+		List<Type> types =tdao.findAll();
+	//System.out.println("Account Types: " + types );
+		
+	}
+	
+	
+	public static void welcomeView() {
+		
+		System.out.println("Welcome to West Investments, would you like to sign in "
+				+ "or create an account?\n "
+				+ "Press 1 : Sign-In \n "
+				+ " Press 2 : Create a New Account");
+		String welcome = scan.nextLine();
+		switch(welcome) {
+		case "1": signIn();
+		break;
+		case "2": createAccount();
+		break;
+		default:
+			System.out.println("please enter 1 or 2");
+			welcomeView();
+		}
+		
+	}
+
+	static void signIn() {
+		System.out.println("sign in method here");		
+	}
+	  static void createAccount() {
+		  	System.out.println("create an account method goes here");
+		}
+	
+	
+}

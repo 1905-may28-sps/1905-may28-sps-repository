@@ -1,0 +1,14 @@
+package com.revature.util;
+
+public class ConnerctionFactory {
+
+	private static ConnectionFactory cf = null;
+	
+	private ConnectionFactory() {}
+	
+	private static synchronized ConnectionFactory getInstance() {
+		if(cf == null) cf = new ConnectionFactory();
+		return cf;
+		
+	}
+}

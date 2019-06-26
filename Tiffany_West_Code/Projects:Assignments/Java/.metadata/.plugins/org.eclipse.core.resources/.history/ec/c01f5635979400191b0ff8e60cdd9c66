@@ -1,0 +1,20 @@
+package com.revature.bankApp;
+
+import java.util.List;
+
+import com.revature.doa.TypeDAO;
+import com.revature.pojos.Type;
+
+public class app {
+
+	
+	static TypeDAO 
+	
+	public static void main(String[] args) {
+		TypeDAO tdao = new TypeDAO();
+		List<Type> types =tdao.findAll();
+		System.out.println(types);
+		System.out.println("Account Types: " );
+		
+	}
+}

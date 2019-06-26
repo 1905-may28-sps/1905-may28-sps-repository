@@ -1,0 +1,135 @@
+package com.revature.bankApp;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import java.util.Scanner;
+
+import com.revature.doa.TypeDAO;
+import com.revature.doa.UserDAO;
+import com.revature.pojos.Type;
+import com.revature.pojos.User;
+import com.revature.util.ConnectionFactory;
+
+public class app {
+
+	static Scanner scan = new Scanner(System.in);
+	static UserDAO userDao = new UserDAO();
+	static TypeDAO typeDao = new TypeDAO();
+	
+	public static void main(String[] args) {
+		
+		
+		welcomeView();
+		
+		
+		
+		//list Account types might have to put this in a switch statement
+		TypeDAO tdao = new TypeDAO();
+		List<Type> types =tdao.findAll();
+	//System.out.println("Account Types: " + types );
+		
+	}
+	
+	
+	public static void welcomeView() {
+		
+		System.out.println("Welcome to West Investments, would you like to sign in "
+				+ "or create an account?\n "
+				+ "Press 1 : Sign-In \n "
+				+ "Press 2 : Create a New Account");
+		String welcome = scan.nextLine();
+		switch(welcome) {
+		case "1": signIn();
+		break;
+		case "2": createAccount();
+		break;
+		default:
+			System.out.println("please enter 1 or 2");
+			welcomeView();
+		}
+		
+	}
+
+	static void signIn() {
+		System.out.println("sign in method here");
+		
+		System.out.println("Enter your username: ");
+		String un = scan.nextLine();
+		System.out.println("Enter your password: ");
+		String pw = scan.nextLine();
+		
+		User authUser = new User();
+		//authUser = userDao.login(authUser);
+		Display();
+		
+	}
+	
+	
+	
+	  static void createAccount() {
+
+		  	System.out.println("Follow these instructions to create an account");
+		  	System.out.println("First Name: ");
+		  	String fn = scan.nextLine();
+		  	System.out.println("Last Name: ");
+		  	String ln = scan.nextLine();
+		  	System.out.println("Choose a username: ");
+		  	String un = scan.nextLine();
+		  	System.out.println("Choose a password: ");
+		  	String pw = scan.nextLine();
+		  	
+		  	User newUser = new User();
+		  	
+		  	if(fn !=null && !fn.equals("")) newUser.setFirstName(fn);
+		  	if(ln !=null && !ln.equals("")) newUser.setLastName(ln);
+		  	if(un !=null && !un.equals("")) newUser.setUserName(un);
+		  	if(pw !=null && !pw.equals("")) newUser.setPassword(pw);
+
+		  		
+		  	newUser = userDao.addUser(newUser);
+		  	//System.out.println(newUser);
+		  	
+		  	//if (fn==null || fn.isEmpty()) 
+		  	//put this in a try catch  finally to make sure the input isn't null or empty
+		  	
+		  	
+		  	//after account is created go back to the welcome view to sign in
+		}
+	  
+	  public static void Display() {
+			
+			try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+				Statement stmt = conn.createStatement();
+				
+				
+				ResultSet rs = stmt.executeQuery(" select bank_user.first_name, bank_user.last_name, bank_account.balance,bank_account.account_number,bank_account_type.type\n" + 
+						"from bank_account\n" + 
+						"join bank_user on bank_user.user_id = bank_account.user_id \n" + 
+						"join bank_account_type on bank_account.type_id = bank_account_type.type_id");
+				
+				while(rs.next()) {
+					String fname = rs.getString(1);
+					String lname = rs.getString(2);
+					int 	bal = rs.getInt(3);
+					int 	acn = rs.getInt(4);
+					String  type = rs.getString(5); 
+					
+					System.out.println("Account Info:\n "
+							+ "First Namae: "+fname +  "Last Name: " + lname+ " Balance: $"+bal+
+							" Account Number: "+ acn+ " Account Type: "+ type);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
+			
+		}
+	
+}

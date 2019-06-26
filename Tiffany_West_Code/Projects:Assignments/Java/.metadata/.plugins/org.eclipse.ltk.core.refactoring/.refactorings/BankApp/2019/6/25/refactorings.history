@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.revature.util.ConnerctionFactory&apos; to &apos;ConnectionFactory&apos;&#x0A;- Original project: &apos;BankApp&apos;&#x0A;- Original element: &apos;com.revature.util.ConnerctionFactory&apos;&#x0A;- Renamed element: &apos;com.revature.util.ConnectionFactory&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ConnerctionFactory&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.revature.util{ConnerctionFactory.java[ConnerctionFactory" matchStrategy="1" name="ConnectionFactory" qualified="false" references="true" similarDeclarations="false" stamp="1561168068840" textual="false" version="1.0"/>
+</session>
