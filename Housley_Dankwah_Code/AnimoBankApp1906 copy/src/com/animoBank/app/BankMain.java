@@ -16,18 +16,14 @@ public class BankMain {
 	static Scanner scan = new Scanner(System.in);
 	static BankUserDAO bankUserDao = new BankUserDAO();
 	static BankAccountDAO bankAccountDao = new BankAccountDAO();
-//	static List<BankAccountType> bnkAccountType =  new ArrayList<BankAccountType>();
+	static List<BankAccountType> bnkAccountType =  new ArrayList<BankAccountType>();
 	static BankAccountTypeDAO bankAccountType = new BankAccountTypeDAO();
 
-	
-	
-	
 	public static void main(String[] args) {
 		welcomePage();
 
 	}
-	
-	
+
 	public static void CreateBankAccount(BankUser user) {
 		System.out.println(user.getFirstname() + " " + user.getLastname());
 
@@ -49,10 +45,7 @@ public class BankMain {
 			CreateBankAccount(user);
 			break;
 		}
-
 	}
-	
-	
 	
 	
 
@@ -71,8 +64,7 @@ public class BankMain {
 //	}
 
 	
-
-
+	
 	public static void LogIn() {
 		System.out.println("Please Log In");
 		String login = scan.nextLine();
@@ -98,32 +90,34 @@ public class BankMain {
 //					" BALANCE IS: $" + accountInfo.getBalance());
 
 	}
-	
-	
-	
 
 	public static void logInSuccess(BankUser newBankuser) {
 
 		System.out.println(
 				"WELCOME " + newBankuser.getFirstname() + " " + newBankuser.getLastname() + " " + "\n" + " \n");
 
-		BankAccount accountInfo = bankAccountDao.findAccountById(newBankuser.getUserId());
+		BankAccount accountInfo = bankAccountDao.getOneAccountById(newBankuser.getUserId());
+		List<BankAccount> listAccountInfo = bankAccountDao.findAccountById(newBankuser.getUserId());
 
 		if (accountInfo == null) {
 			System.out.println("OUR RECORDS SHOWS THAT YOU HAVE HAVE 0 ACCOUNTS OPEN" + " AT THE MOMENT \n" + " \n");
 
 			CreateBankAccount(newBankuser);
 		} else {
-
+			for (BankAccount account : listAccountInfo) {
+				System.out.println(account);
+			}
 			List<String> accountType = bankAccountType.findAllAccountType();
 
-			System.out.println("YOUR:\n");
-			for (int i = 0; i < accountType.size(); i++) {
+			
+			
+//			System.out.println(accountType.get(0) + " ACCOUNT #" + accountInfo.getAccountId() + " BALANCE IS: $"
+//					+ accountInfo.getBalance() + " \n");
+//			System.out.println(accountType.get(1) + " ACCOUNT #" + accountInfo.getAccountId() + " BALANCE IS: $"
+//						+ accountInfo.getBalance() + " \n");
+//			
 
-				System.out.println(accountType.get(i) + " ACCOUNT #" + accountInfo.getAccountId() + " BALANCE IS: $"
-						+ accountInfo.getBalance() + " \n");
-			}
-
+			
 			System.out.println("WHAT WOULD YOU LIKE TO DO TODAY? \n " + "\n" + "1 - OPEN A NEW BANK ACCOUNT \n" + " \n"
 					+ "2 - DEPOSITE INTO AN EXSISTING ACCOUNT \n " + " \n" + "3 - WITHDRAW FROM AN EXISTING ACCOUNT \n "
 					+ "\n" + "4 - LOG-OUT");
@@ -150,9 +144,6 @@ public class BankMain {
 		}
 	}
 
-	
-
-	
 	public static void RegistrationPage() {
 		System.out.println("Please fill out the form");
 		String form = scan.nextLine();
@@ -182,9 +173,6 @@ public class BankMain {
 
 	}
 
-	
-
-	
 	public static void welcomePage() {
 		System.out.println("Welcome to Animo Bank! What would you like to do? \n" + "1 - Register \n"
 				+ "2 - Alreadly Registered? LogIn");

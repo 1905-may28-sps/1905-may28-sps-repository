@@ -5,6 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Scanner;
 
 import com.animoBank.pojo.BankAccount;
@@ -15,7 +19,7 @@ public class BankAccountDAO {
 
 	static Scanner scan = new Scanner(System.in);
 
-	public BankAccount findAccountById(int id) {
+	public BankAccount getOneAccountById(int id) {
 
 		BankAccount account = null;
 
@@ -33,6 +37,7 @@ public class BankAccountDAO {
 				account.setBalance(result.getDouble(2));
 				account.setOwner(result.getInt(3));
 				account.setAccType(result.getInt(4));
+				account.setType(result.getString(5));
 			}
 
 		} catch (SQLException e) {
@@ -42,7 +47,58 @@ public class BankAccountDAO {
 		return account;
 	}
 	
+//	public List<BankAccount> findAccountById(int id) {
+//
+//		List<BankAccount> account = new ArrayList<BankAccount>();
+//
+//		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+//
+//			String query = ("SELECT * FROM BANK_ACCOUNT where owner = ?");
+//			Statement st = conn.createStatement();
+//
+//			ResultSet result = st.executeQuery(query);
+//			while (result.next()) {
+//				BankAccount temp = new BankAccount( 
+//					result.getInt(1),
+//					result.getInt(2),
+//					result.getInt(3),
+//					result.getInt(4));
+//				account.add(temp);
+//			}
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return account;
+//	}
 	
+	public List<BankAccount> findAccountById(int id) {
+
+		List<BankAccount> account = new ArrayList<BankAccount>();
+
+		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+			String query = "SELECT * FROM BANK_ACCOUNT where owner = ?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet result = ps.executeQuery();
+			while (result.next()) {
+				BankAccount bnkAcc = new BankAccount();
+				bnkAcc.setAccountId(result.getInt(1));
+				bnkAcc.setBalance(result.getDouble(2));
+				bnkAcc.setOwner(result.getInt(3));
+				bnkAcc.setAccType(result.getInt(4));
+
+				account.add(bnkAcc);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return account;
+	}
 	
 	
 	public  void prepareBankAccount( BankUser user, int accType) {
@@ -82,11 +138,6 @@ public class BankAccountDAO {
 			ResultSet pk = ps.getGeneratedKeys();
 			pk.next();
 			acct.setAccountId(pk.getInt(1));
-		
-		
-		
-		
-		
 		
 		} catch (SQLException e) {
 			e.printStackTrace();

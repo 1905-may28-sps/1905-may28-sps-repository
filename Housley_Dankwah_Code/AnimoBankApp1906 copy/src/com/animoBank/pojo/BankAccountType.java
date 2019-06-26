@@ -31,7 +31,7 @@ public class BankAccountType {
 
 	@Override
 	public String toString() {
-		return "BankAccountType [accountTypeId=" + accountTypeId + ", type=" + type + "]";
+		return "BankAccountType accountTypeId=" + accountTypeId + ", type=" + type ;
 	}
 	
 

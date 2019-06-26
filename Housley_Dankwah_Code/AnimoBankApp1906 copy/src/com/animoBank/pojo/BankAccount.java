@@ -6,15 +6,17 @@ public class BankAccount {
 	private double balance;
 	private int owner;
 	private int accType;
+	private String type;
 	
 	public BankAccount() {}
 
-	public BankAccount(int accountId, double balance, int owner, int accType) {
+	public BankAccount(int accountId, double balance, int owner, int accType, String Type) {
 		super();
 		this.accountId = accountId;
 		this.balance = balance;
 		this.owner = owner;
 		this.accType = accType;
+		this.type = Type;
 	}
 
 	public int getAccountId() {
@@ -49,11 +51,19 @@ public class BankAccount {
 		this.accType = accType;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
-		return "BankAccount [accountId=" + accountId + ", balance=" + balance + ", owner=" + owner + ", accType="
-				+ accType + "]";
+		return "BankAccount [accountId=" + accountId + ", balance=" + balance + ", type=" + type + "]";
 	}
+	
 	
 
 
