@@ -61,7 +61,7 @@ public class BankAccount {
 
 	@Override
 	public String toString() {
-		return "BankAccount [accountId=" + accountId + ", balance=" + balance + ", type=" + type + "]";
+		return "YOUR " + type +  " ACCOUNT #" + accountId + " CURRENT BALANCE = $" + balance  ;
 	}
 	
 	

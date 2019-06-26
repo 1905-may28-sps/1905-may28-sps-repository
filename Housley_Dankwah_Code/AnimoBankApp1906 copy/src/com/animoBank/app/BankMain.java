@@ -49,24 +49,12 @@ public class BankMain {
 	
 	
 
-//	public BankUser LogIn() {
-//		System.out.println("Please Log In");
-//		String login = scan.nextLine();
-//		
-//		System.out.println("What is your Username?");
-//		String username = scan.nextLine();
-//		
-//		System.out.println("What is your Password");
-//		String usrPassword = scan.nextLine();
-//		
-//		BankUserDAO.findByUsername(username,usrPassword);
-//		
-//	}
+
 
 	
 	
 	public static void LogIn() {
-		System.out.println("Please Log In");
+		System.out.println("Please Log In \n");
 		String login = scan.nextLine();
 
 		System.out.println("What is your Username?");
@@ -78,25 +66,23 @@ public class BankMain {
 
 		System.out.println("Logging In ...");
 		newBankuser = bankUserDao.findByUsername(username, password);
+		
+		if(newBankuser == null) { 
+			System.out.println("INVALID USERNAME OR PASSWORD...PLEASE TRY AGAIN!");
+		LogIn();
+		} else {
 
 		logInSuccess(newBankuser);
-
-//			BankAccountType Acctype = bankAccountType.findAccTypeBy(accountInfo.getAccType());
-//			System.out.println("YOUR: \n " + Acctype.getType()+ " ACCOUNT #" + accountInfo.getAccountId() +
-//					" BALANCE IS: $" + accountInfo.getBalance());
-
-//			List<BankAccountType> Acctype = bankAccountType.findAccTypeBy(accountInfo.getAccType());
-//			System.out.println("YOUR: \n " + Acctype + " ACCOUNT #" + accountInfo.getAccountId() +
-//					" BALANCE IS: $" + accountInfo.getBalance());
-
+		}
 	}
+	
+	
 
 	public static void logInSuccess(BankUser newBankuser) {
 
-		System.out.println(
-				"WELCOME " + newBankuser.getFirstname() + " " + newBankuser.getLastname() + " " + "\n" + " \n");
+System.out.println( "WELCOME " + newBankuser.getFirstname() + " " + newBankuser.getLastname() + " " + "\n" + " \n");
 
-		BankAccount accountInfo = bankAccountDao.getOneAccountById(newBankuser.getUserId());
+		  BankAccount accountInfo = bankAccountDao.getOneAccountById(newBankuser.getUserId());
 		List<BankAccount> listAccountInfo = bankAccountDao.findAccountById(newBankuser.getUserId());
 
 		if (accountInfo == null) {
@@ -111,12 +97,10 @@ public class BankMain {
 
 			
 			
-//			System.out.println(accountType.get(0) + " ACCOUNT #" + accountInfo.getAccountId() + " BALANCE IS: $"
-//					+ accountInfo.getBalance() + " \n");
-//			System.out.println(accountType.get(1) + " ACCOUNT #" + accountInfo.getAccountId() + " BALANCE IS: $"
-//						+ accountInfo.getBalance() + " \n");
-//			
-
+			
+			
+			
+			
 			
 			System.out.println("WHAT WOULD YOU LIKE TO DO TODAY? \n " + "\n" + "1 - OPEN A NEW BANK ACCOUNT \n" + " \n"
 					+ "2 - DEPOSITE INTO AN EXSISTING ACCOUNT \n " + " \n" + "3 - WITHDRAW FROM AN EXISTING ACCOUNT \n "
@@ -176,11 +160,11 @@ public class BankMain {
 	public static void welcomePage() {
 		System.out.println("Welcome to Animo Bank! What would you like to do? \n" + "1 - Register \n"
 				+ "2 - Alreadly Registered? LogIn");
-		int register = scan.nextInt();
+		String register = scan.nextLine();
 
-		if (register == 1) {
+		if (register.equalsIgnoreCase("1")) {
 			RegistrationPage();
-		} else if (register == 2) {
+		} else if (register.equalsIgnoreCase("2")) {
 			LogIn();
 		} else {
 			System.out.println(register + " is not a valid option\n" + "please try again");

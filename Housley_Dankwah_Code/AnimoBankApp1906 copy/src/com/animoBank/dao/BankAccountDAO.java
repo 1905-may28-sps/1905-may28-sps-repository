@@ -47,31 +47,6 @@ public class BankAccountDAO {
 		return account;
 	}
 	
-//	public List<BankAccount> findAccountById(int id) {
-//
-//		List<BankAccount> account = new ArrayList<BankAccount>();
-//
-//		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
-//
-//			String query = ("SELECT * FROM BANK_ACCOUNT where owner = ?");
-//			Statement st = conn.createStatement();
-//
-//			ResultSet result = st.executeQuery(query);
-//			while (result.next()) {
-//				BankAccount temp = new BankAccount( 
-//					result.getInt(1),
-//					result.getInt(2),
-//					result.getInt(3),
-//					result.getInt(4));
-//				account.add(temp);
-//			}
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return account;
-//	}
 	
 	public List<BankAccount> findAccountById(int id) {
 
@@ -89,6 +64,8 @@ public class BankAccountDAO {
 				bnkAcc.setBalance(result.getDouble(2));
 				bnkAcc.setOwner(result.getInt(3));
 				bnkAcc.setAccType(result.getInt(4));
+				bnkAcc.setType(result.getString(5));
+
 
 				account.add(bnkAcc);
 			}
