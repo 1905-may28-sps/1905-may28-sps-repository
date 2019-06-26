@@ -72,8 +72,7 @@ DBMS_OUTPUT.PUT_LINE('hello world!!!!!!');
 end;
 /
 
-CREATE OR REPLACE PROCEDURE GET_GENRES
-(G_CURS OUT SYS_REFCURSOR)
+CREATE OR REPLACE PROCEDURE GET_GENRES(G_CURS OUT SYS_REFCURSOR)
 AS
 BEGIN 
 OPEN G_CURS FOR SELECT * FROM STORE_GENRE;
@@ -135,3 +134,60 @@ SONG_LIST SYS_REFCURSOR;
   
   /
   select NUM_BOOKS_BY_GENRE('Fantasy') from dual;
+  
+  
+  /
+  -- Write stored procedure to update data 
+  CREATE OR REPLACE PROCEDURE UPDATE_ARTIST(
+    ART_ID IN NUMBER,
+    ART_NAME IN VARCHAR2
+  )
+  AS
+  BEGIN
+    UPDATE ARTIST SET NAME = ART_NAME WHERE ARTISTID = ART_ID;
+    COMMIT;
+  END;
+/ 
+  
+  EXEC UPDATE_ARTIST(1000, 'TESTING AGAIN');
+  /
+  SELECT * FROM ARTIST;
+  
+  
+  -----------
+  select * from store_author;
+  
+  CREATE OR REPLACE PROCEDURE UPDATE_AUTHOR
+  (A_ID IN NUMBER, A_FN IN VARCHAR2, A_LN IN VARCHAR2, A_BIO IN VARCHAR2)
+  AS
+  BEGIN
+    UPDATE STORE_AUTHOR SET 
+    FIRST_NAME = A_FN, 
+    LAST_NAME = A_LN, 
+    BIO = A_BIO 
+    WHERE AUTHOR_ID = A_ID;
+    COMMIT;
+  END;
+  /
+
+
+EXEC UPDATE_AUTHOR(4, 'JK', 'Rowling', 'Award winning author');
+
+SELECT * FROM STORE_AUTHOR;  
+
+
+
+
+
+
+/* INDEX
+- Indexing is a way to optimize performance of a database by minimizing 
+the number of disk accesses required when a query is processed. 
+- An index or database index is a data structure which is used to quickly 
+locate and access the data in a database table.
+- indexes are automatically created for primary keys
+- too many of them can slow your db, only use for frequently queried columns
+*/
+create index plindex
+on playlisttrack(playlistid, trackid);
+  

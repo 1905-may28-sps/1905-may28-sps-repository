@@ -19,7 +19,8 @@ public class Demo {
 	
 	
 	public static void main(String[] args) {
-		menu();
+		//menu();
+		System.out.println(bookDao.getBookInfo());
 	}
 	
 	
@@ -69,7 +70,19 @@ public class Demo {
 		 */
 		Book b = new Book(title, isbn, price, genreId);
 		bookDao.save(b);
-		System.out.println("Great! Now we need to add the book's author(s)");
+		System.out.println("Great! Now we need to add the book's author(s), Below is the list of "
+				+ " our authors. Add authors to book, separated by , if there is more than 1.");
+		List<Author> authors = authDao.findAll();
+		for(Author a : authors) {
+			System.out.println(a);
+		}
+		String bookauths = scan.nextLine();
+		String[] authIds = bookauths.split(","); 
+		for(String id : authIds) {
+			bookDao.addBookAuthors(b.getId(), Integer.parseInt(id.trim()));
+		}
+		
+		
 	}
 	
 	public static List<Author> viewAuthors() {
