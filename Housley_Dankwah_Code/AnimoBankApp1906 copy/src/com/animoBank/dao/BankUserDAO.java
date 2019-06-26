@@ -36,9 +36,7 @@ public class BankUserDAO {
 		return bankUsers;
 	}
 
-//	public BankUser findById(int id) {
-//		BankUser bnkUsr
-//	}
+
 	public BankUser findById(int id) {
 		BankUser user = null;
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -109,4 +107,33 @@ public class BankUserDAO {
 		return user;
 	}
 
+
+	public BankUser registerMember(BankUser newMember) {
+		try (Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String query = "INSERT INTO BANK_USER (FIRSTNAME, LASTNAME, USERNAME, USR_PASSWORD) \n" + 
+					"VALUES (?, ?, ?, ?)";
+			String[] generatedKeys = {"User_Id"};
+			PreparedStatement ps = conn.prepareStatement(query, generatedKeys);
+			
+			ps.setString(1, newMember.getFirstname());
+			ps.setString(2, newMember.getLastname());
+			ps.setString(3, newMember.getUsername());
+			ps.setString(4, newMember.getUsrPassword());
+			
+			ps.executeUpdate();
+			
+			ResultSet pk = ps.getGeneratedKeys();
+			pk.next();
+			newMember.setUserId(1);
+		
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return newMember;
+	}
 }

@@ -41,6 +41,33 @@ public class BankAccountTypeDAO {
 		return accountType; 
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	public BankAccountType findAccTypeBy(int id) {
 //		BankAccountType accountType = null;
 //		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
