@@ -40,7 +40,7 @@ public class BankLogin {
 		}
 		else {
 			System.out.println("Username/Password Mismatch!");
-			System.out.println("Please Enter 1 to try again, 2 to register");
+			//System.out.println("Please Enter 1 to try again, 2 to register");
 			BankFirst.LogOrReg();	
 		}
 	};

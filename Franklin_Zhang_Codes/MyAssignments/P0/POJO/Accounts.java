@@ -70,12 +70,15 @@ public class Accounts {
 		Account_Type = account_Type;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Accounts [Account_id=" + Account_id + ", Account_num=" + Account_num + ", User_id=" + User_id
+//				+ ", Balance=" + Balance + ", Account_Type=" + Account_Type + "]";
+//	}
 	@Override
 	public String toString() {
-		return "Accounts [Account_id=" + Account_id + ", Account_num=" + Account_num + ", User_id=" + User_id
-				+ ", Balance=" + Balance + ", Account_Type=" + Account_Type + "]";
+		return "BankAccounts [Account Number=" + Account_num + ", Balance=" + Balance + ", Acct Type=" + Account_Type + "]";
 	}
-
 	
 
 

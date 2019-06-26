@@ -4,15 +4,12 @@ import java.util.Scanner;
 
 public class BankFirst {
 	public static void main(String[] args) {
-		System.out.println("Hello! Welcome to BankRev");
-		
 		LogOrReg();
 		//System.out.println(returningUsers);
-		
-		
 	}
 	
 	public static void LogOrReg() {
+		System.out.println("Hello! Welcome to BankRev");
 		System.out.println("Please enter 1 to Login or 2 to register");
 		Scanner in = new Scanner(System.in);//get input
 		String choice = in.nextLine();//change input
@@ -23,6 +20,7 @@ public class BankFirst {
 			break;
 		case "2": //System.out.println("register page");
 			BankRegister();
+			
 			break;
 		default: 
 			System.out.println("Incorrect Input, Please press 1 to Login or press 2 to Register");
@@ -42,4 +40,4 @@ public class BankFirst {
 		
 	}
 }
-
+//test

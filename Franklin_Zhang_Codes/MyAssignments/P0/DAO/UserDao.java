@@ -54,7 +54,8 @@ public class UserDao {
 			uSer.setUser_id(pk.getInt(1));
 		} 
 		catch (SQLIntegrityConstraintViolationException e)
-		{System.out.println("Username has been taken");}
+		{System.out.println("Username has been taken, returning user to Initial page.");
+		BankFirst.LogOrReg();}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -65,6 +66,7 @@ public class UserDao {
 
 	public Users returning(String un, String pw) {
 		// TODO Auto-generated method stub
+		//System.out.println("broke");
 		Users u=null;
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			String sql = "Select * From Bank_User where Username=? and Password =?";
@@ -72,7 +74,7 @@ public class UserDao {
 			ps.setString(1, un);
 			ps.setString(2, pw);
 			ResultSet pk = ps.executeQuery();
-	
+			//System.out.println("a");
 			while(pk.next()) {
 			u= new Users();
 			u.setUser_id(pk.getInt(1));
@@ -81,12 +83,12 @@ public class UserDao {
 			u.setUName(pk.getString(4));
 			u.setPWord(pk.getString(5));
 			}
-	
+	//System.out.println("b");
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		//System.out.println("c");
 		return u;
 	}
 	
