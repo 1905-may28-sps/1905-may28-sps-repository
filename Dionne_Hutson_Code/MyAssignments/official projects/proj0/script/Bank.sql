@@ -6,16 +6,26 @@ last_name varchar2(50) NOT NULL,
 ss number(10) unique Not null,
 username varchar2(50)UNIQUE NOT NULL
 );
-Create Table Bank_ACCOUNT(
+
+create Table Bank_ACCOUNT(
 Account_id number(10) Primary Key,
 account_type varchar(8) Not Null,
+constraint FK_Account_Type Foreign Key(account_type)
+references Bank_Type(type_NAME),
 account_name varchar(50) Not Null,
 account_balance number(10,2) Not Null,
 username varchar2(50) Not Null,
 constraint FK_Account_User Foreign Key(username)
 references Bank_User(username)
+
+);
+Create Table Bank_TYPE(
+TYPE_id number(10) Primary Key,
+TYPE_name varchar(50) UNIQUE Not Null
 );
 
+insert into BaNK_TYPE (TYPE_id,TYPE_NAME) VALUES (2,'SAVINGS') ;
+commit;
 --sequence stuff
 
 create sequence account_seq;
