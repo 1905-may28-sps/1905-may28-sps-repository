@@ -31,7 +31,7 @@ public class GenreDAO {
 		List<Genre> genres = new ArrayList<Genre>();
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			//do NOT include semi-colon in your sql command!
-			String query = "select * from store_genre";
+			String query = "select * from store_genre" ;
 			
 			//STATEMENT interface 
 			Statement statement = conn.createStatement();
@@ -77,7 +77,7 @@ public class GenreDAO {
 			while(rs.next()) {
 				Genre temp = new Genre();
 				temp.setId(rs.getInt(1));
-				temp.setName(rs.getString(2));
+				temp.setName(rs.getString("NAME"));
 				genres.add(temp);
 			}
 		} catch (SQLException e) {
@@ -89,6 +89,7 @@ public class GenreDAO {
 	public Genre findById(int id) {
 		Genre g = null;
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			conn.setAutoCommit(false);
 			String query  = "select * from store_genre where genre_id = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
@@ -98,6 +99,7 @@ public class GenreDAO {
 				g.setId(result.getInt(1));
 				g.setName(result.getString(2));
 			}
+			conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

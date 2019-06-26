@@ -64,7 +64,8 @@ public class AuthorDAO {
 			 * ResultSet returned from ps.getGeneratedKeys() method
 			 */
 			
-			String sql = "INSERT INTO STORE_AUTHOR (FIRST_NAME, LAST_NAME, BIO) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO STORE_AUTHOR (FIRST_NAME, LAST_NAME, BIO) "
+					+ "VALUES (?, ?, ?)";
 			String[] generatedKeys = {"AUTHOR_ID"}; //takes an array just in case we have more than 1 key
 			
 			PreparedStatement ps = conn.prepareStatement(sql, generatedKeys);
