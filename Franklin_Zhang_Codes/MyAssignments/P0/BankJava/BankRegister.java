@@ -33,5 +33,7 @@ public class BankRegister {
 		newUser.setUName(un);
 		newUser.setPWord(pw);
 		newUser = uDao.register(newUser);
+		System.out.println("Congrats! User Account created! redirecting to login....");
+		BankFirst.LogOrReg();
 	}
 }

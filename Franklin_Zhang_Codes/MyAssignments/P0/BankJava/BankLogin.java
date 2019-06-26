@@ -16,10 +16,10 @@ public class BankLogin {
 
 	
 	
-	public static void main(String[] args) {
-		checkUser();
-		//System.out.println(findAll());
-	}
+//	public static void main(String[] args) {
+//		checkUser();
+//		//System.out.println(findAll());
+//	}
 
 	public static void checkUser(){
 		System.out.println("Enter Username: ");
@@ -32,8 +32,17 @@ public class BankLogin {
 		Users returningUser = new Users();
 		returningUser.setUName(un);
 		returningUser.setPWord(pw);
-		returningUser=uDao.returning(returningUser);
-		System.out.println(returningUser);
+		returningUser=uDao.returning(un,pw);
+		//System.out.println(returningUser);
+		if(returningUser!=null) {
+			//System.out.println("Welcome " + returningUser.getFName()+" "+returningUser.getLName()); 
+			HomePage.CreateOrView(returningUser);
+		}
+		else {
+			System.out.println("Username/Password Mismatch!");
+			System.out.println("Please Enter 1 to try again, 2 to register");
+			BankFirst.LogOrReg();	
+		}
 	};
 }
 		

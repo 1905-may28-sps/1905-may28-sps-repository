@@ -62,43 +62,32 @@ public class UserDao {
 		return uSer;
 	}
 	//create returning user login statement warning** prone to injection
-	public Users returning(Users uSer) {
-		//Users u=null;
+
+	public Users returning(String un, String pw) {
+		// TODO Auto-generated method stub
+		Users u=null;
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			String sql = "Select * From Bank_User where Username=? and Password =?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, uSer.getUName());
-			ps.setString(2, uSer.getPWord());
+			ps.setString(1, un);
+			ps.setString(2, pw);
 			ResultSet pk = ps.executeQuery();
-			
-			//if(pk.next()) {
-			if(pk.next()) {
-			uSer.setUser_id(pk.getInt(1));
-			uSer.setFName(pk.getString(2));
-			uSer.setLName(pk.getString(3));
-			uSer.setUName(pk.getString(4));
-			uSer.setPWord(pk.getString(5));
+	
+			while(pk.next()) {
+			u= new Users();
+			u.setUser_id(pk.getInt(1));
+			u.setFName(pk.getString(2));
+			u.setLName(pk.getString(3));
+			u.setUName(pk.getString(4));
+			u.setPWord(pk.getString(5));
 			}
-		//	}
-			//System.out.println(pk.getInt(1));
-			//System.out.println("Login Success "+pk.getString(2));
-			//move screen to next page
-			
-			
-			
-//			}
-			else {
-				System.out.println("Username/Password mismatch, would you like to try again or create a new account");
-				System.out.println("Please Enter 1 to try again, 2 to register");
-				BankFirst.LogOrReg();
-			}
-			
+	
 		} 
-		
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return uSer;
+		
+		return u;
 	}
 	
 	
