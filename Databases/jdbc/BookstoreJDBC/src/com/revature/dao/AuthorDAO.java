@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -98,6 +99,23 @@ public class AuthorDAO {
 		return auth;
 	}
 	
+	
+	public void updateAuthor(Author a) {
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String sql = "{ call update_author(?, ?, ?, ?) }";
+			CallableStatement cs = conn.prepareCall(sql);
+			
+			cs.setInt(1, a.getId() );
+			cs.setString(2,  a.getFirstName());
+			cs.setString(3, a.getLastName());
+			cs.setString(4, a.getBio());
+			
+			cs.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
