@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,8 @@ import java.util.List;
 
 import com.revature.pojos.Genre;
 import com.revature.util.ConnectionFactory;
+
+import oracle.jdbc.OracleTypes;
 
 public class GenreDAO {
 	
@@ -65,10 +68,22 @@ public class GenreDAO {
 	 */
 	public List<Genre> getAllCallable(){
 		List<Genre> genres = new ArrayList<Genre>();
-		
-		
-		
-		return null;
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String query = "{ call get_genres(?) }";
+			CallableStatement cs = conn.prepareCall(query);
+			cs.registerOutParameter(1, OracleTypes.CURSOR);
+			cs.execute();
+			ResultSet rs = (ResultSet) cs.getObject(1);
+			while(rs.next()) {
+				Genre temp = new Genre();
+				temp.setId(rs.getInt(1));
+				temp.setName(rs.getString(2));
+				genres.add(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return genres;
 	}
 	
 	public Genre findById(int id) {

@@ -15,9 +15,9 @@ public class Demo {
 	
 	
 	public static void main(String[] args) {
-		Genre g = gDao.findById(1);
-		System.out.println(g);
-		System.out.println(gDao.update(g, "nameChange"));
+//		Genre g = gDao.findById(1);
+//		System.out.println(g);
+		System.out.println(gDao.getAllCallable());
 	}
 	
 	
