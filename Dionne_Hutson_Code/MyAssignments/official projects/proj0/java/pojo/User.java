@@ -78,7 +78,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return   fn + " " + ln + " Username=" + un + ", Password=" + pass + ", UserID=" + id ;
+		return   fn + " " + ln + " Username=" + un + ", Password=" + pass ;
 	}
 	
 	

@@ -11,8 +11,6 @@ import com.revature.util.ConnectionFactory;
 
 public class UserDAO {
 	
-
-	
 	static String fn;
 	static String ln;
 	static String un;
@@ -27,7 +25,7 @@ public class UserDAO {
 	
 	public static void crelogopt() {
 		
-		System.out.println("Enter 1 If You Want to Enroll with Our Bank Enter 2 If You Want to Log In");
+		System.out.println("Enter 1 If You Want to Enroll with Our Bank\tEnter 2 If You Want to Log In");
 		opt=scan.nextLine();	
 		
 		switch (opt) {
@@ -43,36 +41,36 @@ public class UserDAO {
 		System.out.println("Enter your last name");
 		ln=scan.nextLine();
 		System.out.println("Enter a unique username");
-		un=scan.nextLine();
-		System.out.println("Enter a password It could be as weak as you want, but remember this is a bank");
+		un=scan.nextLine().toLowerCase();
+		if(!validUsername(un.toLowerCase()))	{
+		System.out.println("Enter a password\tIt could be as weak as you want, but remember this is a bank");
 		pass=scan.nextLine();
 		
 //		User newUser=new User();
 		if(fn != null && !fn.equals("")&&ln != null && !ln.equals("")&&un != null && !un.equals("")&&pass != null && !pass.equals("")){
-		if(!validUsername(un))	{
+		
 			System.out.println("Registering your account...");
 		newUser.setFn(fn);
 		newUser.setLn(ln);
-		newUser.setUn(un);
+		newUser.setUn(un.toLowerCase());
 		newUser.setPass(pass);
 		newUser = save(newUser);
 		System.out.println("Your account has been created, with the information provided below");
 		System.out.println(newUser);
 		System.out.println("You are already logged in "+fn+" Please enjoy your banking experience");
-		postLog(un);
+		postLog(un.toLowerCase());
 		}
 		else {
-			System.out.println("Oh No! This username is taken\nLet's try again!");
-			createAcc();
-		}
-		}else {
 			System.out.println("Please Enter Valid Inputs");
 			crelogopt();
+		}}else {
+			System.out.println("Oh No! This username is taken\nLet's try again!");
+			createAcc();
 		}
 		
 		
 	}
-	
+
 	public static User save(User user) {
 try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			
@@ -104,11 +102,10 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	public static void logIn() {
 			scan=new Scanner(System.in);
 			System.out.println("Enter your username");
-			un=scan.nextLine();
+			un=scan.nextLine().toLowerCase();
 			System.out.println("Enter your password");
 			pass=scan.nextLine();
 			System.out.println("Logging in...");
-			
 			
 			if(validUsername(un)&&validPass(un,pass)) {
 			System.out.println("Welcome, "+un);
@@ -165,7 +162,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	}
 	 public static void postLog(String un) {
 		  scan=new Scanner(System.in);
-		  System.out.println("Woud you like to (1) Create a New Account, (2) View Specific Account Details (3) View All Accounts \n(4) Make a Deposit (5)Make a Withdrawl (6)Log Out");//account as in bank account
+		  System.out.println("Woud you like to (1) Create a New Account, (2) View Specific Account Details (3) View All Accounts \n\t\t(4) Make a Deposit (5)Make a Withdrawl (6)Log Out");//account as in bank account
 		  opt=scan.nextLine();	
 			
 			switch (opt) {
@@ -191,7 +188,7 @@ try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 		 newUser.setLn(null);
 		 newUser.setPass(null);
 		 newUser.setUn(null);
-		 System.out.println("Your money is safe with us "+un+" Goodbye!");
+		 System.out.println("Your money is safe with us "+un+" \tGoodbye!");
 		 break;
 		 case "2":
 			 default:

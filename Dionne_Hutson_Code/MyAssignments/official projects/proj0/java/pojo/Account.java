@@ -57,10 +57,4 @@ public class Account {
 		return  type+" Account " + id + ": Balance=" + bal + "\n";
 	}
 
-	
-	
-	
-	
-	
-
 }
