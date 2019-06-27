@@ -44,19 +44,24 @@ public class BankAccount {
 					List<User> users = uDao.findAll();
 					boolean bool = true;
 					String un;
+					int count;
 					do {
+						count = 0;
 						System.out.println("Enter a Username: ");
 						un = scan.nextLine();
+
 						for (User user : users) {
 							if (user.getUserName().equals(un)) {
-								System.out.println("Username exists!");
-								System.out.println("Enter a Username: ");
-								un = scan.nextLine();
-							} else
-								bool = false;
-						}
 
-					} while (bool);
+								count++;
+
+							} else
+								continue;
+						}
+						if (count > 0)
+							System.out.println("Username exists!");
+
+					} while (count != 0);
 
 					// CONFIRM PASSWORD
 					String pw;
