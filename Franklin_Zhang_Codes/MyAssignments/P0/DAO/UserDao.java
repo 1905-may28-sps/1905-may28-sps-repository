@@ -56,7 +56,8 @@ public class UserDao {
 		catch (SQLIntegrityConstraintViolationException e)
 		{System.out.println("Username has been taken, returning user to Initial page.");
 		BankFirst.LogOrReg();}
-		catch (SQLException e) {
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
 		

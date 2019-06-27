@@ -56,7 +56,8 @@ public class AccountDao {
 			System.out.println("Bank Account Created!!");
 		} 
 		catch (SQLIntegrityConstraintViolationException e)
-		{System.out.println("Balance cannot be negative");}
+		{System.out.println("Balance cannot be negative");
+		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -7,6 +7,7 @@ import POJO.Users;
 import DAO.AccountDao;
 import POJO.Accounts;
 import util.ConnectionFactory;
+import ExceptionBank.CustomException;
 
 public class HomePage {
 	public static void main(String[] args) {
@@ -152,6 +153,14 @@ public class HomePage {
 		System.out.println("How much would you like to deposit?");
 		String mon = in.nextLine();//change input
 		Double money=Double.parseDouble(mon);
+		try {
+			CustomException.validate(money);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Excepion occured" + e);
+			depositMoney(user);
+			
+		}
 		Accounts newAcct = new Accounts();
 		
 		newAcct.setBalance(money);
@@ -176,6 +185,14 @@ public class HomePage {
 		System.out.println("How much would u like to withdraw");
 		String mon = in.nextLine();//change input
 		Double money=Double.parseDouble(mon);
+		try {
+			CustomException.validate(money);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Excepion occured" + e);
+			withdrawMoney(user);
+			
+		}
 		Accounts newAcct = new Accounts();
 		newAcct.setBalance(-money);
 		newAcct.setAccount_num(AcctNum);	
