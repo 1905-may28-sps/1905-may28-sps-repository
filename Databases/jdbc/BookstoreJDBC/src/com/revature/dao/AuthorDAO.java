@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,7 +65,8 @@ public class AuthorDAO {
 			 * ResultSet returned from ps.getGeneratedKeys() method
 			 */
 			
-			String sql = "INSERT INTO STORE_AUTHOR (FIRST_NAME, LAST_NAME, BIO) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO STORE_AUTHOR (FIRST_NAME, LAST_NAME, BIO) "
+					+ "VALUES (?, ?, ?)";
 			String[] generatedKeys = {"AUTHOR_ID"}; //takes an array just in case we have more than 1 key
 			
 			PreparedStatement ps = conn.prepareStatement(sql, generatedKeys);
@@ -97,6 +99,23 @@ public class AuthorDAO {
 		return auth;
 	}
 	
+	
+	public void updateAuthor(Author a) {
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String sql = "{ call update_author(?, ?, ?, ?) }";
+			CallableStatement cs = conn.prepareCall(sql);
+			
+			cs.setInt(1, a.getId() );
+			cs.setString(2,  a.getFirstName());
+			cs.setString(3, a.getLastName());
+			cs.setString(4, a.getBio());
+			
+			cs.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
