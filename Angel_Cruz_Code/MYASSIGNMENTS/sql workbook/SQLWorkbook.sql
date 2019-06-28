@@ -89,11 +89,28 @@ SELECT * FROM ARTIST;
 
 --2.5 LIKE
 -- select all invoices with a billing address like "T%"
+select * from invoice;
+INSERT INTO Invoice (InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingCountry, BillingPostalCode, Total) VALUES (1, 2, TO_DATE('2009-1-1 00:00:00','yyyy-mm-dd hh24:mi:ss'), 'Theodor-Heuss-Straße 34', 'Stuttgart', 'Germany', '70174', 1.98);
+INSERT INTO Invoice (InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingCountry, BillingPostalCode, Total) VALUES (2, 4, TO_DATE('2009-1-2 00:00:00','yyyy-mm-dd hh24:mi:ss'), 'Ullevålsveien 14', 'Oslo', 'Norway', '0171', 3.96);
+INSERT INTO Invoice (InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingCountry, BillingPostalCode, Total) VALUES (3, 8, TO_DATE('2009-1-3 00:00:00','yyyy-mm-dd hh24:mi:ss'), 'Grétrystraat 63', 'Brussels', 'Belgium', '1000', 5.94);
+INSERT INTO Invoice (InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingState, BillingCountry, BillingPostalCode, Total) VALUES (4, 14, TO_DATE('2009-1-6 00:00:00','yyyy-mm-dd hh24:mi:ss'), '8210 111 ST NW', 'Edmonton', 'AB', 'Canada', 'T6G 2C7', 8.91);
+INSERT INTO Invoice (InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingState, BillingCountry, BillingPostalCode, Total) VALUES (5, 23, TO_DATE('2009-1-11 00:00:00','yyyy-mm-dd hh24:mi:ss'), '69 Salem Street', 'Boston', 'MA', 'USA', '2113', 13.86);
 
+INSERT INTO Invoice (InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingCountry, BillingPostalCode, Total) VALUES (4, 2, TO_DATE('2009-2-11 00:00:00','yyyy-mm-dd hh24:mi:ss'), 'Theodor-Heuss-Straße 34', 'Stuttgart', 'Germany', '70174', 13.86);
+
+select customerid,billingaddress,billingcity 
+from invoice 
+where billingaddress like 'T%';
+commit;
 --2.6 BETWEEN
 --select all invoices that have a total between 15 and 50
+select * from invoice
+where total between 15 and 50;
+ 
 --select all employees hired between 1st of june 2003 and 1st of march 2004
-
+select * from employee
+where hiredate between
+'01-JUN-03' and '01-MAR-04';
 --2.7 DELETE 
 --delete a record in customer table where the name is robert walter(There may be constraints that
 --rely on this, find out how to resolve them).
