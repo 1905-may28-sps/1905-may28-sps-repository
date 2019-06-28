@@ -121,16 +121,41 @@ public class BankApp {
 			} else{
 			System.out.println("Here are your account details.\n"
 				+ existingAccounts);
-			System.out.println("\nWhich account would you like to access?\nPlease choose using Account ID.\n");
-			AccountIDAccess();
+			System.out.println("Would you like to create a new account or access your account?");
+			createOrAccess();
 				}
 	}
 		
+		public static void createOrAccess() {
+			System.out.println(
+					"\n1. Create a new account\n"
+					+"2. Access Account\n");
+			try {
+				int option = Integer.parseInt(scan.nextLine());
+				
+				switch(option) {
+				case 1: savingOrCheckingMenu();
+				break;
+				case 2: List<Account> existingAccounts = AccountDao.showAccountDetails(existingUserForAccounts.getUserId());
+				System.out.println("Here are your account details.\n"
+						+ existingAccounts);
+				System.out.println("\nWhich account would you like to access?\nPlease choose using Account ID.\n");
+				AccountIDAccess();				
+				break;
+				default: System.out.println("\n****************************************\nInvalid.  Try Again.\n****************************************\n");
+					createOrAccess();
+				break;
+				}
+			}catch(NumberFormatException e) {
+				System.out.println("\n****************************************\nPlease enter a number!\n****************************************\n");
+					createOrAccess();
+			}
+		}
+	
 		public static void savingOrCheckingMenu() {
 			System.out.println(
 					"\n1. Checking Account\n"
 					+ "2. Savings Account\n");
-		
 		try {
 			int option = Integer.parseInt(scan.nextLine());
 			
@@ -168,7 +193,10 @@ public class BankApp {
 			newCheck.setAccountType(ca);
 			newCheck = accountDao.newAccount(newCheck);
 			newCheckingAcc = newCheck;
-			System.out.println("\nHere is your Checking Account balance information.\n" + newCheck);
+			System.out.println("\nHere is your new Checking Account balance information.\n" + newCheck);
+			List<Account> existingAccounts = AccountDao.showAccountDetails(existingUserForAccounts.getUserId());
+			System.out.println("Here are your account details.\n"
+					+ existingAccounts);
 		System.out.println("\nWhich account would you like to access?\nPlease choose using Account ID.\n");
 			AccountIDAccess();
 		}
@@ -184,7 +212,10 @@ public class BankApp {
 			newSav.setAccountType(sa);
 			newSav = accountDao.newAccount(newSav);
 			newSavingsAcc = newSav;
-			System.out.println("\nHere is your Savings Account balance information.\n" + newSav);
+			System.out.println("\nHere is your new Savings Account balance information.\n" + newSav);
+			List<Account> existingAccounts = AccountDao.showAccountDetails(existingUserForAccounts.getUserId());
+			System.out.println("Here are your account details.\n"
+					+ existingAccounts);
 			System.out.println("\nWhich account would you like to access?\nPlease choose using Account ID.\n");
 			AccountIDAccess();
 		}
@@ -215,10 +246,16 @@ public class BankApp {
 		private static void withdraw() {
 			System.out.println("How much money would you like to withdraw?");
 			double withd = Double.parseDouble(scan.nextLine());
-			double withdrawAcc = accountDao.withdrawMoney(withd,existingAccountHolder.getUserId(),existingAccountHolder.getAccountType());
-			System.out.println("Thank you for withdrawing" + withdrawAcc);
+			int uid = existingAccountHolder.getUserId();
+			int accid = existingAccountHolder.getAccountId();
+			while((accountDao.checkWithdraw(uid, accid)-withd)<0) {
+				System.out.println("Withdrawal denied.\nYou are attempting to withdraw more than your available balance.\nPlease resubmit your withdrawal request.");
+				withd = Double.parseDouble(scan.nextLine());
+			}
+			double withdrawAcc = accountDao.withdrawMoney(withd,existingAccountHolder.getUserId(),existingAccountHolder.getAccountId());
+			System.out.println("Thank you for withdrawing $" + withdrawAcc);
 			Double withdrawBal=existingAccountHolder.getBalance()-withdrawAcc;
-			System.out.println("Here is your remaining balance: " + withdrawBal);
+			System.out.println("Here is your remaining balance: $" + withdrawBal);
 			System.out.println("Would you like to logout or choose another checking or savings account?");
 			logoutMenu();
 		}
@@ -226,10 +263,10 @@ public class BankApp {
 		private static void deposit() {
 			System.out.println("How much money would you like to deposit?");
 			double depd = Double.parseDouble(scan.nextLine());
-			double depositAcc = accountDao.depositMoney(depd,existingAccountHolder.getUserId(),existingAccountHolder.getAccountType());
-			System.out.println("Thank you for depositing" + depositAcc);
+			double depositAcc = accountDao.depositMoney(depd,existingAccountHolder.getUserId(),existingAccountHolder.getAccountId());
+			System.out.println("Thank you for depositing $" + depositAcc);
 			Double depositBal=existingAccountHolder.getBalance()+depositAcc;
-			System.out.println("Here is your remaining balance: " + depositBal);
+			System.out.println("Here is your remaining balance: $" + depositBal);
 			System.out.println("Would you like to logout or choose another checking or savings account?");
 			logoutMenu();
 		}

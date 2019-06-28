@@ -92,12 +92,12 @@ public class AccountDao {
 		return bku;
 	}
 
-	public Double withdrawMoney(double bal, Integer uid, String acctype) {
+	public Double withdrawMoney(double bal, Integer uid, Integer accid) {
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			CallableStatement stmt = conn.prepareCall("{call WITHDRAW(?,?,?)}");
 			stmt.setDouble(1, bal);
 			stmt.setInt(2, uid);
-			stmt.setString(3, acctype);
+			stmt.setInt(3, accid);
 			stmt.execute();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -105,12 +105,29 @@ public class AccountDao {
 		return bal;
 	}
 	
-	public Double depositMoney(double bal, Integer uid, String acctype) {
+	public double checkWithdraw(Integer uid, Integer accid) {
+		double withbal=0;
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+	        PreparedStatement ps = conn.prepareStatement("SELECT * FROM bank_account WHERE userid=? AND accountid=?");
+	        ps.setInt(1, uid);
+	        ps.setInt(2, accid);
+	        ResultSet rs = ps.executeQuery();
+	        while (rs.next()) {
+	        	double bal = rs.getDouble(2);
+	        	withbal=bal;
+	        }
+	        }catch(SQLException e) {
+		e.printStackTrace();
+	}
+		return withbal;
+	}
+	
+	public Double depositMoney(double bal, Integer uid, Integer accid) {
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			CallableStatement stmt = conn.prepareCall("{call DEPOSIT(?,?,?)}");
 			stmt.setDouble(1, bal);
 			stmt.setInt(2, uid);
-			stmt.setString(3, acctype);
+			stmt.setInt(3, accid);
 			stmt.execute();
 		}catch(SQLException e) {
 			e.printStackTrace();
