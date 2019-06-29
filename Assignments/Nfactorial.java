@@ -15,33 +15,15 @@
  * 
  */
 
-public class Nfactorial {
-
-	public static void main(String[] args) {
-//		use a for loop to iterate through the loop
-//		and into a switch statement which would output the factorials
-		for(int num = 0 ; num < 5; num ++) {
-			return num *= num;
-		switch (num) {
-		  case 1:
-		    System.out.println("1!" + num);
-		    break;
-		  case 2:
-		    System.out.println("2!" + num);
-		    break;
-		  case 3:
-		    System.out.println("3" + num);
-		    break;
-		  case 4:
-		    System.out.println("4" + num);
-		    break;
-		  case 5:
-		    System.out.println("5" + num);
-		    break;
-		  
-		}
-		}
-			
-	}
-
-}
+package com.revature.nfacorial;
+//Q4 compute Nfactorial
+class Nfactorial{  
+	 public static void main(String args[]){  
+	  int i,fact=1;  
+	  int number=54;    
+	  for(i=1;i<=number;i++){    
+	      fact=fact*i;    
+	  }    
+	  System.out.println("Factorial of "+number+" is: "+fact);    
+	 }  
+	}  
