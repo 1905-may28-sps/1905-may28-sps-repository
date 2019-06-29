@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import com.revature.daos.AccountDao;
 import com.revature.daos.UserDao;
-import com.revature.exceptions.NullAccountIdException;
+import com.revature.exceptions.NullAccountDetailsException;
 import com.revature.pojos.Account;
 import com.revature.pojos.User;
 
@@ -180,14 +180,14 @@ public class BankApp {
 				int accessAccountID = Integer.parseInt(scan.nextLine());
 				Account chosenAccount = AccountDao.chosenAccountDetail(accessAccountID);
 				if(chosenAccount == null) {
-					throw new NullAccountIdException("Null Account Details because of nonexistent chosen Account ID");
+					throw new NullAccountDetailsException("Null Account Details because of nonexistent chosen Account ID");
 				}
 				existingAccountHolder=chosenAccount;
 				System.out.println("Here are your account details." + chosenAccount);
 				withdrawOrDepositMenu();
 				 
 			}
-			catch(NullAccountIdException e)
+			catch(NullAccountDetailsException e)
 			{
 				System.out.println("Please choose only an available Account ID");
 	            System.out.println(e.getMessage());
