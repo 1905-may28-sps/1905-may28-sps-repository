@@ -151,10 +151,9 @@ public class AccountDAO {
 			
 			
 			}  catch (SQLIntegrityConstraintViolationException e) {
-						System.out.println("insufficient funds available.");
+						System.out.println("Insufficient funds available.");
         }
 		catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		return acc;

@@ -29,11 +29,11 @@ CREATE TABLE STORE_BOOK_AUTHOR(
 --login creds
 select * from bank_user
 
-SELECT * FROM  bank_account
+SELECT * FROM  bank_account_
 SELECT * FROM  bank_account_type
-t
+
 --updating account id
-insert into bank_account (balance, user_id, type_id) values( 1900,22,3);
+insert into bank_account_ (balance, user_id, type_id) values( 1900,22,3);
 
 --bank account info after login
 select bank_account.balance,bank_account.account_number,bank_account_type.type
@@ -69,6 +69,7 @@ commit;
 create sequence acc_num_seq;
 create sequence acc_seq;
 
+drop trigger acc_num_trigger;
 
  CREATE OR REPLACE TRIGGER ACC_NUM_TRIGGER -- Create [or replace] trigger triggerName -- declare and name
    BEFORE INSERT ON bank_account_ -- [before/after] [dml command] on [table] -- when will this execute
@@ -80,10 +81,22 @@ create sequence acc_seq;
       FROM DUAL;
    END;
 /
+
+ CREATE OR REPLACE TRIGGER ACC_TRIGGER -- Create [or replace] trigger triggerName -- declare and name
+   BEFORE INSERT ON bank_account_ -- [before/after] [dml command] on [table] -- when will this execute
+   FOR EACH ROW -- necessary to change table row values 
+   BEGIN
+      -- here is where we write what we want to do when trigger is fired 
+      SELECT acc_num_SEQ.NEXTVAL --  ++GENRE_SEQ
+      INTO :NEW.account_id-- : represents a placeholder value
+      FROM DUAL;
+   END;
+/
+
 insert into bank_account ()
 
 select * from bank_user
-baSELECT * FROM  bank_account_type
+SELECT * FROM  bank_account_type
 
 -- the insert into bank account + bank_user? so we just ask for the user id 
 -- and type id but how would we know the id so select the id, and the balance  
@@ -120,35 +133,35 @@ rollback;
 --
 insert into bank_account (balance,user_id, type_id, username) values( 1900,23,3,'madDusty');
 insert into bank_account_ (username, balance, account_number,type_id) values( 'madDusty', 1000,10000000,3);
+
+
 select * from bank_account_
 
-drop table bank_account
 
 create table bank_account(
 account_id number(10) primary key,
-username varchar2(50) unique not null,
+username varchar2(50)  not null,
 user_id number(10) not null,
 account_number number( 10) not null,
-balance number (6,2),
+balance number (6,2) check (balance >=0),
 type_id number(10),
-constraint fk_bank_username
-foreign key username
+constraint fk_bank_username foreign key (username)
 references bank_user(username),
-constraint fk_bank_user_id
-foreign key user_id
+constraint fk_bank_user_id foreign key (user_id)
 references bank_user(user_id)
 );
 
 CREATE TABLE BANK_ACCOUNT_ (
   account_ID NUMBER(10) PRIMARY KEY,
-  username VARCHAR2(50) UNIQUE NOT NULL,
+  username VARCHAR2(50)  NOT NULL,
   user_id VARCHAR2(256) NOT NULL,
   balance NUMBER(6, 2) NOT NULL,
   account_number NUMBER(10),
   CONSTRAINT FK_Bank_username FOREIGN KEY(username)
   REFERENCES bank_user(username)
 );
-ALTER SYSTEM FLUSH SHARED_POOL;
+
+drop table bank_account_;
 
 create table bank_account_table(
 account_IDs NUMBER(10) PRIMARY KEY,
@@ -174,6 +187,7 @@ where account_id =4;
 
 select * from bank_user
 select * from bank_account_
+
 --change this back to user_id
 select bank_user.first_name, bank_user.last_name, bank_account_.balance,bank_account_.account_number, bank_account_type.type
 			   		from bank_account_
@@ -207,18 +221,86 @@ END;
 /
 
 commit;
-
-CREATE OR REPLACE PROCEDURE DEP (USERNAME IN VARCHAR2,BALANCE IN NUMBER) 
-IS
+--for this deposit leave copy the doa and withdraw method
+CREATE OR REPLACE PROCEDURE DEP (acc_num in number, dep IN NUMBER) 
+as
 BEGIN
 UPDATE BANK_ACCOUNT_
-  SET BALANCE=(BALANCE+depo)
-  WHERE USERNAME=USER; 
+  SET BALANCE=(BALANCE+dep)
+  WHERE account_number= acc_num; 
   COMMIT;
 END;
 /
+SELECT * FROM bank_user
+select * from bank_account_
+
+      CREATE OR REPLACE PROCEDURE WITHDRAW (acc_num in number, dep IN NUMBER) 
+as
+BEGIN
+UPDATE BANK_ACCOUNT_
+  SET BALANCE=(BALANCE-dep)
+  WHERE account_number= acc_num; 
+  COMMIT;
+END;
+/
+SELECT * FROM bank_user
+select * from bank_account_
+
+--checking the procedure
+execute withdraw (9876543, 1);      
+
+--adding constraint so withdraw won't be less than 0
+ALTER TABLE bank_account_
+ADD CONSTRAINT CHE_BAL 
+CHECK (balance >=0);
 
 
+            insert into bank_account_ (username, balance, type_id) values (ab, 100,2)
             
             
-                     
+            
+            
+     type_id number(10) not null;
+            
+            ALTER TABLE bank_account_
+  ADD        constraint fk_bank_user_id foreign key (user_id)
+references bank_user(user_id);
+            
+            
+            
+            select * from bank_account_;
+            select* from bank_user;
+            
+       alter table
+   bank_account_
+modify
+(
+   user_id    number(10)
+);              
+
+insert into bank_account_ ()
+
+alter table bank_account_ modify (user_id null);
+
+commit;
+
+
+
+
+ select * from bank_account_;
+ 
+ 
+ select* from bank_user;
+
+
+
+
+
+
+
+
+
+
+
+
+

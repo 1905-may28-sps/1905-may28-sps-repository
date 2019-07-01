@@ -26,10 +26,6 @@ public class app {
 
 	public static void main(String[] args)  throws MyException {
 		
-			//		Genre g = gDao.findById(1);
-		//	User u = userDao.findById(1);
-		//System.out.println(u);
-		//loginUser();
 		welcomeView();
 		
 		
@@ -63,57 +59,32 @@ public class app {
 
 	 public static void signIn() {
 		 
-		System.out.println("sign in method here");
 		
 		
-		System.out.println("Enter your username: ");
+		System.out.println("Enter your Username: ");
 		String un = scan.nextLine();
-		
+	
 		Valuser(un);
+		un=un.replaceAll("\\s", "").toLowerCase();
 		
-		System.out.println("Enter your password: ");
+		System.out.println("Enter your Password: ");
 		String pw = scan.nextLine();
 		
 		Valpass(pw);
 		
 		
 		if(Valpass(pw)) {
-			System.out.println("login succesful!");
+			System.out.println("Login Successful!");
 			
 			dashboard();
 		}
 		
-		
-		//System.out.println("Log in Successful:");
-		/*
-		 * User logUser = new User();
-		logUser.setUserName(un);
-		logUser.setPassword(pw);
-		
-		logUser = userDao.login(logUser);
-		System.out.println(logUser);
 	
-		//System.out.println("Welcome: " );
-		
-			
-		//accUser = accDao.getLogin(accUser);
-		/*
-		 * 		authUser = userDao.login(authUser);
-		 //System.out.println(cred);
-	
-	Display();
-		
-		 */
-		 
 		
 
 	}
 	
 	
-	
-	 
-
-
 	static void createAccount() {
 
 		  	System.out.println("Follow these instructions to create an account");
@@ -215,7 +186,7 @@ public class app {
 			  }
 			 }
 			 catch(Exception e) {
-				System.out.println("wrong username"); 
+				System.out.println("Wrong username"); 
 				signIn();
 			 }
 			return valid;
@@ -357,11 +328,11 @@ public class app {
 
 	static void addAccount() {
 		
-		System.out.println("enter your username again");
+		System.out.println("Enter your username again.");
 		String un = scan.nextLine();
 		Valuser(un);	
 		
-		System.out.println("how much for your initial deposit ? \n $");
+		System.out.println("How much for your initial deposit ? \n $");
 		double init = Double.parseDouble(scan.nextLine());
 		
 		TypeDAO tdao = new TypeDAO();
@@ -382,7 +353,8 @@ public class app {
 	    newacc.setTypeId(accid);
 	    newacc = accDao.save(newacc);
 	    
-	    System.out.println(newacc);
+	    //System.out.println(newacc);
+	    System.out.println("Account Number: " + newacc.getId());
 	   System.out.println("Your new balance: $"+ newacc.getBalance() );
 	    dashboard();
 	    
@@ -405,7 +377,7 @@ public class app {
 	        newwith.setBalance(amount);
 	        newwith.setAccountNumber(accNum);
 	        newwith= AccDao.withdraw(newwith);
-	    System.out.println("You withdrew $"+ newwith.getBalance());
+	    System.out.println("You withdrew or attempted to withdraw $"+ newwith.getBalance());
 
 	        
 		dashboard();
@@ -429,23 +401,9 @@ public class app {
             
         newdep = AccDao.deposit(newdep);
 	   System.out.println("You deposited: $"+ newdep.getBalance() );
+	   //System.out.println("Your new balance is : $" + );
 
-	/*
-	System.out.println("enter new account balance");
-	double depo = Double.parseDouble(scan.nextLine());
-	
-	Account a = accDao.findByUser("eliKid05");
-	System.out.println(a);
-	System.out.println(accDao.update(a, depo));
-	*/
-	dashboard();
-    	
-    	
-    	
-    	
-
-	  
- 	
+	dashboard();	
 	}
 }
 

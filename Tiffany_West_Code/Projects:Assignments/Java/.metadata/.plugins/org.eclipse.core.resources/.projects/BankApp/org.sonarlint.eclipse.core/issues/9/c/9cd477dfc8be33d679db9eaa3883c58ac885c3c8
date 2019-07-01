@@ -1,0 +1,48 @@
+
+Xsquid:S1148;"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHˆRMINORZVULNERABILITY
+xsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(şò˜ÄH•RMAJORZ
+CODE_SMELL
+š"squid:ClassVariableVisibilityCheck"SMake balance a static final constant or non-public and provide accessors if needed.(‹ÖôôHƒRMINORZVULNERABILITY
+]squid:S1444"-Make this "public static balance" field final(‹ÖôôHıRMINORZVULNERABILITY
+˜"squid:ClassVariableVisibilityCheck"QMake table a static final constant or non-public and provide accessors if needed.(ù¶¸ÖHRMINORZVULNERABILITY
+dsquid:S1135ƒ"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿH“RINFOZ
+CODE_SMELL
+asquid:S1444",Make this "public static typeId" field final( ¢¡¬üÿÿÿÿHÿRMINORZVULNERABILITY
+]squid:S1444"(Make this "public static id" field final(°¹—‚ùÿÿÿÿHüRMINORZVULNERABILITY
+j
+squid:S106z"9Replace this use of System.out or System.err by a logger.(ÓË©“ıÿÿÿÿH‘RMAJORZ
+CODE_SMELL
+bsquid:S1444"3Make this "public static accountNumber" field final(îÙúHşRMINORZVULNERABILITY
+…squid:CommentedOutCodeLine«"<This block of commented-out lines of code should be removed.(Ø„½Õÿÿÿÿÿ8ùÇ§¹-HşRMAJORZ
+CODE_SMELL
+Ysquid:S1148„"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH‹RMINORZVULNERABILITY
+j
+squid:S1067"9Replace this use of System.out or System.err by a logger.(×æûşúÿÿÿÿHRMAJORZ
+CODE_SMELL
+`squid:S1172".Remove this unused method parameter "accUser".(ñµËğûÿÿÿÿHRMAJORZ
+CODE_SMELL
+[squid:S1444"+Make this "public static table" field final(ù¶¸ÖHûRMINORZVULNERABILITY
+Xsquid:S1148o"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHŠRMINORZVULNERABILITY
+Ysquid:S1148²"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHŒRMINORZVULNERABILITY
+š"squid:ClassVariableVisibilityCheck"NMake id a static final constant or non-public and provide accessors if needed.(°¹—‚ùÿÿÿÿH‚RMINORZVULNERABILITY
+"squid:ClassVariableVisibilityCheck"RMake typeId a static final constant or non-public and provide accessors if needed.( ¢¡¬üÿÿÿÿH…RMINORZVULNERABILITY
+jsquid:UselessImportCheck
+"+Remove this unused import 'java.util.List'.(Õë±ÄøÿÿÿÿH‡RMINORZ
+CODE_SMELL
+ksquid:S1135±"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8ùÇ§¹-HıRINFOZ
+CODE_SMELL
+csquid:S1135:"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿHRINFOZ
+CODE_SMELL
+Xsquid:S1148Z"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH‰RMINORZVULNERABILITY
+†squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ºªõÖHRMINORZ
+CODE_SMELL
+m
+squid:S106š"9Replace this use of System.out or System.err by a logger.(ÖÉèÃ8¯éÑª¹-HÅRMAJORZ
+CODE_SMELL
+Ÿ"squid:ClassVariableVisibilityCheck"YMake accountNumber a static final constant or non-public and provide accessors if needed.(îÙúH„RMINORZVULNERABILITY
+e
+squid:S106}"9Replace this use of System.out or System.err by a logger.(òªŞÀH’RMAJORZ
+CODE_SMELL
+`squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ùÇ§¹-HûRMINORZVULNERABILITY
+¢squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ñµËğûÿÿÿÿH€RMINORZ
+CODE_SMELL
