@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
@@ -21,6 +22,15 @@ public class HelloServlets extends GenericServlet{
 	@Override
 	public void service(ServletRequest req, ServletResponse res) 
 			throws ServletException, IOException {
+		
+		/*
+		 * as we see, this service method is of void return type, 
+		 * meaning we do not RETURN our responses. we must use 
+		 * PrintWriter in order to append a response body to our 
+		 * response object
+		 */
+		PrintWriter writer = res.getWriter();
+		writer.write("Hello, Servlet world!!!");
 		
 	}
 
