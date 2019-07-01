@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,8 @@ import java.util.List;
 
 import com.revature.pojos.Genre;
 import com.revature.util.ConnectionFactory;
+
+import oracle.jdbc.OracleTypes;
 
 public class GenreDAO {
 	
@@ -28,7 +31,7 @@ public class GenreDAO {
 		List<Genre> genres = new ArrayList<Genre>();
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			//do NOT include semi-colon in your sql command!
-			String query = "select * from store_genre";
+			String query = "select * from store_genre" ;
 			
 			//STATEMENT interface 
 			Statement statement = conn.createStatement();
@@ -57,9 +60,36 @@ public class GenreDAO {
 		return genres;
 	}
 	
+	/*
+	 * CALLABLE STATEMENT
+	 * - statement that we use to call stored procedures and functions 
+	 * - must use registerOutParameter function for OUT params
+	 * - can still use setInt/String/etc for in params or output values 
+	 */
+	public List<Genre> getAllCallable(){
+		List<Genre> genres = new ArrayList<Genre>();
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String query = "{ call get_genres(?) }";
+			CallableStatement cs = conn.prepareCall(query);
+			cs.registerOutParameter(1, OracleTypes.CURSOR);
+			cs.execute();
+			ResultSet rs = (ResultSet) cs.getObject(1);
+			while(rs.next()) {
+				Genre temp = new Genre();
+				temp.setId(rs.getInt(1));
+				temp.setName(rs.getString("NAME"));
+				genres.add(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return genres;
+	}
+	
 	public Genre findById(int id) {
 		Genre g = null;
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			conn.setAutoCommit(false);
 			String query  = "select * from store_genre where genre_id = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
@@ -70,7 +100,7 @@ public class GenreDAO {
 				g.setId(result.getInt(1));
 				g.setName(result.getString(2));
 			}
-
+<
 		} catch (SQLException e) {
 
 			e.printStackTrace();

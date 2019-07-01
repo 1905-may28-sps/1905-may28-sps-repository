@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>servlets-101</display-name>
+	<!-- App accessible at localhost:[port]/[context-root]/[endpoint] -->
+
+	<!-- WEB.XML aka Deployment Descriptor is the file with which we configure 
+		our web apps Here, we indicate which url-patterns (endpoints) will map requests 
+		to respective servlets and configure other details like parameters and when 
+		to initialize our servlets -->
+
+	<!-- SERLVET CONTEXT parameter(s) applied to every servlet in the context 
+		of this application -->
+	<context-param>
+		<param-name>envVar</param-name>
+		<param-value>This is servlet context, this variable is accessible
+  		from any servlet in this app</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>MyFirstServlet</servlet-name>
+		<servlet-class>com.revature.servlet.HelloServlets</servlet-class>
+		<!-- SERVLET CONFIG is configuration information (parameters) for a particular 
+			servlet -->
+		<init-param>
+			<param-name>servletVar</param-name>
+			<param-value>This is servlet config</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MyFirstServlet</servlet-name>
+		<url-pattern>/greeting</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>
