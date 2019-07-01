@@ -127,7 +127,7 @@ function addThisProperties(c, d){
     console.log(this.a + this.b + c + d);
 }
 
-addThisProperties(); //prints NaN
+addThisProperties(1, 2); //prints NaN
 
 var thisObj = { a: 10, b: 20};
 

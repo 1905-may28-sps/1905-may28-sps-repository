@@ -7,3 +7,17 @@ function testHoisting(){
 testHoisting();
 
 console.log(`printing x outside of function test Hoisting - ${x}`)
+
+function test(){
+    console.log("first");
+}
+
+
+function test(b){
+    console.log("second");
+}
+
+
+test();
+
+console.log(this);
