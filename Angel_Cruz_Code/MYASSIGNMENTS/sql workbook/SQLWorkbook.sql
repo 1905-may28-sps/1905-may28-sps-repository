@@ -126,3 +126,54 @@ INSERT INTO Artist (ArtistId, Name) VALUES (3, 'Aerosmith');
 INSERT INTO Artist (ArtistId, Name) VALUES (4, 'Alanis Morissette');
 INSERT INTO Artist (ArtistId, Name) VALUES (5, 'Alice In Chains');
 commit;
+--2.7 Delete
+--Delete a record with constraints 
+DROP TABLE customer where customer id=8 CASCADE CONSTRAINTS;
+
+
+
+-- 4.1 Basic Stored Procedures 
+
+CREATE OR REPLACE PROCEDURE GET_FNLNEMP(FLEMP_CURS OUT SYS_REFCURSOR)
+IS
+BEGIN
+OPEN FLEMP_CURS FOR SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE;
+END;
+/
+VAR RC REFCURSOR
+EXECUTE GET_FNLNEMP(:RC)
+PRINT RC;
+
+-- 4.3 Stored Procedure Output Parametes 
+
+CREATE OR REPLACE PROCEDURE VIEW_CUSTNMCOMP(CUSTNMCOMP_CURS OUT SYS_REFCURSOR, C_ID IN NUMBER)
+IS
+BEGIN
+OPEN CUSTNMCOMP_CURS FOR SELECT FIRSTNAME, LASTNAME, COMPANY FROM CUSTOMER WHERE CUSTOMERID = C_ID;
+END;
+/
+VAR RC2 REFCURSOR
+EXECUTE VIEW_CUSTNMCOMP(:RC2, 1)
+PRINT RC2;
+
+
+-- 5 Transactions
+
+START TRANSACTION;
+DELETE FROM INVOICE WHERE INVOICEID=60; 
+COMMIT;
+
+5.2 might not work/error ->
+select* from customer;
+create or replace procedure Insert_customer
+(c_id in number, fnm in varchar2,lnm in varchar2, cp in varchar2, addre in varchar2, ct in varchar2, st in varchar2, cty in varchar2,
+zp in varchar2, phn in varchar2, fx in varchar2, eml in varchar2, sri in number)
+as
+begin
+  START TRANSACTION;
+ insert into customer(CUSTOMERID, FIRSTNAME,LASTNAME,COMPANY,ADDRESS,CITY,STATE,COUNTRY,POSTALCODE,PHONE,FAX,EMAIL,SUPPORTREPID)
+ VALUES(C_ID, FNM, LNM, CP, ADDRE,CT,ST,CTY,ZP,PHN,FX,EML,SRI);
+ COMMIT;
+end;
+/
+
