@@ -19,6 +19,7 @@ import javax.servlet.ServletResponse;
  */
 public class HelloServlets extends GenericServlet{
 
+
 	static int counter = 0;
 	
 	/*
