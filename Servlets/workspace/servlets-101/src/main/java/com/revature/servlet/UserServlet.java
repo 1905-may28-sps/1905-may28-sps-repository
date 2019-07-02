@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pojos.User;
 import com.revature.service.DummyUserService;
 
-@WebServlet("/users")
+//@WebServlet("/users")
 public class UserServlet extends HttpServlet{
 	
 	static DummyUserService service = new DummyUserService();

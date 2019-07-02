@@ -35,6 +35,14 @@
 		<servlet-name>MyFirstServlet</servlet-name>
 		<url-pattern>/greeting</url-pattern>
 	</servlet-mapping>
-
+	
+	<servlet>
+		<servlet-name>UServlet</servlet-name>
+		<servlet-class>com.revature.servlet.UserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UServlet</servlet-name>
+		<url-pattern>/users</url-pattern>
+	</servlet-mapping>
 
 </web-app>
