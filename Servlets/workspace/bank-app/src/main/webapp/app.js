@@ -91,4 +91,5 @@ function register(){
 
 function loadHomePage(){
 	console.log('load home function');
+	
 }
