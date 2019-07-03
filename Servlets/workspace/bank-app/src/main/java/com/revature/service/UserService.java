@@ -12,5 +12,12 @@ public class UserService {
 	public List<User> findAllUsers(){
 		return userDao.findAll();
 	}
+	
+	public User login(String username, String password) {
+		User u = userDao.getByUsername(username);
+		if(u == null) return null;
+		if(u.getPassword().equals(password)) return u;
+		return null;
+	}
 
 }
