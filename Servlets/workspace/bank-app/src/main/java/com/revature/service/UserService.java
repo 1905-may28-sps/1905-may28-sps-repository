@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.revature.data.UserDAO;
 import com.revature.pojos.User;
+import com.revature.pojos.UserInformation;
 
 public class UserService {
 	
@@ -18,6 +19,10 @@ public class UserService {
 		if(u == null) return null;
 		if(u.getPassword().equals(password)) return u;
 		return null;
+	}
+	
+	public UserInformation getInfo(User u) {
+		return userDao.getUserInfo(u);
 	}
 
 }

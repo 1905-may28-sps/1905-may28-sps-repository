@@ -8,11 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.pojos.AccountInfo;
 import com.revature.pojos.User;
+import com.revature.pojos.UserInformation;
 import com.revature.util.ConnectionFactory;  
 
 public class UserDAO {
-	
+
 	public List<User> findAll(){
 		List<User> Users = new ArrayList<User>();
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
@@ -33,14 +35,14 @@ public class UserDAO {
 		}
 		return Users;
 	}
-	
+
 	public User getByUsername(String username) {
 		User u = null;
-		
+
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			String sql = "select * from bank_user where lower(username) = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
 			ps.setString(1, username.toLowerCase()); //compare without case
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -52,13 +54,44 @@ public class UserDAO {
 				u.setUsername(rs.getString(4));
 				u.setPassword(rs.getString(6));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return u;
-		
+
+	}
+
+	public UserInformation getUserInfo(User u) {
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String sql = "select acc.accountid, acc.balance, type.name " + 
+					"from bank_account acc " + 
+					"inner join bank_account_type type " + 
+					"on acc.ACCOUNTTYPE = type.typeid " + 
+					"where acc.USERID = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, u.getId());
+
+			UserInformation info = new UserInformation();
+			info.setUser(u);
+			List<AccountInfo> accounts = new ArrayList<AccountInfo>();
+
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				AccountInfo temp = new AccountInfo();
+				temp.setId(rs.getInt(1));
+				temp.setBalance(rs.getDouble(2));
+				temp.setType(rs.getString(3));
+				accounts.add(temp);
+			}
+			info.setAccounts(accounts);
+			return info;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
