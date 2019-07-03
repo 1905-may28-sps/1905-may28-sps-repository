@@ -36,7 +36,6 @@ public class ConnectionFactory {
 			//the following line of code instantiates the driver by its class name
 			try {
 				prop.load(new FileReader("C:/Users/Genesis/my_git_repos/1905-may28-sps-repository/Servlets/workspace/bank-app/src/main/java/com/revature/util/db.properties"));
-				
 				String driver = prop.getProperty("driver");
 				String url = prop.getProperty("url");
 				String pw = prop.getProperty("pwd"); 
