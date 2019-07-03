@@ -63,8 +63,32 @@ function loadRegisterView(){
 
 function login(){
 	console.log('login user function');
+	var user = {
+			username: $('#username').val(),
+			password: $('#password').val()
+	}
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				console.log('logged in user' );
+				var user = JSON.parse(xhr.responseText);
+				//do stuff w user if you want
+				loadHomePage();
+			}
+			else if(xhr.status == 204){
+				$('#message').html('Sorry, invalid credentials! Please try again');
+			}
+		}
+	}
+	xhr.open('POST', 'login');
+	xhr.send(JSON.stringify(user));
 }
 
 function register(){
 	console.log('register user function');
+}
+
+function loadHomePage(){
+	console.log('load home function');
 }
