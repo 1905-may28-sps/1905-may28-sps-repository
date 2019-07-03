@@ -38,12 +38,33 @@ function loadLoginView(){
     xhr.send();
 }
 
-function login(){
-	
-}
 
 function loadRegisterView(){
 	/*
 	 * does same thing as load login view just for register page
 	 */
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 ){
+            if(xhr.status == 200){
+                $('#view').html(xhr.responseText);
+                $('#addUser').on('click', register);
+                $('#goToLogin').on('click', loadLoginView);
+            } else if (xhr.status >= 500){
+                console.log('server error');
+            }
+
+        }
+    }
+    xhr.open('GET', 'register.view');
+    xhr.send();
+}
+
+
+function login(){
+	console.log('login user function');
+}
+
+function register(){
+	console.log('register user function');
 }
