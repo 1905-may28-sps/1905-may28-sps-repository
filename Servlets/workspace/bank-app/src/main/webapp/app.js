@@ -23,15 +23,27 @@ function loadLoginView(){
             if(xhr.status == 200){
                 console.log('loaded login view');
                 $('#view').html(xhr.responseText);
-
+               
                 //ADD EVENT LISTENER TO LOGIN PAGE SO WE CAN DO THINGS WITH IT
-
+                
+                $('#doLogin').on('click', login);
+                $('#goToRegister').on('click', loadRegisterView);
             } else if (xhr.status >= 500){
                 console.log('server error');
             }
 
         }
     }
-    xhr.open('GET', 'loadLogin');
+    xhr.open('GET', 'login.view');
     xhr.send();
+}
+
+function login(){
+	
+}
+
+function loadRegisterView(){
+	/*
+	 * does same thing as load login view just for register page
+	 */
 }
