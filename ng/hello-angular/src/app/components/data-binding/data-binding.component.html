@@ -1,0 +1,36 @@
+<div class="jumbotron">
+<h1>About Data Binding</h1>
+<i>Angular supports data binding, which is a mechanism 
+  for coordinating parts of a template(HTML) with parts 
+  of a component (TS). We no longer use DOM element selection 
+  with angular, we simply add binding markup to our template 
+  HTML which will tell angular how to connect both sides
+</i>
+<hr>
+<h3>Interpolation</h3>
+<i>Interpolation is a way to display data from components
+  in our templates, we can also use the same syntax for template
+  expressions
+</i>
+A few examples:
+<ul>
+  <li> 2 + 2 = {{ 2 + 2 }} </li>
+ <li> text from component: {{ text }} </li>
+ <li> Count = {{ count }}</li>
+ <li> More math: {{19849823/9}}</li>
+ <li> Using Math.random in TS file: {{someNum}}</li>
+ <li> Expressions : {{ count > 0 ? 'count is greater than 0' : 'no its not'}} </li>
+</ul>
+
+<h6>Some rules about template expressions, they cannot be used with the following:</h6>
+<ul>
+  <li>
+    assignment operators (=, +=, -=, etc)
+  </li>
+  <li>operators such as new, typeof, instanceof</li>
+  <li>chaining expressions with ; or ,</li>
+  <li>increment (++) or decrement (--)
+  </li>
+  <li>no support for | & </li>
+</ul>
+</div>
