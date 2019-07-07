@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javaScriptHomework</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <p id="timeInput" style="float: right"></p>
+    <br> <br><br>
+    <h4>1. Fibonacci </h4>
+    <i>Define function: fib(n)
+        Return the nth number in the fibonacci sequence.
+    </i>
+    <input type="text" id="fibNums" class="form-control col-4">
+    <br>
+    <button class="btn btn-primary" id="fibArraySubmit">Find Fibonacci!</button>
+    <i>the Fibonacci value for the input # is = </i>
+    <span id="fibOutput"></span>
+    <br>
+    <hr><br>
+
+    <h4>2. Bubble Sort </h4>
+    <i>Define function: bubbleSort(numArray)
+        Use the bubble sort algorithm to sort the array.
+        Return the sorted array.
+    </i>
+    <input type="text" id="sortNums" class="form-control col-8">
+    <button class="btn btn-primary" id="sortArraySubmit">Sort Array!</button>
+    <i>The sort of your input is = </i>
+    <span id="sortOutput"></span>
+    <br>
+    <hr><br>
+
+    <h4>3. Reverse String</h4>
+    <i>Define function: reverseStr(someStr)
+        Reverse and return the String.
+    </i>
+    <input type="text" id="inputStr" class="form-control col-8">
+    <button class="btn btn-primary" id="reverseStrSubmit">Reverse String!</button>
+    <i>The revese of what you input is = </i>
+    <span id="reverseStrOutput"></span>
+    <br>
+    <hr><br>
+
+    <h4>4. Factorial </h4>
+    <i>Define function: factorial(someNum)
+        Use recursion to compute and return the factorial of someNum.
+    </i>
+    <input type="text" id="factorialInput" class="form-control col-8">
+    <button class="btn btn-primary" id="factorialSubmit">Find Factorial!</button>
+    <i>The factorial of what you input is = </i>
+    <span id="factorialOutput"></span>
+    <br>
+    <hr><br>
+
+    <h4>5. Substring</h4>
+    <i>Define function substring(someStr, length, offset)
+        Return the substring contained between offset and (offset + length) inclusively.
+        If incorrect input is entered, use the alert function and describe why the input was incorrect.
+    </i>
+    <input type="text" id="inputString" class="form-control col-8">
+    <input type="text" id="start" placeholder="starting word" class="form-control col-4">
+    <input type="text" id="end" placeholder="end word" class="form-control col-4">
+    <button class="btn btn-primary" id="subStrSubmit">Get SubString!</button>
+    <i>The substring of your string is = </i>
+    <span id="subStrOutput"></span>
+    <br>
+    <hr><br>
+
+    <h4>6. Even Number</h4>
+    <i>
+        Define function: isEven(someNum)
+        Return true if even, false if odd.
+        Do not use % operator.
+    </i>
+    <input type="text" id="numberInput" class="form-control col-8">
+    <button class="btn btn-primary" id=evenNumberSubmit>Find Factorial!</button>
+    <i>The factorial of what you input is = </i>
+    <span id="evenNumberOutput"></span>
+    <br>
+    <hr><br>
+
+    <h4>7. Palindrome</h4>
+    <i>
+        Define function isPalindrome(someStr)
+        Return true if someStr is a palindrome, otherwise return false
+    </i>
+    <input type="text" id="palInput" class="form-control col-8">
+    <button class="btn btn-primary" id=palindromeSubmit>Find Factorial!</button>
+    <i>The factorial of what you input is = </i>
+    <span id="palindromeOutput"></span>
+    <br>
+    <hr><br>
+
+
+   <h4>11. Splice Element</h4>
+    <i>Define function spliceElement(someArr)
+    Print length
+    Splice the third element in the array.
+    Print length
+    The lengths should be one less than the original length.
+</i>
+    <input type="text" id="spliceInput" class="form-control col-8">
+    <input type="text" id="spliceElementNum" class="form-control col-8">
+    <button class="btn btn-primary" id=spliceSubmit>Find Factorial!</button>
+    <i>The factorial of what you input is = </i>
+    <span id="originalArr"></span>
+    <p><i>this is the splice value = </i><span id="spliceOutput"></span>
+    </p>
+    <br>
+    <hr><br>
+
+
+
+
+    <h4>12. Defining an object using a constructor</h4>
+    <i>
+        Define a function Person(name, age)
+        The following line should set a Person object to the variable john:
+        var john = new Person("John", 30);
+    </i>
+    <input type="text" id="person1First" class="form-control col-4">
+    <br>
+    <input type="text" id="person1Last" class="form-control col-4">
+    <br>
+    <input type="text" id="person1Age" class="form-control col-2">
+    <button class="btn btn-primary" id=person1Submit>Add New Person!</button>
+    <i> = </i>
+    <span id="person1Output"></span>
+    <br>
+    <hr><br>
+
+    <h4>13. Defining an object using an object literal</h4>
+    <i>
+        Define function getPerson(name, age)
+        The following line should set a Person object to the variable john:
+        var john = getPerson("John", 30);
+    </i>
+    <input type="text" id="personFirst" class="form-control col-4">
+    <br>
+    <input type="text" id="personLast" class="form-control col-4">
+    <br>
+    <input type="text" id="personAge" class="form-control col-2">
+    <button class="btn btn-primary" id=personSubmit>Add New Person!</button>
+    <i> = </i>
+    <span id="personOutput"></span>
+    <br>
+    <hr><br>
+
+
+
+    Define function getPerson(name, age)
+    The following line should set a Person object to the variable john:
+    var john = getPerson("John", 30);
+
+
+    <h4>15. Descending order</h4>
+    <i>
+        Your task is to make a function that can take any non-negative
+        integer as a argument and return it with its digits in descending
+        order. Essentially, rearrange the digits to create the highest possible number.
+    </i>
+    <input type="text" id="descInput" class="form-control col-8">
+    <button class="btn btn-primary" id=descOrderSubmit>Find Factorial!</button>
+    <i>The factorial of what you input is = </i>
+    <span id="descOrderOutput"></span>
+    <br>
+    <hr><br>
+
+
+
+
+
+
+
+    <script type="text/Javascript" src="../javaScriptHomework/jsHw.js"></script>
+
+
+
+
+
+</body>
+
+</html>
