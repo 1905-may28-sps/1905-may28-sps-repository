@@ -1,0 +1,6 @@
+<h1><i>Login</i></h1>
+<input type="text" id="ERS_USERNAME" placeholder="Username" class="form-control col-6">
+<input type="password" id="password" placeholder="Password" class="form-control col-6">
+<button id="doLogin" class="btn btn-primary">Log In!</button>
+<span id="message"></span>
+<div id="register"> <i>Need an account? Click here to register</i></div>

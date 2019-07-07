@@ -1,0 +1,20 @@
+package com.revature.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/login")// a special way to make end point when http is extend/ is to give an adress no slash is to acess adress
+public class FormServlet extends HttpServlet{
+	@Override//method signiture\|/
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//super.doPost(req, resp);
+		System.out.println("Do post");
+	}
+
+}

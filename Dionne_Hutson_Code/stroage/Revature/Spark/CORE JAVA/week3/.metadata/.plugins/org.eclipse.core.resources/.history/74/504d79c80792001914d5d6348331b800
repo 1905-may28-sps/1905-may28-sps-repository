@@ -1,0 +1,11 @@
+
+public class Employee {
+
+	public static void main(String[] args) {
+		List<Person> list =new ArrayList<>();
+		
+		// TODO Auto-generated method stub
+
+	}
+
+}

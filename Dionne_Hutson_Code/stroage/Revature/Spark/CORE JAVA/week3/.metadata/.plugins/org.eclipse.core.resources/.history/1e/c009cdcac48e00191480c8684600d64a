@@ -1,0 +1,16 @@
+package com.revature.io;
+
+import java.io.Serializable;
+
+public class SerializablePerson implements Serializable{
+	private String name;
+	private String doc;
+	private long ssn;
+	public SerializablePerson(java.lang.String name, pricate string, long ssn) {
+		super();
+		this.name = name;
+		String = string;
+		this.ssn = ssn;
+	}
+
+}

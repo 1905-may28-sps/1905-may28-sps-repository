@@ -1,0 +1,34 @@
+package src.com.revature.pojo;
+
+import java.math.BigDecimal;
+
+public class ERS_REIMBURSEMENT {
+	private int id;
+	private BigDecimal amount;
+	//private time////////////////////////////
+	//private time////////////////////////////
+	private String descrp;
+	//private PIC////////////
+	private int emp;
+	private int man;
+	private int status;
+	private int type;
+	public ERS_REIMBURSEMENT() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	/*NEED TO FIXpublic ERS_REIMBURSEMENT(int id, BigDecimal amount, String descrp, int emp, int man, int status, int type) {
+		super();
+		this.id = id;
+		this.amount = amount;
+		this.descrp = descrp;
+		this.emp = emp;
+		this.man = man;
+		this.status = status;
+		this.type = type;
+	} NEED TO FIX*/
+	
+	
+	
+
+}

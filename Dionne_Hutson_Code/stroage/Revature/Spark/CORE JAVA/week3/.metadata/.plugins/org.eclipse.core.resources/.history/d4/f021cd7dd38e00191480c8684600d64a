@@ -1,0 +1,21 @@
+package com.revature.thread;
+
+public class UnderstandingThreads {
+
+	public static void main(String[] args) {
+		System.out.println("Main method , starting point of an ap in java. the main method in a "
+				+ "multithread application is considered to be the strating point f a main thread. "
+				+ "we can spin up(branch off) into seperate threads. the staring point of the new thread is the run method");
+		extendsThreadClassThread();
+		
+	}
+	static void extendThreadClassThread() {
+		ExtendsThread et=new ExtendsThread();
+		et.run();
+		for(int i=0;i<25;i++) {
+			sysout(i+": MainThread");
+		}
+		
+	}
+
+}

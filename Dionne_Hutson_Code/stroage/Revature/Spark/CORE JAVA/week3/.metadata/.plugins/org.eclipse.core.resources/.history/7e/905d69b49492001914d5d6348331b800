@@ -1,0 +1,20 @@
+package com.revature.data;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+public class Data {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub'
+		try {
+			new FileReader("Data.txt");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	
+}

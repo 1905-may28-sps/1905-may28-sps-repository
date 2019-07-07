@@ -1,0 +1,9 @@
+package com.revature.pojo;
+
+public class Book {
+
+	public Book() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

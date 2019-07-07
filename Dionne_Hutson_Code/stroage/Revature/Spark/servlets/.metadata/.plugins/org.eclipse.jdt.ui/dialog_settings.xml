@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="org.eclipse.jdt.ui.codeformatter.line_wrapping_tab_page.preview_line_width" value="40"/>
+	<item key="org.eclipse.jdt.uiformatter_page.last_focus_index" value="262"/>
+	<item key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_width" value="1199"/>
+	<item key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_height" value="728"/>
+	<item key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_x" value="116"/>
+	<item key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_y" value="0"/>
+	<item key="org.eclipse.jdt.uiformatter_pagemodify_dialog.sash_form_left_width" value="522"/>
+	<item key="org.eclipse.jdt.uiformatter_pagemodify_dialog.sash_form_rigth_width" value="636"/>
+	<item key="org.eclipse.jdt.uiformatter_page.preference_tree_expansion" value="00.0..0.0.000.0.0.0.0.0.0.0.0.0..00.0.0.0.0.0.0.0.0.0.0..00.0.0.0.0.0.0..00.0.0.0..00.0.0.0...10.0..000.0..0.0..000.0.0.0.0.0.0.0.0.0.0...00.0..0.."/>
+	<item key="org.eclipse.jdt.uiformatter_page.preference_scroll_position" value="0"/>
+	<section name="JavaElementSearchActions">
+	</section>
+	<section name="completion_proposal_size">
+	</section>
+	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="OptionalMessageDialog.hide.">
+		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
+	</section>
+	<section name="NewClassWizardPage">
+		<item key="create_constructor" value="false"/>
+		<item key="create_unimplemented" value="true"/>
+	</section>
+	<section name="SourceActionDialog.methods">
+		<item key="VisibilityModifier" value="1"/>
+		<item key="FinalModifier" value="false"/>
+		<item key="SynchronizedModifier" value="false"/>
+		<item key="Comments" value="false"/>
+		<item key="LimitElements" value="false"/>
+		<item key="IgnoreDefault" value="true"/>
+		<item key="StringStyle" value="0"/>
+		<item key="LimitValue" value="10"/>
+		<item key="SkipNull" value="false"/>
+		<item key="ToStringTemplateSelected" value="0"/>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item key="SortOrdering" value="false"/>
+		<item key="RemoveFinal" value="false"/>
+	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="641"/>
+		<item key="DIALOG_Y_ORIGIN" value="26"/>
+		<item key="DIALOG_WIDTH" value="528"/>
+		<item key="DIALOG_HEIGHT" value="696"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="SourceActionDialog.constructors">
+		<item key="VisibilityModifier" value="1"/>
+		<item key="FinalModifier" value="false"/>
+		<item key="SynchronizedModifier" value="false"/>
+		<item key="Comments" value="false"/>
+	</section>
+	<section name="GenerateConstructorUsingFieldsSelectionDialog">
+		<item key="OmitCallToSuper" value="false"/>
+	</section>
+	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="432"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="519"/>
+		<item key="DIALOG_HEIGHT" value="678"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="AddUnimplementedConstructorsDialog">
+		<item key="OmitCallToSuper" value="false"/>
+	</section>
+	<section name="DialogBounds_AddUnimplementedConstructorsDialog">
+		<item key="DIALOG_X_ORIGIN" value="432"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="519"/>
+		<item key="DIALOG_HEIGHT" value="627"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="DialogBounds_GenerateToStringDialog">
+		<item key="DIALOG_X_ORIGIN" value="99"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="516"/>
+		<item key="DIALOG_HEIGHT" value="691"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
+		<item key="GoIntoTopLevelTypeAction.isChecked" value="false"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_WIDTH" value="350"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_HEIGHT" value="300"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_SIZE" value="true"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION" value="false"/>
+	</section>
+	<section name="NewPackageWizardPage">
+		<item key="create_package_info_java" value="false"/>
+	</section>
+	<section name="OverrideMethodDialog">
+		<item key="showtypes" value="true"/>
+	</section>
+	<section name="DialogBounds_OverrideMethodDialog">
+		<item key="DIALOG_X_ORIGIN" value="428"/>
+		<item key="DIALOG_Y_ORIGIN" value="30"/>
+		<item key="DIALOG_WIDTH" value="526"/>
+		<item key="DIALOG_HEIGHT" value="513"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+public class Roman {
+	static Scanner scan;
+	static int num;
+	
+	
+
+	public static void main(String[] args) {
+		System.out.println("Enter a Integer number?");
+		scan=new Scanner(System.in);
+		num=scan.nextInt();
+		// TODO Auto-generated method stub
+		roman(num);
+
+	}
+	static void roman(int num) {
+		String roman="";
+		int rem=num%10;//ones place
+		int div=(num/10)-(rem/10);//10s place
+		if (div>10) {// 10s place for numbers over 10s plaec ie 100 1000 etc
+			div=div%10;
+		}
+		int hundreds=(num/100)-((num%100)/100);
+	
+		System.out.println(hundreds);
+		
+			switch(rem) {
+			case 9:
+			roman=roman.concat("I");
+			case 0:
+				roman=roman.concat("X");
+				break;
+			case 8:
+				roman=roman.concat("I");
+			case 7:
+				roman=roman.concat("I");
+			case 6:
+				roman=roman.concat("I");
+		case 5:
+			roman="V"+roman;
+			break;
+		case 4:
+			roman="IV";
+			break;
+		case 3:
+			roman="I"+roman;
+		case 2:
+			roman="I"+roman;
+		case 1:
+			roman="I"+roman;
+			break;
+		}
+			System.out.println(div);
+			if (div>1) {
+				if (div<10) {
+					
+				switch(div) {
+				case 9:
+					roman="XC"+roman;
+					
+						break;
+					case 8:
+						roman="X"+roman;
+					case 7:
+						roman="X"+roman;
+					case 6:
+						roman="X"+roman;
+				case 5:
+					roman="L"+roman;
+					break;
+				case 4:
+					roman="XL"+roman;
+					break;
+				case 3:
+					roman="X"+roman;
+				case 2:
+					roman="X"+roman;
+				case 1:
+					roman="X"+roman;
+					break;
+				}
+				
+				
+				
+					
+				}
+				
+			}
+			
+			
+			System.out.println(roman);
+		}
+		
+		
+		
+	}
+	
+	
+	
+

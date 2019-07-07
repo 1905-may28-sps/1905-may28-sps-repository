@@ -1,0 +1,16 @@
+/*Write a program that calculates the simple interest on the principal, rate of interest and number of years provided by the user. Enter principal, rate and time through the console using the Scanner class. 
+Interest = Principal* Rate* Time
+ * 
+ * */
+public class Interest {
+static int pri;
+static int rate;
+static int time;
+static Scanner scan;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+
+	}
+
+}

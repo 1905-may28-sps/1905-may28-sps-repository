@@ -1,0 +1,17 @@
+package com.revature.junit;
+
+public class Methods {
+	public int add(int... nums) {
+		return 0;
+	}
+	
+	public boolean anagram(String a, String b) {
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,44 @@
+package com.revature.interfacemethods;
+
+public class ImplClass implements Question15 {
+	
+
+	public ImplClass() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int addition(int... args) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int subtraction(int... args) {
+		int sum=0;
+		for(int x:args) {
+		return sum;
+		}
+		
+	}
+
+	@Override
+	public double division(int... args) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double multiplication(int... args) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+
+}

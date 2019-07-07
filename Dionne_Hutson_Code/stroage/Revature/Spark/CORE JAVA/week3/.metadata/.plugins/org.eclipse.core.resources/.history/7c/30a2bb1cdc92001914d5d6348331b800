@@ -1,0 +1,21 @@
+package com.revature.interfacemethods;
+
+public interface Question15 {
+	public static int addition(int...args) {
+		return 0;
+	}
+	public static int subtraction(int...args) {
+	
+		return 0;
+	}
+	public static double division(int...args) {
+		
+		return 0;
+	}
+	public static double multiplication(int...args) {
+		return 0;
+	}
+	
+	
+
+}

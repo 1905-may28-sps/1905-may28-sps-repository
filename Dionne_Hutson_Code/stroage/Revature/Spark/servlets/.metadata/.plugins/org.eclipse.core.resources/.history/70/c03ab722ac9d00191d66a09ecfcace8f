@@ -1,0 +1,6 @@
+
+<input type="text" id="firstname" placeholder="firstname" class="form-control col-6">
+<input type="text" id="lastname" placeholder="lastname" class="form-control col-6">
+<input type="text" id="username" placeholder="Username" class="form-control col-6">
+<input type="password" id="password" placeholder="Password" class="form-control col-6">
+ <button id="doLogin" class="btn btn-primary">Log In!</button>

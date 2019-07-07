@@ -1,0 +1,17 @@
+import static org.junit.Assert.*;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class ReverseStringTest {
+
+	@Test
+	public final void testRevString() {
+		String failureMessage = "fails";
+		String expected = "DXXVII";
+		String actual = revString();
+
+		Assert.assertEquals(failureMessage, expected, actual);
+	}
+
+}

@@ -1,0 +1,14 @@
+import java.util.Comparator;
+
+public class EmpComp implements Comparator<EmpComp>{
+	
+	@Override
+	public int compare(EmpComp o1, EmpComp o2) {
+		// TODO Auto-generated method stub
+		return o1.name.compareTo(o2.name);
+	}
+	
+	
+	
+}
+

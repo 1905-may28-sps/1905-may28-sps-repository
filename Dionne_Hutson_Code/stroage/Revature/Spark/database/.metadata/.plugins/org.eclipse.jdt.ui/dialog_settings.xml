@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Users\blank\Documents\Revature\Spark\CORE JAVA\jar"/>
+	<section name="JavaElementSearchActions">
+	</section>
+	<section name="BuildPathsPropertyPage">
+		<item key="pageIndex" value="2"/>
+	</section>
+	<section name="OptionalMessageDialog.hide.">
+		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
+	</section>
+	<section name="NewClassWizardPage">
+		<item key="create_constructor" value="true"/>
+		<item key="create_unimplemented" value="false"/>
+	</section>
+	<section name="completion_proposal_size">
+	</section>
+	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="SourceActionDialog.constructors">
+		<item key="VisibilityModifier" value="1"/>
+		<item key="FinalModifier" value="false"/>
+		<item key="SynchronizedModifier" value="false"/>
+		<item key="Comments" value="false"/>
+	</section>
+	<section name="GenerateConstructorUsingFieldsSelectionDialog">
+		<item key="OmitCallToSuper" value="false"/>
+	</section>
+	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="432"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="519"/>
+		<item key="DIALOG_HEIGHT" value="678"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="AddUnimplementedConstructorsDialog">
+		<item key="OmitCallToSuper" value="false"/>
+	</section>
+	<section name="DialogBounds_AddUnimplementedConstructorsDialog">
+		<item key="DIALOG_X_ORIGIN" value="432"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="519"/>
+		<item key="DIALOG_HEIGHT" value="627"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="SourceActionDialog.methods">
+		<item key="LimitElements" value="false"/>
+		<item key="IgnoreDefault" value="true"/>
+		<item key="StringStyle" value="3"/>
+		<item key="LimitValue" value="10"/>
+		<item key="SkipNull" value="false"/>
+		<item key="ToStringTemplateSelected" value="0"/>
+		<item key="FinalModifier" value="false"/>
+		<item key="SynchronizedModifier" value="false"/>
+		<item key="Comments" value="false"/>
+		<item key="VisibilityModifier" value="1"/>
+	</section>
+	<section name="DialogBounds_GenerateToStringDialog">
+		<item key="DIALOG_X_ORIGIN" value="433"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="516"/>
+		<item key="DIALOG_HEIGHT" value="691"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item key="SortOrdering" value="false"/>
+		<item key="RemoveFinal" value="false"/>
+	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="427"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="528"/>
+		<item key="DIALOG_HEIGHT" value="696"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="NewPackageWizardPage">
+		<item key="create_package_info_java" value="false"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.dialogs.OpenTypeSelectionDialog2">
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;"/>
+	</section>
+	<section name="DialogBounds_SuperInterfaceSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="85"/>
+		<item key="DIALOG_Y_ORIGIN" value="0"/>
+		<item key="DIALOG_WIDTH" value="373"/>
+		<item key="DIALOG_HEIGHT" value="549"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
+		<item key="GoIntoTopLevelTypeAction.isChecked" value="false"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_WIDTH" value="350"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_HEIGHT" value="300"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_SIZE" value="true"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION" value="false"/>
+	</section>
+	<section name="RefactoringWizard.preview">
+		<item key="width" value="600"/>
+		<item key="height" value="400"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item key="renameSubpackages" value="false"/>
+		<item key="updateTextualMatches" value="false"/>
+		<item key="updateQualifiedNames" value="false"/>
+		<item key="patterns" value="*"/>
+		<item key="updateSimilarElements" value="false"/>
+		<item key="updateSimilarElementsMatchStrategy" value="1"/>
+	</section>
+	<section name="BreadcrumbItemDropDown">
+	</section>
+	<section name="nls_accessor_history">
+		<section name="0">
+			<item key="accessorName" value="Messages"/>
+			<item key="accessorPackage" value="=Project0/src&lt;com.revature.dao"/>
+			<item key="bundleName" value="messages.properties"/>
+			<item key="bundlePackage" value="=Project0/src&lt;com.revature.dao"/>
+		</section>
+	</section>
+</section>

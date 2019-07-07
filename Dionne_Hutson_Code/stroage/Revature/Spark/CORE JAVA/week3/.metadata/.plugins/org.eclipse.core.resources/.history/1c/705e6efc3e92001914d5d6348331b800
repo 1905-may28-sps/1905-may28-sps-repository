@@ -1,0 +1,11 @@
+package com.revature.data;
+
+public class Data {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub'
+		FileReader(String Data.txt)l
+
+	}
+
+}

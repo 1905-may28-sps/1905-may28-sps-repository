@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.io.FileReader"/>
+<fullyQualifiedTypeName name="com.revature.dao.GenreDAO"/>
+<fullyQualifiedTypeName name="com.revature.util.ConnectionFactory"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="com.revature.pojo.Author"/>
+<fullyQualifiedTypeName name="com.revature.dao.AuthorDAO"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="oracle.jdbc.OracleTypes"/>
+<fullyQualifiedTypeName name="com.revature.pojo.User"/>
+<fullyQualifiedTypeName name="com.revature.dao.AccountDAO"/>
+<fullyQualifiedTypeName name="com.revature.app.OverdraftException"/>
+<fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+<fullyQualifiedTypeName name="com.revature.pojo.Book"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

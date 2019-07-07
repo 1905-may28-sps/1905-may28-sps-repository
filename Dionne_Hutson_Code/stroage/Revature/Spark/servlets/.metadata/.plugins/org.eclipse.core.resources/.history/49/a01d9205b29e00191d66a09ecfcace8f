@@ -1,0 +1,8 @@
+package com.revature.servlets;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/logout")
+class LogoutServlet etends HttpServelet {
+
+}

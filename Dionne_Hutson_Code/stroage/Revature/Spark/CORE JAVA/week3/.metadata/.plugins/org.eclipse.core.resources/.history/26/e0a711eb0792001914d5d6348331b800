@@ -1,0 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.oop.Person;
+
+public class Employee {
+
+	public static void main(String[] args) {
+		List<EmpComp> list =new ArrayList<>();
+		list.add
+		// TODO Auto-generated method stub
+
+	}
+
+}

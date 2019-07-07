@@ -1,0 +1,14 @@
+package src.com.revature.dao;
+
+import java.sql.Timestamp;
+
+import src.com.revature.pojo.ERS_REIMBURSEMENT;
+
+public class ERS_RIEIMBURSEMENTDAO {
+	static ERS_RIEIMBURSEMENTDAO reimDAO=new ERS_RIEIMBURSEMENTDAO();
+	static ERS_REIMBURSEMENT reim= new ERS_REIMBURSEMENT();
+	
+	public void addReimbursment(BigDecimal amount, Timestamp submit, Timestamp resolved, String descrp, int emp, int man, int status, int type) {
+
+}
+}

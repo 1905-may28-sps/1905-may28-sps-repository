@@ -1,0 +1,16 @@
+
+public class EmpComp implements Comparator{
+	String name;
+	int age;
+	String dept;
+	public EmpComp(String name, int age, String dept) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.dept = dept;
+	}
+	
+	
+	
+}
+

@@ -1,0 +1,73 @@
+package src.com.revature.pojo;
+
+public class ERS_USERS {
+	private int userID;
+	private String username;
+	private String password;
+	private String fn;
+	private String ln;
+	private String email;
+	private int role;
+	public ERS_USERS() {
+	}
+	public ERS_USERS(int userID, String username, String password, String fn, String ln, String email, int role) {
+		super();
+		this.userID = userID;
+		this.username = username;
+		this.password = password;
+		this.fn = fn;
+		this.ln = ln;
+		this.email = email;
+		this.role = role;
+	}
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+	public String getUn() {
+		return username;
+	}
+	public void setUn(String un) {
+		this.username = un;
+	}
+	public String getPass() {
+		return password;
+	}
+	public void setPass(String pass) {
+		this.password = pass;
+	}
+	public String getFn() {
+		return fn;
+	}
+	public void setFn(String fn) {
+		this.fn = fn;
+	}
+	public String getLn() {
+		return ln;
+	}
+	public void setLn(String ln) {
+		this.ln = ln;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getRole() {
+		return role;
+	}
+	public void setRole(int role) {
+		this.role = role;
+	}
+	@Override
+	public String toString() {
+		return "ERS_USERS [userID=" + userID + ", un=" + username + ", pass=" + password + ", fn=" + fn + ", ln=" + ln
+				+ ", email=" + email + ", role=" + role + "]";
+	}
+	
+	
+	
+}

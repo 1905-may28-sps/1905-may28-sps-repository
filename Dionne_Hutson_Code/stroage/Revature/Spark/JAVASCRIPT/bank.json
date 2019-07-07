@@ -1,0 +1,106 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "name": "name",
+      "username": "username",
+      "password": "password",
+      "stock": [
+        {
+          "portfolioId": 1,
+          "stockName": "General Motors",
+          "stockSymbol": "GM",
+          "numShare": 1,
+          "pps": 6,
+          "net": 0
+        }
+      ]
+    },
+    {
+      "name": "one",
+      "username": "one",
+      "password": "one",
+      "stock": {
+        "stockName": "one",
+        "stockSymbol": "one",
+        "numShare": "1",
+        "pps": "2",
+        "net": "3"
+      },
+      "id": 2
+    },
+    {
+      "stock": {
+        "stockName": "j",
+        "stockSymbol": "k",
+        "numShare": "j"
+      },
+      "id": 3
+    },
+    {
+      "name": "two",
+      "username": "two",
+      "password": "two",
+      "stock": {
+        "stockName": "two",
+        "stockSymbol": "GM",
+        "numShare": "5",
+        "pps": "52",
+        "net": "4"
+      },
+      "id": 4
+    },
+    {
+      "name": "three",
+      "username": "three",
+      "password": "three",
+      "stock": {
+        "stockName": "three",
+        "stockSymbol": "T",
+        "numShare": "6",
+        "pps": "7",
+        "net": "8"
+      },
+      "id": 5
+    },
+    {
+      "name": "four",
+      "username": "four",
+      "password": "four",
+      "stock": {
+        "stockName": "",
+        "stockSymbol": "",
+        "numShare": "",
+        "pps": "",
+        "net": ""
+      },
+      "id": 6
+    },
+    {
+      "name": "five",
+      "username": "five",
+      "password": "five",
+      "stock": {
+        "stockName": "TESLA",
+        "stockSymbol": "TSLA",
+        "numShare": "100",
+        "pps": "200.00",
+        "net": "37.00"
+      },
+      "id": 7
+    },
+    {
+      "name": "",
+      "username": "",
+      "password": "",
+      "stock": {
+        "stockName": "",
+        "stockSymbol": "",
+        "numShare": "",
+        "pps": "",
+        "net": ""
+      },
+      "id": 8
+    }
+  ]
+}

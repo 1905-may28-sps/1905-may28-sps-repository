@@ -1,0 +1,11 @@
+package com.revature.interfacemethods;
+
+public interface Question15 {
+	int addition(int...args);
+	int subtraction (int...args);
+	double division(int...args);
+	double multiplication(int...args);
+	
+	
+
+}

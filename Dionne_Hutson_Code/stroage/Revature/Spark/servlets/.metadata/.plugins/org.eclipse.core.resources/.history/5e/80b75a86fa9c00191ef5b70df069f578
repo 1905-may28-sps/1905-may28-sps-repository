@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>App Request</title>
+</head>
+<body>
+<p>
+<input type="text" name="username"><br>
+<input type="text" name="password"><br>
+
+<p>
+<script>
+var portObj={
+        username : document.getElementById('username').value,
+         password :document.getElementById('password').value,        
+        }
+      
+        };
+       
+        var xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+              var arr=JSON.parse(xhr.responseText); 
+              alert("Welcome, your profile has been created, please log in");
+                     
+              
+            }
+    
+        }
+
+    
+    xhr.open("POST",'http://localhost:8081/servlets-101/users');
+    xhr.setRequestHeader('Content-Type','application/json');
+    xhr.send(JSON.stringify(portObj));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.revature.empsort.Emp;
+
+public class Employee {
+
+	public static void main(String[] args) {
+		List<Emp> list =new ArrayList<>();
+		list.add(new Emp("pohn", 23,"finance"));
+		list.add(new Emp("on", 24,"housing"));
+		
+		// TODO Auto-generated method stub
+		System.out.println(list);
+		Collections.sort(list, new EmpComp());
+		System.out.println(list);
+
+	}
+
+}

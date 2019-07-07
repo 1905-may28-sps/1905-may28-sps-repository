@@ -1,0 +1,12 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class NFactorialTest {
+
+	@Test
+	public final void testNfact() {
+		fail("Not yet implemented");
+	}
+
+}

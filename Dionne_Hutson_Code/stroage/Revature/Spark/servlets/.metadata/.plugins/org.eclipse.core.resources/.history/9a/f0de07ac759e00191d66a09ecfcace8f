@@ -1,0 +1,40 @@
+package src.com.revature.dao;
+
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+
+import src.com.revature.pojo.ERS_REIMBURSEMENT;
+import src.com.revature.util.ConnectionFactory;
+
+public class ERS_RIEIMBURSEMENTDAO {
+	static ERS_RIEIMBURSEMENTDAO reimDAO=new ERS_RIEIMBURSEMENTDAO();
+	static ERS_REIMBURSEMENT reim= new ERS_REIMBURSEMENT();
+
+	public void addReimbursement(ERS_REIMBURSEMENT reim) {
+
+		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+
+			String sql="insert into ERS_REIMBURSEMENT(REIMB_AMOUNT, REIMB_SUBMITTED, REIMB_RESOLVED, REIMB_DESCRIPTION, REIMB_RECEIPT, "
+					+ "REIMB_AUTHOR,REIMB_RESOLVER, REIMB_STATUS_ID,REIMB_TYPE_ID)Values(?,CURRENT_TIMESTAMP,null,?,null,?,"
+					+ "null,1,?)";
+
+			String[] generatedKeys= {"REIMB_ID"};
+			PreparedStatement ps=conn.prepareStatement(sql, generatedKeys);
+			ps.setBigDecimal(1,reim.getAmount());
+			ps.setString(2,reim.getDescrp());
+			ps.setInt(3, reim.getEmp());
+			ps.setInt(4,reim.getType());
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+}

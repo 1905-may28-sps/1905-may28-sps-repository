@@ -1,0 +1,13 @@
+package com.revature.pojo;
+
+public class Book {
+private int id;
+private String title;
+private String isbn;
+private double price;
+private int genre;
+	public Book() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

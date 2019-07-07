@@ -1,0 +1,19 @@
+package src.com.revature.pojo;
+
+import java.math.BigDecimal;
+
+public class ERS_REIMBURSEMENT {
+	private int id;
+	private BigDecimal amount;
+	//private time////////////////////////////
+	//private time////////////////////////////
+	private String descrp;
+	//private PIC////////////
+	private int emp;
+	private int man;
+	private int status;
+	private int type;
+	
+	
+
+}

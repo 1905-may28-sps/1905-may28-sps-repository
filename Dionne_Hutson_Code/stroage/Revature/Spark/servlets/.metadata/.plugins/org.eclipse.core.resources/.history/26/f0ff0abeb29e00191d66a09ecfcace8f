@@ -1,0 +1,88 @@
+window.onload=function(){
+    console.log('app.js loaded');
+    loadLoginView();
+    
+}
+function loadLoginView(){
+
+
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                console.log('loadedlogin view');
+                $('#view').html(xhr.responseText);
+                $('#doLogin').on('click',login);
+                $('#register').on('click',loadRegisterView);
+            }else if(xhr.status>=500){
+                console.log("server error");
+
+            }
+        }
+    }
+    xhr.open('GET','login.view');
+    xhr.send();
+}
+
+function login(){
+    var user={
+        username: $('#username').val(),
+        password: $('#password').val(),
+    }
+  
+    var xhr= new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+            console.log('logged in user');
+            var user=JSON.parse(xhr.responseText);
+            loadHomePage();
+        }else if(xhr.status=204){
+            $('#message').html('Sorry, invalid credentials, please try again.');
+        }
+    }
+
+    }
+	  xhr.open('POST','login');
+    xhr.send(JSON.stringify(user));
+	
+}
+function loadHomePage(){
+    console.log('loading home');
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                console.log('loadedlogin view');
+                $('#view').html(xhr.responseText);
+                getUserData;
+            }else if(xhr.status>=500){
+                console.log("server error")
+
+            }
+        }
+    }
+    xhr.open('GET','home.view');
+    xhr.send();
+}
+function getUserData(){
+    
+}
+
+function loadRegisterView(){
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                console.log('loaded register view');
+                $('#view').html(xhr.responseText);
+                $('#returnlogin').on('click',loadLoginView);
+            }else if(xhr.status>=500){
+                console.log("server error")
+
+            }
+        }
+    }
+    xhr.open('GET','register.view');
+    xhr.send();
+}

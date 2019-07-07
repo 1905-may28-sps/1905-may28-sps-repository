@@ -1,0 +1,43 @@
+package com.revature.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pojo.User;
+import com.revature.service.DummyUserService;
+
+@WebServlet("/users")
+public class UserServlet extends HttpServlet{
+	static DummyUserService service= new DummyUserService();
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		//return list of all users
+		List<User> users=service.getAll();
+		/*
+		 * Object mapper class can be used to doJava object<-> Json string*/
+		ObjectMapper mapper=new ObjectMapper();
+		String json=mapper.writeValueAsString(users);
+		
+		
+		PrintWriter writer= resp.getWriter();
+		resp.setContentType("application/json");
+		writer.write(json);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
+
+}

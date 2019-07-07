@@ -1,0 +1,44 @@
+window.onload=function(){
+    console.log('app.js loaded');
+    loadLoginView();
+    
+}
+function loadLoginView(){
+
+
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                console.log('loadedlogin view');
+                $('#view').html(xhr.responseText);
+                $('#doLogin').on('click',login);
+                $('#register').on('click',loadRegisterView)
+            }else if(xhr.status>=500){
+                console.log("server error")
+
+            }
+        }
+    }
+    xhr.open('GET','login.view');
+    xhr.send();
+}
+
+function login(){}
+
+function loadRegisterView(){
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                console.log('loaded register view');
+                $('#view').html(xhr.responseText);
+            }else if(xhr.status>=500){
+                console.log("server error")
+
+            }
+        }
+    }
+    xhr.open('GET','loadRegister');
+    xhr.send();
+}

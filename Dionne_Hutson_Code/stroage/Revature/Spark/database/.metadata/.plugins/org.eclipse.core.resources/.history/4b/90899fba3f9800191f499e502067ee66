@@ -1,0 +1,9 @@
+package com.revature.dao;
+
+public class BookDAO {
+
+	public BookDAO() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,14 @@
+<h1>Welcome,<span id="name"></span></h1>
+<!-- make table to display user accounts -->
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody id="accountTable">
+  </tbody>
+</table>

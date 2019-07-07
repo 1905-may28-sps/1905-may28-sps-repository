@@ -1,0 +1,14 @@
+package com.revature.interfacemethods;
+
+public class TestClass {
+	ImplClass imp=new ImplClass();
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		imp.addition(3,4,5);
+		imp
+		
+
+	}
+
+}

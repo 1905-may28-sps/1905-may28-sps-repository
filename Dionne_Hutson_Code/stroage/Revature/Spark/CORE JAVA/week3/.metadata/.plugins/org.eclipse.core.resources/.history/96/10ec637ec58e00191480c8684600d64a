@@ -1,0 +1,94 @@
+package com.revature.io;
+
+import java.util.List;
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Hangman {
+	///read from random file
+	//give us the chance to guess letters
+	/*
+	 * get a word// read word into array or list and get a random word, math.random
+	 * display spaces for each letter
+	 * guess/keep going
+	 * 
+	 * change spaces to show letters
+	 */
+	static int length=1000;
+	static String guess;
+	static String opt;
+	static Scanner scan;
+	static String word;
+	static String[] space=new String[length];
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(getWord());
+		System.out.println(getSpace());
+
+	}
+	static String filePath="src/com/revature/io/Hangman.txt";//relative file path
+	
+	static String getWord() {
+		List<String> words=new ArrayList<String>();
+		try(BufferedReader br=new BufferedReader(new FileReader(filePath))){
+			String currString=null;
+			while((currString=br.readLine())!=null) {
+				words.add(currString);
+			}
+			
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+			
+		}
+		int index=(int)(Math.random()*words.size()-1); //index is oe less than size
+		length=words.get(index).length();
+		word=words.get(index);
+		return words.get(index);
+		
+	}
+	
+	static String[] getSpace() {
+		for (int i=0;i<length-1;i++) {
+			System.out.println(i);
+			space[i]="_ ";
+			
+			
+			
+		}
+		return space;	
+	}
+	static void letSpace(int space2, String let) {
+		
+		
+		
+	}
+	
+	static void guess() {
+	scan=new Scanner(System.in);
+	guess=scan.nextLine();
+		for(int i=0;i<length;i++) {
+			if (guess==(""+word.charAt(i))) {
+				System.out.println("Correct!");
+				letSpace(i,guess);
+			} else {
+				System.out.println("Wrong!");
+				
+						for(char element:space) {System.out.print(element);}
+			}
+		}
+
+
+	
+
+		
+	}
+	
+
+}

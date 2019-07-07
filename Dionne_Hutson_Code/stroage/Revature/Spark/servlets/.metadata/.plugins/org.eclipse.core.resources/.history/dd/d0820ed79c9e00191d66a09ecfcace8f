@@ -1,0 +1,6 @@
+package src.com.revature.servlet;
+
+@WebServlet(/users)
+public class ERS_USERSSERVLET extends HttpServlet {
+
+}

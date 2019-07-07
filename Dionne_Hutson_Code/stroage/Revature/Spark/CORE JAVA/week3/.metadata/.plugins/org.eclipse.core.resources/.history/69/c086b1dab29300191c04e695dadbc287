@@ -1,0 +1,16 @@
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class IndexStringTest {
+
+	@Test
+	public void testSubString() {
+		String failureMessage = "fails";
+		String expected = "b";
+		String actual = IndexString.subString("bowling", 1);
+
+		Assert.assertEquals(failureMessage, expected, actual);
+	}
+
+}

@@ -1,0 +1,13 @@
+package com.revature.service;
+
+import com.revature.dao.AccountDAO;
+import com.revature.pojo.User;
+
+public class AccountService {
+	private AccountDAO aDAO= new AccountDAO();
+	public void createAcc(String un) {
+		aDAO.createSpecAcc(un);
+		
+	}
+
+}

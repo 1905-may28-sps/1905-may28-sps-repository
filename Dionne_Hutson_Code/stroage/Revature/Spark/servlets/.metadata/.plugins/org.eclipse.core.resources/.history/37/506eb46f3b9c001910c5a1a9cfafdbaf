@@ -1,0 +1,25 @@
+package com.revature.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.pojo.User;
+static int idcount=4;
+public class DummyUserService {
+	private static List<User> users=new ArrayList<User>();
+	static {
+		users.add(new User(1, "gab","123"));
+		users.add(new User(2, "niconoflaw","pass"));
+		users.add(new User(3, "gab","123"));
+		
+	}
+	public List<User> getAll(){
+		return users;
+		
+	}
+	public User addUser(User u) {
+		u.setId(++idcount);
+		
+	}
+
+}

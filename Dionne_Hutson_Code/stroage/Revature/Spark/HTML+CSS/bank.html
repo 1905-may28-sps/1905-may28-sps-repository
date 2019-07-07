@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Welcome to RevatureBank!</h1>
+        <hr>
+        <br>
+        <div id="registrationForm">
+            <h3>Register Below</h3>
+            <input type="text"  id="firstname" placeholder="First Name" class="form-control col-4">
+            <input type="text" id="lastname" placeholder="Last Name" class="form-control col-4">
+            <input type="text" id="username" placeholder="Username" class="form-control col-4">
+            <input type="password" id="password" placeholder="Password" class="form-control col-4">
+            <button id="register" class="btn btn-submit" style="border: 2px navy solid">Register</button>
+            <hr>
+            <span id="message"></span>
+            <i id="goToLogin" style="text-decoration: underline">Already a user? Go to Login Form</i>
+        </div>
+        <div id="loginForm" hidden="true">
+                <input type="text" id="logUser" placeholder="Username" class="form-control col-4">
+                <input type="password" id="logPass" placeholder="Password" class="form-control col-4">
+                <button id="login" class="btn btn-submit" style="border: 2px navy solid">Login</button>  
+                <span id="messages"></span>  
+        </div>
+        <div id="loggedIn" hidden="true">
+            <h4 id="greetings">Hey, <span id="user"></span></h4>
+           
+        </div>
+    </div>
+    <script src="../JAVASCRIPT/bank.js" type="text/javascript"></script>
+</body>
+</html>

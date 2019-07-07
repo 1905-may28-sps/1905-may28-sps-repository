@@ -1,0 +1,12 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class InterestTest {
+
+	@Test
+	public void testInterest() {
+		fail("Not yet implemented"); // TODO
+	}
+
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>servlets-101</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- Hoe application responds to request
+  we send it to the endpoint/greeting which goes to myfirstservlet
+  which we created in servletname
+  
+  app acessible as localhost:[port]/[contextroot]/endpoint-->
+  
+  
+  <context-param>
+  	<param-name>envVar</param-name>
+  	<param-value>This is servlet contect, This variable is acessible from any servlet in this app</param-value>
+  </context-param>
+  <servlet>
+  	<servlet-name>MyFirstServlet</servlet-name><!-- Like a nickname for the class -->
+  	<servlet-class>com.revature.servlet.HelloServlets</servlet-class> <!--  name of package and class --> 
+  	<load-on-startup>1</load-on-startup><!-- must be last number tells which order things go in, could be random if no numbers -->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MyFirstServlet</servlet-name><!-- has to be the same as the servlet servlet name -->
+  	<url-pattern>/greeting</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

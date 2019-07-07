@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class storePalArrList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<String> word=new ArrayList<>;
+		word.add("karan");
+		word.add("madam");
+		word.add("tom");
+		word.add("civic");
+		word.add("radar");
+		word.add("sexes");
+		word.add("jimmy");
+		word.add("kayak");
+		word.add("john");
+		word.add("refer");
+		word.add("billy");
+		word.add("did");
+		
+
+
+
+
+	}
+
+}

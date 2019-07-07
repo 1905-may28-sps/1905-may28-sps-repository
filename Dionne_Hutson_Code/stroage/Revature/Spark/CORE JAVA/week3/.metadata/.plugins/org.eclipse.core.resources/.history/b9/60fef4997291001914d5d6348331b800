@@ -1,0 +1,18 @@
+
+public class Even {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	public static boolean eoo(num) {
+		boolean even=false;
+		double div=num/2;
+		if ((num/2)==num-div) {
+			even=true;
+		}
+		
+		return even;
+	}
+
+}

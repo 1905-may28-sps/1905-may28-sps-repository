@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>create</title>
+</head>
+<body>
+
+<input type="text" placeholder="Username" id="username"><br>
+
+<input type="text" placeholder="Account Type" id="accounttype"><br>
+<input type="number" min="0.01" step="0.01" placeholder="Balance" id="balance"><br>
+<button id="addAccount">Create a New Account!</button>
+<script>
+function(){
+	document.getElementById('addAccount').addEventListener('click',addAccount);
+
+}
+function addAccount(){
+	var portObj={
+			username : document.getElementById('username').value,
+			accountType : document.getElementById('accounttype').value,
+			balance : document.getElementId('balance').value	
+	}
+	 var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+        	if(xhr.status==201){
+          var arr=JSON.parse(xhr.responseText); 
+          alert("Welcome, your profile has been created, please log in");}
+        	else{ alert("errorish")}
+                 
+          
+        }
+
+    }
+
+
+xhr.open("POST","addaccount");
+xhr.setRequestHeader('Content-Type','application/json');
+xhr.send(JSON.stringify(portObj));
+}
+
+</script>
+
+
+</body>
+</html>

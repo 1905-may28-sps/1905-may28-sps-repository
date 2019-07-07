@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Roman {
+	static Scanner scan;
+	static int num;
+	
+	
+
+	public static void main(String[] args) {
+		System.out.println("Enter a Integer number?");
+		scan=new Scanner(System.in);
+		num=scan.nextInt();
+		System.out.println(num);
+		// TODO Auto-generated method stub
+
+	}
+	
+	
+	
+
+}

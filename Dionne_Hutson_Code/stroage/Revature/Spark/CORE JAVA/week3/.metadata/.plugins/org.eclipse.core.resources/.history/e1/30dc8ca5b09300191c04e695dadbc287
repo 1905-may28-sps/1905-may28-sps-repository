@@ -1,0 +1,12 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class IndexStringTest {
+
+	@Test
+	public void testSubString() {
+		fail("Not yet implemented"); // TODO
+	}
+
+}

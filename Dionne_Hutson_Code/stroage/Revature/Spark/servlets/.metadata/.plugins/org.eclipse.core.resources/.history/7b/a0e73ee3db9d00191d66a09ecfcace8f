@@ -1,0 +1,9 @@
+package src.com.revature.dao;
+
+public class ERS_RIEIMBURSEMENTDAO {
+	static ERS_RIEIMBURSEMENTDAO reimDAO=new ERS_RIEIMBURSEMENTDAO();
+	static ERS_RIEIMBURSEMENT reim= new ERS_RIEIMBURSEMENT();
+	
+	public void addReimbursment(BigDecimal) {
+
+}

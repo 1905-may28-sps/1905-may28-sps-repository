@@ -1,0 +1,7 @@
+package com.revature.empsort;
+
+import java.util.Comparator;
+
+public class EmpDept implements Comparator<Emp> {
+
+}

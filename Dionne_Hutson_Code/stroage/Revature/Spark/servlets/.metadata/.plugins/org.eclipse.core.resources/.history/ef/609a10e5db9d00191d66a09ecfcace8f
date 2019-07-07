@@ -1,0 +1,11 @@
+package src.com.revature.dao;
+
+import src.com.revature.pojo.ERS_REIMBURSEMENT;
+
+public class ERS_RIEIMBURSEMENTDAO {
+	static ERS_RIEIMBURSEMENTDAO reimDAO=new ERS_RIEIMBURSEMENTDAO();
+	static ERS_REIMBURSEMENT reim= new ERS_REIMBURSEMENT();
+	
+	public void addReimbursment(BigDecimal) {
+
+}

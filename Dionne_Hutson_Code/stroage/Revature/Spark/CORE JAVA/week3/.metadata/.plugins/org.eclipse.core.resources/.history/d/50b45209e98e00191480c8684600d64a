@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Roman {
+	static Scanner scan;
+	static int num;
+	
+	
+
+	public static void main(String[] args) {
+		System.out.println("Enter a Integer number?");
+		scan=new Scanner(System.in);
+		num=scan.nextInt();
+		// TODO Auto-generated method stub
+		roman(num);
+
+	}
+	static void roman(int num) {
+		String roman="";
+		int rem=num%10;
+			switch(rem) {
+			case 9:
+			roman=roman.concat("I");
+			case 0:
+				roman=roman.concat("X");
+				break;
+			case 8:
+				roman=roman.concat("I");
+			case 7:
+				roman=roman.concat("I");
+			case 6:
+				roman=roman.concat("I");
+		case 5:
+			roman="V"+roman;
+			break;
+		}
+			
+			System.out.println(roman);
+		}
+		
+		
+		
+	}
+	
+	
+	
+

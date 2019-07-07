@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.revature</groupId>
+  <artifactId>servlets-101</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <!-- Comments in xml
+  pom is the xml file used to decribe the build of xml project,
+  there is a pom in everymanven project
+  here we will list dependencies for app
+  
+  since this is a war we need to generate a webxml using generate deployment desciptor file 
+  it will be in web-inf-->
+  
+  <properties>
+			<maven.compiler.source>1.8</maven.compiler.source>
+			<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>2.9.0.pr4</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.9.0.pr4</version>
+			</dependency>
+   </dependencies>
+
+
+CollapseMessage InputMessage #1905-may28-sps
+</project>

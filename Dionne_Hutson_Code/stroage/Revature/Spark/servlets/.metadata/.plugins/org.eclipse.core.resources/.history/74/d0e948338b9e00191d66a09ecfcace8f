@@ -1,0 +1,9 @@
+package src.com.revature.dao;
+
+import src.com.revature.pojo.ERS_USERS;
+
+public class ERS_USERSDAO {
+ static ERS_USERSDAO userDAO=new ERS_USERSDAO();
+ static ERS_USERS user=new ERS_USERS();
+ public 
+}

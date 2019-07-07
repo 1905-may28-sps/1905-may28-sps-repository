@@ -1,0 +1,15 @@
+package com.revature.service;
+
+import java.util.List;
+
+import com.revature.dao.UserDAO;
+import com.revature.pojo.User;
+
+public class UserService {
+	private UserDAO userDAO=new UserDAO();
+	
+	public List<User>findAllUsers(){
+		
+	}
+
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<input type="text" placeholder="Username" id="username"><br>
+
+<input type="text" placeholder="ACCOUNT TYPE id="accounttype"><br>
+<input type="number" placeholder="Balance="balance"><br>
+<button id="addAccount">Create a New Account!</button>
+<script>
+function(){
+	document.getElementById('addAccount').addEventListener('click',addAccount);
+
+}
+function addAccount(){
+	var portObj={
+			username : document.getElementById('username').value,
+			accountType : document.getElementById('accounttype').value,
+			balance : document.getElementId('balance').value
+			
+	}
+}
+
+</script>
+
+
+</body>
+</html>

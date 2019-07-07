@@ -1,0 +1,15 @@
+
+public class decHex {
+
+	private static int opt;
+	private static Scanner scan;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Enter a base 10 number");
+		opt=scan.nextInt();
+		decHex(opt);
+
+	}
+
+}

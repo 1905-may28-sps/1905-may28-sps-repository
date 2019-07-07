@@ -1,0 +1,23 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "stockName": "General Motors",
+      "stockSymbol": "GM",
+      "numShare": 1,
+      "pps": 6
+    
+    }
+  ],
+  "stock":[
+      {
+          "portfolioId":1,
+          "stockName":"General Motors",
+          "stockSymbol":"GM",
+          "numShare":1,
+          "pps":6,
+          "net":0
+
+      }
+  ]
+}

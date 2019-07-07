@@ -1,0 +1,22 @@
+package com.revature.service;
+
+import java.util.List;
+
+import com.revature.dao.UserDAO;
+import com.revature.pojo.User;
+
+public class UserService {
+	private UserDAO userDAO=new UserDAO();
+	
+	public List<User> findAll(){
+		return userDAO.findAll();
+		
+	}
+	public User login(String username, String password) {
+		User u= userDAO.getByUsername(username);
+		if (u==null) return null;
+		if (u.getPass().equals(password)) return u;
+		return null;
+	}
+
+}

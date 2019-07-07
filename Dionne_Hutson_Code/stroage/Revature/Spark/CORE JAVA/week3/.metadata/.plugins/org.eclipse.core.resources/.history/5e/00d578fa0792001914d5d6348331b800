@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Employee {
+
+	public static void main(String[] args) {
+		List<EmpComp> list =new ArrayList<>();
+		list.add(new EmpComp("john", 23,"finance"));
+		
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,22 @@
+import java.util.Comparator;
+
+public class EmpComp implements Comparator<EmpComp>{
+	String name;
+	int age;
+	String dept;
+	public EmpComp(String name, int age, String dept) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.dept = dept;
+	}
+	@Override
+	public int compare(EmpComp o1, EmpComp o2) {
+		// TODO Auto-generated method stub
+		return o1.age.compareTo(o2.age);
+	}
+	
+	
+	
+}
+

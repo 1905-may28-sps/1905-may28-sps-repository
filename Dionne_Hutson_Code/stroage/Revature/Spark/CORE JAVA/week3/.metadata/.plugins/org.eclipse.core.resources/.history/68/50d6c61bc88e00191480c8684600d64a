@@ -1,0 +1,17 @@
+package com.revature.io;
+
+public class UnderstandingSerialization {
+
+	static String filePath="src/revature/io/serializedObject.txt";
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SerializablePerson p=new SerializablePerson("Gen","6/17",789463125L);
+		System.out.println(p);
+
+	}
+static void serializeObject(Object obj) {
+		
+	}
+
+
+}

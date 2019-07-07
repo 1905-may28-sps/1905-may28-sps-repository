@@ -1,0 +1,6 @@
+//org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
+//org.eclipse.ui.commands/state/org.eclipse.wst.xml.views.XPathView.processor.xpathprocessor/org.eclipse.ui.commands.radioState=xpath10
+ColorsAndFontsPreferencePage.selectedElement=Fterminal.views.view.font.definition
+PLUGINS_NOT_ACTIVATED_ON_STARTUP=;org.eclipse.m2e.discovery;
+eclipse.preferences.version=1
+terminal.views.view.font.definition=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;

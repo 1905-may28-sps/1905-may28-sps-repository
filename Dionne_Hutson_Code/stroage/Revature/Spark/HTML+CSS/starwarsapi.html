@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div class="jumbotron">
+                <h4>Leverage AJAX to get info on sw
+                </h4>
+                <input type="text" id="swId" class="form-control col-2">
+                <button id="swGo" class="btn btn-primary"> GO!</button>
+                <hr>
+                <div class="text-center">
+                    
+                    <img src="" alt="" id="swImg">
+                    <h3 id="swName"></h3>
+                    <h4 id="swWeight"></h4>
+                </div>
+
+                
+
+            </div>
+        <script>
+            //SENDING REQUEST
+            window.onload=function(){
+                document.getElementById('swGo').addEventListener('click',getsw);
+            }
+            function getsw(){
+                var swId=document.getElementById('swId').value;
+                //1. create xmlhttorequest object
+                var xhr=new XMLHttpRequest();
+                //2. define functionality for response(efine function that will handle esponse)
+                xhr.onreadystatechange=function(){
+                    //whenever ready state changes we check if it is 4
+                    if(xhr.readyState==4){// can also do an && if stament to see if status 
+                        if(xhr.status==200){
+                            //sucess
+                            var swText=xhr.responseText;
+                            var sw=JSON.parse(swText);//this is global on purpose
+                            console.log(sw);
+                            setswValues(sw);
+
+                        }
+                        else if (xhr.status==400){
+                            //client error
+                            console.log("ERROr")
+
+                        }
+                    }
+                }
+
+
+                //3. open request; configure it// give it info need//back ticks ` allow us to put variable and expression in {}//the s in https is for secure method and url
+                xhr.open('GET',`https://swapi.co/api/people/${swId}/`);
+
+                //4. send request//int the case the request body() is empty because it is a get request
+                xhr.send();
+            }
+
+            function setswValues(swObj){
+
+document.getElementById('swName').innerHTML=swObj.name;//we know that the object we pass in will //have  a name property
+var swImage=document.getElementById('swImg');
+//swImage.setAttribute('src',swObj.films[1]);
+//swImage.setAttribute('alt',swObj.name);
+
+
+var swWeight=document.getElementById('swWeight').innerHTML=swObj.films[1];
+
+xhr.open('GET',swWeight);
+
+
+}
+
+
+
+
+
+
+            
+        //Intro toAJAX
+        </script>
+</body>
+</html>
