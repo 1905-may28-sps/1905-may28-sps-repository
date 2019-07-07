@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Assigment</title>
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+   
+   <i>
+      <font color="blue">
+        Today's date is : 
+        <strong>
+         <span id="time"></span>
+        </strong>           
+      </font>
+   </i>
+
+</head>
+<body>
+
+    <hr>
+    <h4>1. Fibonacci </h4>
+    <i>Define function: fib(n) 
+        Return the nth number in the fibonacci sequence. </i>
+    <input type="number" id="fibonacciInput" class="form-control col-8">
+    <button id="findFibonacciVal" class="btn btn-primary">Go!</button>
+    <br><span id="fibonacciOutput"></span>
+    
+    <hr>
+    <h4>2. Bubble Sort </h4>
+    <i>Define function: bubbleSort(numArray)
+        Use the bubble sort algorithm to sort the array.
+        Return the sorted array. </i>
+        <input type="text" id="bubbleSortInput" class="form-control col-8">
+        <button id="findBubbleSort" class="btn btn-primary">Go!</button>
+        <br><span id="bubbleSortOutput"></span>  
+    
+    <hr>
+    <h4>3. Reverse String</h4>
+    <i>Define function: reverseStr(someStr)
+        Reverse and return the String. </i>
+        <input type="text" id="reverseInput" class="form-control col-8">
+        <button id="findReverse" class="btn btn-primary">Go!</button>
+        <br><span id="reverseOut"></span>
+    
+    <hr>
+    <h4>4. Factorial </h4>
+    <i>Define function: factorial(someNum)
+        Use recursion to compute and return the factorial of someNum. </i>
+        <input type="text" id="factorialInput" class="form-control col-8">
+        <button id="findFactorial" class="btn btn-primary">Go!</button>
+        <br><span id="factorialOutput"></span>  
+
+
+    <hr>
+    <h4>6. Even Number </h4>
+    <i>Define function: isEven(someNum)
+        Return true if even, false if odd.
+        Do not use % operator. </i>
+        <input type="number" id="numberInput" class="form-control col-8">
+        <button id="findEvenN" class="btn btn-primary">Go!</button>
+        <br><span id="numberOut"></span>
+
+    
+    <hr>
+    <h4>7. Palindrome</h4>
+    <i>Define function isPalindrome(someStr)
+        Return true if someStr is a palindrome, otherwise return false. </i>  
+        <input type="text" id="palindromeInput" class="form-control col-8">
+        <button id="findPalindrome" class="btn btn-primary">Go!</button>
+        <br><span id="palindromeOut"></span>
+     
+ 
+    
+    <hr>
+    <h4>12. Defining an object using a constructor
+        & 13 Defining an object using an object literal</h4>
+    <input type="text" id="Q12name" placeholder="name" class="form-control col-2">
+    <input type="number" id="Q12age" placeholder = "age" class="form-control col-2">
+    <button id="doObjectButton" class="btn btn-primary">Question12</button>
+    <ul id="objectOut"></ul><br>
+    <ul id="objectOut2"></ul>
+
+    <hr>
+    <h4>15. Descending Order</h4>
+    <input type="text" id="descendingInput" class="form-control col-8">
+    <button class="btn btn-primary" id="findDescending">Sort Array!</button> 
+    <br>  <span id="descendingOutput">temp</span>
+
+<script>
+
+window.onload = function(){
+
+var today = new Date();
+    document.getElementById('time').innerHTML=today;
+    document.getElementById('doObjectButton')
+    .addEventListener('click', doObject);
+    document.getElementById('findDescending')
+    .addEventListener('click', descending);
+    document.getElementById('findPalindrome')
+    .addEventListener('click', palidrome);
+    document.getElementById('findEvenN')
+    .addEventListener('click', evenNumber);
+    document.getElementById('findFactorial')
+    .addEventListener('click', factorial);
+    document.getElementById('findReverse')
+    .addEventListener('click', reverseStr);
+    document.getElementById('findBubbleSort')
+    .addEventListener('click', bubbleSort)
+    document.getElementById('findFibonacciVal')
+    .addEventListener('click', fibonacci );
+
+}
+
+
+
+function fibonacci(){
+    var number = document.getElementById('fibonacciInput').value;
+    var a = 0, b = 1, f = 1;
+    for(var i = 2; i <= number; i ++){
+        f = a + b;
+        a = b;
+        b = f;
+    }
+    console.log(f);
+    document.getElementById('fibonacciOutput').innerHTML = f;
+ 
+   }
+
+function bubbleSort(){
+var a = document.getElementById('bubbleSortInput').value;
+
+document.getElementById('bubbleSortOutput').value;
+}
+
+function reverseStr(){
+    var text = document.getElementById('reverseInput').value;
+    text = text.toLowerCase();
+
+    var newString = "";
+    for (var i = text.length - 1; i >= 0; i--) {
+        newString += text[i];
+    }
+    document.getElementById('reverseOut').innerHTML = newString;
+}
+
+function factorial(){
+var num = document.getElementById('factorialInput').value;
+var result = null;
+if (num > 0 && num <= 1){
+    result = 0;
+}
+  else{
+      result = (num * (num -1))
+  }
+
+      document.getElementById('factorialOutput').innerHTML = result;
+
+}
+
+
+function evenNumber(){
+    var number = document.getElementById('numberInput').value;
+    
+    if (number % 2 == 0){
+         result = true;
+    }
+    else result = false;
+
+    document.getElementById('numberOut').innerHTML = result;
+}
+
+function palidrome(){
+    var text = document.getElementById('palindromeInput').value;
+    text = text.toLowerCase();
+    var isValid = true;
+    for(let i = 0; i < text.length/2; i++){
+        if(text.charAt(i)!=text.charAt(text.length-1-i)) {
+            isValid = false;
+        }
+    }
+
+    document.getElementById('palindromeOut').innerHTML = isValid;
+}
+
+function getArray(){
+    var numString = document.getElementById('descendingInput').value;
+
+    var stringArr=numString.split(' ');
+    var arr=[];
+    for(let num of stringArr){
+        arr.push(Number(num));
+    }
+    return arr;
+}
+
+function descending(){
+
+    var arr=getArray();
+    arr.sort(function(a , b) {return a - b;});
+    
+    document.getElementById('descendingOutput').innerHTML = arr;
+    
+}
+
+function doObject(){
+function Person(name,age){
+this.pName = name;
+this.pAge = age;
+}
+var john = new Person(document.getElementById('Q12name').value,
+document.getElementById('Q12age').value);
+document.getElementById("objectOut").innerHTML = john.pName +" "+john.pAge;}
+
+
+
+</script>
+
+
+
+
+    
+
+</body>
+</html>
