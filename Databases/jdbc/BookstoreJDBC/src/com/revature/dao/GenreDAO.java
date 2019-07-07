@@ -94,13 +94,31 @@ public class GenreDAO {
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
 			ResultSet result = ps.executeQuery();
+
 			while(result.next()) {
 				g = new Genre();
 				g.setId(result.getInt(1));
 				g.setName(result.getString(2));
 			}
-			conn.commit();
+<
 		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return g;
+	}
+
+	
+	public Genre update(Genre g, String nameChange) {
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			PreparedStatement ps = conn.prepareStatement("update store_genre set name = ? where genre_id = ?");
+			ps.setInt(1, nameChange);
+			ps.setInt(2, g.getId());
+			int rowsChanged = ps.executeUpdate();
+			if(rowsChanged ==1) {
+				g.setName(nameChange);
+			}
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return g;
@@ -124,6 +142,7 @@ public class GenreDAO {
 		}
 		return g;
 	}
+
 
 }
 

@@ -1,0 +1,57 @@
+h1{
+    color: blue;
+    text-align: center;
+}
+
+h3{
+    color: blue;
+    text-align: center;
+}
+
+article{
+    margin: 100px;
+}
+
+video{
+    margin-left: 600px;
+}
+
+body {
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_Honduras.svg/1200px-Flag_of_Honduras.svg.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    /* opacity: 0.8; */
+    z-index: -1;
+   } 
+
+/* #aboutBody{
+    background-color: aquamarine;
+} */
+
+#formBox{
+    margin-top: 240px;
+    margin-left: 80px;
+}
+
+form{
+    background-color: antiquewhite;
+    padding-bottom: 30px;
+}
+
+form input{
+    margin: 20px;
+}
+
+#subButton{
+    display: block;
+    margin-left: 320px;
+}
+
+#formHeading{
+    /* text-align: center; */
+}
+
+#list{
+    margin-left: 100px;
+}

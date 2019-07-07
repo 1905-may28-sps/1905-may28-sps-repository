@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>functions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+   
+</head>
+<body>
+    <h4>Array Manipulation Problems</h4>
+    <i>please enter the numbers you wish to add separated by spaces</i>
+    <input type="text" id="arrNums" class="form-control col-8">
+    <button class="btn btn-primary" id="sumArraySubmit">Find Sum!</button>
+    <button class="btn btn-primary" id="averageArraySubmit">Find Average!</button>
+    <span id="arrOutput"></span>
+    <br>
+
+   
+
+    <h4>Palindromes</h4>
+    <i>This function will take in a string input and show
+        true if it is a palindrome and false if it is not  </i>
+        <input type="text" id="palindromes" class="form-control col-8">
+        <button class="btn btn-primary" id="palindromeSubmit">Palindrome?</button>
+        <div id='palindromeOutput'></div>
+    <hr>
+    <h4>Anagrams</h4>
+    <i>This function will take in two strings and return 
+        true if they are anagrams (they have the same letters, 
+        just rearranged) or false if they are not
+    </i>
+    <input type="text" id="anagramOne" class="form-control col-8"> 
+    <input type="text" id="anagramTwo" class="form-control col-8"> 
+    <button class="btn btn-primary" id="anagramSubmit">Anagram?</button>
+    <div id='anagramOutput'></div>
+
+    <hr>
+    <h4>Nth Number in Fibonacci Sequence</h4>
+    <i>Take in a whole positive number, n, and show the 
+        Nth number in the fibonacci sequence
+    </i>
+    <input type="text" id="fibonacciVal" class="form-control col-8">
+    <button class="btn btn-primary" id="fibonacciSubmit">fibonacci</button>
+    <div id='fibonacciOutput'></div> 
+    
+    <hr>
+    <h4>Sort an array</h4>
+    <i>Take in an array of numbers, display the array sorted --
+        for extra practice see if you can display them either 
+        in ascending order or descending order </i>
+        <input type="text" id="arrSort" class="form-control col-8"> 
+        <button class="btn btn-primary" id="sortArray">sortArray?</button>
+        <div id='arrSortOutput'></div>
+
+
+
+        <br>
+        <h4>FizzBuzz</h4>
+        <input type="text" id="fizzIn" class="form-control col-2">
+        <button id="doFizz" class ="btn btn-primary">Fizz Buzz</button>
+        <ul id="fizzOUt"></ul>
+        
+
+
+
+
+
+
+
+
+    <!-- <script>
+        // This is javascript right in our HTML Page...
+        // Button Event Listener
+        window.onload = function(){
+            // this window.onload ensures that the script waits until page is ready to execute
+            document.getElementById('sumArraySubmit').addEventListener('click', findSum);
+        }
+
+        function findSum(){
+            console.log("button works!");
+            var numString = document.getElementById("arrNums").value;
+            console.log(numString);
+            /*
+            the split function is a native JS function for strings which allows us to split a string into an array based on a
+            delimiter (character to serve as breakpoint).  In order to split with multiple delimeters, we must use regular expressions.
+            see this site for more info:
+            http://classyfunction.com/javascript-split-with-multiple-delimiters/
+            */
+        //    set variable for splitting string and creating an array
+            var arr = numString.split(' ');
+            console.log(arr);
+        //   for of loop to sum up items in array.
+            var sum = 0;
+            for(let num of arr){
+        //   convert strings to a number and sums items
+                sum+= Number(num);
+            }
+            console.log(sum);
+        // creates 
+            document.getElementById("arrOutput").innerHTML = sum; 
+        }
+        
+    </script> -->
+
+    <script type="text/Javascript" src="jsFunctions.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
