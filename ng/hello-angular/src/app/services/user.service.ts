@@ -13,9 +13,7 @@ a primary example of the use of angulars application of
 Dependency Injection
 */
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
     /* our first use of Dependency Injection!
