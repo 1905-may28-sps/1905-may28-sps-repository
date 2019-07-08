@@ -1,4 +1,4 @@
-<h3>Understanding Directives</h3>
+<h3>Understanding  <a href="https://angular.io/guide/glossary#directive">Directives</a></h3>
 
 <h6>Angular <b>Directives</b> are special pre-built instructions
 that typically render HTML code or provide additional functionality</h6>
@@ -16,10 +16,14 @@ that typically render HTML code or provide additional functionality</h6>
     <code>ngModel</code>, <code>ngClass</code>, and <code>ngStyle</code>. 
     We cover ngModel in a separate video when we explain two-way 
     data-binding. Here, you’ll see usage of ngClass.</li>
+    <li>More on the ngModel directive. This is used for two-way 
+      data binding (input fields). We must import the FormsModule in 
+      our root module in order to use this. 
+    </li>
 </ul>
 <br>
 <hr>
-<h5>*ngFor</h5>
+<h5> <a href="https://malcoded.com/posts/angular-ngfor/">*ngFor</a></h5>
 <i>This directive is used to make an element of the designated type for every
   item in some sort of collection.
 </i>
@@ -34,6 +38,11 @@ that typically render HTML code or provide additional functionality</h6>
   falsiness of the expression/variable it is set to
 </i>
 <br>
+<button (click)="toggleShow()">Toggle If</button>
 <b *ngIf="showIf">Show If is {{ showIf }} </b>
+
+<hr>
+<h5>ngClass</h5>
+
 
 
