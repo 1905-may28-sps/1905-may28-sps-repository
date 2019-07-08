@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Assignment</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    crossorigin="anonymous">
+
+</head>
+<body>
+        
+    <h4>Current Time</h4>
+    <i>Display Current Time</i>
+    <i> Display the current time on the top right of your HTML page, 
+            updating every second</i>
+    <br>
+    <button class ="btn btn-primary" id="ct">CurrentTime!</button>
+    <span id='ct' ></span>  
+
+    <h4>Find nth Fibonacci number</h4>
+    <i>Define function: fib(n) 
+        Return the nth number in the fibonacci sequence.</i>
+    <input type = "text" id="fib" class= "form-control col-8">
+    <button class ="btn btn-primary" id="btnFib">Fibonacci!</button>
+    <span id ="fibOutput">temp</span>
+    <hr>
+
+
+    <h4>Find Factorial</h4>
+    <i> Define function: factorial(someNum).
+    Use recursion to compute and return the factorial of someNum.</i>
+    <input type = "text" id="fact" class= "form-control col-8">
+    <button class ="btn btn-primary" id="btnFact">Factorial!</button>
+    <span id ="factOutput">fact</span>
+    <hr>
+
+    <h4>Find isEven</h4>
+    <i> Define function: isEven(someNum). Return true if even, false if odd. Do not use % operator.</i>
+    <input type = "text" id="even" class= "form-control col-8">
+    <button class ="btn btn-primary" id="btnEven">IsEven!</button>
+    <span id ="evenOutput">even</span>
+    <hr>
+    
+    <div class = "obj">
+        <h3>List of Fruits</h3>
+        <ol>
+            <li id = "f1">Apple</li>
+            <li id = "f2">Banana</li>
+            <li id = "f3">Pear</li>
+            <li id = "f4">Orange</li>
+        </ol>
+        <button class = "btn btn-primary" id = "removeChild">Remove Element!</button>
+        
+    </div>
+
+    <h4>Person</h4>
+    <i>Defining an object using a constructor.
+        Define a function Person(name, age).
+        The following line should set a Person object to the variable john:
+        var john = new Person("John", 30);</i>
+    <br>
+    <button class ="btn btn-primary" id="person">Person Object!</button>
+    <span id ="personSpanObj">Person Object!</span>
+    <hr>
+
+    <h4>Object Literal</h4>
+     <i>Defining an object using an object literal.
+        Define function getPerson(name, age).
+        The following line should set a Person object to the variable john:
+        var john = getPerson("John", 30);</i> 
+    <br>  
+    <button class ="btn btn-primary" id="object">Get Person!</button>
+    <span id ="getPerson">Object Literal!</span>
+    <hr>
+
+    <h4>Traverse Object</h4>
+    <i> Object literal.
+            Define function traverseObject(someObj).
+            Print every property and it's value.</i>
+    <br>  
+    <button class ="btn btn-primary" id="traverse">Traverse Object!</button>
+    <span id ="traverseObj">Traverse Object!</span>
+    <hr>
+
+    <h4></h4>
+        <i>Delete Element
+            Define function deleteElement(someArr).
+            Print length.
+            Delete the third element in the array.
+            Print length.
+            The lengths should be the same.</i>
+    <br>
+    <input type = "text" id="delElement" class= "form-control col-8">
+    <button class ="btn btn-primary" id="btndel">Delete Element!!</button>
+    <span id ="deleteElement">Element Deletion!</span>
+    <hr>
+
+    <h4>Splice Element</h4>
+    <i>Splice Element
+        Define function spliceElement(someArr).
+        Print length.
+        Splice the third element in the array.
+        Print length.
+        The lengths should be one less than the original length.</i>
+    <br>
+    <input type = "text" id="splElement" class= "form-control col-8">
+    <button class ="btn btn-primary" id="btnSplice">Splice Element!!</button>
+    <span id ="spliceElement">Element Splice!</span>
+    <hr>
+    
+    <h4>Reverse String</h4>
+    <i>Reverse String.
+        Define function: reverseStr(someStr).
+        Reverse and return the String.</i>
+    <br>
+    <input type = "text" id="revString" class= "form-control col-8">
+    <button class ="btn btn-primary" id="btnRev">Reverse String!!</button>
+    <span id ="reverseString">Reverse String!</span>
+    <hr>
+
+
+    <script type = "text/javascript" src = "C:\Users\Viji\Desktop\Javascript Assignment\jsAssignment.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
