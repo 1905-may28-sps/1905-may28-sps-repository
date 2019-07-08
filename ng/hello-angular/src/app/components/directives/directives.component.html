@@ -43,6 +43,18 @@ that typically render HTML code or provide additional functionality</h6>
 
 <hr>
 <h5>ngClass</h5>
+<i>This directive is used to change the style of an element. We use property 
+  binding here
+</i>
+<br>
+<button [ngClass]="buttonClass" (click)="changeStyle()">Style Button!</button>
+{{ placeholder}} --> {{ buttonClass }}
 
-
+<h5>ngSwitch</h5>
+<i>This attribute is usually used with ngFor, and allows you to switch the 
+  styling or content of your displayed elements based on a particular property
+</i>
+<ul *ngFor="let e of employees">
+  <li>{{ e.name }} : {{ e.role }} </li>
+</ul>
 
