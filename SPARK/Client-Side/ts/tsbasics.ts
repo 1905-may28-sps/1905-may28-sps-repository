@@ -146,6 +146,7 @@ and do not use the function keyword
  class Point{
      x: number; //instance vars are publicly accessibly by default
      private y: number;
+     protected test: string;
 
      constructor(x: number, y: number){
          this.x = x; //must use "this" to refer to instance var
@@ -162,6 +163,7 @@ and do not use the function keyword
  console.log(pointA.getDistance());
  pointA.x = 10;
 // pointA.y = 10; //will not work since we made this private
+//pointA.test = 'hi';
 
 class Point3D extends Point{
     z: number;
@@ -175,7 +177,145 @@ class Point3D extends Point{
         let dist = super.getDistance();
         return Math.sqrt(dist*dist + this.z*this.z);
     }
+
+    /*
+    test is a protected instance var from this class's 
+    superclass, so it is accessible here, but not directly outside
+    of these two classes
+    */
+    setTest(str: string){
+        this.test = str;
+    }
+    getTest(){
+        console.log(this.test);
+    }
 }
 
 let pointB = new Point3D(3, 4, 5);
 console.log(pointB.getDistance());
+
+
+ 
+//understanding private 
+class Animal{
+    private name: string;
+
+    constructor(name: string){
+        this.name = name;
+    }
+
+    getName(): string{
+        return this.name;
+    }
+
+    setName(name: string): void{
+        this.name = name;
+    }
+}
+
+let animal = new Animal('Puppy');
+//let animal2 = new Animal();//no overriden constructors  
+//console.log(animal.name); //will not work; name is private
+console.log(animal.getName()); //works. using Encapsulation***
+//animal.name = 'Tomcat'; //same; still does not work
+animal.setName('Tomcat');
+
+//understanding protected 
+class Person {
+    protected name: string;
+    constructor(name: string){
+        this.name = name;
+    }
+}
+
+class Employee extends Person{
+    private department: string;
+    constructor(name: string, department: string){
+        super(name);
+        this.department = department;
+    }
+
+    public getElevatorPitch(){
+        return `Hello, my name is ${this.name} and I work
+        in ${this.department}.`;
+    }
+}
+
+let emp1 = new Employee("John", "Sales" );
+//console.log(emp1.name); //cannot access name directly outside of subclass
+console.log(emp1.getElevatorPitch()); //works fine
+
+
+/* READONLY modifier
+    You can make properties read only. 
+    These properties must be initialized at their declaration or in the constructor
+    Allows you to work in a functional way(unexpected mutation is bad)
+    Can use modifier in interfaces as well. Can be initialized but not reassigned
+*/
+
+class Car{
+    readonly brand: string;
+    readonly numWheels: number = 4;
+    readonly year: number;
+
+  //  constructor(){} //CANNOT OVERLOAD CONSTRUCTORS, 
+  //no arg constructor exists by default of none is defined
+
+    constructor(brand: string){
+        this.brand = brand;
+    }
+
+    //does not work, cannot set year once object has been instantiated 
+ /*   setYear(year: number){
+        this.year = year;
+    } */
+}
+
+let car1 = new Car('Honda');
+console.log(car1.brand);
+console.log(car1.numWheels);
+console.log(car1.year);
+//car1.year = 2018;
+
+/*  STATIC
+Thus far, we've only discussed instance members of a class. But it's important
+to note that we have static members, which are visible on the class itself
+and not instances
+*/
+
+class Calculator{
+    static add(a: number, b: number):number{
+        return a+b;
+    }
+
+    static subtract(a:number, b:number):number{
+        return a-b;
+    }
+}
+
+let numb = Calculator.add(10, 3);
+
+/* ABSTRACT CLASS
+Abstract classes are base classes from which other classes may be derived. They
+may not be instantiated directly. Unlike an interface, an abstract class may
+contain implementation details for its members. The abstract keyword is used
+to define abstract classes as well as abstract methods within an abstract class
+
+Methods within an abstract class that are marked abstract have no implementation
+and must be implemented in derived classes; they must use the abstract keyword;
+*/
+abstract class Account{
+    abstract generateReports():void;
+}
+
+class CheckingAccount extends Account{
+    generateReports(){
+        console.log('concrete');
+    }
+}
+
+/*
+There's lots more to explore with typescript. check out the handbook at 
+https://www.typescriptlang.org/docs/handbook/basic-types.html
+*/
+

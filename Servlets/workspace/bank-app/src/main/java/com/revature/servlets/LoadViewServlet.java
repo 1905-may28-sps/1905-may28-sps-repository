@@ -38,6 +38,7 @@ public class LoadViewServlet extends HttpServlet{
 		
 		String resourcePath = "partials/" + resource  + ".html";
 		req.getRequestDispatcher(resourcePath).forward(req, resp);
+
 	}
 
 }

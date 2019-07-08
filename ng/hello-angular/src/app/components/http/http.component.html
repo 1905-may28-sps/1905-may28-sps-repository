@@ -19,3 +19,21 @@
   <h3>When we send HTTP 
       requests, we usually put the code in Angular <i>Services</i></h3>
   
+      <hr>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }} </td>
+            <td>{{ user.firstName }} {{ user.lastName }} </td>
+            <td>{{ user.username }} </td>
+          </tr>
+        </tbody>
+      </table>
