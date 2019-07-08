@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { DataBindingComponent } from './components/data-binding/data-binding.component';
 import { DirectivesComponent } from './components/directives/directives.component';
 import { TestComponent } from './components/test.component';
+import { SquarerootPipe } from './pipes/squareroot.pipe';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 /*
 Angular provides its own system of organizing code and funtionality. 
@@ -36,7 +38,9 @@ and has very important elements
     AppComponent,
     DataBindingComponent,
     DirectivesComponent,
-    TestComponent
+    TestComponent,
+    SquarerootPipe,
+    NavbarComponent
   ],
   imports: [
     /*
