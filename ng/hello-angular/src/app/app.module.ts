@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataBindingComponent } from './components/data-binding/data-binding.component';
+import { DirectivesComponent } from './components/directives/directives.component';
+import { TestComponent } from './components/test.component';
 
 /*
 Angular provides its own system of organizing code and funtionality. 
@@ -32,7 +34,9 @@ and has very important elements
     listed here -  components, directives, pipes
     */
     AppComponent,
-    DataBindingComponent
+    DataBindingComponent,
+    DirectivesComponent,
+    TestComponent
   ],
   imports: [
     /*
