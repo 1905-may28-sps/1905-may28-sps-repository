@@ -10,9 +10,14 @@ export class DataBindingComponent implements OnInit {
   text: string = 'hello world';
   bool: boolean = true;
   count: number = 0;
-  color: string = '#a3b79f';
+  color: string = 'magenta';
   currentTime: Date;
   someNum = Math.random();
+  obj = {
+    name: 'gen', 
+    age: 100
+  }
+  myName: string;
 
   constructor() {
     setInterval(
@@ -22,6 +27,10 @@ export class DataBindingComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  incrementCount(){
+    this.count++;
   }
 
 }
