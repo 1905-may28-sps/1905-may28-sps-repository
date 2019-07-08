@@ -16,8 +16,6 @@ export class HttpComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
-    console.log('in user service onInit');
-    console.log(this.users);
   }
 
   getUsers(){
@@ -28,6 +26,7 @@ export class HttpComponent implements OnInit {
       resp => {
         if(resp != null){
           this.users = resp;
+          console.log(this.users);
         }
         else{
           console.log('Error loading users, null value sent back')
