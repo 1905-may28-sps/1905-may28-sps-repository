@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { TestComponent } from './components/test.component';
 import { SquarerootPipe } from './pipes/squareroot.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { HttpComponent } from './components/http/http.component';
 
 /*
 Angular provides its own system of organizing code and funtionality. 
@@ -42,7 +44,8 @@ and has very important elements
     TestComponent,
     SquarerootPipe,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    HttpComponent
   ],
   imports: [
     /*
@@ -51,7 +54,8 @@ and has very important elements
     */
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   /**
    * exports: []
