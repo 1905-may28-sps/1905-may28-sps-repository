@@ -9,6 +9,7 @@ import { DirectivesComponent } from './components/directives/directives.componen
 import { TestComponent } from './components/test.component';
 import { SquarerootPipe } from './pipes/squareroot.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 /*
 Angular provides its own system of organizing code and funtionality. 
@@ -40,7 +41,8 @@ and has very important elements
     DirectivesComponent,
     TestComponent,
     SquarerootPipe,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     /*
