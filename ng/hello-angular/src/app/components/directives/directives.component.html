@@ -54,7 +54,8 @@ that typically render HTML code or provide additional functionality</h6>
 <i>This attribute is usually used with ngFor, and allows you to switch the 
   styling or content of your displayed elements based on a particular property
 </i>
-<ul *ngFor="let e of employees">
-  <li>{{ e.name }} : {{ e.role }} </li>
+<ul *ngFor="let e of employees" [ngSwitch]="e.role">
+  <li *ngSwitchCase="'Trainer'" class="text-warning">Trainer {{ e.name }} </li>
+  <li *ngSwitchCase="'Associate'" class="text-success"> Associate {{ e.name}}</li>
 </ul>
 
