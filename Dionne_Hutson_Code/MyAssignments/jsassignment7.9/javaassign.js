@@ -9,6 +9,7 @@
     document.getElementById('stringSubmit').addEventListener('click', function(){revString(document.getElementById('astring').value)});
     document.getElementById('stringSubmit').addEventListener('click', function(){subString(document.getElementById('astring').value,document.getElementById('length').value,document.getElementById('offset').value)});
     document.getElementById('fibArraySubmit').addEventListener('click', function(){findFib(document.getElementById('fib').value)});
+    document.getElementById('fibArraySubmit').addEventListener('click', function(){findFac(document.getElementById('fib').value)});
     document.getElementById('sortSubmit').addEventListener('click', function(){bubbleSort(document.getElementById('bsort').value)});
     document.getElementById('delSubmit').addEventListener('click', function(){delEl(document.getElementById('del').value)});
 
@@ -19,12 +20,13 @@
 
 
 }
+//Q12ISH
 function print(){
 var hold=new Person(document.getElementById('name').value,document.getElementById('age').value);
 console.log(hold);
 document.getElementById('person2').innerHTML=hold.name+" "+hold.age;
 }
-
+//Q1
 function findFib(num){
     console.log("in ere");
     console.log(num);
@@ -52,6 +54,24 @@ function findFib(num){
     document.getElementById('fibOutput').innerHTML = n;
     
 }
+//Q4
+function findFac(num){
+    console.log("in ere");
+    console.log(num);
+   num=Number(num);
+
+   var n=1;
+ 
+            for (var a=1; a<=num; a++)
+            {   num=n*num;
+                n=num;
+                
+            }
+       
+    document.getElementById('facOutput').innerHTML = n;
+    
+}
+//Q7
 function findPalindrome(palString){
         console.log("top");
         
@@ -69,8 +89,7 @@ function findPalindrome(palString){
         
             document.getElementById('palOutput').innerHTML=b;//inner HTML is the space between span tag
 }
-
-
+//Q3
 function revString(str){
    
     var suc=false;
@@ -82,7 +101,7 @@ function revString(str){
     document.getElementById('revOutput').innerHTML = l;
     console.log(l);
 }
-
+//Q5
 function subString(str, length, offset){
     let l="";
     offset=Number(offset);
@@ -107,7 +126,7 @@ function subString(str, length, offset){
 }
 }
 
-
+//Q2
 function bubbleSort(arr2) {
 
 
@@ -131,7 +150,7 @@ function bubbleSort(arr2) {
     return arr;
   }
   
-
+//Q11
 function splEl(arr2) {
 
 
@@ -150,6 +169,7 @@ function splEl(arr2) {
     document.getElementById('spl3').innerHTML =arr.length;
     return arr;
   }
+  //Q10
   function delEl(arr2) {
 
 
@@ -170,7 +190,7 @@ function splEl(arr2) {
     document.getElementById('del3').innerHTML =arr.length;
     return arr;
   }
-//Descending order
+//Q15
 function desc(str) {
 var arr2=str.split("");
 
@@ -193,17 +213,17 @@ var arr=[];
     document.getElementById('desc2').innerHTML =arr.join("");
     return arr;
   }
-
+//Q12ISH
 function Person(name, age)  {
     this.name = name;
     this.age = age;
   }
-
+//Q9ISH
 function getPerson(name, age)  {
     this.name = name;
     this.age = age;
   }
-
+//Q14
 function date(){
     var d = new Date();
     document.getElementById("datetime").innerHTML = d.toLocaleString();
