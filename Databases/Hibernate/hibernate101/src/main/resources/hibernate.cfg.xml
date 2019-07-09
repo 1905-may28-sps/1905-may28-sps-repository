@@ -6,13 +6,43 @@
  <!-- provide information necessary to connect to db 
  in session factory tags  -->
  	<session-factory>
+ 	
+ 	<!-- basic db connection information -->
  		<property name="hibernate.dialect">
  		org.hibernate.dialect.Oracle10gDialect</property>
  		<property name="hibernate.connection.driver_class">
  		oracle.jdbc.driver.OracleDriver</property>
- 		<property name="hibernate.connection.url"></property>
- 		<property name="hibernate.connection.username"></property>
- 		<property name="hibernate.connection.password"></property>
+ 		<property name="hibernate.connection.url">jdbc:oracle:thin:@demo1905may28sps.cjrlr2je5uec.us-east-1.rds.amazonaws.com:1519/ORCL</property>
+ 		<property name="hibernate.connection.username">demo1905may28sps</property>
+ 		<property name="hibernate.connection.password">p4ssw0rd</property>
+ 		
+ 	<!-- show HQL commands as theyre carried out in the console -->
+ 		<property name="show_sql">true</property>
+ 		
+ 	<!-- format HQL for readability -->
+ 		<property name="format_sql">true</property>
+ 		
+ 	<!-- this property allows us to create/update the schema 
+ 	hbm = hibernate mapping (annotations/xml mapping classes as entities)
+ 	ddl = data definition language 
+ 	so hbm2ddl is how we configure our app to talk to our tables (either 
+ 	create them or just write to them)
+ 	
+ 	create: creates the schema; if these tables are present when the app 
+ 	is started, it will drop the tables and recreate them. 
+ 	
+ 	update: updates the schema with given values or changes to tables 
+ 	
+ 	validate: validates the schema, makes no changes in db
+ 	
+ 	create-drop: creates the schema, destroying all previously existing 
+ 	information if present. then drops the schema when sessionfactory is closed
+ 		 -->
+ 		<property name="hibernate.hbm2ddl.auto">create</property>
+ 		
+ 	
+ 	<!-- Map classes below -->
+ 	
  		
  	</session-factory>
  </hibernate-configuration>
