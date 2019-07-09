@@ -170,3 +170,12 @@ UNION select * from employee where birthdate > '01-JAN-70'-- 2 3 4 5
 minus (
 select * from employee where birthdate > '01-JAN-70'
 INTERSECT select * from employee where title like 'S%');  -- 3 6 7
+
+
+
+
+
+
+select * from user where lower(username) = ?
+
+ps.setString(1, uname.toLowerCase)
