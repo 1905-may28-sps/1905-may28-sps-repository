@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+    crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="time" style="text-align:right;"></div>
+    <div class="col-6">
+        <h4>Javascript Hw</h4>
+        <p>Please enter values and what click buttons</p>
+        <input type="text" id="fibNum" class="form-control col-8">
+        <button class="btn btn-primary" id="fibNumSubmit">Fib num</button>
+        <button class="btn btn-primary" id="BubbleSort">Bubble Sort</button>
+        <button class="btn btn-primary" id="RevereString">Revere String</button>
+        <button class="btn btn-primary" id="factorial">factorial</button>
+        <button class="btn btn-primary" id="isEven">is it Even</button>
+        <button class="btn btn-primary" id="ifPali">is it Palidrome</button>
+        <button class="btn btn-primary" id="deleteElement">deleted 3rd</button>
+        <button class="btn btn-primary" id="spliceElement">splice 3rd</button>
+        <button class="btn btn-primary" id="Largest">rearrange for Largest</button>
+        <br>
+        <button class="btn btn-primary" id="time">Click for Time</button>
+        <span id="fibOutput"></span>
+        <hr>
+    </div>
+
+    <script>
+        window.onload = function(){
+           
+            document.getElementById('fibNumSubmit').addEventListener('click',findFibNum);
+            document.getElementById('BubbleSort').addEventListener('click',bubbleSort);
+            document.getElementById('RevereString').addEventListener('click',function(){reverseStr(document.getElementById('fibNum').value)});
+            document.getElementById('factorial').addEventListener('click',function(){factorial(document.getElementById('fibNum').value)});
+            document.getElementById('isEven').addEventListener('click',function(){isEven(document.getElementById('fibNum').value)});
+            document.getElementById('ifPali').addEventListener('click',function(){findPali(document.getElementById('fibNum').value)});
+            document.getElementById('deleteElement').addEventListener('click',function(){deleteElement(document.getElementById('fibNum').value)});
+            document.getElementById('spliceElement').addEventListener('click',function(){spliceElement(document.getElementById('fibNum').value)});
+            document.getElementById('Largest').addEventListener('click',function(){Largest(document.getElementById('fibNum').value)});
+            document.addEventListener('click',currentTime);
+        }
+// 1. Fibonacci 
+//     Define function: fib(n) 
+//     Return the nth number in the fibonacci sequence.
+        function findFibNum(){      
+            let x = document.getElementById('fibNum').value;
+            if (x<0){document.getElementById('fibOutput').innerHTML="Must enter a positive number"}
+            else if(x==0)document.getElementById('fibOutput').innerHTML="0" 
+            else if(x==1|| x== 2)document.getElementById('fibOutput').innerHTML="1"
+            else{
+                let a =1;
+                let b =0;
+                let temp;
+                while (x>=1){
+                    temp = a;
+                    a+=b;
+                    b=temp;
+                    x--;
+                }
+            document.getElementById('fibOutput').innerHTML = b;
+            }
+        }
+//2. Bubble Sort
+// Define function: bubbleSort(numArray)
+// Use the bubble sort algorithm to sort the array.
+// Return the sorted array.
+function bubbleSort(){
+    let inputArr= document.getElementById('fibNum').value;
+    console.log(inputArr);
+    let Arr= inputArr.split(' ');
+    let len = Arr.length;
+    for (let i = 0; i < len; i++) {
+        for (let j = 0; j < len; j++) {
+            if (Arr[j] > Arr[j + 1]) {
+                let tmp = Arr[j];
+                Arr[j] = Arr[j + 1];
+                Arr[j + 1] = tmp;
+            }
+        }
+    }
+    document.getElementById('fibOutput').innerHTML = Arr;
+};  
+// 3. Reverse String
+// Define function: reverseStr(someStr)
+// Reverse and return the String.
+function reverseStr(userinput){
+    let strSplit=userinput.split('');
+    let reverseStr=strSplit.reverse();
+    let joinReversed=reverseStr.join('');
+    document.getElementById('fibOutput').innerHTML =joinReversed;
+}
+// 4. Factorial
+// Define function: factorial(someNum)
+// Use recursion to compute and return the factorial of someNum.
+function factorial(userinput){
+    
+    let num =Number(userinput);
+   temp =  num;
+    for (i=1; i<num;i++ ){
+        temp=i*temp;
+    }
+    document.getElementById('fibOutput').innerHTML =temp;
+}
+
+
+// 6. Even Number
+// Define function: isEven(someNum)
+// Return true if even, false if odd.
+// Do not use % operator.
+function isEven(userinput){
+    let ans=Number(userinput/2);
+    ans=ans.toString(ans);
+    let ansString= ans.split('.')
+    if (ansString.length==1){
+        document.getElementById('fibOutput').innerHTML ="Even";
+    }
+    else document.getElementById('fibOutput').innerHTML ="Odd";
+}
+
+
+// 7. Palindrome
+// Define function isPalindrome(someStr)
+// Return true if someStr is a palindrome, otherwise return false
+
+function findPali(someStr){
+   let textString = someStr;
+   textString= textString.toLowerCase();
+   textString= textString.replace(/[^a-z]/g,""); 
+   let arr= textString.split("");
+   for(let i=0; i<arr.length-1; i++){
+   if(arr[i]===arr.reverse()[i]){
+    
+    document.getElementById('fibOutput').innerHTML= 'True';
+   } 
+   else {
+    document.getElementById('fibOutput').innerHTML= 'False';
+    }
+}
+}
+
+
+// 10. Delete Element
+// Define function deleteElement(someArr)
+// Print length
+// Delete the third element in the array.
+// Print length
+// The lengths should be the same.
+function deleteElement(userinput){
+    let strArray=userinput.split('');
+    document.getElementById('fibOutput').innerHTML= strArray.length;
+    console.log(strArray);
+    strArray[2]=null;
+    console.log(strArray);
+    document.getElementById('fibOutput').innerHTML+= " " + strArray.length;
+
+}
+
+// 11. Splice Element
+// Define function spliceElement(someArr)
+// Print length
+// Splice the third element in the array.
+// Print length
+// The lengths should be one less than the original length.
+function spliceElement(userinput){
+    let strArray=userinput.split('');
+    document.getElementById('fibOutput').innerHTML= strArray.length;
+    console.log(strArray);
+    strArray.splice(2,1);
+    console.log(strArray);
+    document.getElementById('fibOutput').innerHTML+= " " + strArray.length;
+
+}
+
+
+ 
+// 14. Display the current time on the top right of your HTML page, 
+// updating every second
+function currentTime(){
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    document.getElementById('time').innerHTML =time;
+    console.log(time);
+}
+
+// 15.  Descending order
+// Your task is to make a function that can take any non-negative 
+// integer as a argument and return it with its digits in descending 
+// order. Essentially, rearrange the digits to create the highest possible number.   
+function Largest(userinput){
+    
+    console.log(userinput);
+    let Arr= userinput.split('');
+    console.log(Arr);
+    let len = Arr.length;
+    for (let i = 0; i < len; i++) {
+        for (let j = 0; j < len; j++) {
+            if (Arr[j] < Arr[j + 1]) {
+                let tmp = Arr[j];
+                Arr[j] = Arr[j + 1];
+                Arr[j + 1] = tmp;
+            }
+        }
+    }
+    Arr=Arr.join('');
+    document.getElementById('fibOutput').innerHTML = Arr;
+};          
+ 
+    </script>
+</body>
+</html>
