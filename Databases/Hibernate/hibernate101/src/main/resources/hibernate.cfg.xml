@@ -43,6 +43,7 @@
  	
  	<!-- Map classes (annotations) below -->
  		<mapping class="com.revature.model.User" />
+ 		<mapping class="com.revature.model.Post" />
  		
  	<!-- Classes mapped with XML -->
  		<mapping resource="TestMapping.hbm.xml" />
