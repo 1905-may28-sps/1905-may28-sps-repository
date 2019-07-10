@@ -15,7 +15,7 @@ public class ExploringHibernate {
 	final static Logger logger = Logger.getLogger(ExploringHibernate.class);
 	
 	public static void main(String[] args) {
-		save();
+		persist();
 	}
 	
 	/*
@@ -67,5 +67,26 @@ public class ExploringHibernate {
 		return u;
 	}
 	
+	/*
+	 * The persist method is intended for adding a new entity 
+	 * instance to the persistence context (change object 
+	 * state from transient -> persistent)
+	 * Close behavior to save(), except if we attempt to call 
+	 * persist on a detached object, an exception will be thrown
+	 * 
+	 *  org.hibernate.PersistentObjectException: detached entity passed to persist:
+	 */
+	static void persist() {
+		User u = new User("updateUser", "test");
+		u.setId(100);
+		Session session = util.getSession();
+		try {
+			Transaction tx = session.beginTransaction();
+			session.persist(u);
+			tx.commit();
+		}finally {
+			session.close();
+		}
+	}
 
 }
