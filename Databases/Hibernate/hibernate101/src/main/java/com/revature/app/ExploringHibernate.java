@@ -3,8 +3,12 @@ package com.revature.app;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import com.revature.model.User;
 import com.revature.util.ConnectionUtil;
@@ -15,14 +19,7 @@ public class ExploringHibernate {
 	final static Logger logger = Logger.getLogger(ExploringHibernate.class);
 	
 	public static void main(String[] args) {
-	/*	User u = getDemo(); //detached user
-		u.setUsername("goingToUpdate");
-		u.setPassword("p4ssw0rd"); */
-		
-		User u = new User("mergeNoId", "123");
-	//	u.setId(1000); //Hibernate will treat this user as detached bc it has an id 
-	
-		merge(u);
+		System.out.println(exploringCriteria());
 	}
 	
 	/*
@@ -189,5 +186,60 @@ public class ExploringHibernate {
 		}
 	}
 	
+	static void getVmerge() {
+		/*	User u = getDemo(); //detached user
+		u.setUsername("goingToUpdate");
+		u.setPassword("p4ssw0rd"); */
+		
+		User u = new User("mergeNoId", "123");
+	//	u.setId(1000); //Hibernate will treat this user as detached bc it has an id 
+	
+		merge(u);
+	}
+	
+	/*
+	 * CRITERIA INTERFACE
+	 * 
+	 * https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/criterion/Restrictions.html
+	 */
+	static List<User> findAllCriteria(){
+		List<User> users = null;
+		Session session = util.getSession();
+		try {
+			Criteria criteria = session.createCriteria(User.class);
+			users= criteria.list();
+		}finally {
+			session.close();
+		}
+		return users;
+	}
+	
+	static List<User> exploringCriteria(){
+		List<User> users = null;
+		Session session = util.getSession();
+		try {
+			Criteria criteria = session.createCriteria(User.class)
+					.add(Restrictions.ge("id", 20))
+					.addOrder(Order.asc("username"));
+			users= criteria.list();
+		}finally {
+			session.close();
+		}
+		return users;
+	}
+	
+	/*
+	 * QUERY INTERFACE
+	 * write SQL queries using HQL
+	 */
+	static User findByUsernameQuery(String username) {
+		User u = null;
+		Session session = util.getSession();
+		Query query = session
+				.createQuery("from User where lower(username) = :param");
+		query.setParameter("param", username.toLowerCase());
+		u = (User) query.uniqueResult();
+		return u;
+	}
 
 }
