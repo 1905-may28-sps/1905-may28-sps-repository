@@ -19,7 +19,12 @@ public class ERS_USERSERVICE {
 		return u;}
 		return null;
 	}
-	public Info getInfo(ERS_USERS u) {
-		return userDAO.getUserInfo(u);
+	public Info getInfoThruEmp(ERS_USERS u) {
+		return userDAO.getEmpInfo(u);
 	}
+	public Info getInfoThruMan(ERS_USERS u) {
+		return userDAO.getManInfo(u);
+	}
+	
+	
 }

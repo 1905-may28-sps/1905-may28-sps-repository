@@ -35,14 +35,26 @@ public class GetInfoServlet extends HttpServlet {
 			resp.setStatus(403);
 		}
 		else {
+			if(user.getRole()==1) {
 			ERS_USERSERVICE service= new ERS_USERSERVICE();
-			Info info=service.getInfo(user);
+			Info info=service.getInfoThruEmp(user);
 			ObjectMapper mapper=new ObjectMapper();
 			
 			resp.setContentType("application/json");
 			resp.setStatus(200);
 			
 			resp.getWriter().write(mapper.writeValueAsString(info));
+			}
+			if(user.getRole()==2) {
+				ERS_USERSERVICE service= new ERS_USERSERVICE();
+				Info info=service.getInfoThruMan(user);
+				ObjectMapper mapper=new ObjectMapper();
+				
+				resp.setContentType("application/json");
+				resp.setStatus(200);
+				
+				resp.getWriter().write(mapper.writeValueAsString(info));
+				}
 		}
 	}
 	

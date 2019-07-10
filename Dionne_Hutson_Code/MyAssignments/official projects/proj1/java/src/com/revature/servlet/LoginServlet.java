@@ -19,9 +19,7 @@ import src.com.revature.service.ERS_USERSERVICE;
 @WebServlet("/login")
 
 public class LoginServlet extends HttpServlet{
-	/*
-	 * USING LOG4J!
-	 */
+
 	final static Logger logger = Logger.getLogger(LoginServlet.class);
 	ERS_USERSERVICE service = new ERS_USERSERVICE();
 	@Override
@@ -31,9 +29,9 @@ public class LoginServlet extends HttpServlet{
 		//retrieve user from req body 
 		ERS_USERS user = mapper.readValue(req.getInputStream(), ERS_USERS.class);
 		//pass in username and password to service layer, get user obj
-		System.out.println(user.getERS_USERNAME()+ user.getPass());
+		if(user!=null) {
 		user = service.login(user.getERS_USERNAME(), user.getPass());
-	
+		}
 		//if obj == null, invalid credentials. send back null
 		if(user == null) {
 			resp.setStatus(204);

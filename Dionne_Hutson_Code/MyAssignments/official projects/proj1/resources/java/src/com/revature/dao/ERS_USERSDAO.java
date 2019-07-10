@@ -43,7 +43,7 @@ public class ERS_USERSDAO {
  }
  
  
- public Info getUserInfo(ERS_USERS u) {
+ public Info getEmpInfo(ERS_USERS u) {
 	 try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 	 String sql="select R.REIMB_ID, R.REIMB_AMOUNT, R.REIMB_SUBMITTED,R.REIMB_RESOLVED,    "
 	 		+ "R.REIMB_DESCRIPTION,U.USER_FIRST_NAME,S.REIMB_STATUS,  T.REIMB_TYPE from ERS_REIMBURSEMENT R "
@@ -64,6 +64,39 @@ public class ERS_USERSDAO {
 			temp.setResolved(rs.getTimestamp(4));
 			temp.setDescrp(rs.getString(5));
 			temp.setMan(rs.getString(6));
+			temp.setStatus(rs.getString(7));
+			temp.setType(rs.getString(8));
+			reims.add(temp);
+		}
+		info.setReims(reims);
+		return info;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
+ public Info getManInfo(ERS_USERS u) {
+	 try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+	 String sql="select R.REIMB_ID, R.REIMB_AMOUNT, R.REIMB_SUBMITTED,R.REIMB_RESOLVED,    "
+	 		+ "R.REIMB_DESCRIPTION,U.USER_FIRST_NAME,S.REIMB_STATUS,  T.REIMB_TYPE from ERS_REIMBURSEMENT R "
+	 		+ "inner join ERS_REIMBURSEMENT_STATUS S ON R.REIMB_STATUS_ID=S.REIMB_STATUS_ID "
+	 		+ "inner join ERS_REIMBURSEMENT_TYPE T ON R.REIMB_TYPE_ID=T.REIMB_TYPE_ID "
+	 		+ "INNER JOIN ERS_USERS U ON R.REIMB_AUTHOR=U.ERS_USERS_ID where R.REIMB_RESOLVER = ?" ;
+	 PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, u.getUserID());
+		Info info = new Info();
+		info.setUser(u);
+		List<ReimInfo> reims = new ArrayList<ReimInfo>();
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			ReimInfo temp = new ReimInfo();
+			temp.setId(rs.getInt(1));
+			temp.setAmount(rs.getDouble(2));
+			temp.setSubmit(rs.getTimestamp(3));
+			temp.setResolved(rs.getTimestamp(4));
+			temp.setDescrp(rs.getString(5));
+			temp.setEmp(rs.getString(6));
 			temp.setStatus(rs.getString(7));
 			temp.setType(rs.getString(8));
 			reims.add(temp);
