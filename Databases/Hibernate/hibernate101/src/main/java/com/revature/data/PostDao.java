@@ -31,5 +31,9 @@ public class PostDao {
 		//use either query or criteria 
 		return null;
 	}
+	
+	public List<Post> getByKeyword(String keyword){
+		return null;
+	}
 
 }
