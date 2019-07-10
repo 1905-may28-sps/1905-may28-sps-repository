@@ -41,8 +41,11 @@
  		<property name="hibernate.hbm2ddl.auto">update</property>
  		
  	
- 	<!-- Map classes below -->
+ 	<!-- Map classes (annotations) below -->
  		<mapping class="com.revature.model.User" />
+ 		
+ 	<!-- Classes mapped with XML -->
+ 		<mapping resource="TestMapping.hbm.xml" />
  		
  	</session-factory>
  </hibernate-configuration>

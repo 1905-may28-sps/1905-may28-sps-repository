@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.revature.model.TestMapping" table="TV_SHOW">
+		<!-- The ID column has a special tag The generator element is used to automatically 
+			create PKs. The class attribute is set to native to let Hibernate pick its 
+			generation strategy based upon capabilities of the underlying DB -->
+		<id name="id" type="int" column="SHOW_ID">
+			<generator class="native"/>
+		</id>
+		<property name="info" type="string" column="SHOW_NAME" > </property>
+
+	</class>
+</hibernate-mapping>
