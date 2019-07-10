@@ -15,7 +15,7 @@ public class ExploringHibernate {
 	final static Logger logger = Logger.getLogger(ExploringHibernate.class);
 	
 	public static void main(String[] args) {
-		persist();
+		System.out.println(getDemo());
 	}
 	
 	/*
@@ -88,5 +88,66 @@ public class ExploringHibernate {
 			session.close();
 		}
 	}
+	
+	/*
+	 * Session.get(id)
+	 * - returns persisted object with specified identifier
+	 * - if the object does not exist, the method will return null
+	 * - method hits the database immediately(eager fetching), regardless of whether
+	 *  any methods are called on the object in the persistent state
+	 * - use this method to retrieve data that we are not sure exists or 
+	 * if we are using objects outside of the scope of a hibernate session
+	 */
+	/*
+	 * Session.load(id)
+	 * - retrieves a persisted instance by id. 
+	 * - load will throw an ObjectNotFoundException if it attempts 
+	 * to load a nonexistent row 
+	 * - this method returns a PROXY of the object and does not 
+	 * hit the database until a method of the object is called
+	 * while the session is still open (lazy fetching)
+	 * - If a method is called on a proxy, we see a LazyInitializationException
+	 * - a proxy is a hibernate object that allows for lazy loading
+	 * of data; it is basically a shell of an object that holds the 
+	 * ID of it without any actual data from DB. Gets data when it 
+	 * has a method called on it 
+	 */
+	
+	static User getvsLoad() {
+		Session session = util.getSession();
+		User u = null;
+		try {
+			logger.info("RETRIEVING USER WITH GET METHOD");
+			u = (User) session.load(User.class, 1000);
+	
+			/*
+			 * Remember that we implicitly call an object's toString() 
+			 * method when we put it in a sysout
+			 */
+			logger.info("RETRIEVED USER, ABOUT TO CALL METHOD ON OBJ WHILE IN SESSION");
+			System.out.println(u); 
+			
+		}finally {
+			session.close();
+		}
+		return u;
+	}
+	
+	static User getDemo() {
+		User u = null;
+		Session session = util.getSession();
+		try {
+			Transaction tx = session.beginTransaction();
+			u = (User) session.get(User.class, 1);
+			
+			u.setUsername("changedUsernameWithGet");
+			
+			tx.commit();
+		}finally {
+			session.close();
+		}
+		return u;
+	}
+	
 
 }
