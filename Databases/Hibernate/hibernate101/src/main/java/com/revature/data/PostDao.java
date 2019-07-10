@@ -46,7 +46,8 @@ public class PostDao {
 		Session session = util.getSession();
 		try {
 			Query query = session.getNamedQuery("getByKeyword");
-			query.setParameter("keyword", keyword);
+			query.setParameter("keyword", "%" + keyword.toLowerCase() +"%");
+			posts = query.list();
 		}finally {
 			session.close();
 		}

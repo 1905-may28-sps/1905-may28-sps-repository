@@ -15,6 +15,17 @@ public class BlogApp {
 	
 	public static void main(String[] args) {
 		
+		
+	}
+	
+	static void menu() {
+		//1. login. 2. register 
+		//view your posts 
+		//create new posts
+	}
+	
+	static void test() {
+		
 	}
 	
 	

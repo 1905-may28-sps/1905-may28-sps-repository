@@ -30,8 +30,8 @@ import javax.persistence.Table;
 
 @NamedQueries({
 	@NamedQuery(name="getLongPosts", query="FROM Post WHERE lengh(body)>250"),
-	@NamedQuery(name="getByKeyword", query="FROM Post WHERE subject like :keyword"
-			+ "OR body like :keyword")
+	@NamedQuery(name="getByKeyword", query="FROM Post WHERE lower(subject) like :keyword "
+			+ "OR lower(body) like :keyword")
 })
 @Entity
 @Table(name="BLOG_POST")
