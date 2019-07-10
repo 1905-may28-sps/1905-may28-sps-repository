@@ -222,6 +222,12 @@ public class ExploringHibernate {
 					.add(Restrictions.ge("id", 20))
 					.addOrder(Order.asc("username"));
 			users= criteria.list();
+			
+			User u = null;
+			Criteria crit = session.createCriteria(User.class)
+					.add(Restrictions.ilike("username", "testUser"));
+			u = (User) crit.uniqueResult();
+					
 		}finally {
 			session.close();
 		}
@@ -236,8 +242,8 @@ public class ExploringHibernate {
 		User u = null;
 		Session session = util.getSession();
 		Query query = session
-				.createQuery("from User where lower(username) = :param");
-		query.setParameter("param", username.toLowerCase());
+				.createQuery("from User where lower(username) = :p");
+		query.setParameter("p", username.toLowerCase());
 		u = (User) query.uniqueResult();
 		return u;
 	}
