@@ -2,6 +2,7 @@ package com.revature.data;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -28,12 +29,29 @@ public class PostDao {
 	}
 	
 	public List<Post> getByAuthor(User u){
-		//use either query or criteria 
-		return null;
+		Session session = util.getSession();
+		try {
+			Query query = session.createQuery
+					("from Post where author = :user");
+			query.setParameter("user", u);
+			return query.list();
+		}
+		finally {
+			session.close();
+		}
 	}
 	
 	public List<Post> getByKeyword(String keyword){
-		return null;
+		List<Post> posts = null;
+		Session session = util.getSession();
+		try {
+			Query query = session.getNamedQuery("getByKeyword");
+			query.setParameter("keyword", keyword);
+		}finally {
+			session.close();
+		}
+		return posts;
+		
 	}
 
 }

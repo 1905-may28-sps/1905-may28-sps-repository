@@ -8,9 +8,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
+/*
+ * NAMED QUERIES
+ * A major disadvantage of having HQL and SQL scattered across 
+ * data access objects is that it makes the code unreadable. 
+ * Hence, it might make sense to group all HQL and SQL in one 
+ * place and use only their reference in the actual data access 
+ * code. Fortunately, Hibernate allows us to do this with named queries.
+
+	A named query is a statically defined query with a predefined 
+	unchangeable query string. They’re validated when the session 
+	factory is created, thus making the application to fail fast in 
+	case of an error.
+ */
+
+@NamedQueries({
+	@NamedQuery(name="getLongPosts", query="FROM Post WHERE lengh(body)>250"),
+	@NamedQuery(name="getByKeyword", query="FROM Post WHERE subject like :keyword"
+			+ "OR body like :keyword")
+})
 @Entity
 @Table(name="BLOG_POST")
 public class Post {
