@@ -15,7 +15,14 @@ public class ExploringHibernate {
 	final static Logger logger = Logger.getLogger(ExploringHibernate.class);
 	
 	public static void main(String[] args) {
-		System.out.println(getDemo());
+	/*	User u = getDemo(); //detached user
+		u.setUsername("goingToUpdate");
+		u.setPassword("p4ssw0rd"); */
+		
+		User u = new User("mergeNoId", "123");
+	//	u.setId(1000); //Hibernate will treat this user as detached bc it has an id 
+	
+		merge(u);
 	}
 	
 	/*
@@ -140,13 +147,46 @@ public class ExploringHibernate {
 			Transaction tx = session.beginTransaction();
 			u = (User) session.get(User.class, 1);
 			
-			u.setUsername("changedUsernameWithGet");
-			
+		//	u.setUsername("closedSession");
+			/*
+			 * Hibernate leverages transactional write-behind
+			 * and waits until the end of the transaction (tx.commit())
+			 * to persist data once brought into the persistent state
+			 */
 			tx.commit();
 		}finally {
 			session.close();
 		}
 		return u;
+	}
+	
+	/*
+	 * session.update(Object)
+	 * - transitions the object passed in as param from detached to persistent 
+	 * - throws an exception if you pass it a transient entity
+	 * (obj without ID or ID that doesnt exist)
+	 * - org.hibernate.StaleStateException: 
+	 */
+	static void update(User u) {
+		Session session = util.getSession();
+		try {
+			Transaction tx = session.beginTransaction();
+			session.update(u);
+			tx.commit();	
+		}finally {
+			session.close();
+		}
+	}
+	
+	static void merge(User u) {
+		Session session = util.getSession();
+		try {
+			Transaction tx = session.beginTransaction();
+			session.merge(u);
+			tx.commit();	
+		}finally {
+			session.close();
+		}
 	}
 	
 
