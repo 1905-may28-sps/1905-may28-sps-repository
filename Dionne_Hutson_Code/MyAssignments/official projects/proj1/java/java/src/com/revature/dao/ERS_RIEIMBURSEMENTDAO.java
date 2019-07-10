@@ -14,7 +14,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 	static ERS_RIEIMBURSEMENTDAO reimDAO=new ERS_RIEIMBURSEMENTDAO();
 	static ERS_REIMBURSEMENT reim= new ERS_REIMBURSEMENT();
 
-	public void addReimbursement(ERS_REIMBURSEMENT reim) {
+	public  ERS_REIMBURSEMENT addReimbursement(ERS_REIMBURSEMENT reim) {
 
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 
@@ -38,6 +38,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return reim;
 
 	}
 	public void updateReimbursement(ERS_REIMBURSEMENT reim) {

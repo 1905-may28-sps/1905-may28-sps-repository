@@ -10,6 +10,7 @@ public class ReimInfo {
 	private String descrp;
 	//private PIC////////////
 	private String man;
+	private String emp;
 	private String status;
 	private String type;
 	public ReimInfo() {
@@ -75,6 +76,12 @@ public class ReimInfo {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public String getEmp() {
+		return emp;
+	}
+	public void setEmp(String emp) {
+		this.emp = emp;
 	}
 	
 	
