@@ -1,5 +1,7 @@
 package com.revature.app;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,8 +18,19 @@ public class ExploringHibernate {
 		save();
 	}
 	
+	/*
+	 * SAVE
+	 * - adds instance to db
+	 * - persists transient instance, returns whatever Serializable
+	 * identifier is used for the instance 
+	 * - saving a persisted instance does nothing 
+	 * - saving a detached instance creates a new persistant instance
+	 * and assigns it a new identifier, which results in a duplicate
+	 * record. do not do!
+	 */
 	static User save() {
-		User u = new User("Genesis", "123"); //TRANSIENT
+		User u = new User("withId", "123"); //TRANSIENT
+		u.setId(1000);
 		Session session = util.getSession();
 		try {
 			logger.info("opened session " + session.getStatistics());
@@ -30,10 +43,21 @@ public class ExploringHibernate {
 			 */
 			Transaction tx = session.beginTransaction();
 			int id = (int) session.save(u); //just associated user w session. it is PERSISTENT
+			//what happens if we update our user instance while it is persistent?
+			
+		/*	u.setUsername("nocommitx2");
+			u.setPassword("testpassword");
+			u.setUsername("hasId"); */
+		
 			tx.commit(); //committing data 
 			u.setId(id);
 		}finally {
 			logger.info("about to close session");
+			//before session closes, hibernate checks the state of our java instance 
+			//with the properties saved in the db row 
+			//if these two are out of "sync" or basically not the same, hibernate 
+			//will update the row with the current state of the object
+			//this is called automatic dirty checking
 			session.close();
 			/*
 			 * Now session is closed, all objects associated w this 
@@ -42,5 +66,6 @@ public class ExploringHibernate {
 		}
 		return u;
 	}
+	
 
 }

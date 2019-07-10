@@ -38,7 +38,7 @@
  	create-drop: creates the schema, destroying all previously existing 
  	information if present. then drops the schema when sessionfactory is closed
  		 -->
- 		<property name="hibernate.hbm2ddl.auto">create</property>
+ 		<property name="hibernate.hbm2ddl.auto">update</property>
  		
  	
  	<!-- Map classes below -->
