@@ -23,7 +23,7 @@ public class ERS_USERSERVICE {
 		return userDAO.getEmpInfo(u);
 	}
 	public Info getInfoThruMan(ERS_USERS u) {
-		return userDAO.getManInfo(u);
+		return userDAO.getAllInfo(u);
 	}
 	
 	
