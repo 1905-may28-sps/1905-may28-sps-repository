@@ -1,0 +1,55 @@
+<h1 style="text-align:center">
+	WELCOME <span id="name"></span>
+</h1>
+
+<!-- make table to display user accounts -->
+<h3 style="text-align:center" >Your Current Reimbursements</h3>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Acc. Id</th>
+			<th scope="col">Amount</th>
+			<th scope="col">Sumbit</th>
+			<th scope="col">Resolve</th>
+			<th scope="col">Descript</th>
+			<th scope="col">Employee</th>
+			<!--  <th scope="col">Boss</th>-->
+			<th scope="col">Status</th>
+			<th scope="col">Type</th>
+		</tr>
+	</thead>
+	<tbody id="reTable">
+	</tbody>
+</table>
+<div class="container" style="text-align:center">
+<form class="form" id="addNew">
+	<div class="form-group">
+		<label for="amount">Amount</label> <input type="number" id="amount"
+			placeholder="Amount">
+	</div>
+	<div class="form-group" style="text-align:center">
+		<label for="description">Description</label> <input type="text"
+			id="description" placeholder="Description">
+	</div>
+	<div class="form-group">
+		<label for="type">Select Type</label> <select id="type">
+			<option value="1">Travel</option>
+			<option value="2">Entertainment</option>
+			<option value="3">Gift</option>
+			<option value="4">Car</option>
+			<option value="5">Meals</option>
+			<option value="6">Moving</option>
+			<option value="7">Office</option>
+		</select>
+	</div>
+
+</form>
+<br>
+
+<button type="button" id="create" class="btn btn-success"
+	onclick="AddRe()">Add Reimbursement</button>
+</div>
+<br>
+
+
+

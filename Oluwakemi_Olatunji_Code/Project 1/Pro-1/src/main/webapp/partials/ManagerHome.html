@@ -1,0 +1,37 @@
+<h1> WELCOME <span id = "name"></span></h1>,
+
+<div class="container">
+
+<!-- make table to display user accounts -->
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Acc. Id</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Sumbit</th>
+      <th scope="col">Resolve</th>
+      <th scope="col">Descript</th>
+      <th scope="col">Employee</th>
+      <!-- <th scope="col">Boss</th>-->
+      <th scope="col">Status</th>
+      <th scope="col">Type</th>
+    </tr>
+  </thead>
+  <tbody id="manTable">
+  </tbody>
+</table>
+
+<!-- make table to display user accounts -->
+<button class="btn btn-info"onClick="veiwPending()">Let's Look At Pending</button>
+<br>
+<h4>Handle Reimbursements</h4>
+		<form action="handle" method="post">
+			<select name="action" class="form-control-6">
+				<option value="APPROVED">Approve</option>
+				<option value="DENIED">Deny</option>
+			</select><br>
+			<input type="text" id="Status">
+		</form>
+
+	</div>
