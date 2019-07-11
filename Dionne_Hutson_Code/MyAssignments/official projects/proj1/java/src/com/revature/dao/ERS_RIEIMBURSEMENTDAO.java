@@ -14,12 +14,12 @@ public class ERS_RIEIMBURSEMENTDAO {
 	static ERS_RIEIMBURSEMENTDAO reimDAO=new ERS_RIEIMBURSEMENTDAO();
 	static ERS_REIMBURSEMENT reim= new ERS_REIMBURSEMENT();
 
-	public void addReimbursement(ERS_REIMBURSEMENT reim) {
+	public  ERS_REIMBURSEMENT addReimbursement(ERS_REIMBURSEMENT reim) {
 
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 
 			String sql="insert into ERS_REIMBURSEMENT(REIMB_AMOUNT, REIMB_SUBMITTED, REIMB_RESOLVED, REIMB_DESCRIPTION, REIMB_RECEIPT, "
-					+ "REIMB_AUTHOR,REIMB_RESOLVER, REIMB_STATUS_ID,REIMB_TYPE_ID)Values(?,CURRENT_TIMESTAMP,null,?,null,?,"
+					+ "REIMB_AUTHOR,REIMB_RESOLVER, REIMB_STATUS_ID,REIMB_TYPE_ID)Values(?,CURRENT_Timestamp,null,?,null,?,"
 					+ "null,1,?)";
 
 			String[] generatedKeys= {"REIMB_ID"};
@@ -38,13 +38,14 @@ public class ERS_RIEIMBURSEMENTDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return reim;
 
 	}
-	public void updateReimbursement(ERS_REIMBURSEMENT reim) {
+	public ERS_REIMBURSEMENT updateReimbursement(ERS_REIMBURSEMENT reim) {
 
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 
-			String sql="UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED=CURRENT_TIMESTAMP,REIMB_RESOLVER=?,"
+			String sql="UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED=CURRENT_Timestamp,REIMB_RESOLVER=?,"
 					+ "REIMB_STATUS_ID=? WHERE REIMB_ID=?";
 
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -59,6 +60,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return reim;
 
 	}
 
@@ -72,7 +74,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 			if(rs.next()) {
 				rs=ps.executeQuery();
 				while(rs.next()) {
-					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getTimestamp(3),rs.getTimestamp(4),
+					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getString(3),rs.getString(4),
 							rs.getString(5),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10));
 					reimList.add(temp);
 				}
@@ -92,7 +94,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 			if(rs.next()) {
 				rs=ps.executeQuery();
 				while(rs.next()) {
-					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getTimestamp(3),rs.getTimestamp(4),
+					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getString(3),rs.getString(4),
 							rs.getString(5),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10));
 					reimList.add(temp);
 				}
@@ -113,7 +115,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 			if(rs.next()) {
 				rs=ps.executeQuery();
 				while(rs.next()) {
-					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getTimestamp(3),rs.getTimestamp(4),
+					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getString(3),rs.getString(4),
 							rs.getString(5),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10));
 					reimList.add(temp);
 				}

@@ -156,7 +156,7 @@ function getUserDataE(){
 					}
 					 //add on click function to rows to select 
 		            $('#reimTable').on('click', 'tr', function(){
-		                var id = $(this).attr('id');
+		                var ide = $(this).attr('id');
 		                console.log(id);
 		                //now allow user to update balance for selected element
 					});
@@ -175,6 +175,7 @@ function getUserDataE(){
 	xhr.open('GET', 'userInfo');
 	xhr.send();
 }
+var ide;
 function getUserDataM(){
 	console.log("in user info");
 	var xhr = new XMLHttpRequest();
@@ -197,6 +198,7 @@ function getUserDataM(){
 						  currency: 'USD',
 						  minimumFractionDigits: 2
 						})
+						var i=0;
 					for(let reim of info.reims){
 						var row = $(`<tr class="reim" id=${reim.id}> </tr>`);
 						var cell1 = $(`<td>${reim.id}</td>`);
@@ -207,7 +209,6 @@ function getUserDataM(){
 						var cell6= $(`<td>${reim.emp}</td>`);
 						var cell7= $(`<td>${reim.status}</td>`);
 						var cell8= $(`<td>${reim.type}</td>`);
-						
 						row.append(cell1);
 						row.append(cell2);
 						row.append(cell3);
@@ -220,8 +221,9 @@ function getUserDataM(){
 					}
 					 //add on click function to rows to select 
 		            $('#reimTable').on('click', 'tr', function(){
-		                var id = $(this).attr('id');
-		                console.log(id);
+		               ide = $(this).attr('id');
+						console.log(ide);
+						updReim();
 						//now allow user to update balance for selected element
 						
 		            });
@@ -260,7 +262,7 @@ function addReim(){
 			descrp: $('#descrpP').val(),
 			amount: $('#amountP').val(),
 			emp: info.user.userID,
-			type: $('#typeP').val()
+			type: $('#typeP').val(),
 
 	}
 	var xhr = new XMLHttpRequest();
@@ -281,4 +283,33 @@ function addReim(){
 	}
 	xhr.open('POST', 'add');
 	xhr.send(JSON.stringify(reim));
+}
+function updReim(){
+	console.log('add function');
+	console.log(info.user.userID);
+	var obj = {
+			id: ide,
+			status: $('#status').val(),
+			man: info.user.userID,
+			
+
+	}
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				console.log('up reim' );
+				console.log(info.user.userID);
+				var reim= JSON.parse(xhr.responseText);
+				//do stuff w user if you want
+				console.log(reim);
+				console.log("suscess");
+						}
+			else if(xhr.status == 204){
+				$('#message').html('Sorry, invalid credentials! Please try again');
+			}
+		}
+	}
+	xhr.open('POST', 'upd');
+	xhr.send(JSON.stringify(obj));
 }
