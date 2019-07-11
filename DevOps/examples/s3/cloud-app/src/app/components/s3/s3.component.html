@@ -1,0 +1,34 @@
+<h3>Simple Storage Service</h3>
+<hr>
+<p class="text-center col-10">
+  Amazon S3 or Simple Storage Service is a object storage 
+  built to store and retrieve any amount of data from anywhere
+  - web sites, mobile apps, corporate apps, and from 
+  IoT sensors or devices
+</p>
+  <br>
+  We can use S3 for various things. For example, we will host this 
+  very application on the cloud via an S3 bucket!
+  <br>
+  How does one do this? Thanks for asking.... 
+  <ul>
+    <li>Create S3 bucket with public accessiblity</li>
+    <li>In your S3 Management Console, click properties, then 
+      select Static Website Hosting
+    </li>
+    <li>Select 'Use this Bucket to host a website'</li>
+    <li>Denote your <code>index.html</code> as both your Index
+    Document and your Error Document</li>
+    <li>Back in your Angular app, <code>cd</code> into your project folder 
+    and run the command <code>ng build --prod</code></li>
+    <li>This will package your applicaiton into a dist folder inside the project</li>
+    <li>Copy or upload the contents of this dist folder into your S3 
+      bucket, making the content also publicly accessible
+    </li>
+    <li>Navigate to the endpoint URL for your site denoted in the 
+      properties tab where you have selected to use your S3 bucket 
+      for static website
+    </li>
+  </ul>
+<br>
+
