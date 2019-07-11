@@ -14,14 +14,19 @@ public class ReimbursementDAO {
 	public Reimbursement addReimburment(Reimbursement reimburse) {
 		try (Connection conn = ConnectionFactory.getInstance().getConnection();){
 			
-				String sql = "{call ADD_REIBURSE (?, ?, ?, ?)}";
+				String sql = "INSERT INTO ERS_REIMBURSEMENT (REMIB_AMOUNT, REIMB_SUMBITTED, REIMB_DESCRIPTION, REIMB_AUTHOR, REIMB_STATUS_ID, REIMB_TYPE_ID) " + 
+						"VALUES (?, CURRENT_TIMESTAMP, ?, ?, 1, ?) ";
 				
-				CallableStatement cs = conn.prepareCall(sql);
-				cs.setDouble(2, reimburse.getAmount());
-				cs.setString(5, reimburse.getDescript());
-				cs.setInt(10, reimburse.getType());
+				PreparedStatement ps = conn.prepareStatement(sql);
+				System.out.println("ADDING REIMBURSEMENT " + reimburse);
 				
-				cs.execute();
+				ps.setDouble(1, reimburse.getAmount());
+				ps.setString(2, reimburse.getDescript());
+				ps.setInt(3, reimburse.getEmployee());
+				ps.setInt(4, reimburse.getType());
+				
+				
+				ps.executeUpdate();
 
 			} catch (SQLException e) {
 				e.printStackTrace();

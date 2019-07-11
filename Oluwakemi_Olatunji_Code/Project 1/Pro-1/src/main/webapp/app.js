@@ -15,7 +15,6 @@ function loadLoginView(){
 				//ADD EVENT LISTENER TO LOGIN PAGE SO WE CAN DO THINGS WITH IT
 
 				$('#doLogin').on('click', login);
-				$('#goToRegister').on('click', loadRegisterView);
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -25,26 +24,6 @@ function loadLoginView(){
 	xhr.open('GET', 'login.view');
 	xhr.send();
 }
-
-function loadRegisterView(){
-
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState == 4 ){
-			if(xhr.status == 200){
-				$('#view').html(xhr.responseText);
-				$('#addUser').on('click', register);
-				$('#goToLogin').on('click', loadLoginView);
-			} else if (xhr.status >= 500){
-				console.log('server error');
-			}
-
-		}
-	}
-	xhr.open('GET', 'register.view');
-	xhr.send();
-}
-
 
 function login(){
 	console.log('login user function');
@@ -70,7 +49,6 @@ function login(){
 	xhr.send(JSON.stringify(user));
 }
 
-
 function loadEmployeeHomePage(){
 	console.log('load emp home function');
 	var xhr = new XMLHttpRequest();
@@ -79,6 +57,7 @@ function loadEmployeeHomePage(){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
 				getUserData();
+				$('#create').on('click', adding);
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -88,6 +67,7 @@ function loadEmployeeHomePage(){
 	xhr.send();
 
 }
+
 function loadManagerHomePage(){
 	console.log('load man home function');
 	var xhr = new XMLHttpRequest();
@@ -105,6 +85,7 @@ function loadManagerHomePage(){
 	xhr.send();
 
 }
+
 function getUserData(){
 	console.log('TESTING UPDATE');
 	var xhr = new XMLHttpRequest();
@@ -229,24 +210,6 @@ function getAllUserData(){
 		xhr.send();
 	}
 
-
-function AddRe (){
-	if($('#amount').val() == "")
-	{alert("PLEASE SET AN AMOUNT")
-		return
-	}if($('#description').val() == "")
-	{
-		alert("PLEASE SET A DESCRIPTION")
-		return
-	}	if($('#type').val() == null)
-	{
-		alert("PLEASE SET A TYPE")
-		return
-	}
-	
-	
-	
-}
 function update(){
 	console.log('updating reimburse');
 	console.log(info);
@@ -262,10 +225,57 @@ function update(){
 			if(xhr.status == 200){
 				console.log('logged in user' );
 				var re = JSON.parse(xhr.responseText);
+				getAllUserData()
 				
 			}
 		}
 	}
 	xhr.open('POST', 'update');
 	xhr.send(JSON.stringify(re));
+}
+
+function adding(){
+	console.log('adding reimburse');
+	console.log(info);
+	var el = document.getElementById('type');
+	var value = el.options[el.selectedIndex].value;
+	var reim  = {
+			amount: $('#amount').val(),
+			descript: $('#description').val(), 
+			employee: info.user.id,
+			type: value		 
+	}
+	
+	console.log(reim);
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				console.log('logged in user' );
+				var reim = JSON.parse(xhr.responseText);
+				loadEmployeeHomePage()
+				
+			}
+		}
+	}
+	xhr.open('POST', 'add');
+	xhr.send(JSON.stringify(reim));
+}
+
+
+
+function AddRe (){
+	if($('#amount').val() == "")
+	{alert("PLEASE SET AN AMOUNT")
+		return
+	}if($('#description').val() == "")
+	{
+		alert("PLEASE SET A DESCRIPTION")
+		return
+	}	if($('#type').val() == null)
+	{
+		alert("PLEASE SET A TYPE")
+		return
+	}
+	
 }

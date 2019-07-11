@@ -18,5 +18,18 @@ public class ReimbursementService {
 		
 		return reimburseDao.updateReimbursement(reimburse);
 	} 
+	
 
+	public Reimbursement addReimburment(double amount, String descipt, int employee, int type) {
+		Reimbursement reimburse = new  Reimbursement();
+		ReimbursementDAO reimburseDao = new ReimbursementDAO();
+		
+	
+		reimburse.setAmount(amount);
+		reimburse.setDescript(descipt);
+		reimburse.setEmployee(employee);
+		reimburse.setType(type);
+
+	return reimburseDao.addReimburment(reimburse);
+}
 }

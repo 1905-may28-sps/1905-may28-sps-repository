@@ -18,10 +18,7 @@ import com.revature.service.UserService;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet{
-	
-	/*
-	 * USING LOG4J!
-	 */
+
 	final static Logger logger = Logger.getLogger(LoginServlet.class);
 	UserService service = new UserService();
 	
@@ -29,15 +26,14 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		//retrieve user from req body 
 		User user = mapper.readValue(req.getInputStream(), User.class);
-		//pass in username and password to service layer, get user obj
+		
 		user = service.login(user.getUsername(), user.getPassword());
-		//if obj == null, invalid credentials. send back null
+		
 		if(user == null) {
 			resp.setStatus(204);
 		}
-		//if obj != null, add user to session, send back user data 
+		
 		else {
 			HttpSession session = req.getSession();
 			logger.info("Created HttpSession " + session.getId());
