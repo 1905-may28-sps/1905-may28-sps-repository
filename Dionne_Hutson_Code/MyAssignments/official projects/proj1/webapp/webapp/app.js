@@ -174,6 +174,7 @@ function getUserDataE(){
 	xhr.send();
 }
 var ide;
+var newstat;
 function getUserDataM(){
 	console.log("in user info");
 	var xhr = new XMLHttpRequest();
@@ -200,7 +201,7 @@ function getUserDataM(){
 					for(let reim of info.reims){
 						var row = $(`<tr class="reim" > </tr>`);//id=${reim.id}
 						
-						var butt = $(`<td><button id=${reim.id} class="btn btn-outline-success my-2 my-sm-0" type="submit">Update</button></td>`);
+						var butt = $(`<td><button id=${reim.id} class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#updating" type="submit">Update</button></td>`);
 						var cell1 = $(`<td>${reim.id}</td>`);
 						var cell2= $(`<td>${formatter.format(reim.amount)}</td>`);
 						var cell3= $(`<td>${reim.submit}</td>`);
@@ -231,10 +232,19 @@ function getUserDataM(){
 		            $('#reimTable').on('click', 'button', function(){
 		               ide = $(this).attr('id');
 						console.log(ide);
-						updReim();
+						
 						//now allow user to update balance for selected element
 						
-		            });
+					});
+					$('#myupdate').on('click', 'button', function(){
+						newstat= $(this).val();
+						 console.log("newstat:"+ newstat);
+						 updReim();
+						 //now allow user to update balance for selected element
+						 
+					 });
+					
+
 				}
 			}
 			else if(xhr.status == 403){
@@ -305,7 +315,7 @@ function updReim(){
 
 	var obj = {
 			id: ide,
-			status: $('#status').val(),
+			status:newstat,
 			man: info.user.userID,
 			
 
