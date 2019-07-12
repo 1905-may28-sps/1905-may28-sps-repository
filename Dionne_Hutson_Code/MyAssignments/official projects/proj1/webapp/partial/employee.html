@@ -18,7 +18,7 @@
           Menu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" id="addOpt">Add Reimbursement</a>
+          <a class="dropdown-item" id="addOpt" data-toggle="modal" data-target="#adding"> Add Reimbursement</a>
           <a class="dropdown-item" id="LogOutOpt">LogOut</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
@@ -44,11 +44,87 @@
       <th scope="col">Submit</th>
       <th scope="col">Resolved</th>
       <th scope="col">Description</th>
-      <th scope="col">Manager</th>
       <th scope="col">Status</th>
       <th scope="col">Type</th>
+      <th scope="col">Manager</th>
+      <th scope="col">Name</th>
     </tr>
   </thead>
   <tbody id="reimTable">
   </tbody>
-</table>
+ 
+</table> 
+
+
+<div id="adding" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+<h4> Your experience was priceless  Add a reimbusement anyway</h4>
+        
+        </div>
+    <div class="modal-body">
+      <div class="input-group mb-3 input-group-lg">
+    <input class="input-group-text form-control" type="number" id="amountP" placeholder="Enter Reimbursement Cost">
+    <hr>
+  </div>
+    <div class="input-group mb-3 input-group-lg">
+    <input class="input-group-text form-control" type="text" id="descrpP" placeholder="Briefly describe your experience">
+    <hr>
+  </div>
+    <div class="input-group mb-3">
+  
+    
+      
+        <select id="myselect" class="custom-select" >
+          <option>Select type of reimbursment</option>
+          <option value="10">Miscellaneous</option>
+          <option value="1">Lodging</option>
+          <option value="2">Food</option>
+          <option value="3">Travel</option>
+          <option value="4">Memberships</option>
+          <option value="5">Makeup</option>
+          <option value="6">Skin Care</option>
+          <option value="7">Clothes</option>
+          <option value="8">Acessories</option>
+          <option value="9">Talent</option>
+          
+      </select>
+      <hr>
+    </div>
+      <div class="modal-footer">
+          <button id="addBut" type="button" class="btn close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
+              Add Reimbursement
+             </button>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+    
+    
+    
+    
+   
+    
+       
+      
+      <div id="exampleModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Money is just paper! 
+                Your efforts are changing the world!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn " data-dismiss="modal">Go Forth!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+

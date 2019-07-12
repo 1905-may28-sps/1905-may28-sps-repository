@@ -139,10 +139,11 @@ function getUserDataE(){
 						var cell2= $(`<td>${formatter.format(reim.amount)}</td>`);
 						var cell3= $(`<td>${reim.submit}</td>`);
 						var cell4= $(`<td>${reim.resolved}</td>`);
-						var cell5= $(`<td>${reim.descrip}</td>`);
-						var cell6= $(`<td>${reim.man}</td>`);
-						var cell7= $(`<td>${reim.status}</td>`);
-						var cell8= $(`<td>${reim.type}</td>`);
+						var cell5= $(`<td>${reim.descrp}</td>`);
+						var cell6= $(`<td>${reim.status}</td>`);
+						var cell7= $(`<td>${reim.type}</td>`);
+						var cell8= $(`<td>${reim.manfn}</td>`);
+						var cell9= $(`<td>${reim.manln}</td>`);
 						
 						row.append(cell1);
 						row.append(cell2);
@@ -152,18 +153,15 @@ function getUserDataE(){
 						row.append(cell6);
 						row.append(cell7);
 						row.append(cell8);
+						row.append(cell9);
 						$('#reimTable').append(row);
 					}
 					 //add on click function to rows to select 
-		            $('#reimTable').on('click', 'tr', function(){
-		                var ide = $(this).attr('id');
-		                console.log(id);
-		                //now allow user to update balance for selected element
-					});
+		           
 
 					console.log(info.user.userID);
-					$('#addOpt').on('click', loadAddPage);
-					
+					//$('#addOpt').on('click', loadAddPage);
+					$('#addBut').on('click', addReim);
 				}
 			}
 			else if(xhr.status == 403){
@@ -198,17 +196,20 @@ function getUserDataM(){
 						  currency: 'USD',
 						  minimumFractionDigits: 2
 						})
-						var i=0;
+						
 					for(let reim of info.reims){
 						var row = $(`<tr class="reim" id=${reim.id}> </tr>`);
 						var cell1 = $(`<td>${reim.id}</td>`);
 						var cell2= $(`<td>${formatter.format(reim.amount)}</td>`);
 						var cell3= $(`<td>${reim.submit}</td>`);
 						var cell4= $(`<td>${reim.resolved}</td>`);
-						var cell5= $(`<td>${reim.descrip}</td>`);
-						var cell6= $(`<td>${reim.emp}</td>`);
-						var cell7= $(`<td>${reim.status}</td>`);
-						var cell8= $(`<td>${reim.type}</td>`);
+						var cell5= $(`<td>${reim.descrp}</td>`);
+						var cell6= $(`<td>${reim.empfn}</td>`);
+						var cell7= $(`<td>${reim.empln}</td>`);
+						var cell8= $(`<td>${reim.status}</td>`);
+						var cell9= $(`<td>${reim.type}</td>`);
+						var cell10= $(`<td>${reim.manfn}</td>`);
+						var cell11= $(`<td>${reim.manln}</td>`);
 						row.append(cell1);
 						row.append(cell2);
 						row.append(cell3);
@@ -217,6 +218,9 @@ function getUserDataM(){
 						row.append(cell6);
 						row.append(cell7);
 						row.append(cell8);
+						row.append(cell9);
+						row.append(cell10);
+						row.append(cell11);
 						$('#reimTable').append(row);
 					}
 					 //add on click function to rows to select 
@@ -258,11 +262,15 @@ function loadAddPage(){
 function addReim(){
 	console.log('add function');
 	console.log(info.user.userID);
+
+	console.log($(".dropdown-item :selected").val())
+;
+
 	var reim = {
 			descrp: $('#descrpP').val(),
 			amount: $('#amountP').val(),
 			emp: info.user.userID,
-			type: $('#typeP').val()
+			type: $( "#myselect" ).val(),//$('#typeP').val(),
 
 	}
 	var xhr = new XMLHttpRequest();
@@ -287,6 +295,10 @@ function addReim(){
 function updReim(){
 	console.log('add function');
 	console.log(info.user.userID);
+
+
+
+
 	var obj = {
 			id: ide,
 			status: $('#status').val(),
