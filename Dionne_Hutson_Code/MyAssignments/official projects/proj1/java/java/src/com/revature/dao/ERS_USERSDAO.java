@@ -126,5 +126,42 @@ public class ERS_USERSDAO {
 	}
 	return null;
 }
-}
 
+public Info getInfoByStatus(ERS_USERS u) {
+	 try(Connection conn=ConnectionFactory.getInstance().getConnection()){
+		 
+	 String sql=" select R.REIMB_ID, R.REIMB_AMOUNT, man.user_FIRST_NAME as manfn, man.user_last_name, " + 
+	 		" R.REIMB_SUBMITTED,R.REIMB_RESOLVED,R.REIMB_DESCRIPTION, T.REIMB_TYPE, S.REIMB_STATUS, r.reimb_author, r.reimb_resolver" + 
+	 		" from ERS_REIMBURSEMENT R " + 
+	 		"inner join ERS_REIMBURSEMENT_TYPE T ON R.REIMB_TYPE_ID=T.REIMB_TYPE_ID " + 
+	 		"inner join ERS_REIMBURSEMENT_STATUS S ON R.REIMB_STATUS_ID=S.REIMB_STATUS_ID " +  
+	 		"left outer  join ERS_USERS MAN on MAN.ERS_USERS_ID = R.REIMB_RESOLVER " +  
+	 		" where R.REIMB_STATUS_ID = ?" ;
+	 PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, u.getUserID());
+		Info info = new Info();
+		info.setUser(u);
+		List<ReimInfo> reims = new ArrayList<ReimInfo>();
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			ReimInfo temp = new ReimInfo();
+			temp.setId(rs.getInt(1));
+			temp.setAmount(rs.getDouble(2));
+			temp.setManfn(rs.getString(5));
+			temp.setManln(rs.getString(6));
+			temp.setSubmit(rs.getString(7));
+			temp.setResolved(rs.getString(8));
+			temp.setDescrp(rs.getString(9));
+			temp.setType(rs.getString(10));
+			temp.setStatus(rs.getString(11));
+			reims.add(temp);
+		}
+		info.setReims(reims);
+		return info;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
+}

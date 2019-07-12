@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.com.revature.pojo.ERS_REIMBURSEMENT;
+import src.com.revature.pojo.Info;
+import src.com.revature.pojo.ReimInfo;
 import src.com.revature.util.ConnectionFactory;
 
 public class ERS_RIEIMBURSEMENTDAO {
@@ -105,25 +107,43 @@ public class ERS_RIEIMBURSEMENTDAO {
 		return reimList;
 	}
 
-	public List<ERS_REIMBURSEMENT> getReimbursementByID(int id) {
-		List<ERS_REIMBURSEMENT> reimList= new ArrayList<ERS_REIMBURSEMENT>();
+	public Info getReimbursementByStatus(ERS_REIMBURSEMENT reim) {
+		Info info = new Info();
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
-			String query="SELECT * FROM ERS_REIMBURSEMENT WHERE REIMB_STATUS_ID=? "; 
-			PreparedStatement ps=conn.prepareStatement(query);
-			ps.setInt(1,id);
-			ResultSet rs=ps.executeQuery();
-			if(rs.next()) {
-				rs=ps.executeQuery();
+			 
+			 String sql=" select R.REIMB_ID, R.REIMB_AMOUNT, man.user_FIRST_NAME as manfn, man.user_last_name, " + 
+			 		" R.REIMB_SUBMITTED,R.REIMB_RESOLVED,R.REIMB_DESCRIPTION, T.REIMB_TYPE, S.REIMB_STATUS, r.reimb_author, r.reimb_resolver" + 
+			 		" from ERS_REIMBURSEMENT R " + 
+			 		"inner join ERS_REIMBURSEMENT_TYPE T ON R.REIMB_TYPE_ID=T.REIMB_TYPE_ID " + 
+			 		"inner join ERS_REIMBURSEMENT_STATUS S ON R.REIMB_STATUS_ID=S.REIMB_STATUS_ID " +  
+			 		"left outer  join ERS_USERS MAN on MAN.ERS_USERS_ID = R.REIMB_RESOLVER " +  
+			 		" where R.REIMB_STATUS_ID = ?" ;
+			 PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, reim.getStatus());
+				
+				List<ReimInfo> reims = new ArrayList<ReimInfo>();
+				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
-					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getString(3),rs.getString(4),
-							rs.getString(5),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10));
-					reimList.add(temp);
+					ReimInfo temp = new ReimInfo();
+					temp.setId(rs.getInt(1));
+					temp.setAmount(rs.getDouble(2));
+					temp.setManfn(rs.getString(5));
+					temp.setManln(rs.getString(6));
+					temp.setSubmit(rs.getString(7));
+					temp.setResolved(rs.getString(8));
+					temp.setDescrp(rs.getString(9));
+					temp.setType(rs.getString(10));
+					temp.setStatus(rs.getString(11));
+					reims.add(temp);
 				}
+				info.setReims(reims);
+				return info;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return reimList;
+		
+		return info;
 	}
 
 

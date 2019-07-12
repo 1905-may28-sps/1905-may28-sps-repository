@@ -22,7 +22,7 @@ public static void main(String[] args) {
 	
 	
 	//userDAO.getUserByUN(user);
-	reimDAO.getReimbursementByID(3);
+	//reimDAO.getReimbursementByID(3);
 	
 	
 }
