@@ -155,15 +155,11 @@ function getUserDataE(){
 						$('#reimTable').append(row);
 					}
 					 //add on click function to rows to select 
-		            $('#reimTable').on('click', 'tr', function(){
-		                var ide = $(this).attr('id');
-		                console.log(id);
-		                //now allow user to update balance for selected element
-					});
+		           
 
 					console.log(info.user.userID);
-					$('#addOpt').on('click', loadAddPage);
-					
+					//$('#addOpt').on('click', loadAddPage);
+					$('#addBut').on('click', addReim);
 				}
 			}
 			else if(xhr.status == 403){
@@ -258,11 +254,15 @@ function loadAddPage(){
 function addReim(){
 	console.log('add function');
 	console.log(info.user.userID);
+
+	console.log($(".dropdown-item :selected").val())
+;
+
 	var reim = {
 			descrp: $('#descrpP').val(),
 			amount: $('#amountP').val(),
 			emp: info.user.userID,
-			type: $('#typeP').val(),
+			type: $( "#myselect" ).val(),//$('#typeP').val(),
 
 	}
 	var xhr = new XMLHttpRequest();
@@ -287,6 +287,10 @@ function addReim(){
 function updReim(){
 	console.log('add function');
 	console.log(info.user.userID);
+
+
+
+
 	var obj = {
 			id: ide,
 			status: $('#status').val(),

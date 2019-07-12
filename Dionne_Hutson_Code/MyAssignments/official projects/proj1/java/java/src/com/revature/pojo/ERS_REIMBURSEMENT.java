@@ -5,8 +5,8 @@ import java.sql.Timestamp;
 public class ERS_REIMBURSEMENT {
 	private int id;
 	private double amount;
-	private Timestamp submit;
-	private Timestamp resolved;
+	private String submit;
+	private String resolved;
 	private String descrp;
 	//private PIC////////////
 	private int emp;
@@ -17,7 +17,7 @@ public class ERS_REIMBURSEMENT {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ERS_REIMBURSEMENT(int id, double amount, Timestamp submit, Timestamp resolved, String descrp, int emp,
+	public ERS_REIMBURSEMENT(int id, double amount, String submit, String resolved, String descrp, int emp,
 			int man, int status, int type) {
 		super();
 		this.id = id;
@@ -42,16 +42,16 @@ public class ERS_REIMBURSEMENT {
 	public void setAmount(double d) {
 		this.amount = d;
 	}
-	public Timestamp getSubmit() {
+	public String getSubmit() {
 		return submit;
 	}
-	public void setSubmit(Timestamp submit) {
+	public void setSubmit(String submit) {
 		this.submit = submit;
 	}
-	public Timestamp getResolved() {
+	public String getResolved() {
 		return resolved;
 	}
-	public void setResolved(Timestamp resolved) {
+	public void setResolved(String resolved) {
 		this.resolved = resolved;
 	}
 	public String getDescrp() {
