@@ -34,7 +34,7 @@ public class EmSubmit extends HttpServlet{
 		//User us = mapper.readValue(req.getInputStream(), User.class);
 		Reimb re = mapper.readValue(req.getInputStream(), Reimb.class);
 		//pass in username and password to service layer, get user obj
-		service.submit(re.getAmount(), re.getDescription(), re.getId(), re.getTypeId());
+		service.submit(re.getAmount(), re.getDescription(), re.getAuthor(), re.getTypeId());
 		//if obj == null, invalid credentials. send back null
 //		if(us == null) {
 //			resp.setStatus(204);

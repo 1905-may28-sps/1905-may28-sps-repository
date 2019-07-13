@@ -43,7 +43,7 @@ public class ReimbDAO {
 
 //	public Reimb getByUser(String user) {}
 
-	public void submit(double amount, String description, int auth, String typeId) {
+	public void submit(double amount, String description, String auth, String typeId) {
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
 			Reimb a = new Reimb();
@@ -60,7 +60,7 @@ public class ReimbDAO {
 			}
 			ps.setDouble(1, amount);
 			ps.setString(2, description);
-			ps.setInt(3, auth);
+			ps.setString(3, auth);
 			ps.setString(4, typeId);
 			ps.executeUpdate();
 

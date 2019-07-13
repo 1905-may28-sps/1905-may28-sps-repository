@@ -75,7 +75,7 @@ function loadManPage(){
 }
 
 function eHomePage(){
-	console.log('load emoployee homepage');
+	console.log('load employee homepage');
 	
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
@@ -103,7 +103,8 @@ function loadEmpPage(){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
 				
-				$('#addReimb').on('click', submitRe, eHomePage);
+				$('#addReimb').on('click', submitRe);
+				$('#addReimb').on('click', eHomePage);
 				$('#viewPast').on('click', eHomePage);
 			} else if (xhr.status >= 500){
 				console.log('server error');
@@ -241,11 +242,11 @@ function getReimbData(){
 						$('#empTable').append(row);
 					}
 					 // add on click function to rows to select
-		            $('#empTable').on('click', 'tr', function(){
-		                var id = $(this).attr('id');
-		                console.log(id);
+		           // $('#empTable').on('click', 'tr', function(){
+		           //     var id = $(this).attr('id');
+		             //   console.log(id);
 		                // now allow user to update balance for selected element
-		            });
+		            //});
 				}
 
 			}

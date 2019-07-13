@@ -12,7 +12,7 @@ public class UserService {
 	private UserDAO userDao = new UserDAO();
 	private ReimbDAO reimbDao = new ReimbDAO();
 	
-	public void submit(double amount, String description, int auth, String typeId) {
+	public void submit(double amount, String description, String auth, String typeId) {
 		reimbDao.submit(amount, description, auth, typeId);
 	}
 	public List<User> findAllUsers(){
