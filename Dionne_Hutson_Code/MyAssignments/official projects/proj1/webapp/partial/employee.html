@@ -1,6 +1,6 @@
-<div class="page">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <span class="navbar-brand">Welcome Back <span id="name"></span></span>
+  <span id="home" class="navbar-brand">Welcome Back <span id="name"></span></span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,7 +14,7 @@
         <a class="nav-link" id="addOpt" data-toggle="modal" data-target="#adding"> Add Reimbursement</a>
       </li>
     </ul>
-    <div class="input-group mb-3 input-group-sm"></div>
+    <div class="input-group mb-3 input-group-sm">
         <input class="input-group-text" id="searchIn" placeholder="Search By Status:" >
         <button class="btn btn-outline-success my-2 my-sm-0" id="searchBut" >Search</button>
         </div>
@@ -27,12 +27,12 @@
     <tr>
       <th scope="col">Ref. ID</th>
       <th scope="col">Amount</th>
-      <th scope="col">Submit    </th>
-      <th scope="col">Resolved  </th>
-      <th scope="col">Description       </th>
+      <th scope="col">Submit       </th>
+      <th scope="col">Resolved     </th>
+      <th scope="col">Description              </th>
       <th scope="col">Status</th>
       <th scope="col">Type</th>
-      <th scope="col-2">Resolver        </th>
+      <th scope="col-2">Resolver           </th>
     </tr>
   </thead>
   <tbody id="reimTable">
@@ -48,7 +48,7 @@
           <div class="modal-header">
 <h3> Your experience was priceless</h3>
 <br>
-<h3>Request a reimbusement anyway</h3>
+<h2>Request a reimbusement anyway</h2>
         
         </div>
     <div class="modal-body">
@@ -110,7 +110,7 @@
                 Your efforts are changing the world!</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn " data-dismiss="modal">Go Forth!</button>
+              <button id="empAddRe" type="button" class="btn " data-dismiss="modal">Go Forth!</button>
             </div>
           </div>
         </div>

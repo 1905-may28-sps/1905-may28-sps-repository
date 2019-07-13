@@ -59,6 +59,14 @@ function loadEmpPage(){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
 				getUserDataE();
+				
+				$('#home').on('click', function(){
+				
+					loadEmpPage();
+					
+					   
+				});
+				
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -78,6 +86,14 @@ function loadManPage(){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
 				getUserDataM();
+			
+				$('#home').on('click', function(){
+				
+					loadManPage();
+					
+					   
+				});
+			
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -129,7 +145,7 @@ function getUserDataE(){
 							var cell4= $(`<td>${reim.resolved.slice(0, 16)}</td>`);
 							
 
-						}else{var cell4= $(`<td>${reim.resolved}</td>`);}
+						}else{var cell4= $(`<td>               </td>`);}
 						var cell5= $(`<td class=" text-truncate">${reim.descrp}</td>`);
 						var cell6= $(`<td>${reim.status}</td>`);
 						var cell7= $(`<td>${reim.type}</td>`);
@@ -174,6 +190,19 @@ function getUserDataE(){
 					   
 						
 					});
+					
+$('#home').on('click', function(){
+	if (info.user.role==1){
+	loadEmpPage();
+	}if (info.user.role==2){
+	loadManPage();
+	}
+   	
+});
+$('#empAddRe').on('click', function(){
+	loadEmpPage();
+   	
+});
 				}
 			}
 			else if(xhr.status == 403){
@@ -230,7 +259,7 @@ function getUserDataM(){
 							var cell4= $(`<td>${reim.resolved.slice(0, 16)}</td>`);
 							
 
-						}else{var cell4= $(`<td>${reim.resolved}</td>`);}
+						}else{var cell4= $(`<td>               </td>`);}
 						
 						var cell5= $(`<td class="">${reim.descrp}</td>`);
 						
@@ -276,6 +305,7 @@ function getUserDataM(){
 						 console.log("newstat:"+ newstat);
 						 updReim();
 						 //now allow user to update balance for selected element
+						 
 						 
 					 });
 					 $('#searchBut').on('click', function(){
@@ -339,11 +369,7 @@ function addReim(){
 	xhr.send(JSON.stringify(reim));
 
 
-	if (user.role==1){
-		loadEmpPage();
-		}if (user.role==2){
-		loadManPage();
-		}
+	
 }
 function updReim(){
 	console.log('add function');
@@ -378,7 +404,7 @@ function updReim(){
 	xhr.open('POST', 'upd');
 	xhr.send(JSON.stringify(obj));
 	
-		loadManPage();
+	
 		
 }
 
@@ -459,28 +485,14 @@ function searchReim(){
 
 
 							 //add on click function to rows to select 
-							 $('#reimTable').on('click', 'button', function(){
-								ide = $(this).attr('id');
-								 console.log(ide);
-								 
-								 //now allow user to update balance for selected element
-								 
-							 });
-							 $('#myupdate').on('click', 'button', function(){
-								 newstat= $(this).val();
-								  console.log("newstat:"+ newstat);
-								  updReim();
-								  //now allow user to update balance for selected element
-								  
-							  });
+							
+							
 					}else if($('#searchIn').val().toLowerCase()==""){
 
 
-						if (info.user.role==1){
-							loadEmpPage();
-							}if (info.user.role==2){
+					
 							loadManPage();
-							}
+							
 
 
 
@@ -569,20 +581,8 @@ function searchReimE(){
 
 
 							 //add on click function to rows to select 
-							 $('#reimTable').on('click', 'button', function(){
-								ide = $(this).attr('id');
-								 console.log(ide);
-								 
-								 //now allow user to update balance for selected element
-								 
-							 });
-							 $('#myupdate').on('click', 'button', function(){
-								 newstat= $(this).val();
-								  console.log("newstat:"+ newstat);
-								  updReim();
-								  //now allow user to update balance for selected element
-								  
-							  });
+						
+							
 					}else if($('#searchIn').val().toLowerCase()==""){
 
 
@@ -626,3 +626,9 @@ function logOut(){
 	xhr.open('GET', 'logout');
 	xhr.send();
 }
+
+
+
+
+
+
