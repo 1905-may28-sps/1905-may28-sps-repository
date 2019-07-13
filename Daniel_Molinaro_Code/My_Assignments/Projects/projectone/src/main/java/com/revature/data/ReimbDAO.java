@@ -70,13 +70,40 @@ public class ReimbDAO {
 
 	}
 	
-	public void updateReimb(String statusId, String resolver) {
+	public void submit2(double amount, String description, int auth, String typeId) {
+		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+			Reimb a = new Reimb();
+
+			String sql = "INSERT INTO ers_reimb (reimb_amount, reimb_description, reimb_author, reimb_type_id) VALUES (?, ?, ?, ?)";
+			String[] gKeys = { "reimb_ID" };
+
+			PreparedStatement ps = conn.prepareStatement(sql, gKeys);
+
+			ResultSet pk = ps.getGeneratedKeys();
+
+			while (pk.next()) {
+				a.setId(pk.getInt(1));
+			}
+			ps.setDouble(1, amount);
+			ps.setString(2, description);
+			ps.setInt(3, auth);
+			ps.setString(4, typeId);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void updateReimb(int id, String statusId, String resolver) {
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
-			String sql = "{ call update_reimb(?,?) }";
+			String sql = "{ call update_reimb(?,?,?) }";
 			CallableStatement cs = conn.prepareCall(sql);
-			
-			cs.setString(1, statusId);
-			cs.setString(2, resolver);
+			cs.setInt(1, id);
+			cs.setString(2, statusId);
+			cs.setString(3, resolver);
 			
 			cs.execute();
 			

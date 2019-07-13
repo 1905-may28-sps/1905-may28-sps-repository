@@ -17,8 +17,8 @@ import com.revature.pojos.Reimb;
 import com.revature.pojos.User;
 import com.revature.service.UserService;
 
-@WebServlet("/submit")
-public class EmSubmit extends HttpServlet{
+@WebServlet("/update")
+public class UpdateReimb extends HttpServlet{
 	
 	/*
 	 * USING LOG4J!
@@ -33,7 +33,7 @@ public class EmSubmit extends HttpServlet{
 		
 		Reimb re = mapper.readValue(req.getInputStream(), Reimb.class);
 		
-		service.submit(re.getAmount(), re.getDescription(), re.getAuthor(), re.getTypeId());
+		service.update(re.getId(),re.getStatus(),re.getResolver());
 		//service.submit2(re.getAmount(), re.getDescription(), us.getId(), re.getTypeId());
 		
 			HttpSession session = req.getSession();

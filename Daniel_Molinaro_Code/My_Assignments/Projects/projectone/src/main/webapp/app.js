@@ -62,8 +62,8 @@ function loadManPage(){
 		if(xhr.readyState == 4 ){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
-				//$('#manager').html(user.firstName);
 				getEmpData();
+				$('#logout').on('click', loadLoginView);
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -82,7 +82,9 @@ function eHomePage(){
 		if(xhr.readyState == 4 ){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
-				//$('#manager').html(user.firstName);
+				$('#back').on('click', loadEmpPage);
+				$('#logout').on('click', loadLoginView);
+				$('#refresh').on('click', eHomePage);
 				getReimbData();
 			} else if (xhr.status >= 500){
 				console.log('server error');
@@ -106,6 +108,7 @@ function loadEmpPage(){
 				$('#addReimb').on('click', submitRe);
 				$('#addReimb').on('click', eHomePage);
 				$('#viewPast').on('click', eHomePage);
+				$('#logout').on('click', loadLoginView);
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -139,6 +142,33 @@ function submitRe(){
 	xhr.send(JSON.stringify(reimb));
 
 }
+function updateRe(id){
+	console.log('update submittal');
+	console.log(id);
+	var status = prompt("Enter status:");
+	var mId = prompt("Manager Id:");
+	var updated = {
+			id: id,
+			status: status,
+			resolver: mId
+			
+	}
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 ){
+			if(xhr.status == 200){
+				console.log('reimbursement updated' );
+				var user = JSON.parse(xhr.responseText);
+				loadManPage();
+			} else if (xhr.status >= 500){
+				console.log('server error');
+			}
+		}
+	}
+	xhr.open('POST', 'update');
+	xhr.send(JSON.stringify(updated));
+
+}
 
 function getEmpData(){
 	var xhr = new XMLHttpRequest();
@@ -147,7 +177,7 @@ function getEmpData(){
 		if(xhr.readyState == 4){
 			if(xhr.status==200){
 				info = JSON.parse(xhr.responseText);
-				//$('#manager').html(info.user.firstName);
+				// $('#manager').html(info.user.firstName);
 				console.log(info);
 				if(info.length == 0){
 					$('#message').html('Sorry, no history available');
@@ -185,6 +215,7 @@ function getEmpData(){
 		            $('#manTable').on('click', 'tr', function(){
 		                var id = $(this).attr('id');
 		                console.log(id);
+		                updateRe(id);
 		                // now allow user to update balance for selected element
 		            });
 				}
@@ -208,7 +239,7 @@ function getReimbData(){
 			if(xhr.status==200){
 				info = JSON.parse(xhr.responseText);
 				console.log(info);
-				//$('#employee').html(info.user.firstName);
+				// $('#employee').html(info.user.firstName);
 				if(info.length == 0){
 					$('#message').html('Sorry, no history available');
 				}
@@ -241,12 +272,7 @@ function getReimbData(){
 					
 						$('#empTable').append(row);
 					}
-					 // add on click function to rows to select
-		           // $('#empTable').on('click', 'tr', function(){
-		           //     var id = $(this).attr('id');
-		             //   console.log(id);
-		                // now allow user to update balance for selected element
-		            //});
+					 
 				}
 
 			}
