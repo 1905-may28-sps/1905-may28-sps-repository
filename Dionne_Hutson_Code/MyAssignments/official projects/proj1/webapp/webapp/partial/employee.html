@@ -8,29 +8,28 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Log Out <span class="sr-only">(current)</span></a>
+        <a class="nav-link" id=logOut>Log Out <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
         <a class="nav-link" id="addOpt" data-toggle="modal" data-target="#adding"> Add Reimbursement</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" id="searchIn" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" id="searchBut" type="submit">Search</button>
-    </form>
+    <div class="input-group mb-3 input-group-sm">
+        <input class="input-group-text" id="searchIn" placeholder="Search By Status:" >
+        <button class="btn btn-outline-success my-2 my-sm-0" id="searchBut" >Search</button>
+        </div>
   </div>
 </nav>
 
 
-<table class="table table-hover">
+<table class="table table-hover table-striped">
   <thead>
     <tr>
       <th scope="col">Ref. ID</th>
       <th scope="col">Amount</th>
       <th scope="col">Submit</th>
       <th scope="col">Resolved</th>
-      <th scope="col">Description</th>
+      <th scope="col text-truncate">Description</th>
       <th scope="col">Status</th>
       <th scope="col">Type</th>
       <th scope="col">Manager</th>
@@ -47,7 +46,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-<h4> Your experience was priceless</h4><h4>Request a reimbusement anyway</h4>
+<h3> Your experience was priceless</h3>
+<br>
+<h3>Request a reimbusement anyway</h3>
         
         </div>
     <div class="modal-body">
