@@ -1,0 +1,4 @@
+driver=oracle.jdbc.driver.OracleDriver
+url=jdbc:oracle:thin:@dbinstance.celxln8vppx0.us-east-2.rds.amazonaws.com:1521:orcl
+user=dmolinaro
+pwd=dmolinaro127
