@@ -131,7 +131,7 @@ public UserInformation getAllUserInfo(User u) {
 				temp.setResolve(rs.getString(4));
 				temp.setDescript(rs.getString(5));
 				temp.setEmployeeFirst(rs.getString(6));
-				temp.setEmployeeLast(rs.getString(6));
+				temp.setEmployeeLast(rs.getString(7));
 				temp.setBoss(rs.getString(7));
 				temp.setStatus(rs.getString(8));
 				temp.setType(rs.getString(9));

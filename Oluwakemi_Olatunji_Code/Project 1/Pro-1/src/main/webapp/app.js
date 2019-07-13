@@ -112,7 +112,7 @@ function getUserData(){
 						var cell3= $(`<td>${acc.sumbit}</td>`);
 						var cell4= $(`<td>${acc.resolve}</td>`);
 						var cell5= $(`<td>${acc.descript}</td>`);
-						var cell6= $(`<td>${acc.employeeFirst} ${acc.employeeLast}</td>`);
+						//var cell6= $(`<td>${acc.employeeFirst} ${acc.employeeLast}</td>`);
 						//var cell7= $(`<td>${acc.boss}</td>`);
 						var cell8= $(`<td>${acc.status}</td>`);
 						var cell9= $(`<td>${acc.type}</td>`);
@@ -122,7 +122,7 @@ function getUserData(){
 						row.append(cell3);
 						row.append(cell4);
 						row.append(cell5);
-						row.append(cell6);
+						//row.append(cell6);
 						//row.append(cell7);
 						row.append(cell8);
 						row.append(cell9);
@@ -178,6 +178,8 @@ function getAllUserData(){
 						var cell8= $(`<td>${acc.status}</td>`);
 						var cell9= $(`<td>${acc.type}</td>`);
 						
+						
+						
 						row.append(cell1);
 						row.append(cell2);
 						row.append(cell3);
@@ -187,6 +189,7 @@ function getAllUserData(){
 						//row.append(cell7);
 						row.append(cell8);
 						row.append(cell9);
+						
 						$('#manTable').append(row);
 					}
 					 //add on click function to rows to select 
@@ -194,7 +197,7 @@ function getAllUserData(){
 		            	
 		                idMan = $(this).attr('id');
 		                console.log(idMan);
-		                update();
+		                update(); 
 		                //now allow user to update balance for selected element
 		            });
 				}
@@ -225,7 +228,7 @@ function update(){
 			if(xhr.status == 200){
 				console.log('logged in user' );
 				var re = JSON.parse(xhr.responseText);
-				getAllUserData()
+				//getAllUserData()
 				
 			}
 		}
@@ -261,8 +264,6 @@ function adding(){
 	xhr.open('POST', 'add');
 	xhr.send(JSON.stringify(reim));
 }
-
-
 
 function AddRe (){
 	if($('#amount').val() == "")
