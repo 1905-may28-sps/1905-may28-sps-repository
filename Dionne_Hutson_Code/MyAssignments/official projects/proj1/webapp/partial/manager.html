@@ -1,4 +1,4 @@
-
+<div class="page">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <span class="navbar-brand">Welcome Back <span id="name"></span></span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,15 +15,15 @@
         </li>
       </ul>
       <div class="input-group mb-3 input-group-sm">
-      <input class="input-group-text form-control" id="searchIn" placeholder="Search" aria-label="Search">
+      <input class="input-group-text form-control" id="searchIn" placeholder="Search By Status:" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" id="searchBut" >Search</button>
       </div>
 
   </div>
 </nav>
 
-
-<table class="table table-hover">
+<div class="border rounded" style="background-color:rgba(253, 251, 245, 0.88);">
+<table class="table table-hover table-striped" style="table-layout:fixed">
   <thead>
     <tr>
       <th>Change Status</th>
@@ -31,19 +31,19 @@
       <th scope="col">Amount</th>
       <th scope="col">Submit</th>
       <th scope="col">Resolved</th>
-      <th scope="col">Description</th>
-      <th scope="col">Employee</th>
-      <th scope="col">Name</th>
+      <th scope="col">Description       </th>
+      <th scope="col-2">Employee        </th>
       <th scope="col">Status</th>
       <th scope="col">Type</th>
-      <th scope="col">Manager</th>
-      <th scope="col">Nameid</th>
+      <th scope="col-2">Resolver        </th>
+
 
     </tr>
   </thead>
   <tbody id="reimTable">
   </tbody>
 </table>
+</div>
 
 
 
@@ -59,13 +59,13 @@
     <div class="input-group mb-3">
   
         <div class="btn-group-vertical"  id="myupdate">
-            <button type="button" class="btn btn-primary btn-lg btn-block updateitem" value="2">So Worth It!</button>
-            <button type="button" class="btn btn-secondary btn-lg btn-block updateitem" value="3">Not quite</button>
+            <button type="button" class="btn  btn-lg btn-block updateitem" value="2">So Worth It!</button>
+            <button type="button" class="btn  btn-lg btn-block updateitem" value="3">Not quite</button>
           </div>
     </div>
       <div class="modal-footer">
           <button id="addBut" type="button" class="btn close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
-              Add Reimbursement
+              Whew!
              </button>
       </div>
     </div>
@@ -75,7 +75,7 @@
     
     
     
-    
+    </div>
    
     
        
