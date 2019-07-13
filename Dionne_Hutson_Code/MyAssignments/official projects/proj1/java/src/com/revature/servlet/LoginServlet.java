@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet{
 			HttpSession session = req.getSession();
 			logger.info("Created HttpSession " + session.getId());
 			session.setAttribute("loggedUser", user);
+			
 			logger.info("Logged in user " + user);
 			PrintWriter writer = resp.getWriter();
 			resp.setContentType("application/json");

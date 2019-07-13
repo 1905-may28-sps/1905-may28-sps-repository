@@ -7,6 +7,7 @@ public class Info {
 	private List<ReimInfo> reims;
 	
 	
+	
 	public Info(){}
 	public ERS_USERS getUser() {
 		return user;
