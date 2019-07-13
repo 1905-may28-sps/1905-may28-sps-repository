@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<!-- input fields for user data, send AJAX request to post new user -->
+
+	<input type="text" placeholder="Username" id="username">
+	<br>
+	<input type="password" placeholder="Password" id="password">
+	<br>
+	<button id="addUser">Register!</button>
+
+	
+	
+	<script>
+	
+	document.getElementById("addUser").addEventListener('click', function() {
+		var name = document.getElementById("username").value;
+		var pw = document.getElementById("password").value;
+		var user = {
+			username : name,
+			password : pw
+		};
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 201) {
+					//CREATED
+					console.log("created user");
+					console.log(xhr.responseText);
+				} else if (xhr.status == 409) {
+					//CONFLICT
+					console.log("username already used")
+				} else {
+					//SOMETHING ELSE HAPPENED
+					console.log("check console in eclipse")
+				}
+			}
+		}
+		xhr.open("POST", "users");
+		xhr.send(JSON.stringify(user));
+	})
+	
+	</script>
+</body>
+</html>

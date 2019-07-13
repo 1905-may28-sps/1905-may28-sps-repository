@@ -1,8 +1,0 @@
-
-“squid:UselessImportCheck"TRemove this unnecessary import: same package classes are always implicitly imported.(¸ •™şÿÿÿÿHÿRMINORZ
-CODE_SMELL
-vsquid:UselessImportCheck"7Remove this unused import 'java.sql.PreparedStatement'.(òÄ™ƒÿÿÿÿÿH€RMINORZ
-CODE_SMELL
-Xsquid:S1148%"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHRMINORZVULNERABILITY
-‹squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¦Ñ›¨øÿÿÿÿH‚RMINORZ
-CODE_SMELL

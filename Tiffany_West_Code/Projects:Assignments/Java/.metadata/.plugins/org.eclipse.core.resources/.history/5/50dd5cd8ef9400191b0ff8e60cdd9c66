@@ -1,7 +1,0 @@
-package com.revature.doa;
-
-public class UserDAO {
-
-	
-	//prepared statement for adding user
-}

@@ -1,19 +1,0 @@
-
-^squid:S1444".Make this "public static password" field final(ÅÒôäHÉ	RMINORZVULNERABILITY
-Xsquid:S1444"(Make this "public static id" field final(×É˜ñHÅ	RMINORZVULNERABILITY
-_squid:S1444"/Make this "public static firstName" field final(ÍÍµŸHÆ	RMINORZVULNERABILITY
-›"squid:ClassVariableVisibilityCheck"TMake password a static final constant or non-public and provide accessors if needed.(ÅÒôäHÏ	RMINORZVULNERABILITY
-•"squid:ClassVariableVisibilityCheck"NMake id a static final constant or non-public and provide accessors if needed.(×É˜ñHË	RMINORZVULNERABILITY
-Xsquid:S11486"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHĞ	RMINORZVULNERABILITY
- "squid:ClassVariableVisibilityCheck"TMake lastName a static final constant or non-public and provide accessors if needed.(½Üî¦üÿÿÿÿHÍ	RMINORZVULNERABILITY
-Xsquid:S1148O"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÑ	RMINORZVULNERABILITY
-csquid:S1444".Make this "public static lastName" field final(½Üî¦üÿÿÿÿHÇ	RMINORZVULNERABILITY
-"squid:ClassVariableVisibilityCheck"QMake table a static final constant or non-public and provide accessors if needed.(Ğ°ïÌÿÿÿÿÿHÊ	RMINORZVULNERABILITY
-ˆsquid:S2068"V'password' detected in this expression, review this potentially hard-coded credential.(ÅÒôäHÓ	RBLOCKERZVULNERABILITY
- "squid:ClassVariableVisibilityCheck"TMake userName a static final constant or non-public and provide accessors if needed.(å…úîÿÿÿÿÿHÎ	RMINORZVULNERABILITY
-`squid:S1444"+Make this "public static table" field final(Ğ°ïÌÿÿÿÿÿHÄ	RMINORZVULNERABILITY
-œ"squid:ClassVariableVisibilityCheck"UMake firstName a static final constant or non-public and provide accessors if needed.(ÍÍµŸHÌ	RMINORZVULNERABILITY
-csquid:S1444".Make this "public static userName" field final(å…úîÿÿÿÿÿHÈ	RMINORZVULNERABILITY
-Xsquid:S1148h"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÒ	RMINORZVULNERABILITY
-xsquid:UselessImportCheck"7Remove this unused import 'java.sql.CallableStatement'.(†ÍÉ©8‚é†Œ¹-HéRMINORZ
-CODE_SMELL

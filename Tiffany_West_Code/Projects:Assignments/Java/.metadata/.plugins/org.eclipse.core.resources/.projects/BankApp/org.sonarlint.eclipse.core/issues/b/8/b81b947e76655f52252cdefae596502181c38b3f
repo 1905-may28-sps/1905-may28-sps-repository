@@ -1,45 +1,0 @@
-
-Ÿ"squid:ClassVariableVisibilityCheck"YMake accountNumber a static final constant or non-public and provide accessors if needed.(îÙúHŞ	RMINORZVULNERABILITY
-[squid:S1444"+Make this "public static table" field final(ù¶¸ÖHÔ	RMINORZVULNERABILITY
-š"squid:ClassVariableVisibilityCheck"SMake balance a static final constant or non-public and provide accessors if needed.(‹ÖôôHİ	RMINORZVULNERABILITY
-š"squid:ClassVariableVisibilityCheck"NMake id a static final constant or non-public and provide accessors if needed.(°¹—‚ùÿÿÿÿHÜ	RMINORZVULNERABILITY
-`squid:S1148š"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8úÉÀ›¹-HâRMINORZVULNERABILITY
-_squid:S1148Z"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8úŸ¼ş¸-H
-RMINORZVULNERABILITY
-"squid:ClassVariableVisibilityCheck"RMake typeId a static final constant or non-public and provide accessors if needed.( ¢¡¬üÿÿÿÿHà	RMINORZVULNERABILITY
-]squid:S1444"-Make this "public static balance" field final(‹ÖôôHÖ	RMINORZVULNERABILITY
-¢squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ñµËğûÿÿÿÿHÚ	RMINORZ
-CODE_SMELL
-squid:UselessImportCheck"NRemove this unused import 'java.sql.SQLIntegrityConstraintViolationException'.(¤¡†8™¥¸Ÿ¹-HÆRMINORZ
-CODE_SMELL
-Xsquid:S1148o"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHâ	RMINORZVULNERABILITY
-asquid:S1444",Make this "public static typeId" field final( ¢¡¬üÿÿÿÿHÙ	RMINORZVULNERABILITY
-_squid:S1148;"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8×‚‹¹-H‹RMINORZVULNERABILITY
-ksquid:S1135ƒ"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8×‚‹¹-HŒRINFOZ
-CODE_SMELL
-q
-squid:S1067"9Replace this use of System.out or System.err by a logger.(×æûşúÿÿÿÿ8Òàâ¹-HRMAJORZ
-CODE_SMELL
-dsquid:S1135™"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿHæ	RINFOZ
-CODE_SMELL
-˜"squid:ClassVariableVisibilityCheck"QMake table a static final constant or non-public and provide accessors if needed.(ù¶¸ÖHÛ	RMINORZVULNERABILITY
-`squid:S1148„"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ö‘ü¹-H¡RMINORZVULNERABILITY
-"squid:ClassVariableVisibilityCheck"RMake userId a static final constant or non-public and provide accessors if needed.(ÄÛ’øÿÿÿÿHß	RMINORZVULNERABILITY
-j
-squid:S106z"9Replace this use of System.out or System.err by a logger.(ÓË©“ıÿÿÿÿHå	RMAJORZ
-CODE_SMELL
-]squid:S1444"(Make this "public static id" field final(°¹—‚ùÿÿÿÿHÕ	RMINORZVULNERABILITY
-`squid:S1172".Remove this unused method parameter "accUser".(ñµËğûÿÿÿÿHã	RMAJORZ
-CODE_SMELL
-jsquid:UselessImportCheck
-"+Remove this unused import 'java.util.List'.(Õë±ÄøÿÿÿÿHá	RMINORZ
-CODE_SMELL
-l
-squid:S106}"9Replace this use of System.out or System.err by a logger.(òªŞÀ8´˜ÿ›¹-HÅRMAJORZ
-CODE_SMELL
-jsquid:S1135:"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8úÉÀ›¹-HäRINFOZ
-CODE_SMELL
-†squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ºªõÖHä	RMINORZ
-CODE_SMELL
-asquid:S1444",Make this "public static userId" field final(ÄÛ’øÿÿÿÿHØ	RMINORZVULNERABILITY
-bsquid:S1444"3Make this "public static accountNumber" field final(îÙúH×	RMINORZVULNERABILITY

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+      
+      
+       <hibernate-configuration>
+       
+       <session-factory>
+       <!-- basic db connection information -->
+ 		<property name="hibernate.dialect">
+ 		org.hibernate.dialect.Oracle10gDialect</property>
+ 		<property name="hibernate.connection.driver_class">
+ 		oracle.jdbc.driver.OracleDriver</property>
+       		
+       		<property name="hibernate.connection.url">jdbc:oracle:thin:@tiffanysinstance.cbcizsywp3kr.us-east-1.rds.amazonaws.com:1521/ORCL</property>
+       		<property name="hibernate.connection.username">tiffyw</property>
+       		<property name="hibernate.connection.password">instancepw</property>
+       		
+       		
+       		<!-- show HQL commands as theyre carried out in the console -->
+ 		<property name="show_sql">true</property>
+ 		
+ 	<!-- format HQL for readability -->
+ 		<property name="format_sql">true</property>
+ 		
+ 	<!-- this property allows us to create/update the schema 
+ 	hbm = hibernate mapping (annotations/xml mapping classes as entities)
+ 	ddl = data definition language 
+ 	so hbm2ddl is how we configure our app to talk to our tables (either 
+ 	create them or just write to them)
+ 	
+ 	create: creates the schema; if these tables are present when the app 
+ 	is started, it will drop the tables and recreate them. 
+ 	
+ 	update: updates the schema with given values or changes to tables 
+ 	
+ 	validate: validates the schema, makes no changes in db
+ 	
+ 	create-drop: creates the schema, destroying all previously existing 
+ 	information if present. then drops the schema when sessionfactory is closed
+ 		 -->
+ 		<!--  <property name="hibernate.hbm2ddl.auto">create</property> this creates .... -->
+ 		
+ 		 		<property name="hibernate.hbm2ddl.auto">update</property>
+ 		
+ 	
+ 	<!-- Map classes below -->
+ 		<mapping class="com.revature.model.User" />
+ 		 		<mapping class="com.revature.model.Post" />
+ 		
+ 		<!-- Classes mapped with XML -->
+ 		<mapping resource="TestMapping.hbm.xml" />
+ 		
+       </session-factory>
+       </hibernate-configuration>

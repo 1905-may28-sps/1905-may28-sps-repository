@@ -1,0 +1,59 @@
+<h3>Understanding Directives</h3>
+
+<h6>Angular <b>Directives</b> are special pre-built instructions
+that typically render HTML code or provide additional functionality</h6>
+<hr>
+<p>There are three types of directives:</p>
+<ul>
+  <li><b>Custom Directives using the decorator <code>@Directive</code>.</b> - This is added to a TypeScript class. Furthermore, The @Component decorator is actually a special form of the @Directive decorator. In practice, you’ll use @Directive when creating your own custom directives. </li>
+  <li><b>Structural Directives</b> - This will add/remove/or update 
+    the contents of the DOM. It basically changes the webpage’s layout.
+     <code>*ngFor</code> and <code>*ngIf</code> which we’ll explain 
+     in a moment are common examples of structural directives. </li>
+  <li><b>Attribute Directives</b> - The final form is an attribute 
+    directive. An attribute directive will change the look and feel 
+    or behavior of an element. Examples of attribute directives are 
+    <code>ngModel</code>, <code>ngClass</code>, and <code>ngStyle</code>. 
+    We cover ngModel in a separate video when we explain two-way 
+    data-binding. Here, you’ll see usage of ngClass.</li>
+</ul>
+<br>
+<hr>
+<h5><a href="https://malcoded.com/posts/angular-ngfor/"></a>*ngFor</h5>
+<i>This directive is used to make an element of the designated type for every
+  item in some sort of collection.
+</i>
+
+<ul>
+  <li *ngFor="let myNum of numArr"> My number is {{ myNum }} </li>
+</ul>
+<br>
+
+<h5>*ngIf</h5>
+<i>This directive is used to hide or show a DOM element based on the truthy or 
+  falsiness of the expression/variable it is set to
+</i>
+<br>
+<button (click)="toggleShow()">Toggle If</button>
+<b *ngIf="showIf">Show If is {{ showIf }} </b>
+
+<br>
+<h5>Attribute Directives</h5>
+<br>
+<hr>
+<h5>ngClass</h5>
+<i> this directive is used to change the style of an element.....</i>
+<button [ngClass] ="buttonClass" (click)="changeStyle()">Style Button!</button>
+{{ placeholder}} --> {{ buttonClass }}
+
+<br>
+<h5>ngSwitch</h5>
+<i>This attribute is usually used with ngFor, and allows you to switch the 
+  styling or content of your displayed elements based on a particular property
+</i>
+<ul *ngFor="let e of employees" [ngSwitch]="e.role">
+
+  <li *ngSwitchCase= "'Trainer'" class="text-warning"> Trainer {{ e.name }}</li>
+  <li *ngSwitchCase = "'Associate'" class="text-success">Associate {{ e.name }}</li>
+</ul>
+

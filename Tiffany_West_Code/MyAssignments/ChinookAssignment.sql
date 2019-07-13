@@ -1,4 +1,4 @@
---2.1 Select
+7--2.1 Select
 
 --select all records from the Employee table.
 

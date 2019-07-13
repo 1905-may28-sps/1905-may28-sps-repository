@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>JSAssignment</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+<!--14. Display the current time on the top right of your HTML page, 
+updating every second-->      
+<p>Date/Time: <span id="datetime"></span></p>
+
+
+    <!--1. Fibonacci 
+Define function: fib(n) 
+Return the nth number in the fibonacci sequence.-->
+<h4>Fibonacci</h4>
+<input type="text" id="fibNums" class="form-control col-4">
+<br>
+<button class="btn btn-primary" id="fibArraySubmit">Find Fibonacci!</button>
+<i>the Fibonacci value for the input # is = </i>
+
+
+
+    <!--2. Bubble Sort
+Define function: bubbleSort(numArray)
+Use the bubble sort algorithm to sort the array.
+Return the sorted array.-->
+<h4>Bubble Sort</h4>
+<input type="text" id="sortNums" class="form-control col-8">
+<button class="btn btn-primary" id="sortArraySubmit">Sort Array!</button>
+<span id="sortOutput"></span>
+
+<!--3. Reverse String
+Define function: reverseStr(someStr)
+Reverse and return the String.-->
+<input type="text" id="inputStr" class="form-control col-8">
+    <button class="btn btn-primary" id="reverseStrSubmit">Go!</button>
+    <i>The revese of what you input is = </i>
+    <span id="reverseStrOutput"></span>
+<!--4. Factorial
+Define function: factorial(someNum)
+Use recursion to compute and return the factorial of someNum.-->
+<input type="text" id="factorialInput" class="form-control col-8">
+    <button class="btn btn-primary" id="factorialSubmit">Go!</button>
+   
+    <span id="factorialOutput"></span>
+
+    <!-- Q6:Define function: isEven(someNum)
+    Return true if even, false if odd.
+    Do not use % operator.-->
+
+<input type="text" id="numberInput" class="form-control col-8">
+<button class="btn btn-primary" id=evenNumberSubmit>Go!</button>
+<span id="evenNumberOutput"></span>
+<!--7. Palindrome
+Define function isPalindrome(someStr)
+Return true if someStr is a palindrome, otherwise return false-->
+<h4>Palindromes</h4>
+    <input type="text" id="palindromeInput" class="form-control col-8">
+    <button id="findPalindrome" class="btn btn-primary">Go!</button>
+    <br><span id="palindromeOut"></span>
+
+
+<!-- Q5 Define function substring(someStr, length, offset)
+        Return the substring contained between offset and (offset + length) inclusively.
+        If incorrect input is entered, use the alert function and describe why the input was incorrect.-->
+    <input type="text" id="inputString" class="form-control col-8">
+    <input type="text" id="start" placeholder="starting word" class="form-control col-4">
+    <input type="text" id="end" placeholder="end word" class="form-control col-4">
+    <button class="btn btn-primary" id="subStrSubmit">Go!</button>
+    <i>The substring of your string is = </i>
+    <span id="subStrOutput"></span>
+    <!--Q11Define function spliceElement(someArr)
+    Print length
+    Splice the third element in the array.
+    Print length
+    The lengths should be one less than the original length.-->
+
+    <input type="text" id="spliceInput" class="form-control col-8">
+    <input type="text" id="spliceElementNum" class="form-control col-8">
+    <button class="btn btn-primary" id=spliceSubmit>Find Factorial!</button>
+    <span id="originalArr"></span>
+   <span id="spliceOutput"></span>
+
+   
+    <script type="text/javascript" src="functions.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

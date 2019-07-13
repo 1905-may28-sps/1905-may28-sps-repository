@@ -289,18 +289,23 @@ commit;
 
  select * from bank_account_;
  
- 
  select* from bank_user;
 
+select * from bank_account_type;
+
+select  acc.account_id , acc.balance, type.type
+from bank_account_ acc
+inner join bank_account_type type
+on acc.type_id = type.type_id
+where acc.user_id = 70
 
 
 
 
+update bank_account_
+set user_id =70
+where account_id =11;
 
-
-
-
-
-
+commit;
 
 

@@ -1,0 +1,247 @@
+html,body{
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   height: 100vh;
+   background:url(Sky_truck.jpg) no-repeat 50% 50%;
+    background-size: cover; 
+    font-family: Helvetica;
+    color: whitesmoke;
+}
+.title{
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+h1{
+   text-transform: uppercase;
+   font-size: 20px; 
+   letter-spacing: 20px;
+   font-weight: 400;
+   color: #fff;
+}
+.menu-strip{
+    background: #fff;
+    position: fixed;
+    width: 10%;
+    height: 100vh;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+.toggle-btn{
+position: absolute;
+top: 10%;
+left: 50%;
+transform: translate(-50%,-50%);
+}
+
+.toggle-btn ion-icon{
+    font-size: 28px;
+    color: cadetblue;
+}
+.nav .menu{
+    position: absolute;
+    width: 0%;
+    height: 100vh;
+    left: 10%;
+    background: #fff;
+}
+.images{
+    position: absolute;
+    width: 0%;
+    height: 100vh;
+    left: 55%;
+    background: url(bluetruck.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+.bg{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    /*background: #000; */
+
+}
+
+.nav .menu ul{
+    list-style: none;
+    position: absolute;
+    top: 36%;
+    left: 36%;
+    transform: translate(-50%,-50%) ;
+    cursor: pointer;
+
+}
+
+#order {
+    font-size: 16px;
+    font-weight: lighter;
+    color: #afafaf;
+}
+.nav .menu ul li{
+    color: #afafaf;
+    font-weight: lighter;
+    font-size: 30px;
+    line-height: 60px;
+
+}
+#tag{
+    font-size: 18px;
+    font-weight: lighter;
+    color: #afafaf;
+    transition: 0.3s;
+}
+.media{
+    position: absolute;
+    top: 80%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+}
+
+.media ul li{
+    display: inline-block !important;
+    color: #afafaf;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.nav .menu ul li:hover #tag{
+    color: aqua;
+    transition: 1s;
+}
+
+#menu{
+    background: linear-gradient(#5b5b5b, #5b5b5b) left no-repeat #afafaf;
+    background-size: 0%,100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 1s;
+}
+
+
+#menu:hover{
+    background-size: 100% 100%;
+}
+
+
+.bg1 {
+    display: block;
+    background: url(bluetruck.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.bg2 {
+    display: block;
+    background: url(black&white.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+.bg3 {
+    display: block;
+    background: url(mountains.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+.bg4 {
+    display: block;
+    background: url(yellow.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+.bg5 {
+    display: block;
+    background: url(dronetrucks.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.hide{
+    display: none;
+}
+
+@media(max-width 768px){
+    .images{
+        display: none;
+    }
+
+    .nav .menu{
+        width: 0%;
+        left: 20%;
+    }
+    .menu ul{
+        margin-top: 80px;
+        margin-left: -20px;
+    }
+    .menu-strip{
+        width: 20%
+    }
+
+    .toggle-btn{
+        position: absolute;
+        transform: translate(-50%, -90%)
+    }
+    
+    .menu li #menu{
+        font-size: 18px;
+    }
+    #tag{
+        display: none;
+    }
+    #order{
+        display: none;
+    }
+    .media{
+        display: none;
+    }
+}
+/*log in page */
+
+#login {
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    background-color:gainsboro;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50% );
+    overflow: hidden;
+}
+#login h1{
+    margin-top: 100px;
+    font-family: 'Arvo', serif;
+    font-size: 40px;
+}
+#login input{
+    display: block;
+    width: 100%;
+    padding: 0 16px;
+    height: 44px;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: "montserrat", sans-serif;
+}
+
+
+.txtb{
+    margin: 20px 0;
+    background: rgba(255, 255, 255, .5);
+    border-radius: 6px;
+}
+
+
+.loginbtn{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background: #487eb0;
+    color: #fff;
+    border-radius: 44px;
+    cursor: pointer;
+    transition: 0.8s;
+}
+.loginbtn:hover{
+    transform: scale(0.96);
+}
+
+
+
