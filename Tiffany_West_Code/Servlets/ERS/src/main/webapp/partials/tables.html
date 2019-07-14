@@ -1,43 +1,14 @@
 <h1 align="right">	Welcome, <span id="name"></span></h1>
 
-<!--  
+
 <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs/datatables.min.css"/>
-  <link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.css" rel="stylesheet" type="text/css" />
-  
-  <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/r/bs/datatables.min.js"></script>
-<script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
- <script src=" https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <!-- 
-    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-   
-  <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
- 
-  
- 
- <script>
- $(document).ready(function() {
-  var table = $('#example').DataTable({
-      columnDefs: [{
-          orderable: false,
-          targets: [1,2,3]
-      }]
-  });
-  $('button').click( function() {
-      var data = table.$('input, select').serialize();
-      alert(
-          "The following data would have been submitted to the server: \n\n"+
-          data.substr( 0, 120 )+'...'
-      );
-      return false;
-  } );
-} );
- 
-  </script>
-  -->
+   <style>
+    body{
+        background: url(black&white.jpg) no-repeat !important;
+
+    }
+    </style>
 
 <button id="doReimb" class="loginbtn">Add Reimbursement</button>
 
@@ -58,6 +29,8 @@
       <tbody id="ersTable">  
       </tbody>
   </table>
+    <i id="goToLogin"> Back to login</i>
+  
   <!-- add button here to make add reimbursement -->
   
   

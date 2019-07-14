@@ -1,53 +1,53 @@
 
 
 
-<h1>Welcome, <span id="name"></span></h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>tables</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="styles.css">
 
+    <!-- Bootstrap CSS -->
+    
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    body{
+        background: url(black&white.jpg) no-repeat !important;
 
-  <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs/datatables.min.css"/>
-  <link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.css" rel="stylesheet" type="text/css" />
-  
-  <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/r/bs/datatables.min.js"></script>
-<script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
- <script src=" https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <!--
-  <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  -->
- <script>
- $(document).ready(function() {
-  var table = $('#example').DataTable({
-      columnDefs: [{
-          orderable: false,
-          targets: [1,2,3]
-      }]
-  });
-
-  $('button').click( function() {
-      var data = table.$('input, select').serialize();
-      alert(
-          "The following data would have been submitted to the server: \n\n"+
-          data.substr( 0, 120 )+'...'
-      );
-      return false;
-  } );
-} );
-  </script>
-
+    }
+    </style>  
 </head>
-<body>
-      <button  id="button" type="button">submit</button>
-  <table id="example" class="display" style="width:100%">
-      <thead>
-          <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Reimbursement</th>
-              <th scope="col">Description</th>
-              <th scope="col">Type</th>
-          </tr>
-      </thead>
-      <tbody id="ersTable">  
-      </tbody>
-  </table>
+  <body>
+    <button id="doReimb" class="loginbtn">Add Reimbursement</button>
+
+
+   
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="col">Reimb. Id</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Submitted</th>
+                <th scope="col">Resolved</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody id="ersTable">  
+        </tbody>
+    </table>
+      <i id="goToLogin"> Back to login</i>
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

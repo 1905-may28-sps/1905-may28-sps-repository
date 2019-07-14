@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Imani Transports</title>
+      <link rel="stylesheet" href="styles.css">
+      
+      <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+      <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+       -->
+</head>
+<body>
+      <div class="wrapper">
+
+            <div class="outer-content">
+                  <div class="title">
+                        <h1>Imani Transports</h1>
+                  </div>
+            </div>
+
+            <div class="menu-strip">
+                  <div class="toggle-btn">
+                        <ion-icon name="menu"></ion-icon>
+                  </div>
+            </div>
+
+            <div class="menu">
+
+                  <div class="images">
+                        <span class="bg bg1 hide"></span>
+                        <span class="bg bg2 hide"></span>
+                        <span class="bg bg3 hide"></span>
+                        <span class="bg bg4 hide"></span>
+                        <span class="bg bg5 hide"></span>
+
+                  </div>
+
+
+
+                  <div class="nav">
+                        <div class="menu">
+                        <ul>
+                              <li class="menu-item-1">
+                                    <span id="order">01. </span>
+                                    <span id="menu">&nbsp;Home /</span>
+                                    <span id="tag">Welcome</span>
+                              </li>
+                              <li class="menu-item-2">
+                                    <span id="order">02. </span>
+                                    <span id="menu">&nbsp;Our Story /</span>
+                                    <span id="tag">the beginning</span>
+                              </li>
+                              <li class="menu-item-3">
+                                    <span id="order">03. </span>
+                                    <span id="menu">&nbsp;Portfolio /</span>
+                                    <span id="tag">Our trucks</span>
+                              </li>
+                              <li class="menu-item-4" id="goToLogin">
+                                    <span id="order">04. </span>
+                                    <span id="menu">&nbsp;Login /</span>
+                                    <span id="tag">Come inside</span>
+                              </li>
+                              <li class="menu-item-5">
+                                    <span id="order">05. </span>
+                                    <span id="menu">&nbsp;Contact /</span>
+                                    <span id="tag">say hello</span>
+                              </li>
+                        </ul>
+                        </div>
+                        <div class="media">
+                        <ul>
+                              <li><ion-icon name="logo-facebook"></ion-icon></li>
+                              <li><ion-icon name="logo-instagram"></ion-icon></li>
+                              <li><ion-icon name="logo-twitter"></ion-icon></li>
+                              <li><ion-icon name="logo-youtube"></ion-icon></li>
+                        </ul>
+                        </div>
+                  </div>
+
+            </div>
+      </div>
+
+
+      <script type="text/javascript">
+      jQuery(function() {
+            $(".menu-item-1").hover(function() {
+                  $(".bg1").fadeIn(800);
+            }, function() {
+                  $(".bg1").fadeOut(800);
+            })
+            $(".menu-item-2").hover(function() {
+                  $(".bg2").fadeIn(800);
+            }, function() {
+                  $(".bg2").fadeOut(800);
+            })
+            $(".menu-item-3").hover(function() {
+                  $(".bg3").fadeIn(800);
+            }, function() {
+                  $(".bg3").fadeOut(800);
+            })
+            $(".menu-item-4").hover(function() {
+                  $(".bg4").fadeIn(800);
+            }, function() {
+                  $(".bg4").fadeOut(800);
+            })
+            $(".menu-item-5").hover(function() {
+                  $(".bg5").fadeIn(800);
+            }, function() {
+                  $(".bg5").fadeOut(800);
+            })
+      })
+      var t1 = new TimelineMax({paused: true});
+      t1.to(".outer-content .title", 1, {
+            opacity: 0
+      });
+      t1.to(".menu", 2, {
+            width: "45%",
+            ease: Expo.easeInOut
+      }, "-=1");
+      t1.staggerFrom(".menu ul li", 2, {y: 20 , opacity: 0, ease: Expo.easeInOut}, 0.1);
+      t1.to(".images", 2, {
+            width: "45%",
+            ease: Expo.easeInOut,
+            delay: -2,
+      },"-=1");
+      t1.reverse();
+      $(document).on("click", ".toggle-btn", function() {
+            t1.reversed(!t1.reversed());
+      });
+      $(document).on("click", "#menu", function() {
+            t1.reversed(!t1.reversed());
+      });
+      </script>
+     
+</body>
+</html>

@@ -43,22 +43,23 @@ public class ReimbursementDAO {
 	}
 	return reim;
 		}
+		//new reimb
 		
 		public Reimbursement setReimb(Reimbursement reim) {
 			
 			try(Connection conn = ConnectionFactory.getInstance().getConnection()){
-				String sql= " insert into ers_reimbursement (reimb_amount,reimb_submitted,reimb_description,reimb_author, reimb_type_id) " + 
-						"values (?,?,?,?,?)";
+				String sql= " insert into ers_reimbursement (reimb_amount,reimb_submitted,reimb_description,reimb_author, reimb_type_id,reimb_status_id) " + 
+						"values (?,CURRENT_TIMESTAMP,?,?,?,3)";
 				String[] generatedkeys = {"reimb_id"};
 				
 				System.out.println("REIMBURSEMENT DAO "   + reim);
 				PreparedStatement ps = conn.prepareStatement(sql,generatedkeys);
 									
 					ps.setDouble(1, reim.getAmount());
-					ps.setDate(2, Reimbursement.getCurrentDate());  //should I change this?
-					ps.setString(3, reim.getDescription());
-					ps.setInt(4, reim.getAuthor());
-					ps.setInt(5, reim.getType());
+					//ps.setDate(2, Reimbursement.getCurrentDate());  //should I change this?
+					ps.setString(2, reim.getDescription());
+					ps.setInt(3, reim.getAuthor());
+					ps.setInt(4, reim.getType());
 			
 					
 					ps.executeUpdate();

@@ -1,8 +1,27 @@
 window.onload = function(){
-	console.log('TESTING CHANGES11');
-	loadLoginView();
+	console.log('TESTING CHANGES: JQ 3');
+	loadHomeView();
 	
 
+	function loadHomeView(){
+		
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 ){
+				if(xhr.status == 200){
+					console.log('loaded Home view');
+					$('#view').html(xhr.responseText);
+					$('#goToLogin').on('click', loadLoginView);
+				} else if (xhr.status >= 500){
+					console.log('server error');
+				}
+
+			}
+		}
+		xhr.open('GET', 'Home.view');
+		xhr.send();
+	}
+	
 	function loadLoginView(){
 	
 		var xhr = new XMLHttpRequest();
@@ -12,7 +31,7 @@ window.onload = function(){
 					console.log('loaded login view');
 					$('#view').html(xhr.responseText);
 					$('#doLogin').on('click', login);
-					//$('#goToManager').on('click', loadManagerView);
+					$('#goToHome').on('click', loadHomeView);
 				} else if (xhr.status >= 500){
 					console.log('server error');
 				}
@@ -84,6 +103,7 @@ window.onload = function(){
 				if(xhr.status == 200){
 					$('#view').html(xhr.responseText);
 					getUserData();
+					$('#goToLogin').on('click', loadLoginView);
 				} else if (xhr.status >= 500){
 					console.log('server error');
 				}
@@ -93,7 +113,26 @@ window.onload = function(){
 		xhr.send();
 
 	}
-	function getUserData(){ 
+	
+	function loadReimbursementView(){
+		
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 ){
+				if(xhr.status == 200){
+					$('#view').html(xhr.responseText);
+					$('#addReimb').on('click', reimbursement); 
+					$('#goLogin').on('click', loadLoginView);
+				} else if (xhr.status >= 500){
+					console.log('server error');
+				}
+			}
+		}
+		xhr.open('GET', 'reimbursement.view'); 
+		xhr.send();
+	}
+	
+function getUserData(){ 
 		var xhr = new XMLHttpRequest();
 
 		xhr.onreadystatechange = function(){
@@ -157,7 +196,7 @@ window.onload = function(){
 	}
 
 }
-
+//for managers table
 function getEmpData(){ 
 	var xhr = new XMLHttpRequest();
 
@@ -179,13 +218,11 @@ function getEmpData(){
 						var row = $(`<tr class="account" id=${acc.id}> </tr>`);
 						var cell1 = $(`<td>${acc.id}</td>`);
 						var cell2 = $(`<td>${acc.author}</td>`);
-
 						var cell3= $(`<td>${formatter.format(acc.amount)}</td>`);
 						var cell4= $(`<td>${acc.submitted}</td>`);
 						var cell5= $(`<td>${acc.resolved}</td>`);
 						var cell6= $(`<td>${acc.description}</td>`);
 						var cell7= $(`<td>${acc.status}</td>`);							
-
 						var cell8= $(`<td>${acc.type}</td>`);
 						row.append(cell1);
 						row.append(cell2);
@@ -206,7 +243,6 @@ function getEmpData(){
 		                console.log(id);
 		                updReim(id);
 
-		                //now allow user to update balance for selected element
 		            
 		           });
 
@@ -263,24 +299,7 @@ function getEmpData(){
 
 
 //add functionality now
-function loadReimbursementView(){
-	
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState == 4 ){
-			if(xhr.status == 200){
-				$('#view').html(xhr.responseText);
-				$('#addReimb').on('click', reimbursement); 
-				//$('#goToTable').on('click', loadTablePage); // this isn't working check last
-			} else if (xhr.status >= 500){
-				console.log('server error');
-			}
 
-		}
-	}
-	xhr.open('GET', 'reimbursement.view'); 
-	xhr.send();
-}
 
 function reimbursement(){
 	console.log('TEST');
@@ -314,4 +333,27 @@ function reimbursement(){
 	xhr.send(JSON.stringify(obj));
 	
 }
+//search function here
+function myFunction() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("manTable");
+	  tr = table.getElementsByTagName("tr");
 
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[1];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
+	}
+
+//home page functions

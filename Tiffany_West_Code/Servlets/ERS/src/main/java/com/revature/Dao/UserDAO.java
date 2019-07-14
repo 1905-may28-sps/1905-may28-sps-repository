@@ -106,7 +106,7 @@ public class UserDAO {
 		return null;
 	}
 	
-	
+	//for managers
 	public UserInformation getEmpInfo(User u) {
 		UserInformation info = new UserInformation();
 
