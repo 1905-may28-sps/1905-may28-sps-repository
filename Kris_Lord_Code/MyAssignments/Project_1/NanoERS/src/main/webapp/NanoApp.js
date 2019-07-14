@@ -190,27 +190,23 @@ function getESubmit(){
 	var eadd = {
 			balance: $('#eamount').val(),
 			description: $('#edescription').val(),
-			type: $('#emptype').val()
+			accountType: $('#emptype').val()
 //			,receipt: $('#ereceipt').val()
 	}
+	console.log(eadd);
 	
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4){
 			if(xhr.status == 200){
-				console.log('add to user' );
 				var eadd = JSON.parse(xhr.responseText);
-				//do stuff w user if you want
-//				if(user.userRoleId==1) loadManagerHomePage();
-//				else loadEmployeeHomePage();
 			}
 			else if(xhr.status == 204){
-//				$('#message').html('Sorry, invalid credentials! Please try again');
 			}
 		}
 	}
 	xhr.open('POST', 'esubmit');
-	xhr.send();
+	xhr.send(JSON.stringify(eadd));
 }
 
 function epast(){

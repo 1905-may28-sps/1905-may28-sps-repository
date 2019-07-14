@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.pojos.Account;
+import com.revature.pojos.Account2;
 import com.revature.pojos.AccountInfo;
 import com.revature.pojos.User;
 import com.revature.pojos.UserInformation;
@@ -219,6 +220,33 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public Account2 save(Account2 acc) {
+		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+			conn.setAutoCommit(false);
+			String sql = "INSERT INTO NANO_REIMBURSEMENT (REIMBAMOUNT, REIMBSUBMITTED, REIMBDESCRIPTION, REIMBAUTHOR, REIMBRESOLVER, REIMBSTATUSID, REIMBTYPEID)"
+					+ "VALUES(?,?,?,?,?,?,?)";
+		
+			String[] generatedKeys = {"REIMBID"};
+			PreparedStatement ps = conn.prepareStatement(sql, generatedKeys);
+		
+			ps.setDouble(1, acc.getBalance());
+			ps.setTimestamp(2, acc.getSubmitted());
+			ps.setString(3, acc.getDescription());
+			ps.setInt(4, acc.getAuthor());
+			ps.setInt(5, acc.getResolver());
+			ps.setInt(6, acc.getStatusId());
+			ps.setInt(7, acc.getAccountType());
+			
+			ps.executeUpdate();
+			ResultSet pk = ps.getGeneratedKeys();
+			 pk.next();
+			 acc.setAccountId(pk.getInt(1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return acc;
 	}
 	
 }

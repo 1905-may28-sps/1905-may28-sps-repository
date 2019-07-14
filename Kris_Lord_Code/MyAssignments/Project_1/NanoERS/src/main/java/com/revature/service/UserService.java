@@ -1,9 +1,12 @@
 package com.revature.service;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Random;
 
 import com.revature.dao.UserDao;
 import com.revature.pojos.Account;
+import com.revature.pojos.Account2;
 import com.revature.pojos.User;
 //import com.revature.pojos.UserInformation;
 import com.revature.pojos.UserInformation;
@@ -46,9 +49,15 @@ public class UserService {
 		else return userDao.getMgrInfo(u);
 	}
 
-	public Account esubmit(Double balance, String description, int accountType) {
-		// TODO Auto-generated method stub
-		return null;
+	public Account2 esubmit(Double balance, String description, int author, int accountType) {
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		int resolver;
+		Random random13 = new Random();
+		if(random13.nextBoolean()) resolver = 1; else resolver = 3;
+
+		Account2 esubobj = new Account2(balance, time, description, author, resolver, 101, accountType);
+		
+		return userDao.save(esubobj);
 	}
 	
 }
