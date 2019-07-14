@@ -1,6 +1,6 @@
 <div class="jumbotron" id="registerUserDiv">
 	<div id="manager_home"
-		style="background-image: url(C:\Users\Daniel Molinaro\Desktop\projectone photos\lib.jpg);">
+		style="background-image: url(C:/Users/Daniel Molinaro/Desktop/projectone photos/lib.jpg);">
 		<h1>Manager Portal</h1>
 		<h2>
 			Welcome! <span id="manager"></span>
@@ -8,13 +8,16 @@
 		<br>
 		<h4><i>Search:</i></h4>
 		<button class="btn btn-primary" id="pending">
-			<i>(1)Pending</i>
+			<i>Pending</i>
 		</button>
 		<button class="btn btn-primary" id="approved">
-			<i>(2)Approved</i>
+			<i>Approved</i>
 		</button>
 		<button class="btn btn-primary" id="denied">
-			<i>(3)Denied</i>
+			<i>Denied</i>
+		</button>
+		<button class="btn btn-primary" id="all">
+			<i>All</i>
 		</button>
 		<button style="float: right;" class="btn btn-primary" id="logout">
 			<i>Logout</i>
@@ -30,16 +33,15 @@
 					<th scope="col">Description</th>
 					<th scope="col">Author</th>
 					<th scope="col">Resolver</th>
-					<th scope="col">Status</th>
+					<th scope="col">Status*</th>
 					<th scope="col">Type</th>
 				</tr>
 			</thead>
 			<tbody id="manTable">
 			</tbody>
 		</table>
-<br>
-<br>
-<span><i>Status: (1)Pending, (2)Approved,
+
+<span><i>*Status: (1)Pending, (2)Approved,
 				(3)Denied</i></span>
 	</div>
 </div>
