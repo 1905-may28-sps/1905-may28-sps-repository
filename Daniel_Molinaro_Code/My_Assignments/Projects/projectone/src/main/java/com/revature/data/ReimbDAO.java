@@ -111,10 +111,24 @@ public class ReimbDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateReimb2(int id, String statusId, int resolver) {
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+			String sql = "{ call update_reimb(?,?,?) }";
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.setInt(1, id);
+			cs.setString(2, statusId);
+			cs.setInt(3, resolver);
+			
+			cs.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
-	public Reimb getByStatus(int status) {
-		Reimb reimb = null;
-
+	public List<Reimb> getByStatus(int status) {
+		List<Reimb> reimb = new ArrayList<Reimb>();
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 			String sql = "select * from ERS_REIMB where STATUS_ID = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -128,11 +142,12 @@ public class ReimbDAO {
 				a.setSubmitted(rs.getString(3));
 				a.setResolved(rs.getString(4));
 				a.setDescription(rs.getString(5));
-				a.setReceipt(rs.getString(6));
-				a.setAuthor(rs.getString(7));
-				a.setResolver(rs.getString(8));
-				a.setStatus(rs.getString(9));
-				a.setTypeId(rs.getString(10));
+				a.setAuthor(rs.getString(6));
+				a.setResolver(rs.getString(7));
+				a.setStatus(rs.getString(8));
+				a.setTypeId(rs.getString(9));
+				reimb.add(a);
+
 
 			}
 

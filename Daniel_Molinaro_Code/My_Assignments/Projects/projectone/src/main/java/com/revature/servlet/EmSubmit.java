@@ -30,15 +30,19 @@ public class EmSubmit extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
+		HttpSession session = req.getSession();
+		logger.info("Loaded session " + session.getId());
+
+		User user = (User) session.getAttribute("loggedUser");
 		
 		Reimb re = mapper.readValue(req.getInputStream(), Reimb.class);
 		
-		service.submit(re.getAmount(), re.getDescription(), re.getAuthor(), re.getTypeId());
-		//service.submit2(re.getAmount(), re.getDescription(), us.getId(), re.getTypeId());
+		//service.submit(re.getAmount(), re.getDescription(), re.getAuthor(), re.getTypeId());
+		service.submit2(re.getAmount(), re.getDescription(), user.getId(), re.getTypeId());
 		
-			HttpSession session = req.getSession();
-			logger.info("Created HttpSession " + session.getId());
-			
+//			HttpSession session = req.getSession();
+//			logger.info("Created HttpSession " + session.getId());
+//			
 //			session.setAttribute("loggedUser", us);
 //			logger.info("Logged in user " + us);
 			

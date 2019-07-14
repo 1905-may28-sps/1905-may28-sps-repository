@@ -30,14 +30,18 @@ public class UpdateReimb extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
+		HttpSession session = req.getSession();
+		logger.info("Loaded session " + session.getId());
+
+		User user = (User) session.getAttribute("loggedUser");
 		
 		Reimb re = mapper.readValue(req.getInputStream(), Reimb.class);
 		
-		service.update(re.getId(),re.getStatus(),re.getResolver());
-		//service.submit2(re.getAmount(), re.getDescription(), us.getId(), re.getTypeId());
-		
-			HttpSession session = req.getSession();
-			logger.info("Created HttpSession " + session.getId());
+		//service.update(re.getId(),re.getStatus(),re.getResolver());
+		service.update2(re.getId(),re.getStatus(),user.getId());
+//		
+//			HttpSession session = req.getSession();
+//			logger.info("Created HttpSession " + session.getId());
 			
 //			session.setAttribute("loggedUser", us);
 //			logger.info("Logged in user " + us);

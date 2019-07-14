@@ -12,12 +12,24 @@ public class UserService {
 	private UserDAO userDao = new UserDAO();
 	private ReimbDAO reimbDao = new ReimbDAO();
 
+	public List<Reimb> getStatus(int status) {
+		return reimbDao.getByStatus(status);
+	}
+	
 	public void submit(double amount, String description, String auth, String typeId) {
 		reimbDao.submit(amount, description, auth, typeId);
 	}
+	public void submit2(double amount, String description, int auth, String typeId) {
+		reimbDao.submit2(amount, description, auth, typeId);
+	}
 
-	public void update( int id, String status,String resolver) {
+
+	public void update( int id, String status, String resolver) {
 		reimbDao.updateReimb(id, status, resolver);
+	}
+	
+	public void update2( int id, String status, int resolver) {
+		reimbDao.updateReimb2(id, status, resolver);
 	}
 
 	public List<User> findAllUsers() {

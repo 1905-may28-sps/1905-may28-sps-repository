@@ -1,33 +1,45 @@
 <div class="jumbotron" id="registerUserDiv">
-<div id = "manager_home" style= "background-image: url(C:\Users\Daniel Molinaro\Desktop\projectone photos\lib.jpg)">
-<h1>
-	Manager Portal
-</h1>
-<h2>
-	Welcome! <span id="manager"></span>
-</h2>
-
-
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th scope="col">Id</th>
-			<th scope="col">Amount</th>
-			<th scope="col">Submitted</th>
-			<th scope="col">Resolved</th>
-			<th scope="col">Description</th>
-			<th scope="col">Author</th>
-			<th scope="col">Resolver</th>
-			<th scope="col">Status</th>
-			<th scope="col">Type</th>
-		</tr>
-	</thead>
-	<tbody id="manTable">
-	</tbody>
-</table>
-<span><i>Status: (1)Pending, (2)Approved, (3)Denied</i></span>
-<span id="message"></span>
+	<div id="manager_home"
+		style="background-image: url(C:\Users\Daniel Molinaro\Desktop\projectone photos\lib.jpg);">
+		<h1>Manager Portal</h1>
+		<h2>
+			Welcome! <span id="manager"></span>
+		</h2>
+		<br>
+		<h4><i>Search:</i></h4>
+		<button class="btn btn-primary" id="pending">
+			<i>(1)Pending</i>
+		</button>
+		<button class="btn btn-primary" id="approved">
+			<i>(2)Approved</i>
+		</button>
+		<button class="btn btn-primary" id="denied">
+			<i>(3)Denied</i>
+		</button>
+		<button style="float: right;" class="btn btn-primary" id="logout">
+			<i>Logout</i>
+		</button>
+		<br> <br> <span id="message"></span>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Submitted</th>
+					<th scope="col">Resolved</th>
+					<th scope="col">Description</th>
+					<th scope="col">Author</th>
+					<th scope="col">Resolver</th>
+					<th scope="col">Status</th>
+					<th scope="col">Type</th>
+				</tr>
+			</thead>
+			<tbody id="manTable">
+			</tbody>
+		</table>
 <br>
-<br> <button class="btn btn-primary" id="logout"><i>Logout</i></button>
-</div>
+<br>
+<span><i>Status: (1)Pending, (2)Approved,
+				(3)Denied</i></span>
+	</div>
 </div>

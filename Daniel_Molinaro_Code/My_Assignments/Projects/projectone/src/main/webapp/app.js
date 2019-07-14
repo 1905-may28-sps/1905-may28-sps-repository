@@ -12,8 +12,6 @@ function loadLoginView(){
 				console.log('loaded login view');
 				$('#view').html(xhr.responseText);
 
-				// ADD EVENT LISTENER TO LOGIN PAGE SO WE CAN DO THINGS WITH IT
-
 				$('#doLogin').on('click', login);
 			
 			} else if (xhr.status >= 500){
@@ -121,10 +119,11 @@ function loadEmpPage(){
 
 function submitRe(){
 	console.log('reimbusement submittal');
+	
 	var reimb = {
 			amount: $('#amount').val(),
 			description: $('#description').val(),
-			author: $('#id').val(),
+			//author: $('#id').val(),
 			typeId: $('#type').val()
 	}
 	var xhr = new XMLHttpRequest();
@@ -142,15 +141,17 @@ function submitRe(){
 	xhr.send(JSON.stringify(reimb));
 
 }
+
 function updateRe(id){
 	console.log('update submittal');
 	console.log(id);
+	
 	var status = prompt("Enter status:");
-	var mId = prompt("Manager Id:");
+	//var mId = prompt("Manager Id:");
 	var updated = {
 			id: id,
 			status: status,
-			resolver: mId
+			//resolver: mId
 			
 	}
 	var xhr = new XMLHttpRequest();
@@ -172,12 +173,12 @@ function updateRe(id){
 
 function getEmpData(){
 	var xhr = new XMLHttpRequest();
-
+	
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4){
 			if(xhr.status==200){
 				info = JSON.parse(xhr.responseText);
-				// $('#manager').html(info.user.firstName);
+				
 				console.log(info);
 				if(info.length == 0){
 					$('#message').html('Sorry, no history available');
