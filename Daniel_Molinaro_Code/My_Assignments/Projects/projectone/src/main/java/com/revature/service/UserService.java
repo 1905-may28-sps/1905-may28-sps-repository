@@ -12,8 +12,16 @@ public class UserService {
 	private UserDAO userDao = new UserDAO();
 	private ReimbDAO reimbDao = new ReimbDAO();
 
-	public List<Reimb> getStatus(int status) {
-		return reimbDao.getByStatus(status);
+	public List<Reimb> getApproved() {
+		return reimbDao.approved();
+	}
+	
+	public List<Reimb> getPending() {
+		return reimbDao.pending();
+	}
+	
+	public List<Reimb> getDenied() {
+		return reimbDao.denied();
 	}
 	
 	public void submit(double amount, String description, String auth, String typeId) {

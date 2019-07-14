@@ -52,14 +52,22 @@ function login(){
 }
 
 
-function loadManPage(){
+function loadManPage(status){
 	console.log('load manager function');
-	
+	//var stat = status;
+	console.log(status);
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 ){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
+				if (status == 1)
+					pending();
+				else if (status == 2)
+					approved();
+				else if (status == 3)
+					denied();
+				else
 				getEmpData();
 				$('#logout').on('click', loadLoginView);
 			} else if (xhr.status >= 500){
@@ -123,7 +131,7 @@ function submitRe(){
 	var reimb = {
 			amount: $('#amount').val(),
 			description: $('#description').val(),
-			//author: $('#id').val(),
+			// author: $('#id').val(),
 			typeId: $('#type').val()
 	}
 	var xhr = new XMLHttpRequest();
@@ -147,11 +155,11 @@ function updateRe(id){
 	console.log(id);
 	
 	var status = prompt("Enter status:");
-	//var mId = prompt("Manager Id:");
+	// var mId = prompt("Manager Id:");
 	var updated = {
 			id: id,
 			status: status,
-			//resolver: mId
+			// resolver: mId
 			
 	}
 	var xhr = new XMLHttpRequest();
@@ -170,6 +178,8 @@ function updateRe(id){
 	xhr.send(JSON.stringify(updated));
 
 }
+
+
 
 function getEmpData(){
 	var xhr = new XMLHttpRequest();
@@ -212,13 +222,34 @@ function getEmpData(){
 					
 						$('#manTable').append(row);
 					}
-					 // add on click function to rows to select
+					 
 		            $('#manTable').on('click', 'tr', function(){
 		                var id = $(this).attr('id');
 		                console.log(id);
 		                updateRe(id);
-		                // now allow user to update balance for selected element
+		               
 		            });
+		            $('#pending').on('click', function(){
+		                var status = 1;
+		                loadManPage(status);
+		               
+		            });
+		            $('#approved').on('click', function(){
+		                var status = 2;
+		                loadManPage(status);
+		               
+		            });
+		            $('#denied').on('click', function(){
+		                var status = 3;
+		                loadManPage(status);
+		               
+		            });
+		            $('#all').on('click', function(){
+		                
+		                loadManPage();
+		               
+		            });
+		          
 				}
 
 			}
@@ -229,6 +260,256 @@ function getEmpData(){
 		}
 	}
 	xhr.open('GET', 'empInfo');
+	xhr.send();
+}
+
+function approved(){
+
+	var xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status==200){
+				info = JSON.parse(xhr.responseText);
+				
+				console.log(info);
+				if(info.length == 0){
+					$('#message').html('Sorry, no history available');
+				}
+				else{
+					const formatter = new Intl.NumberFormat('en-US', {
+						  style: 'currency',
+						  currency: 'USD',
+						  minimumFractionDigits: 2
+						})
+					for(let i of info){
+						var row = $(`<tr class="reimb" id=${i.id}> </tr>`);
+						var cell1 = $(`<td>${i.id}</td>`);
+						var cell2= $(`<td>${formatter.format(i.amount)}</td>`);
+						var cell3= $(`<td>${i.submitted}</td>`);
+						var cell4= $(`<td>${i.resolved}</td>`);
+						var cell5= $(`<td>${i.description}</td>`);
+						var cell6= $(`<td>${i.author}</td>`);
+						var cell7= $(`<td>${i.resolver}</td>`);
+						var cell8= $(`<td>${i.status}</td>`);
+						var cell9= $(`<td>${i.typeId}</td>`);
+						row.append(cell1);
+						row.append(cell2);
+						row.append(cell3);
+						row.append(cell4);
+						row.append(cell5);
+						row.append(cell6);
+						row.append(cell7);
+						row.append(cell8);
+						row.append(cell9);
+					
+						$('#manTable').append(row);
+					}
+					 
+		            $('#manTable').on('click', 'tr', function(){
+		                var id = $(this).attr('id');
+		                console.log(id);
+		                updateRe(id);
+		               
+		            });
+		            $('#pending').on('click', function(){
+		                var status = 1;
+		                loadManPage(status);
+		               
+		            });
+		            $('#approved').on('click', function(){
+		                var status = 2;
+		                loadManPage(status);
+		               
+		            });
+		            $('#denied').on('click', function(){
+		                var status = 3;
+		                loadManPage(status);
+		               
+		            });
+		            $('#all').on('click', function(){
+		                
+		                loadManPage();
+		               
+		            });
+				}
+
+			}
+			else if(xhr.status == 403){
+				alert('Invalid credentials');
+				loadLoginView(); // or reload index.html
+			}
+		}
+	}
+
+	xhr.open('GET', 'approved');
+	xhr.send();
+}
+
+function pending(){
+
+	var xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status==200){
+				info = JSON.parse(xhr.responseText);
+				
+				console.log(info);
+				if(info.length == 0){
+					$('#message').html('Sorry, no history available');
+				}
+				else{
+					const formatter = new Intl.NumberFormat('en-US', {
+						  style: 'currency',
+						  currency: 'USD',
+						  minimumFractionDigits: 2
+						})
+					for(let i of info){
+						var row = $(`<tr class="reimb" id=${i.id}> </tr>`);
+						var cell1 = $(`<td>${i.id}</td>`);
+						var cell2= $(`<td>${formatter.format(i.amount)}</td>`);
+						var cell3= $(`<td>${i.submitted}</td>`);
+						var cell4= $(`<td>${i.resolved}</td>`);
+						var cell5= $(`<td>${i.description}</td>`);
+						var cell6= $(`<td>${i.author}</td>`);
+						var cell7= $(`<td>${i.resolver}</td>`);
+						var cell8= $(`<td>${i.status}</td>`);
+						var cell9= $(`<td>${i.typeId}</td>`);
+						row.append(cell1);
+						row.append(cell2);
+						row.append(cell3);
+						row.append(cell4);
+						row.append(cell5);
+						row.append(cell6);
+						row.append(cell7);
+						row.append(cell8);
+						row.append(cell9);
+					
+						$('#manTable').append(row);
+					}
+					 
+		            $('#manTable').on('click', 'tr', function(){
+		                var id = $(this).attr('id');
+		                console.log(id);
+		                updateRe(id);
+		               
+		            });
+		            $('#pending').on('click', function(){
+		                var status = 1;
+		                loadManPage(status);
+		               
+		            });
+		            $('#approved').on('click', function(){
+		                var status = 2;
+		                loadManPage(status);
+		               
+		            });
+		            $('#denied').on('click',  function(){
+		                var status = 3;
+		                loadManPage(status);
+		               
+		            });
+		            $('#all').on('click',  function(){
+		                
+		                loadManPage();
+		               
+		            });
+				}
+
+			}
+			else if(xhr.status == 403){
+				alert('Invalid credentials');
+				loadLoginView(); // or reload index.html
+			}
+		}
+	}
+
+	xhr.open('GET', 'pending');
+	xhr.send();
+}
+
+function denied(){
+
+	var xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status==200){
+				info = JSON.parse(xhr.responseText);
+				
+				console.log(info);
+				if(info.length == 0){
+					$('#message').html('Sorry, no history available');
+				}
+				else{
+					const formatter = new Intl.NumberFormat('en-US', {
+						  style: 'currency',
+						  currency: 'USD',
+						  minimumFractionDigits: 2
+						})
+					for(let i of info){
+						var row = $(`<tr class="reimb" id=${i.id}> </tr>`);
+						var cell1 = $(`<td>${i.id}</td>`);
+						var cell2= $(`<td>${formatter.format(i.amount)}</td>`);
+						var cell3= $(`<td>${i.submitted}</td>`);
+						var cell4= $(`<td>${i.resolved}</td>`);
+						var cell5= $(`<td>${i.description}</td>`);
+						var cell6= $(`<td>${i.author}</td>`);
+						var cell7= $(`<td>${i.resolver}</td>`);
+						var cell8= $(`<td>${i.status}</td>`);
+						var cell9= $(`<td>${i.typeId}</td>`);
+						row.append(cell1);
+						row.append(cell2);
+						row.append(cell3);
+						row.append(cell4);
+						row.append(cell5);
+						row.append(cell6);
+						row.append(cell7);
+						row.append(cell8);
+						row.append(cell9);
+					
+						$('#manTable').append(row);
+					}
+					 
+		            $('#manTable').on('click', 'tr', function(){
+		                var id = $(this).attr('id');
+		                console.log(id);
+		                updateRe(id);
+		               
+		            });
+		            $('#pending').on('click', function(){
+		                var status = 1;
+		                loadManPage(status);
+		               
+		            });
+		            $('#approved').on('click', function(){
+		                var status = 2;
+		                loadManPage(status);
+		               
+		            });
+		            $('#denied').on('click', function(){
+		                var status = 3;
+		                loadManPage(status);
+		               
+		            });
+		            $('#all').on('click', function(){
+		                
+		                loadManPage();
+		               
+		            });
+		           
+				}
+
+			}
+			else if(xhr.status == 403){
+				alert('Invalid credentials');
+				loadLoginView(); // or reload index.html
+			}
+		}
+	}
+
+	xhr.open('GET', 'denied');
 	xhr.send();
 }
 
