@@ -1,6 +1,6 @@
 package src.com.revature.pojo;
 
-import java.sql.Timestamp;
+import java.sql.Blob;
 
 public class ReimInfo {
 	private int id;
@@ -8,7 +8,7 @@ public class ReimInfo {
 	private String submit;
 	private String resolved;
 	private String descrp;
-	//private PIC////////////
+	private Blob pic;
 	private String manfn;
 	private String manln;
 	
@@ -47,14 +47,16 @@ public class ReimInfo {
 	}
 	
 	
-	public ReimInfo(int id, double amount, String submit, String resolved, String descrp, String manfn, String manln,
-			String empfn, String empln, String status, String type) {
+	
+	public ReimInfo(int id, double amount, String submit, String resolved, String descrp, Blob pic, String manfn,
+			String manln, String empfn, String empln, String status, String type) {
 		super();
 		this.id = id;
 		this.amount = amount;
 		this.submit = submit;
 		this.resolved = resolved;
 		this.descrp = descrp;
+		this.pic = pic;
 		this.manfn = manfn;
 		this.manln = manln;
 		this.empfn = empfn;
@@ -105,6 +107,13 @@ public class ReimInfo {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public Blob getPic() {
+		return pic;
+	}
+	public void setPic(Blob pic) {
+		this.pic = pic;
+	}
+	
 	
 
 	

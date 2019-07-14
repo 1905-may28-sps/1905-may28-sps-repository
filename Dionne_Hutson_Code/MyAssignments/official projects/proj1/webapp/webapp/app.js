@@ -59,6 +59,14 @@ function loadEmpPage(){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
 				getUserDataE();
+				
+				$('#home').on('click', function(){
+				
+					loadEmpPage();
+					
+					   
+				});
+				
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -78,6 +86,14 @@ function loadManPage(){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
 				getUserDataM();
+			
+				$('#home').on('click', function(){
+				
+					loadManPage();
+					
+					   
+				});
+			
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -124,23 +140,32 @@ function getUserDataE(){
 						var row = $(`<tr class="reim"> </tr>`);
 						var cell1 = $(`<td>${reim.id}</td>`);
 						var cell2= $(`<td>${formatter.format(reim.amount)}</td>`);
-						var cell3= $(`<td>${reim.submit}</td>`);
-						var cell4= $(`<td>${reim.resolved}</td>`);
+						var cell3= $(`<td>${reim.submit.slice(0, 16)}</td>`);
+						if(typeof reim.resolved==='string'){
+							var cell4= $(`<td>${reim.resolved.slice(0, 16)}</td>`);
+							
+
+						}else{var cell4= $(`<td>               </td>`);}
 						var cell5= $(`<td class=" text-truncate">${reim.descrp}</td>`);
-						var cell6= $(`<td>${reim.status}</td>`);
-						var cell7= $(`<td>${reim.type}</td>`);
-						var cell8= $(`<td>${reim.manfn}</td>`);
-						var cell9= $(`<td>${reim.manln}</td>`);
+						// var cell6=$(`<td>${reim.pic}</td>`);
+						var cell7= $(`<td>${reim.status}</td>`);
+						var cell8= $(`<td>${reim.type}</td>`);
+						if(typeof reim.manfn==='string'){
+
+							var cell9= $(`<td>${reim.manfn} ${reim.manln}</td>`);
+
+						}else{var cell9= $(`<td>               </td>`);}
 						
 						row.append(cell1);
 						row.append(cell2);
 						row.append(cell3);
 						row.append(cell4);
 						row.append(cell5);
-						row.append(cell6);
+						// row.append(cell6);
 						row.append(cell7);
 						row.append(cell8);
 						row.append(cell9);
+
 						$('#reimTable').append(row);
 					}
 					 //add on click function to rows to select 
@@ -167,6 +192,19 @@ function getUserDataE(){
 					   
 						
 					});
+					
+$('#home').on('click', function(){
+	if (info.user.role==1){
+	loadEmpPage();
+	}if (info.user.role==2){
+	loadManPage();
+	}
+   	
+});
+$('#empAddRe').on('click', function(){
+	loadEmpPage();
+   	
+});
 				}
 			}
 			else if(xhr.status == 403){
@@ -218,15 +256,30 @@ function getUserDataM(){
 						var butt = $(`<td><button id=${reim.id} class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#updating" type="submit">Update</button></td>`);
 						var cell1 = $(`<td>${reim.id}</td>`);
 						var cell2= $(`<td>${formatter.format(reim.amount)}</td>`);
-						var cell3= $(`<td>${reim.submit}</td>`);
-						var cell4= $(`<td>${reim.resolved}</td>`);
-						var cell5= $(`<td class=" text-truncate">${reim.descrp}</td>`);
-						var cell6= $(`<td>${reim.empfn}</td>`);
-						var cell7= $(`<td>${reim.empln}</td>`);
+						var cell3= $(`<td>${reim.submit.slice(0, 16)}</td>`);
+						if(typeof reim.resolved==='string'){
+							var cell4= $(`<td>${reim.resolved.slice(0, 16)}</td>`);
+							
+
+						}else{var cell4= $(`<td>               </td>`);}
+						
+						var cell5= $(`<td class="">${reim.descrp}</td>`);
+						// var cell6=$(`<td>${reim.pic}</td>`);
+						
+						if(typeof reim.manfn==='string'){
+
+							var cell7= $(`<td>${reim.empfn} ${reim.empln}</td>`);
+
+						}else{var cell7= $(`<td>               </td>`);}
+
 						var cell8= $(`<td>${reim.status}</td>`);
 						var cell9= $(`<td>${reim.type}</td>`);
-						var cell10= $(`<td>${reim.manfn}</td>`);
-						var cell11= $(`<td>${reim.manln}</td>`);
+						if(typeof reim.manfn==='string'){
+
+							var cell10= $(`<td>${reim.manfn} ${reim.manln}</td>`);
+
+						}else{var cell10= $(`<td>               </td>`);}
+						
 						row.append(butt);
 
 						row.append(cell1);
@@ -234,12 +287,13 @@ function getUserDataM(){
 						row.append(cell3);
 						row.append(cell4);
 						row.append(cell5);
-						row.append(cell6);
+						// row.append(cell6);
 						row.append(cell7);
 						row.append(cell8);
 						row.append(cell9);
 						row.append(cell10);
-						row.append(cell11);
+
+					
 						$('#reimTable').append(row);
 					}
 					 //add on click function to rows to select 
@@ -250,11 +304,13 @@ function getUserDataM(){
 						//now allow user to update balance for selected element
 						
 					});
+					$('#addBut').on('click', addReim);
 					$('#myupdate').on('click', 'button', function(){
 						newstat= $(this).val();
 						 console.log("newstat:"+ newstat);
 						 updReim();
 						 //now allow user to update balance for selected element
+						 
 						 
 					 });
 					 $('#searchBut').on('click', function(){
@@ -290,12 +346,18 @@ function getUserDataM(){
 function addReim(){
 	console.log('add function');
 	console.log(info.user.userID);
+	// var myPic=$("#picP").files[0];
+	// var fileReader = new FileReader();
+
+	
+	
 
 	var reim = {
 			descrp: $('#descrpP').val(),
 			amount: $('#amountP').val(),
 			emp: info.user.userID,
 			type: $( "#myselect" ).val(),//$('#typeP').val(),
+			// pic:  new Blob(myPic, {type : 'image/png'}),
 
 	}
 	var xhr = new XMLHttpRequest();
@@ -318,11 +380,7 @@ function addReim(){
 	xhr.send(JSON.stringify(reim));
 
 
-	if (user.role==1){
-		loadEmpPage();
-		}if (user.role==2){
-		loadManPage();
-		}
+	
 }
 function updReim(){
 	console.log('add function');
@@ -357,7 +415,7 @@ function updReim(){
 	xhr.open('POST', 'upd');
 	xhr.send(JSON.stringify(obj));
 	
-		loadManPage();
+	
 		
 }
 
@@ -393,7 +451,7 @@ function searchReim(){
 						
 						var i=0;
 					for(let reim of info.reims){
-						if(reim.status.toLowerCase()==$('#searchIn').val().toLowerCase()){
+						if(reim.status.toLowerCase()==$('#searchIn').val().toLowerCase()||info.user.ers_USERNAME.toLowerCase()==$('#searchIn').val().toLowerCase()||info.user.fn.toLowerCase()==$('#searchIn').val().toLowerCase()||info.user.ln.toLowerCase()==$('#searchIn').val().toLowerCase()){
 							if(i++==0){
 						$("#reimTable").find("tr").remove();
 							}
@@ -402,15 +460,27 @@ function searchReim(){
 						var butt = $(`<td><button id=${reim.id} class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#updating" type="submit">Update</button></td>`);
 						var cell1 = $(`<td>${reim.id}</td>`);
 						var cell2= $(`<td>${formatter.format(reim.amount)}</td>`);
-						var cell3= $(`<td>${reim.submit}</td>`);
-						var cell4= $(`<td>${reim.resolved}</td>`);
-						var cell5= $(`<td  class=" text-truncate">${reim.descrp}</td>`);
-						var cell6= $(`<td>${reim.empfn}</td>`);
-						var cell7= $(`<td>${reim.empln}</td>`);
+						var cell3= $(`<td>${reim.submit.slice(0, 16)}</td>`);
+						if(typeof reim.resolved==='string'){
+							var cell4= $(`<td>${reim.resolved.slice(0, 16)}</td>`);
+							
+
+						}else{var cell4= $(`<td>               </td>`);}
+						var cell5= $(`<td  class="">${reim.descrp}</td>`);
+						// var cell6=$(`<td>${reim.pic}</td>`);
+						
+						if(typeof reim.manfn==='string'){
+							var cell7= $(`<td>${reim.empfn} ${reim.empln}</td>`);
+
+						}else{var cell7= $(`<td>               </td>`);}
 						var cell8= $(`<td>${reim.status}</td>`);
 						var cell9= $(`<td>${reim.type}</td>`);
-						var cell10= $(`<td>${reim.manfn}</td>`);
-						var cell11= $(`<td>${reim.manln}</td>`);
+						if(typeof reim.manfn==='string'){
+							
+							var cell10= $(`<td>${reim.manfn} ${reim.manln}</td>`);
+
+						}else{var cell10= $(`<td>               </td>`);}
+						
 						row.append(butt);
 
 						row.append(cell1);
@@ -418,38 +488,24 @@ function searchReim(){
 						row.append(cell3);
 						row.append(cell4);
 						row.append(cell5);
-						row.append(cell6);
+						// row.append(cell6);
 						row.append(cell7);
 						row.append(cell8);
 						row.append(cell9);
 						row.append(cell10);
-						row.append(cell11);
+						
 						$('#reimTable').append(row);
 
 
 							 //add on click function to rows to select 
-							 $('#reimTable').on('click', 'button', function(){
-								ide = $(this).attr('id');
-								 console.log(ide);
-								 
-								 //now allow user to update balance for selected element
-								 
-							 });
-							 $('#myupdate').on('click', 'button', function(){
-								 newstat= $(this).val();
-								  console.log("newstat:"+ newstat);
-								  updReim();
-								  //now allow user to update balance for selected element
-								  
-							  });
+							
+							
 					}else if($('#searchIn').val().toLowerCase()==""){
 
 
-						if (info.user.role==1){
-							loadEmpPage();
-							}if (info.user.role==2){
+					
 							loadManPage();
-							}
+							
 
 
 
@@ -502,27 +558,37 @@ function searchReimE(){
 						
 						var i=0;
 					for(let reim of info.reims){
-						if(reim.status.toLowerCase()==$('#searchIn').val().toLowerCase()){
+						if(reim.status.toLowerCase()==$('#searchIn').val().toLowerCase()||info.user.ers_USERNAME.toLowerCase()==$('#searchIn').val().toLowerCase()||info.user.fn.toLowerCase()==$('#searchIn').val().toLowerCase()||info.user.ln.toLowerCase()==$('#searchIn').val().toLowerCase()){
 							if(i++==0){
 						$("#reimTable").find("tr").remove();
 							}
 							var row = $(`<tr class="reim" id=${reim.id}> </tr>`);
 							var cell1 = $(`<td>${reim.id}</td>`);
 							var cell2= $(`<td>${formatter.format(reim.amount)}</td>`);
-							var cell3= $(`<td>${reim.submit}</td>`);
-							var cell4= $(`<td>${reim.resolved}</td>`);
+							var cell3= $(`<td>${reim.submit.slice(0, 16)}</td>`);
+							if(typeof reim.resolved==='string'){
+								var cell4= $(`<td>${reim.resolved.slice(0, 16)}</td>`);
+								
+	
+							}else{var cell4= $(`<td>               </td>`);}
 							var cell5= $(`<td>${reim.descrp}</td>`);
-							var cell6= $(`<td>${reim.status}</td>`);
-							var cell7= $(`<td>${reim.type}</td>`);
-							var cell8= $(`<td>${reim.manfn}</td>`);
-							var cell9= $(`<td>${reim.manln}</td>`);
+							// var cell6=$(`<td>${reim.pic}</td>`);
+							var cell7= $(`<td>${reim.status}</td>`);
+							var cell8= $(`<td>${reim.type}</td>`);
+							if(typeof reim.manfn==='string'){
+
+								var cell9= $(`<td>${reim.manfn} ${reim.manln}</td>`);
+	
+							}else{var cell9= $(`<td>               </td>`);}
+							
+						
 							
 							row.append(cell1);
 							row.append(cell2);
 							row.append(cell3);
 							row.append(cell4);
 							row.append(cell5);
-							row.append(cell6);
+							// row.append(cell6);
 							row.append(cell7);
 							row.append(cell8);
 							row.append(cell9);
@@ -530,20 +596,8 @@ function searchReimE(){
 
 
 							 //add on click function to rows to select 
-							 $('#reimTable').on('click', 'button', function(){
-								ide = $(this).attr('id');
-								 console.log(ide);
-								 
-								 //now allow user to update balance for selected element
-								 
-							 });
-							 $('#myupdate').on('click', 'button', function(){
-								 newstat= $(this).val();
-								  console.log("newstat:"+ newstat);
-								  updReim();
-								  //now allow user to update balance for selected element
-								  
-							  });
+						
+							
 					}else if($('#searchIn').val().toLowerCase()==""){
 
 
@@ -587,3 +641,9 @@ function logOut(){
 	xhr.open('GET', 'logout');
 	xhr.send();
 }
+
+
+
+
+
+

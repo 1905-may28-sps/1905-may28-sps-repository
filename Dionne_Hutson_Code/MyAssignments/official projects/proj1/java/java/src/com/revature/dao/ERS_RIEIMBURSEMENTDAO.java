@@ -1,5 +1,6 @@
 package src.com.revature.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.com.revature.pojo.ERS_REIMBURSEMENT;
-import src.com.revature.pojo.Info;
-import src.com.revature.pojo.ReimInfo;
 import src.com.revature.util.ConnectionFactory;
 
 public class ERS_RIEIMBURSEMENTDAO {
@@ -29,6 +28,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 			ps.setDouble(1,reim.getAmount());
 			ps.setString(2,reim.getDescrp());
 			ps.setInt(3, reim.getEmp());
+//			ps.setBlob(4, reim.getPic());
 			ps.setInt(4,reim.getType());
 
 			ps.executeUpdate();
@@ -47,16 +47,25 @@ public class ERS_RIEIMBURSEMENTDAO {
 
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 
-			String sql="UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED=CURRENT_Timestamp,REIMB_RESOLVER=?,"
-					+ "REIMB_STATUS_ID=? WHERE REIMB_ID=?";
-
-			PreparedStatement ps=conn.prepareStatement(sql);
-
-			ps.setInt(1, reim.getMan());
-			ps.setInt(2, reim.getStatus());
-			ps.setInt(3, reim.getId());
-
-			ps.executeUpdate();
+//			String sql="UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED=CURRENT_Timestamp,REIMB_RESOLVER=?,"
+//					+ "REIMB_STATUS_ID=? WHERE REIMB_ID=?";
+//
+//			PreparedStatement ps=conn.prepareStatement(sql);
+//
+//			ps.setInt(1, reim.getMan());
+//			ps.setInt(2, reim.getStatus());
+//			ps.setInt(3, reim.getId());
+//
+//			ps.executeUpdate();
+			
+			String query= "{call up_reim(?,?,?)}";
+			CallableStatement cs=conn.prepareCall(query);
+			cs.setInt(1, reim.getMan());
+			cs.setInt(2, reim.getStatus());
+			cs.setInt(3, reim.getId());
+			cs.execute();
+			
+			
 
 
 		} catch (SQLException e) {
@@ -77,7 +86,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 				rs=ps.executeQuery();
 				while(rs.next()) {
 					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getString(3),rs.getString(4),
-							rs.getString(5),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10));
+							rs.getString(5),rs.getBlob(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10));
 					reimList.add(temp);
 				}
 			}
@@ -97,7 +106,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 				rs=ps.executeQuery();
 				while(rs.next()) {
 					ERS_REIMBURSEMENT temp=new ERS_REIMBURSEMENT(rs.getInt(1),rs.getDouble(2),rs.getString(3),rs.getString(4),
-							rs.getString(5),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10));
+							rs.getString(5),rs.getBlob(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10));
 					reimList.add(temp);
 				}
 			}
@@ -107,17 +116,18 @@ public class ERS_RIEIMBURSEMENTDAO {
 		return reimList;
 	}
 
-	public Info getReimbursementByStatus(ERS_REIMBURSEMENT reim) {
+	/*public Info getReimbursementByStatus(ERS_REIMBURSEMENT reim) {
 		Info info = new Info();
 		try(Connection conn=ConnectionFactory.getInstance().getConnection()){
 			 
-			 String sql=" select R.REIMB_ID, R.REIMB_AMOUNT, man.user_FIRST_NAME as manfn, man.user_last_name, " + 
-			 		" R.REIMB_SUBMITTED,R.REIMB_RESOLVED,R.REIMB_DESCRIPTION, T.REIMB_TYPE, S.REIMB_STATUS, r.reimb_author, r.reimb_resolver" + 
-			 		" from ERS_REIMBURSEMENT R " + 
-			 		"inner join ERS_REIMBURSEMENT_TYPE T ON R.REIMB_TYPE_ID=T.REIMB_TYPE_ID " + 
-			 		"inner join ERS_REIMBURSEMENT_STATUS S ON R.REIMB_STATUS_ID=S.REIMB_STATUS_ID " +  
-			 		"left outer  join ERS_USERS MAN on MAN.ERS_USERS_ID = R.REIMB_RESOLVER " +  
-			 		" where R.REIMB_STATUS_ID = ?" ;
+			 String sql=
+			 		"select R.REIMB_ID, R.REIMB_AMOUNT, man.user_FIRST_NAME as manfn, man.user_last_name,   "
+			 		+ "R.REIMB_SUBMITTED,R.REIMB_RESOLVED,R.REIMB_DESCRIPTION, r.reimb_receipt, T.REIMB_TYPE, "
+			 		+ "S.REIMB_STATUS, r.reimb_author, r.reimb_resolver  from ERS_REIMBURSEMENT R   "
+			 		+ "inner join ERS_REIMBURSEMENT_TYPE T ON R.REIMB_TYPE_ID=T.REIMB_TYPE_ID   "
+			 		+ "inner join ERS_REIMBURSEMENT_STATUS S ON R.REIMB_STATUS_ID=S.REIMB_STATUS_ID left outer  "
+			 		+ "join ERS_USERS MAN on MAN.ERS_USERS_ID = R.REIMB_RESOLVER "
+			 		+ "where R.REIMB_STATUS_ID = ?" ;
 			 PreparedStatement ps = conn.prepareStatement(sql);
 				ps.setInt(1, reim.getStatus());
 				
@@ -127,11 +137,12 @@ public class ERS_RIEIMBURSEMENTDAO {
 					ReimInfo temp = new ReimInfo();
 					temp.setId(rs.getInt(1));
 					temp.setAmount(rs.getDouble(2));
-					temp.setManfn(rs.getString(5));
-					temp.setManln(rs.getString(6));
-					temp.setSubmit(rs.getString(7));
-					temp.setResolved(rs.getString(8));
-					temp.setDescrp(rs.getString(9));
+					temp.setManfn(rs.getString(3));
+					temp.setManln(rs.getString(4));
+					temp.setSubmit(rs.getString(5));
+					temp.setResolved(rs.getString(6));
+					temp.setDescrp(rs.getString(7));
+					temp.setPic(rs.getBlob(8));
 					temp.setType(rs.getString(10));
 					temp.setStatus(rs.getString(11));
 					reims.add(temp);
@@ -145,7 +156,7 @@ public class ERS_RIEIMBURSEMENTDAO {
 		
 		return info;
 	}
-
+*/
 
 
 }

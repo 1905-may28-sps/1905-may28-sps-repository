@@ -1,6 +1,6 @@
-<div class="page">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <span class="navbar-brand">Welcome Back <span id="name"></span></span>
+    <span id="home" class="navbar-brand">Welcome Back <span id="name"></span></span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,39 +11,41 @@
           <a class="nav-link" id=logOut>Log Out <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="addOpt" data-toggle="modal" data-target="#adding"> Add Reimbursement</a>
-        </li>
-      </ul>
-      <div class="input-group mb-3 input-group-sm">
-      <input class="input-group-text form-control" id="searchIn" placeholder="Search By Status:" aria-label="Search">
+            <a class="nav-link" id="addOpt" data-toggle="modal" data-target="#adding"> Add Reimbursement</a>
+          </li>
+      
+      <li class="nav-item">
+      <input class="input-group-text form-control" id="searchIn" placeholder="Search:" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" id="searchBut" >Search</button>
-      </div>
+      </li>
+      </ul>
 
   </div>
 </nav>
 
-
-<table class="table table-hover table-striped">
+<div class="border rounded" style="background-color:rgba(253, 251, 245, 0.88);">
+<table class="table table-hover table-striped" style="table-layout:fixed">
   <thead>
     <tr>
       <th>Change Status</th>
       <th scope="col">Ref. ID</th>
       <th scope="col">Amount</th>
-      <th scope="col">Submit</th>
-      <th scope="col">Resolved</th>
-      <th scope="col">Description</th>
-      <th scope="col">Employee</th>
-      <th scope="col">Name</th>
+      <th scope="col">Submit       </th>
+      <th scope="col">Resolved       </th>
+      <th scope="col">Description              </th>
+      <!-- <th scope="col"> Document </th> -->
+      <th scope="col-2">Employee        </th>
       <th scope="col">Status</th>
       <th scope="col">Type</th>
-      <th scope="col">Manager</th>
-      <th scope="col">Nameid</th>
+      <th scope="col-2">Resolver        </th>
+
 
     </tr>
   </thead>
   <tbody id="reimTable">
   </tbody>
 </table>
+</div>
 
 
 
@@ -59,15 +61,11 @@
     <div class="input-group mb-3">
   
         <div class="btn-group-vertical"  id="myupdate">
-            <button type="button" class="btn  btn-lg btn-block updateitem" value="2">So Worth It!</button>
-            <button type="button" class="btn  btn-lg btn-block updateitem" value="3">Not quite</button>
+            <button type="button" class="btn close btn-lg btn-block updateitem" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal" value="2">So Worth It!</button>
+            <button type="button" class="btn close btn-lg btn-block updateitem" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal"value="3">Not quite</button>
           </div>
     </div>
-      <div class="modal-footer">
-          <button id="addBut" type="button" class="btn close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
-              Whew!
-             </button>
-      </div>
+      
     </div>
   </div>
       </div>
@@ -75,7 +73,7 @@
     
     
     
-    </div>
+
    
     
        
@@ -92,9 +90,88 @@
               <p>Money should be used to change the world</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn " data-dismiss="modal">Go Forth!</button>
+              <button id="manUpRe" type="button" class="btn " data-dismiss="modal">Go Forth!</button>
             </div>
           </div>
         </div>
       </div>
 
+      <div id="adding" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+      <h3> Your experience was priceless</h3>
+      <br>
+      <h4>Request a reimbusement anyway</h4>
+              
+              </div>
+          <div class="modal-body">
+            <div class="input-group mb-3 input-group-lg">
+          <input class="input-group-text form-control" type="number" id="amountP" placeholder="Enter Reimbursement Cost">
+          <hr>
+        </div>
+          <div class="input-group mb-3 input-group-lg">
+          <input class="input-group-text form-control" type="text" id="descrpP" placeholder="Briefly describe your experience">
+          <hr>
+        </div>
+          <!-- <div class="input-group mb-3">
+              <div class="custom-file">
+                  <input type="file" class="custom-file-input" placeholder="File" value="image/png" id="picP" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="picP" >Choose file</label>
+                </div>
+              </div> -->
+          
+            <hr>
+            <div class="input-group mb-3">
+              <select id="myselect" class="custom-select" >
+                <option>Select type of reimbursment</option>
+                <option value="10">Miscellaneous</option>
+                <option value="1">Lodging</option>
+                <option value="2">Food</option>
+                <option value="3">Travel</option>
+                <option value="4">Memberships</option>
+                <option value="5">Makeup</option>
+                <option value="6">Skin Care</option>
+                <option value="7">Clothes</option>
+                <option value="8">Acessories</option>
+                <option value="9">Talent</option>
+                
+            </select></div>
+            <hr>
+          </div>
+            <div class="modal-footer">
+                <button id="addBut" type="button" class="btn close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
+                    Add Reimbursement
+                   </button>
+            </div>
+          </div>
+        </div>
+            </div>
+          </div>
+          
+          
+          
+          
+         
+          
+             
+            
+            <div id="exampleModal" class="modal" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Money is just paper! 
+                      Your efforts are changing the world!</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button id="empAddRe" type="button" class="btn " data-dismiss="modal">Go Forth!</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
