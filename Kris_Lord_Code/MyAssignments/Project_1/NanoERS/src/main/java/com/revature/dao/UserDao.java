@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.revature.pojos.Account;
 import com.revature.pojos.Account2;
+import com.revature.pojos.Account3;
 import com.revature.pojos.AccountInfo;
 import com.revature.pojos.User;
 import com.revature.pojos.UserInformation;
@@ -224,7 +225,6 @@ public class UserDao {
 	
 	public Account2 save(Account2 acc) {
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
-			conn.setAutoCommit(false);
 			String sql = "INSERT INTO NANO_REIMBURSEMENT (REIMBAMOUNT, REIMBSUBMITTED, REIMBDESCRIPTION, REIMBAUTHOR, REIMBRESOLVER, REIMBSTATUSID, REIMBTYPEID)"
 					+ "VALUES(?,?,?,?,?,?,?)";
 		
@@ -247,6 +247,47 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return acc;
+	}
+	
+	public Account findById(Integer id) {
+		Account a = null;
+		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+			String sql = "SELECT * FROM NANO_REIMBURSEMENT WHERE REIMBID = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				a = new Account();
+				a.setAccountId(rs.getInt(1));
+				a.setBalance(rs.getDouble(2));
+				a.setSubmitted(rs.getTimestamp(3));
+				a.setResolved(rs.getTimestamp(4));
+				a.setDescription(rs.getString(5));
+				a.setReceipt(rs.getBlob(6));
+				a.setAuthor(rs.getInt(7));
+				a.setResolver(rs.getInt(8));
+				a.setStatusId(rs.getInt(9));
+				a.setAccountType(rs.getInt(10));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return a;
+	}
+	
+	public Account update(Account statId2) {
+		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+			String sql = "UPDATE NANO_REIMBURSEMENT SET REIMBRESOLVED = ?,REIMBSTATUSID = ? WHERE REIMBID = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setTimestamp(1, statId2.getResolved());
+			ps.setInt(2, statId2.getStatusId());
+			ps.setInt(3, statId2.getAccountId());
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return statId2;
 	}
 	
 }

@@ -38,19 +38,12 @@ public class ESubmitServlet extends HttpServlet {
 		account2 = service.esubmit(account2.getBalance(), account2.getDescription(), account2.getAuthor(), account2.getAccountType());
 
 		logger.trace("New reimbursement request added: " + account2);
-//		if(account == null) {
-//			resp.setStatus(204);
-//		}
-//		//if obj != null, add user to session, send back user data 
-//		else {
-//			session.getAttribute("loggedUser", user);
 			
 			PrintWriter writer = resp.getWriter();
 			resp.setContentType("application/json");
 			resp.setStatus(200);
 			writer.write(mapper.writeValueAsString(account2));
-//		}
-		
+	
 		}
 }
 

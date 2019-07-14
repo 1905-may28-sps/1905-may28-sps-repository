@@ -33,6 +33,12 @@ public class Account {
 		this.accountType = accountType;
 	}
 
+	public Account(Timestamp resolved, int statusId) {
+		super();
+		this.resolved = resolved;
+		this.statusId = statusId;
+	}
+
 	public Integer getAccountId() {
 		return accountId;
 	}

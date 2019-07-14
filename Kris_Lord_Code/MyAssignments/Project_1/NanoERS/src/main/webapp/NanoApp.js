@@ -52,7 +52,6 @@ function login(){
 				console.log('logged in user' );
 				var user = JSON.parse(xhr.responseText);
 				//do stuff w user if you want
-//				$('#name').html(user.firstName);
 				if(user.userRoleId==1) loadManagerHomePage();
 				else loadEmployeeHomePage();
 			}
@@ -111,13 +110,18 @@ function getUserData(){
 				console.log(xhr.responseText);
 				$('#name').html(info.user.firstName);
 				$('#esubmit').on('click', esubmit);
-				$('#epast').on('click', epast);
-				$('#epending').on('click', epending);
+				$('#epast').on('click', function () {
+					    var rowsNo = $('#accountTable tr').filter(function () {
+					        return $.trim($(this).find('td').eq(8).text()) === "Pending"
+					    }).toggle();
+					});
+				$('#epending').on('click', function () {
+				    var rowsNo = $('#accountTable tr').filter(function () {
+				        return $.trim($(this).find('td').eq(8).text()) !== "Pending"
+				    }).toggle();
+				});
 				$('#logout').on('click', logout);
-//				if(info.accounts.length == 0){
-//					//no accounts, hide table, ask user to create accounts
-//				}
-//				else{
+
 					const formatter = new Intl.NumberFormat('en-US', {
 						  style: 'currency',
 						  currency: 'USD',
@@ -151,13 +155,6 @@ function getUserData(){
 						row.append(cell12);
 						$('#accountTable').append(row);
 					}
-					 //add on click function to rows to select 
-		            $('#accountTable').on('click', 'tr', function(){
-		                var id = $(this).attr('id');
-		                console.log(id);
-		                //now allow user to update balance for selected element
-		            });
-//				}
 
 			}
 			else if(xhr.status == 403){
@@ -200,6 +197,7 @@ function getESubmit(){
 		if(xhr.readyState == 4){
 			if(xhr.status == 200){
 				var eadd = JSON.parse(xhr.responseText);
+				loadEmployeeHomePage()
 			}
 			else if(xhr.status == 204){
 			}
@@ -207,14 +205,6 @@ function getESubmit(){
 	}
 	xhr.open('POST', 'esubmit');
 	xhr.send(JSON.stringify(eadd));
-}
-
-function epast(){
-	
-}
-
-function epending(){
-	
 }
 
 function getMgrData(){
@@ -226,13 +216,18 @@ function getMgrData(){
 				info = JSON.parse(xhr.responseText);
 				console.log(xhr.responseText);
 				$('#name').html(info.user.firstName);
-				$('#munresolved').on('click', munresolved);
-				$('#mpast').on('click', mpast);
+				$('#mappOrdeny').on('click', mLoadApproveDeny);
+				$('#munresolved').on('click', function () {
+				    var rowsNo = $('#accountTable tr').filter(function () {
+				        return $.trim($(this).find('td').eq(10).text()) !== "Pending"
+				    }).toggle();
+				});
+				$('#mresolved').on('click', function () {
+				    var rowsNo = $('#accountTable tr').filter(function () {
+				        return $.trim($(this).find('td').eq(10).text()) === "Pending"
+				    }).toggle();
+				});
 				$('#logout').on('click', logout);
-//				if(info.accounts.length == 0){
-//					//no accounts, hide table, ask user to create accounts
-//				}
-//				else{
 					const formatter = new Intl.NumberFormat('en-US', {
 						  style: 'currency',
 						  currency: 'USD',
@@ -270,14 +265,6 @@ function getMgrData(){
 						row.append(cell14);
 						$('#accountTable').append(row);
 					}
-					 //add on click function to rows to select 
-		            $('#accountTable').on('click', 'tr', function(){
-		                var id = $(this).attr('id');
-		                console.log(id);
-		                //now allow user to update balance for selected element
-		            });
-//				}
-
 			}
 			else if(xhr.status == 403){
 				alert('Invalid credentials');
@@ -289,12 +276,42 @@ function getMgrData(){
 	xhr.send();
 }
 
-function munresolved(){
-	
+function mLoadApproveDeny(){
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 ){
+			if(xhr.status == 200){
+				$('#view').html(xhr.responseText);
+				$('#doMSubmit').on('click', getMSubmit);
+			} else if (xhr.status >= 500){
+				console.log('server error');
+			}
+		}
+	}
+	xhr.open('GET', 'managerLoadApproveDeny.view');
+	xhr.send();
 }
 
-function mpast(){
+function getMSubmit(){
+	var eupdate = {
+			accountId: $('#reimbId').val(),
+			statusId: $('#appOrDen').val()
+	}
+	console.log(eupdate);
 	
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				var eupdate = JSON.parse(xhr.responseText);
+				loadManagerHomePage()
+			}
+			else if(xhr.status == 204){
+			}
+		}
+	}
+	xhr.open('POST', 'msubmit');
+	xhr.send(JSON.stringify(eupdate));
 }
 
 function logout(){
