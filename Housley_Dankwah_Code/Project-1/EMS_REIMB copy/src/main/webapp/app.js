@@ -56,8 +56,37 @@ function loadHomePage(){
 		if(xhr.readyState == 4 ){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
-				$('#addReimb').on('click', newReImbPage)
-
+				$('#addReimb').on('click', newReImbPage);
+				$('#logout').on('click', loadLoginView );
+				$('#All').on('click', function () {
+			        var rowsNo = $('#ReimbursementTable tr').filter(function () {
+			            return $.trim($(this).find('td').eq(6).text()) === "PENDING" || "DENIED"||"APPROVED"
+			        }).toggle();
+			    });
+				$('#Approved').on('click', function () {
+			        var rowsNo = $('#ReimbursementTable tr').filter(function () {
+			            return $.trim($(this).find('td').eq(6).text()) === "APPROVED"
+			        }).toggle();
+			    });
+				$('#Denied').on('click', function () {
+			        var rowsNo = $('#ReimbursementTable tr').filter(function () {
+			            return $.trim($(this).find('td').eq(6).text()) === "DENIED"
+			        }).toggle();
+			    });
+				$('#Pending').on('click', function () {
+			        var rowsNo = $('#ReimbursementTable tr').filter(function () {
+			            return $.trim($(this).find('td').eq(6).text()) !== "PENDING"
+			        }).toggle();
+			    });
+				$('#None').on('click', function () {
+					var rowsNo = $('#ReimbursementTable tr').filter(function () {
+						return $.trim($(this).find('td').eq(6).text()) !== "PENDING"||"APPROVED"||"DENIED"
+					}).toggle();
+				});
+				
+				
+				
+				
 				getUserData();
 			} else if (xhr.status >= 500){
 				
@@ -69,9 +98,7 @@ function loadHomePage(){
 	xhr.send();
 }
 
-
 function newReImbPage(){
-//	console.log(obj);
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 ){
@@ -86,9 +113,7 @@ function newReImbPage(){
 	}
 	xhr.open('GET', 'addNew.view');
 	xhr.send();
-
 }
-
 
 function addNewReimbursement (){
 	console.log(Date());
@@ -124,7 +149,6 @@ function addNewReimbursement (){
 		xhr.send(JSON.stringify(newReimb));
 	}
 
-
 function getUserData(){
 	var xhr = new XMLHttpRequest();
 
@@ -133,7 +157,10 @@ function getUserData(){
 			if(xhr.status==200){
 				info = JSON.parse(xhr.responseText);
 				console.log(info);
-				$('#name').html(info.user.userFirstName + ' ' + info.user.userLastName ) ;
+				$('#name').html(info.user.userFirstName + ' ' + info.user.userLastName );
+			
+				
+				
 				if(info.user.length == 0){
 				}
 				else if(info.user.userRoleId == 1){
@@ -164,7 +191,7 @@ function getUserData(){
 						row.append(cell9);
 						$('#ReimbursementTable').append(row);
 					}
-					 //add on click function to rows to select 
+					 // add on click function to rows to select
 		            $('button').on('click', function(){
 		                var buttonClass = $(this).attr('class');
 		                console.log(info.reimbursmentInfo);
@@ -177,7 +204,7 @@ function getUserData(){
 		                	console.log('denying reimbursement ' + id);
 		                	resolveReimbursement(3, id);
 		                }
-		                //now allow user to update balance for selected element
+		                // now allow user to update balance for selected element
 		            });
 				} else {
 					const formatter = new Intl.NumberFormat('en-US', {
@@ -206,7 +233,7 @@ function getUserData(){
 				}
 			}
 			else if(xhr.status == 403){
-				loadLoginView(); //or reload index.html
+				loadLoginView(); // or reload index.html
 			}
 		}
 	}
@@ -214,10 +241,8 @@ function getUserData(){
 	xhr.send();
 }
 
-
 function resolveReimbursement(status, id){
 	
-	//call servlet to either approve or deny and pass in status and reimbursemnet id 
 	var  resolveReimb = { 
 			reimbStatusId: status, 
 			reimbId: id
@@ -263,7 +288,6 @@ function resolveReimbursement(status, id){
 						row.append(cell10);
 						$('#ReimbursementTable').append(row);
 					}
-					 //add on click function to rows to select 
 		            $('button').on('click', function(){
 		                var buttonClass = $(this).attr('class');
 		                var id = $(this).attr('id');
@@ -280,7 +304,7 @@ function resolveReimbursement(status, id){
 				loadHomePage();
 			}
 			else if(xhr.status == 403){
-				loadLoginView(); //or reload index.html
+				loadLoginView();
 			}
 		}
 	}

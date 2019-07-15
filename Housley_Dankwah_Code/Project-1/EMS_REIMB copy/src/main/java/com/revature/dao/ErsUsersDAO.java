@@ -127,6 +127,7 @@ public class ErsUsersDAO {
 	}
 	
 	
+	
 	public ErsUserInformation getEmployeeInfo(ErsUser user) {
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			String sql = "select rm.reimb_id, us.user_first_name, us.user_lastname, rm.reimb_amount,\n " +

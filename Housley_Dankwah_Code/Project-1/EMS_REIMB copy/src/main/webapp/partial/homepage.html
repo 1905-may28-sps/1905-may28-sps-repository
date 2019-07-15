@@ -1,22 +1,38 @@
 <div id="form-div">
-<br>
-<h1>Welcome, <span id="name"></span></h1>
+	<br>
+	<h1>
+		Welcome, <span id="name"></span>
+	</h1>
 
-<!-- make table to display user accounts -->
-<button id="addReimb" class="btn btn-warning">ADD+</button>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Employee </th>
-      <th scope="col">Amount</th>
-      <th scope="col">Description</th>
-      <th scope="col">SubmittedDate</th>
-      <th scope="col">Type</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody id="ReimbursementTable">
-  </tbody>
-</table>
+	<button id="addReimb" class="btn btn-warning">ADD+</button>
+	<button id="logout" class="btn btn-danger"
+		style="justify-content: flex-end;">Logout!</button>
+
+	<div class="dropdown" style="float: right;">
+		<button class="btn btn-secondary dropdown-toggle" type="button"
+			id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+			aria-expanded="false">Dropdown button</button>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<a class="dropdown-item" href="#" id="All">All</a> <a
+				class="dropdown-item" href="#" id="Approved">Approved</a> <a
+				class="dropdown-item" href="#" id="Denied">Denied</a> <a
+				class="dropdown-item" href="#" id="Pending">Pending</a> <a
+				class="dropdown-item" href="#" id="None">None</a>
+		</div>
+	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Employee</th>
+				<th scope="col">Amount</th>
+				<th scope="col">Description</th>
+				<th scope="col">SubmittedDate</th>
+				<th scope="col">Type</th>
+				<th scope="col">Status</th>
+			</tr>
+		</thead>
+		<tbody id="ReimbursementTable">
+		</tbody>
+	</table>
 </div>
