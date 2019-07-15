@@ -1,19 +1,19 @@
 package com.revature.service;
 
-import java.sql.Timestamp;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
-
-import org.apache.log4j.Logger;
 
 import com.revature.dao.UserDao;
 import com.revature.pojos.Account;
 import com.revature.pojos.Account2;
-import com.revature.pojos.Account3;
 import com.revature.pojos.User;
 //import com.revature.pojos.UserInformation;
 import com.revature.pojos.UserInformation;
-import com.revature.servlets.ESubmitServlet;
 
 public class UserService {
 
@@ -54,7 +54,10 @@ public class UserService {
 	}
 
 	public Account2 esubmit(Double balance, String description, int author, int accountType) {
-		Timestamp time = new Timestamp(System.currentTimeMillis());
+		Date date = Calendar.getInstance().getTime();  
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+		String time = dateFormat.format(date);
+//		Date time = new java.sql.Date(System.currentTimeMillis());
 		int resolver;
 		Random random13 = new Random();
 		if(random13.nextBoolean()) resolver = 3; else resolver = 1;
@@ -72,7 +75,10 @@ public class UserService {
 
 		Account statId = userDao.findById(id);
 		statId.setStatusId(statusId);
-		Timestamp time = new Timestamp(System.currentTimeMillis());
+		Date date = Calendar.getInstance().getTime();  
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+		String time = dateFormat.format(date);
+//		Timestamp time = new Timestamp(System.currentTimeMillis());
 		statId.setResolved(time);
 
 		return userDao.update(statId);

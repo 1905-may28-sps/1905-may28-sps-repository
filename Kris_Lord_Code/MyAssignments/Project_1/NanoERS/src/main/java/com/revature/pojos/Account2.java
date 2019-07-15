@@ -1,12 +1,10 @@
 package com.revature.pojos;
 
-import java.sql.Timestamp;
-
 public class Account2 {
 
 	private int accountId;
 	private Double balance;
-	private Timestamp submitted;
+	private String submitted;
 	private String description;
 	private int author;
 	private int resolver;
@@ -17,7 +15,7 @@ public class Account2 {
 		
 	}
 	
-	public Account2(Double balance, Timestamp submitted, String description, int author, int resolver, int statusId,
+	public Account2(Double balance, String submitted, String description, int author, int resolver, int statusId,
 			int accountType) {
 		super();
 		this.balance = balance;
@@ -45,11 +43,11 @@ public class Account2 {
 		this.balance = balance;
 	}
 
-	public Timestamp getSubmitted() {
+	public String getSubmitted() {
 		return submitted;
 	}
 
-	public void setSubmitted(Timestamp submitted) {
+	public void setSubmitted(String submitted) {
 		this.submitted = submitted;
 	}
 

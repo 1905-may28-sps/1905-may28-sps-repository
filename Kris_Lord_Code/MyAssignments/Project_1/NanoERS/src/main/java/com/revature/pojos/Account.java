@@ -1,14 +1,13 @@
 package com.revature.pojos;
 
 import java.sql.Blob;
-import java.sql.Timestamp;
 
 public class Account {
 
 	private Integer accountId;
 	private Double balance;
-	private Timestamp submitted;
-	private Timestamp resolved;
+	private String submitted;
+	private String resolved;
 	private String description;
 	private Blob receipt;
 	private int author;
@@ -18,7 +17,7 @@ public class Account {
 	
 	public Account() {}
 	
-	public Account(Integer accountId, Double balance, Timestamp submitted, Timestamp resolved, String description,
+	public Account(Integer accountId, Double balance, String submitted, String resolved, String description,
 			Blob receipt, int author, int resolver, int statusId, int accountType) {
 		super();
 		this.accountId = accountId;
@@ -33,7 +32,7 @@ public class Account {
 		this.accountType = accountType;
 	}
 
-	public Account(Timestamp resolved, int statusId) {
+	public Account(String resolved, int statusId) {
 		super();
 		this.resolved = resolved;
 		this.statusId = statusId;
@@ -55,19 +54,19 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public Timestamp getSubmitted() {
+	public String getSubmitted() {
 		return submitted;
 	}
 
-	public void setSubmitted(Timestamp submitted) {
+	public void setSubmitted(String submitted) {
 		this.submitted = submitted;
 	}
 
-	public Timestamp getResolved() {
+	public String getResolved() {
 		return resolved;
 	}
 
-	public void setResolved(Timestamp resolved) {
+	public void setResolved(String resolved) {
 		this.resolved = resolved;
 	}
 

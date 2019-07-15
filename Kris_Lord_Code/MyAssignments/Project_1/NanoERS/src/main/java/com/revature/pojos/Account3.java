@@ -1,17 +1,15 @@
 package com.revature.pojos;
 
-import java.sql.Timestamp;
-
 public class Account3 {
 	private int accountId;
-	private Timestamp resolved;
+	private String resolved;
 	private int statusId;
 	
 	public Account3() {
 		
 	}
 
-	public Account3(Timestamp resolved, int statusId) {
+	public Account3(String resolved, int statusId) {
 		super();
 		this.resolved = resolved;
 		this.statusId = statusId;
@@ -25,11 +23,11 @@ public class Account3 {
 		this.accountId = accountId;
 	}
 
-	public Timestamp getResolved() {
+	public String getResolved() {
 		return resolved;
 	}
 
-	public void setResolved(Timestamp resolved) {
+	public void setResolved(String resolved) {
 		this.resolved = resolved;
 	}
 

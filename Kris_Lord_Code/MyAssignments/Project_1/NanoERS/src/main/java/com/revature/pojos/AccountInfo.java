@@ -1,7 +1,6 @@
 package com.revature.pojos;
 
 import java.sql.Blob;
-import java.sql.Timestamp;
 
 public class AccountInfo {
 private int id;
@@ -10,8 +9,8 @@ private String authorfn;
 private String authorln;
 private String resolverfn;
 private String resolverln;
-private Timestamp submitted;
-private Timestamp resolved;
+private String submitted;
+private String resolved;
 private String description;
 private Blob receipt;
 private String rtype;
@@ -21,7 +20,7 @@ private int resolver;
 
 public AccountInfo() {}
 
-public AccountInfo(int id, double balance, String resolverfn, String resolverln, Timestamp submitted, Timestamp resolved,
+public AccountInfo(int id, double balance, String resolverfn, String resolverln, String submitted, String resolved,
 		String description, Blob receipt, String rtype, String rstatus, int author, int resolver) {
 	super();
 	this.id = id;
@@ -39,7 +38,7 @@ public AccountInfo(int id, double balance, String resolverfn, String resolverln,
 }
 
 public AccountInfo(int id, double balance, String authorfn, String authorln, String resolverfn, String resolverln,
-		Timestamp submitted, Timestamp resolved, String description, Blob receipt, String rtype, String rstatus,
+		String submitted, String resolved, String description, Blob receipt, String rtype, String rstatus,
 		int author, int resolver) {
 	super();
 	this.id = id;
@@ -106,19 +105,19 @@ public void setResolverln(String resolverln) {
 	this.resolverln = resolverln;
 }
 
-public Timestamp getSubmitted() {
+public String getSubmitted() {
 	return submitted;
 }
 
-public void setSubmitted(Timestamp submitted) {
+public void setSubmitted(String submitted) {
 	this.submitted = submitted;
 }
 
-public Timestamp getResolved() {
+public String getResolved() {
 	return resolved;
 }
 
-public void setResolved(Timestamp resolved) {
+public void setResolved(String resolved) {
 	this.resolved = resolved;
 }
 

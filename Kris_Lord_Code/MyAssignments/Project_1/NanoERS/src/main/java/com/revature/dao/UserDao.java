@@ -10,7 +10,6 @@ import java.util.List;
 
 import com.revature.pojos.Account;
 import com.revature.pojos.Account2;
-import com.revature.pojos.Account3;
 import com.revature.pojos.AccountInfo;
 import com.revature.pojos.User;
 import com.revature.pojos.UserInformation;
@@ -118,8 +117,8 @@ public class UserDao {
 				Account a = new Account();
 				a.setAccountId(rs.getInt(1));
 				a.setBalance(rs.getDouble(2));
-				a.setSubmitted(rs.getTimestamp(3));
-				a.setResolved(rs.getTimestamp(4));
+				a.setSubmitted(rs.getString(3));
+				a.setResolved(rs.getString(4));
 				a.setDescription(rs.getString(5));
 				a.setReceipt(rs.getBlob(6));
 				a.setAuthor(rs.getInt(7));
@@ -158,8 +157,8 @@ public class UserDao {
 				temp.setBalance(rs.getDouble(2));
 				temp.setResolverfn(rs.getString(3));
 				temp.setResolverln(rs.getString(4));
-				temp.setSubmitted(rs.getTimestamp(5));
-				temp.setResolved(rs.getTimestamp(6));
+				temp.setSubmitted(rs.getString(5));
+				temp.setResolved(rs.getString(6));
 				temp.setDescription(rs.getString(7));
 				temp.setReceipt(rs.getBlob(8));
 				temp.setRtype(rs.getString(9));
@@ -204,8 +203,8 @@ public class UserDao {
 				temp.setAuthorln(rs.getString(4));
 				temp.setResolverfn(rs.getString(5));
 				temp.setResolverln(rs.getString(6));
-				temp.setSubmitted(rs.getTimestamp(7));
-				temp.setResolved(rs.getTimestamp(8));
+				temp.setSubmitted(rs.getString(7));
+				temp.setResolved(rs.getString(8));
 				temp.setDescription(rs.getString(9));
 				temp.setReceipt(rs.getBlob(10));
 				temp.setRtype(rs.getString(11));
@@ -226,18 +225,18 @@ public class UserDao {
 	public Account2 save(Account2 acc) {
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 			String sql = "INSERT INTO NANO_REIMBURSEMENT (REIMBAMOUNT, REIMBSUBMITTED, REIMBDESCRIPTION, REIMBAUTHOR, REIMBRESOLVER, REIMBSTATUSID, REIMBTYPEID)"
-					+ "VALUES(?,?,?,?,?,?,?)";
+					+ "VALUES(?,CURRENT_TIMESTAMP,?,?,?,?,?)";
 		
 			String[] generatedKeys = {"REIMBID"};
 			PreparedStatement ps = conn.prepareStatement(sql, generatedKeys);
 		
 			ps.setDouble(1, acc.getBalance());
-			ps.setTimestamp(2, acc.getSubmitted());
-			ps.setString(3, acc.getDescription());
-			ps.setInt(4, acc.getAuthor());
-			ps.setInt(5, acc.getResolver());
-			ps.setInt(6, acc.getStatusId());
-			ps.setInt(7, acc.getAccountType());
+//			ps.setString(2, acc.getSubmitted());
+			ps.setString(2, acc.getDescription());
+			ps.setInt(3, acc.getAuthor());
+			ps.setInt(4, acc.getResolver());
+			ps.setInt(5, acc.getStatusId());
+			ps.setInt(6, acc.getAccountType());
 			
 			ps.executeUpdate();
 			ResultSet pk = ps.getGeneratedKeys();
@@ -260,8 +259,8 @@ public class UserDao {
 				a = new Account();
 				a.setAccountId(rs.getInt(1));
 				a.setBalance(rs.getDouble(2));
-				a.setSubmitted(rs.getTimestamp(3));
-				a.setResolved(rs.getTimestamp(4));
+				a.setSubmitted(rs.getString(3));
+				a.setResolved(rs.getString(4));
 				a.setDescription(rs.getString(5));
 				a.setReceipt(rs.getBlob(6));
 				a.setAuthor(rs.getInt(7));
@@ -277,11 +276,11 @@ public class UserDao {
 	
 	public Account update(Account statId2) {
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
-			String sql = "UPDATE NANO_REIMBURSEMENT SET REIMBRESOLVED = ?,REIMBSTATUSID = ? WHERE REIMBID = ?";
+			String sql = "UPDATE NANO_REIMBURSEMENT SET REIMBRESOLVED = CURRENT_TIMESTAMP,REIMBSTATUSID = ? WHERE REIMBID = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setTimestamp(1, statId2.getResolved());
-			ps.setInt(2, statId2.getStatusId());
-			ps.setInt(3, statId2.getAccountId());
+//			ps.setString(1, statId2.getResolved());
+			ps.setInt(1, statId2.getStatusId());
+			ps.setInt(2, statId2.getAccountId());
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {
