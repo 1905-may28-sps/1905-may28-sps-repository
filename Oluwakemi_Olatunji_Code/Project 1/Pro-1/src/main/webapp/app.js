@@ -1,6 +1,8 @@
 window.onload = function(){
 	console.log('app.js loaded');
 	loadLoginView();
+	$('#logout').on('click', function(){
+			logout()});
 }
 
 function loadLoginView(){
@@ -58,6 +60,8 @@ function loadEmployeeHomePage(){
 				$('#view').html(xhr.responseText);
 				getUserData();
 				$('#create').on('click', adding);
+				$('#logout').on('click', function(){
+					logout()});
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -76,6 +80,8 @@ function loadManagerHomePage(){
 			if(xhr.status == 200){
 				$('#view').html(xhr.responseText);
 				getAllUserData();
+				$('#logout').on('click', function(){
+					logout()})
 			} else if (xhr.status >= 500){
 				console.log('server error');
 			}
@@ -228,7 +234,7 @@ function update(){
 			if(xhr.status == 200){
 				console.log('logged in user' );
 				var re = JSON.parse(xhr.responseText);
-				//getAllUserData()
+				loadManagerHomePage();
 				
 			}
 		}
@@ -236,10 +242,17 @@ function update(){
 	xhr.open('POST', 'update');
 	xhr.send(JSON.stringify(re));
 }
-
 function adding(){
 	console.log('adding reimburse');
 	console.log(info);
+	if($('#amount').val() == "")
+	{alert("PLEASE SET AN AMOUNT")
+		return
+	}if($('#description').val() == "")
+	{
+		alert("PLEASE SET A DESCRIPTION")
+		return
+	}	
 	var el = document.getElementById('type');
 	var value = el.options[el.selectedIndex].value;
 	var reim  = {
@@ -256,7 +269,7 @@ function adding(){
 			if(xhr.status == 200){
 				console.log('logged in user' );
 				var reim = JSON.parse(xhr.responseText);
-				loadEmployeeHomePage()
+				getAllUserData()
 				
 			}
 		}
@@ -265,18 +278,19 @@ function adding(){
 	xhr.send(JSON.stringify(reim));
 }
 
-function AddRe (){
-	if($('#amount').val() == "")
-	{alert("PLEASE SET AN AMOUNT")
-		return
-	}if($('#description').val() == "")
-	{
-		alert("PLEASE SET A DESCRIPTION")
-		return
-	}	if($('#type').val() == null)
-	{
-		alert("PLEASE SET A TYPE")
-		return
-	}
+function logout() {
+	console.log('logout');
+	loadLoginView();
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
 	
+			loadLoginView();
+			}
+			
+			xhr.open('GET', 'logout');
+			xhr.send();
+		}
+	}
 }
