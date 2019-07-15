@@ -88,6 +88,23 @@ function loadAllCurUserReimbursement(){
 	xhr.open('GET', 'userallReimbursements.view');
 	xhr.send();
 }
+//filter view
+//function filterView(){
+//	var xhr = new XMLHttpRequest();
+//	xhr.onreadystatechange = function(){
+//		if(xhr.readyState == 4){
+//			if(xhr.status==200){
+//				$('#view').html(xhr.responseText);
+//				$('#logout').on('click', logout);
+//				
+//			}	
+//		}}
+//	xhr.open('GET', 'ManagerAllReimb.view');
+//	xhr.send();
+//}
+
+
+
 
 
 function logout(){
@@ -249,6 +266,92 @@ function AllCurUserReimbursement(){
 xhr.open('GET', 'AllCurUserReimbursement');
 xhr.send();
 }
+
+
+
+
+//shows in console log.. not appending to page.... 
+//function filterByStatus(){
+//	console.log('Filter by stats');
+//	var filter = {
+//			reimb_status_id: $('#reimb_status_filter').val()
+//	}
+//	console.log(filter);
+//	var xhr = new XMLHttpRequest();
+//	xhr.onreadystatechange = function(){
+//		if(xhr.readyState == 4 ){
+//			if(xhr.status == 200){
+//				console.log(filter);
+//				filter = JSON.parse(xhr.responseText);
+//				console.log(filter)
+//				//$('#name').html(info.userID.fname);
+//				
+//				
+//				$('#logout').on('click', logout);
+//				
+//				if(info.accounts.length == 0){
+//					//no accounts, hide table, ask user to create accounts
+//					console.log("empty");
+//				}
+//				else{
+//					//need acc to be matched to the java(reimbursementinfo)
+//					for(let acc of info.accounts){
+//						var row = $(`<tr class="account"> </tr>`);
+//						var cell1 = $(`<td>${acc.reimb_id}</td>`);
+//						var cell2 = $(`<td>${acc.reimb_amount}</td>`);
+//						var cell3= $(`<td>${acc.reimb_submitted}</td>`);
+//						var cell4= $(`<td>${acc.reimb_resolved}</td>`);
+//						var cell5= $(`<td>${acc.reimb_description}</td>`);
+//						var cell6= $(`<td>${acc.reimb_receipt}</td>`);
+//						var cell7= $(`<td>${acc.reimb_author}</td>`);
+//						var cell8= $(`<td>${acc.reimb_resolver}</td>`);
+//						var cell9= $(`<td>${acc.reimb_status_id}</td>`);
+//						var cell10= $(`<td>${acc.reimb_type_id}</td>`);
+//
+//
+//						row.append(cell1);
+//						row.append(cell2);
+//						row.append(cell3);
+//						row.append(cell4);
+//						row.append(cell5);
+//						row.append(cell6);
+//						row.append(cell7);
+//						row.append(cell8);
+//						row.append(cell9);
+//						row.append(cell10);
+//
+//
+//						$('#accountTable').append(row);
+//					}
+//					//add on click function to rows to select 
+//					$('#accountTable').on('click', 'tr', function(){
+//						var id = $(this).attr('id');
+//						console.log(id);
+//						//now allow user to update balance for selected element
+//					});
+//				}
+//				//$('#view').html(xhr.responseText);
+//				filterView();
+//
+//			}
+//			else if(xhr.status == 403){
+//				alert('Invalid credentials');
+//				loadLoginView(); //or reload index.html
+//			}
+//		} else if (xhr.status >= 500){
+//			console.log('server error');	
+//		}
+//	
+//}
+//xhr.open('POST', 'FindByStatus');
+//xhr.send(JSON.stringify(filter));
+//}
+
+
+
+
+
+
 function login(){
 	console.log('login user function');
 	var user = {
@@ -327,6 +430,7 @@ function updateReimbursement(){
 				MNGloadAllUserReimbursement();
 				console.log("refresh2");
 				
+				
 			}
 			else if(xhr.status == 204){
 				$('#message').html('Sorry no work');
@@ -339,50 +443,6 @@ function updateReimbursement(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-
 function MNGloadAllUserReimbursement(){
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
@@ -390,7 +450,7 @@ function MNGloadAllUserReimbursement(){
 			if(xhr.status==200){
 				$('#view').html(xhr.responseText);
 				$('#logout').on('click', logout);
-				AllUserReimbursement();
+				MNGAllUserReimbursement();
 			}
 		}}
 	xhr.open('GET', 'ManagerAllReimb.view');
@@ -439,6 +499,8 @@ function MNGAllUserReimbursement(){
 						//now allow user to update balance for selected element
 					});
 					$('#doUpdate').on('click', updateReimbursement);
+					$('#doFilter').on('click', filterByStatus);
+					
 					
 					
 					
@@ -457,6 +519,38 @@ function MNGAllUserReimbursement(){
 xhr.open('GET', 'AllUserReimbursement');
 xhr.send();
 }
+//reads/get the blob as binary...
+//var oReq = new XMLHttpRequest();
+//oReq.open("GET", "/myfile.png", true);
+//oReq.responseType = "arraybuffer";
+//
+//oReq.onload = function (oEvent) {
+//  var arrayBuffer = oReq.response; // Note: not oReq.responseText
+//  if (arrayBuffer) {
+//    var byteArray = new Uint8Array(arrayBuffer);
+//    for (var i = 0; i < byteArray.byteLength; i++) {
+//      // do something with each byte in the array
+//    }
+//  }
+//};
+//
+//oReq.send(null);
 
-
-
+//function uploadReceipt()
+//{
+//    var receipt = $('#ImageDisplay').get(0);
+//    var dataUrl = .toDataURL("image/jpeg");
+//
+//    var blob = dataURItoBlob(dataUrl);
+//
+//    var formData = new FormData();
+//    formData.append("file", blob);
+//
+//    var request = new XMLHttpRequest();
+//    request.onload = completeRequest;
+//
+//    request.open("POST", "create some servlet?");
+//    request.send(formData);
+//}
+//
+//

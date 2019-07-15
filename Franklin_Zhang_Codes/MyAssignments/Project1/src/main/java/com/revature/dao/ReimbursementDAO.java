@@ -1,7 +1,9 @@
 package com.revature.dao;
 
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.revature.pojo.ReimbursementInfo;
+import com.revature.pojo.StatusInfo;
 import com.revature.pojo.UserInfo;
 import com.revature.pojo.Users;
 import com.revature.util.ConnectionFactory;
@@ -184,15 +187,49 @@ public ReimbursementInfo addReimbursement(ReimbursementInfo user,Users usersess)
 		return null;
 	}
 	
+public StatusInfo getReimbByStatus(StatusInfo user) {
+	
+	
+			try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+				StatusInfo info = new StatusInfo();
+				String sql = "select reimb_id, reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_receipt, b.user_first_name as Auth ,a.user_first_name as mng, stat.reimb_status, t.reimb_type " + 
+						"from ers_reimbursement reimb " + 
+						"left join ers_users a on a.ERS_USERS_ID=reimb.reimb_resolver " + 
+						"inner join ers_users b on b.ERS_USERS_ID=reimb.reimb_author " + 
+						"inner join ers_reimbursement_status stat on stat.reimb_status_id=reimb.reimb_status_id " + 
+						"inner join ers_reimbursement_type t on t.reimb_type_id=reimb.reimb_type_id where reimb.reimb_status_id =?";
+						
+				//String sql = "select * from ers_reimbursement where reimb_author=?";
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setString(1, user.getReimb_status_id());
+				
+			
+				List<ReimbursementInfo> accounts = new ArrayList<ReimbursementInfo>();
 
-	
-	
-	
-	
-	
-	
-	
-	
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					
+					ReimbursementInfo temp = new ReimbursementInfo();
+					temp.setReimb_id(rs.getInt(1));
+					temp.setReimb_amount(rs.getDouble(2));
+					temp.setReimb_submitted(rs.getString(3));
+					temp.setReimb_resolved(rs.getString(4));
+					temp.setReimb_description(rs.getString(5));
+					//temp.setReimb_receipt(rs.getString(6));
+					temp.setReimb_author(rs.getString(7));
+					temp.setReimb_resolver(rs.getString(8));
+					temp.setReimb_status_id(rs.getString(9));
+					temp.setReimb_type_id(rs.getString(10));
+					accounts.add(temp);
+				}
+				info.setAccounts(accounts);
+				return info;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+}
 	
 	public ReimbursementInfo updateReimbursement(ReimbursementInfo user,Users usersess) {
 		
@@ -215,5 +252,20 @@ public ReimbursementInfo addReimbursement(ReimbursementInfo user,Users usersess)
 		}
 		return null;
 	}
-	
+// Get back to this...	
+//	public void addblob() {
+//	
+//    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8809/Project1/Main.html", "root", "root");
+//    Blob b1 = conn.createBlob();
+//    b1.setBytes(1, new byte[10]); 
+//    // first position is 1. Otherwise you get: Value of offset/position/start should be in the range [1, len] where len is length of Large Object[LOB]
+//
+//    PreparedStatement ps = conn.prepareStatement("update Ers_reiumbursement set ERS_reimbursement_receipt = ?");
+//    ps.setBlob(1, wheremyblobimageisstored);
+//    ps.executeUpdate();
+//
+//    Statement st = conn.createStatement();
+//    ResultSet rs = st.executeQuery("select c1 from t1");
+//    Blob b2 = rs.getBlob(1);
+//	}
 }

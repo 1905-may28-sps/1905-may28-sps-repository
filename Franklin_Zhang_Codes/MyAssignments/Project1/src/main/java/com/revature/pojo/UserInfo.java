@@ -4,6 +4,7 @@ import java.util.List;
 
 public class UserInfo {
 	private Users userID;
+	
 	private List<ReimbursementInfo> accounts;
 	
 	public UserInfo() {}

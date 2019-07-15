@@ -8,6 +8,7 @@ import com.revature.dao.ReimbursementDAO;
 import com.revature.dao.UsersDAO;
 
 import com.revature.pojo.ReimbursementInfo;
+import com.revature.pojo.StatusInfo;
 import com.revature.pojo.UserInfo;
 import com.revature.pojo.Users;
 
@@ -39,7 +40,9 @@ public class UserService {
 	public ReimbursementInfo updateReimbursements(ReimbursementInfo user, Users usersess) {
 		return reimbursementDAO.updateReimbursement(user,usersess);
 	}
-	
+	public StatusInfo findReimbursementByStatus(StatusInfo user) {
+		return reimbursementDAO.getReimbByStatus(user);
+	}
 	
 
 
