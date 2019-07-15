@@ -40,13 +40,14 @@ public class ErsUsersDAO {
 		return users;
 	}
 	
+	
 	public ErsUser getByUsername(String ersUsername) {
 		ErsUser user = null;
 
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
 			String sql = "select * from ERS_USERS  where lower(ERS_USERNAME) = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			System.out.println("in UserDao" + user);
+			System.out.println("in UserDao for login" + user);
 
 			ps.setString(1, ersUsername.toLowerCase()); 
 			ResultSet rs = ps.executeQuery();
@@ -64,18 +65,15 @@ public class ErsUsersDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("IN USER DAO");
-		System.out.println(user);
+		System.out.println("IN USER DAO for login2 " + user);
 
 		return user;
-
 	}
-	
 	
 	
 	public ErsUserInformation getUserInfo(ErsUser user) {
 		if(user.getErsUserId() == 1) {
-			System.out.println(user.getErsUserId());
+			System.out.println( " in userDao for getting user info" + user.getErsUserId());
 			return  getManagerInfo(user);
 			
 		}
@@ -83,9 +81,6 @@ public class ErsUsersDAO {
 			
 		}
 
-	
-	
-	
 	
 	public ErsUserInformation getManagerInfo(ErsUser user) {
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
@@ -131,9 +126,11 @@ public class ErsUsersDAO {
 		return null;
 	}
 	
+	
 	public ErsUserInformation getEmployeeInfo(ErsUser user) {
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()){
-			String sql = "select rm.reimb_id, us.user_first_name, us.user_lastname, rm.reimb_amount, rm.reimb_description, rm.reimb_submitted,\n " + 
+			String sql = "select rm.reimb_id, us.user_first_name, us.user_lastname, rm.reimb_amount,\n " +
+					" rm.reimb_description, rm.reimb_submitted,\n " + 
 					"rt.reimb_type, rs.reimb_status\n " + 
 					"from ers_users us\n " + 
 					"join ers_reimbursement rm\n " + 
@@ -143,7 +140,6 @@ public class ErsUsersDAO {
 					"join ers_reimbursement_type rt\n " + 
 					"on rm.reimb_type_id = rt.reimb_type_id\n " + 
 					"where us.ers_users_id = ? ";
-			
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, user.getErsUserId());
@@ -176,16 +172,6 @@ public class ErsUsersDAO {
 		return null;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
+		
 }
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.revature.dao.ErsReimbursementDAO;
 import com.revature.pojo.ErsReimbursement;
-import com.revature.pojo.ErsUserInformation;
 
 public class ReimbursementService {
 
@@ -19,5 +18,18 @@ public class ReimbursementService {
 		System.out.println("in reimbursement service " + ersReimbursementDao.approveReimb(reimbStatusId, reimbId));
 		return ersReimbursementDao.approveReimb(reimbStatusId, reimbId);
 		
+	}
+	
+//	public ErsReimbursement addNewReimbursement (Object newReimb) {
+//		
+//		return ersReimbursementDao.addReimb(newReimb);
+//		
+//		
+//	}
+
+
+
+	public ErsReimbursement addReimb(ErsReimbursement newReimb) {
+		return ersReimbursementDao.addReimb(newReimb);
 	}
 }

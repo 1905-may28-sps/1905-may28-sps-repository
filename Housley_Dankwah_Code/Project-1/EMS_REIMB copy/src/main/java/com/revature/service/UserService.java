@@ -15,7 +15,7 @@ public class UserService {
 	
 	public ErsUser login(String ersUsername, String password) {
 		ErsUser user = ersUserDao.getByUsername(ersUsername);
-		System.out.println("IN USER SERVICE " + user);
+		System.out.println("IN USER SERVICE ");
 		if(user == null)return null;
 		if(user.getPassword().equals(password)) return user;
 		else {
@@ -24,10 +24,10 @@ public class UserService {
 	}
 	
 	public ErsUserInformation getInfo(ErsUser user) {
-		System.out.println("in user service" + ersUserDao.getUserInfo(user));
+		System.out.println("in user service 2 ");
 		return ersUserDao.getUserInfo(user);
 	}
-
+	
 }
 
 

@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pojo.ErsReimbursement;
 import com.revature.pojo.ErsUser;
 import com.revature.pojo.ErsUserInformation;
+import com.revature.service.ReimbursementService;
 import com.revature.service.UserService;
 
 @WebServlet("/userInfo")
@@ -30,25 +32,24 @@ public class GetInfoServlet extends HttpServlet {
 
 		ErsUser user = (ErsUser) session.getAttribute("loggedUser");
 		if(user == null) {
-			//return some sort of error message. 
-			System.out.println("in getInfoServlet" + user);
 			resp.setStatus(403);
 		}
 		else {
-			System.out.println("in getinfo Servelet " + user);
 			UserService service = new UserService();
 
 			ErsUserInformation info = service.getInfo(user);
 			
 			ObjectMapper mapper = new ObjectMapper();
 			
+			System.out.println("this is getInfo servlet user");
+			
 			resp.setContentType("application/json");
 			resp.setStatus(200);
 			
 			resp.getWriter().write(mapper.writeValueAsString(info));
-			System.out.println("in getinfo Servelet " + info);
 
 		}
 
 	}
+	
 }

@@ -27,7 +27,7 @@ public class ConnectionFactory {
 		Properties prop = new Properties();
 
 		try {
-			prop.load(new FileReader("/Users/housleydankwah/eclipse-workspace/FullStackBank/src/main/java/com/revature/util/db.properties"));
+			prop.load(new FileReader("/Users/housleydankwah/EMS_REIMB/src/main/java/com/revature/util/db.properties"));
 
 			String driver = prop.getProperty("driver");
 			String url = prop.getProperty("url");

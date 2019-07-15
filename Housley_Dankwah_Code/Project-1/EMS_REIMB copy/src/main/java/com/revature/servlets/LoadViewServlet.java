@@ -17,11 +17,11 @@ public class LoadViewServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		System.out.println(req.getRequestURI());
+		System.out.println("This is loading view servlet");
 		String[] path = req.getRequestURI().split("/");
 		
 		String resource = path[2].substring(0, path[2].length() - 5);
-		System.out.println("LOADING " + resource + ".html");
+		System.out.println("LOADING  servlet 1" + resource + ".html");
 		
 		
 		String resourcePath = "partial/" + resource  + ".html";

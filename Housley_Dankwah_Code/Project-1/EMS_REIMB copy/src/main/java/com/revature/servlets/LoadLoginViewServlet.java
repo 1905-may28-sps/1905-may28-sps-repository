@@ -19,6 +19,7 @@ public class LoadLoginViewServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
+		System.out.println("this is loadlogin view servlet");
 
 		req.getRequestDispatcher("partial/login.html").forward(req, resp);
 	}
