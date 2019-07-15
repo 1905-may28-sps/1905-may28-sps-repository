@@ -15,7 +15,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">Reimbursement Id</th>
                     <th scope="col">Firstname</th>
                     <th scope="col">Lastname</th>
                     <th scope="col">Email</th>
@@ -32,6 +32,32 @@
         </table>
 
         <button style="float: center;" class="btn btn-primary" id="logout"> Log Out</button>
+        <button type="button" class="btn btn-success" id="update">Update Status</button>
+
+
+
+
+        <div class="jumbotron" id="edit" class="center" hidden="true">
+
+
+
+            <input type="text" id="reimbId" placeholder="ReimbursementId" class="form-control col-6">
+            <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Select Status
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" value="2"> Approved</a>
+                    <a class="dropdown-item" href="#" value="3"> Denied </a>
+                     </div>
+            </div>
+
+            <br>
+            <button id="editStatus" class="btn btn-primary">Submit!!</button>
+            <span id="message2"></span>
+
+        </div>
 
 
 

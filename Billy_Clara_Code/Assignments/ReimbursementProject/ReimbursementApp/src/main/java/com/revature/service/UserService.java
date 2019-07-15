@@ -10,6 +10,8 @@ import com.revature.pojo.User;
 public class UserService {
 	
 	private UserDao userDao = new UserDao();
+	private Reimbursement reim = new Reimbursement();
+
 	
 //	public List<User> findAllUsers(){
 //		return userDao.findAll();
@@ -34,6 +36,14 @@ public class UserService {
 	
 	public void submit(int amount, String submitted, String resolved, String description, int author,
 			int resolver, int statusid, int typeid) {
-		userDao.submit(amount, "CURRENT_TIMESTAMP", resolved, description, author, resolver, 1, typeid);
+		userDao.submit(amount, submitted, resolved, description, author, resolver, statusid, typeid);
 }
+	
+	public Reimbursement updateReimbursement(int id, int Statusid) {
+		reim.setId(id);
+		reim.setStatusid(Statusid);
+		
+		return userDao.updateReim(reim);
+		
+	}
 }

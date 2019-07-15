@@ -69,6 +69,7 @@ function loadmanager() {
 				console.log('loaded login view');
 				$(`#view`).html(xhr.responseText);
 				$('#logout').on('click', loadLoginView);
+				$('#update').on('click', submission);
 
 				managerview();
 			}
@@ -117,6 +118,9 @@ function loademp() {
 function review() {
 	document.getElementById('sub').removeAttribute('hidden');
 	$('#submit').on('click', newrein);
+	$('#submit').on('click', loademp);
+
+
 
 }
 
@@ -264,3 +268,34 @@ function managerdata() {
 	xhr.open('GET', 'reim');
 	xhr.send();
 }
+
+function submission(){
+	document.getElementById('edit').removeAttribute('hidden');
+	$('#editStatus').on('click', updatestatus);
+	$('#editStatus').on('click', loadmanager);
+
+}
+
+function updatestatus(){
+		console.log("update reimburse working");
+		var reimb = {
+				Statusid: $('#statusdrop').val(),
+				id: $('#reimbId').val(),
+		}
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if (xhr.readyState == 4){
+				if (xhr.status == 200){
+					console.log("Editing reimbursement");
+					var reimb = JSON.parse(xhr.responseText);
+					loadManagerPage();
+					}
+				else if(xhr.status == 204){
+					$('#message2').html("Please fill in all required fields");
+				}
+			}
+		}
+		xhr.open('POST','update');
+		xhr.send(JSON.stringify(reimb));
+	}
+

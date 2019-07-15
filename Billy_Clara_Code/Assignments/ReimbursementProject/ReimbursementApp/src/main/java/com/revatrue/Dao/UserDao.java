@@ -100,7 +100,7 @@ public class UserDao {
 		List<Manager> reim = new ArrayList<Manager>();
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT USERID, FIRSTNAME, LASTNAME, EMAIL, ERS_REIMBURSEMENT.REIMB_AMOUNT, ERS_REIMBURSEMENT.REIMB_SUBMITTED, " + 
+			ResultSet rs = st.executeQuery("SELECT REIMB_ID, FIRSTNAME, LASTNAME, EMAIL, ERS_REIMBURSEMENT.REIMB_AMOUNT, ERS_REIMBURSEMENT.REIMB_SUBMITTED, " + 
 					"ERS_REIMBURSEMENT.REIMB_RESOLVED, " + 
 					"ERS_REIMBURSEMENT.REIMB_DESC, ERS_STATUS.STATUS, ERS_TYPE.TYPE " + 
 					"FROM ERS_REIMBURSEMENT " + 
@@ -138,9 +138,10 @@ public class UserDao {
 			String sql = "INSERT INTO ERS_REIMBURSEMENT(REIMB_AMOUNT, REIMB_SUBMITTED, REIMB_RESOLVED, REIMB_DESC, REIMB_AUTHOR, " + 
 					"REIMB_RESOLVER, REIMB_STATUSID, REIMB_TYPEID) " + 
 					"VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-			String[] gKeys = { "REIMB_ID" };
+			String[] generatedKeys = { "REIMB_ID" };
 
-			PreparedStatement ps = conn.prepareStatement(sql, gKeys);
+
+			PreparedStatement ps = conn.prepareStatement(sql, generatedKeys);
 
 			ResultSet pk = ps.getGeneratedKeys();
 
@@ -148,12 +149,12 @@ public class UserDao {
 				a.setId(pk.getInt(1));
 			}
 			ps.setInt(1, amount);
-			ps.setString(2, submitted);
+			ps.setString(2, "CURRENT_TIMESTAMP");
 			ps.setString(3, resolved);
 			ps.setString(4, description);
 			ps.setInt(5, author);
 			ps.setInt(6, resolver);
-			ps.setInt(7, statusid);
+			ps.setInt(7, 1);
 			ps.setInt(8, typeid);
 			ps.executeUpdate();
 
@@ -162,7 +163,30 @@ public class UserDao {
 		}
 
 	}
+	
+
+public Reimbursement updateReim(Reimbursement u) {		
+try (Connection conn = ConnectionFactory.getInstance().getConnection()){
+			
+			//Using Prepared Statement
+		String query = "UPDATE ERS_REIMBURSEMENT " + 
+				"SET REIMB_STATUSID = ? " + 
+				"WHERE REIMB_ID = ?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			
+				ps.setInt(1, u.getId());
+				ps.setInt(2, u.getStatusid());
+				ps.executeUpdate();
+
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		return u;
+	}
 
 }
+
 
 
