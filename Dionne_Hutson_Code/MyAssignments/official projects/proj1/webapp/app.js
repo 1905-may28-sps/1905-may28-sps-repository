@@ -648,6 +648,7 @@ function searchReimE(){
 							row.append(cell8);
 							row.append(cell9);
 						$('#reimTable').append(row);}
+						}
 						else{
 							if(reim.status.toLowerCase()==$('#searchIn').val().toLowerCase()
 							){
@@ -684,7 +685,8 @@ function searchReimE(){
 								row.append(cell7);
 								row.append(cell8);
 								row.append(cell9);
-							$('#reimTable').append(row);}
+							$('#reimTable').append(row);
+						}
 
 
 
@@ -692,7 +694,7 @@ function searchReimE(){
 						}
 
 
-							 //add on click function to rows to select 
+						 }	 //add on click function to rows to select 
 						
 							
 					}else if($('#searchIn').val().toLowerCase()==""){
@@ -702,8 +704,7 @@ function searchReimE(){
 							
 
 
-					}
-						}
+				
 
 				}
 			}
