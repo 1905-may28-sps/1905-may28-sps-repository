@@ -19,10 +19,122 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
 		integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
 		crossorigin="anonymous"></script>
-</head>
-<body>
+		
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+   <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-	<div id="view"></div>
+</head>
+
+<style>
+	body,
+		html {
+			margin: 0;
+			padding: 0;
+			background: #f2f3f4 !important;
+		}
+		.user_card {
+			width: 350px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: white;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+			
+		}
+		
+		#form-div {
+    	background: white;
+    	margin-top: 56px;
+    	opacity: 0.89;			
+    	}
+    	
+    	button {
+    	    margin-right: 8px;
+    	
+    	}
+		
+	
+		
+		
+		.brand_logo_container {
+			position: absolute;
+			width: 170px;
+			top: -75px;
+			border-radius: 50%;
+			background: #60a3bc;
+			padding: 10px;
+			text-align: center;
+		}
+		.brand_logo {
+			width: 150px;
+			border-radius: 50%;
+			border: 2px solid white;
+		}
+		.form_container {
+			margin-top: 100px;
+		}
+		.login_btn {
+			width: 100%;
+			background: #c0392b !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #c0392b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+			background-color: #c0392b !important;
+		}
+		
+		#view {
+		background-image: url("https://terrapinclub.com/images/2019/5/30/Spring_All_B1G_TC.jpg?width=1920&quality=80&format=jpg");
+		background-color: #cccccc;
+  		background-position: center;
+  		background-repeat: no-repeat;
+  		background-size: cover;
+  		position: relative;
+		border: 1px solid;
+   		padding: 10px;
+    	box-shadow: 5px 10px #888888;
+    	width: 95%;
+   		margin-left: 18px;
+   		height: 799px;
+  		}
+  		
+  		</style>
+		
+		
+
+
+
+<body>
+<div> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfhC5x8WMywicsZQndAZDPCHtpuG7PaXmPIunUrLQKL6YWBkeT_Q"></div>
+<br>
+<div id="view"  ></div>
 	
 	<script type="text/javascript" src="app.js"></script>
 

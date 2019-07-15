@@ -40,6 +40,7 @@ function login(){
 			}
 			else if(xhr.status == 204){
 				$('#message').html('Sorry, invalid credentials! Please try again');
+				window.alert('Invalid Credentials! Please Try Again')
 				console.log('204 error')
 			}
 		}
@@ -59,6 +60,7 @@ function loadHomePage(){
 
 				getUserData();
 			} else if (xhr.status >= 500){
+				
 				console.log('server error');
 			}
 		}
@@ -113,6 +115,7 @@ function addNewReimbursement (){
 				}
 				else if(xhr.status == 204){
 					$('#message').html('Sorry, invalid credentials! Please try again');
+					alert.log('Invalid Credentials! Please Try Again')
 					console.log('204 error')
 				}
 			}
