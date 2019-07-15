@@ -1,0 +1,45 @@
+<h1>Here are all reimbursements! <span id="name"></span></h1>
+
+<!-- make table to display user accounts -->
+<div class="float-right">
+<button id="logout" class="btn btn-primary">logout</button>
+</div>
+<div>
+<input type="text" id="reimb_id" placeholder="Reimbursement Id" class="form-control col-2">
+<!--<input type="text" id="reimb_status_id" placeholder="Status" class="form-control col-4">  -->
+
+<input list="StatusType" name="StatusType" id="reimb_status_id" placeholder="Status" class="form-control col-2">
+  <datalist id="StatusType">
+    <option value="1">Pending
+    <option value="2">Declined
+    <option value="3">Approved
+    
+  </datalist>
+
+<button id="doUpdate" class="btn btn-primary">update</button>
+
+
+
+</div>
+
+<div class="panel panel-default">
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Reimbursement ID</th>
+       <th scope="col">Amount</th>
+      <th scope="col">Date Submitted</th>
+      <th scope="col">Date Resolved</th>
+      <th scope="col">Description</th>
+      <th scope="col">Receipt</th>
+      <th scope="col">Started By</th>
+      <th scope="col">Resolved by</th>
+      <th scope="col">Status</th>
+      <th scope="col">Type</th>
+      
+    </tr>
+  </thead>
+  <tbody id="accountTable">
+  </tbody>
+</table>
+</div>
