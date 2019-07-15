@@ -1,6 +1,6 @@
 package src.com.revature.pojo;
 
-import java.sql.Timestamp;
+import java.sql.Blob;
 
 public class ERS_REIMBURSEMENT {
 	private int id;
@@ -8,7 +8,7 @@ public class ERS_REIMBURSEMENT {
 	private String submit;
 	private String resolved;
 	private String descrp;
-	//private PIC////////////
+	private Blob pic;
 	private int emp;
 	private int man;
 	private int status;
@@ -17,7 +17,8 @@ public class ERS_REIMBURSEMENT {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ERS_REIMBURSEMENT(int id, double amount, String submit, String resolved, String descrp, int emp,
+	
+	public ERS_REIMBURSEMENT(int id, double amount, String submit, String resolved, String descrp, Blob pic, int emp,
 			int man, int status, int type) {
 		super();
 		this.id = id;
@@ -25,11 +26,13 @@ public class ERS_REIMBURSEMENT {
 		this.submit = submit;
 		this.resolved = resolved;
 		this.descrp = descrp;
+		this.pic = pic;
 		this.emp = emp;
 		this.man = man;
 		this.status = status;
 		this.type = type;
 	}
+
 	public int getId() {
 		return id;
 	}
@@ -84,11 +87,20 @@ public class ERS_REIMBURSEMENT {
 	public void setType(int type) {
 		this.type = type;
 	}
+
+	public Blob getPic() {
+		return pic;
+	}
+
+	public void setPic(Blob pic) {
+		this.pic = pic;
+	}
+
 	@Override
 	public String toString() {
 		return "ERS_REIMBURSEMENT [id=" + id + ", amount=" + amount + ", submit=" + submit + ", resolved=" + resolved
-				+ ", descrp=" + descrp + ", emp=" + emp + ", man=" + man + ", status=" + status + ", type=" + type
-				+ "]";
+				+ ", descrp=" + descrp + ", pic=" + pic + ", emp=" + emp + ", man=" + man + ", status=" + status
+				+ ", type=" + type + "]";
 	}
 
 	

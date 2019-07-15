@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <span id="home" class="navbar-brand">Welcome Back <span id="name"></span></span>
+  <span id="home" class="navbar-brand"><i>Welcome Back</i> </span><span id="name"></span></span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,9 +15,10 @@
       </li>
     </ul>
     <div class="input-group mb-3 input-group-sm">
-        <input class="input-group-text" id="searchIn" placeholder="Search By Status:" >
-        <button class="btn btn-outline-success my-2 my-sm-0" id="searchBut" >Search</button>
-        </div>
+        <input class="input-group-text" id="searchIn" placeholder="Search:" >
+        <button class="btn  btn-outline-warning my-2 my-sm-0" id="searchBut" >Search</button>
+
+      </div>
   </div>
 </nav>
 
@@ -30,6 +31,7 @@
       <th scope="col">Submit       </th>
       <th scope="col">Resolved     </th>
       <th scope="col">Description              </th>
+      <!-- <th scope="col"> Document </th> -->
       <th scope="col">Status</th>
       <th scope="col">Type</th>
       <th scope="col-2">Resolver           </th>
@@ -47,11 +49,11 @@
         <div class="modal-content">
           <div class="modal-header">
 <h3> Your experience was priceless</h3>
-<br>
-<h2>Request a reimbusement anyway</h2>
+
         
         </div>
     <div class="modal-body">
+    <h4>Request a reimbusement anyway</h4>  
       <div class="input-group mb-3 input-group-lg">
     <input class="input-group-text form-control" type="number" id="amountP" placeholder="Enter Reimbursement Cost">
     <hr>
@@ -60,10 +62,15 @@
     <input class="input-group-text form-control" type="text" id="descrpP" placeholder="Briefly describe your experience">
     <hr>
   </div>
-    <div class="input-group mb-3">
-  
+    <!-- <div class="input-group mb-3">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" placeholder="File" value="image/png" id="picP" aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="picP" >Choose file</label>
+          </div>
+        </div> -->
     
-      
+      <hr>
+      <div class="input-group mb-3">
         <select id="myselect" class="custom-select" >
           <option>Select type of reimbursment</option>
           <option value="10">Miscellaneous</option>
@@ -77,11 +84,11 @@
           <option value="8">Acessories</option>
           <option value="9">Talent</option>
           
-      </select>
+      </select></div>
       <hr>
     </div>
       <div class="modal-footer">
-          <button id="addBut" type="button" class="btn close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
+          <button id="addBut" type="button" class="btn close  btn-outline-warning" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
               Add Reimbursement
              </button>
       </div>
@@ -101,7 +108,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close btn  btn-outline-warning" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -110,7 +117,7 @@
                 Your efforts are changing the world!</p>
             </div>
             <div class="modal-footer">
-              <button id="empAddRe" type="button" class="btn " data-dismiss="modal">Go Forth!</button>
+              <button id="empAddRe" type="button" class="btn  btn-outline-warning " data-dismiss="modal">Go Forth!</button>
             </div>
           </div>
         </div>

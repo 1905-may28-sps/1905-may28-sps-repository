@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.Blob;
 
 import org.apache.log4j.Logger;
 
@@ -29,7 +30,7 @@ public class AddReimServlet extends HttpServlet {
 		
 		ObjectMapper mapper=new ObjectMapper();
 		ERS_REIMBURSEMENT reim=mapper.readValue(req.getInputStream(), ERS_REIMBURSEMENT.class);
-		reim=service.addReim(reim.getAmount(), reim.getDescrp(), reim.getEmp(), reim.getType());
+		reim=service.addReim(reim.getAmount(), reim.getDescrp(), reim.getEmp(), reim.getType()/*,reim.getPic()*/);
 		
 		
 			
