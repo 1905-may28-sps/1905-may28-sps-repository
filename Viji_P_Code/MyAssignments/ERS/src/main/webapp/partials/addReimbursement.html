@@ -1,0 +1,30 @@
+<h2>Revature Employee Reimbursement Portal</h2>
+
+<h4>Add New Reimbursement!</h4>
+
+<!-- Create fields to add new reimbursement -->
+<div class = "jumbotron" id = "addNew" class = "center">
+	<input type="number" id="amount" placeholder="Amount" 
+    class="form-control col-6">
+	<input type="text" id="description" placeholder="Description" 
+    class="form-control col-6">
+           
+    <label>Manager List:</label>
+    <select id="managerList">
+    <option value = "41">Genesis</option>
+    <option value = "43">Andrew</option>
+    <option value = "22">Anil</option>
+    </select>
+   <br>
+    
+    <label>Select Reimbursement Type:</label>
+    <select id="typeList">
+    <option value = "1">1-Lodging</option>
+    <option value = "2">2-Food</option>
+    <option value = "3">3-Travel</option>
+    <option value = "4">4-Other</option>
+    </select>
+    
+    <button id="addReimb" class="btn btn-primary">Add Reimbursement!</button>
+    <span id = "message1"></span>
+</div>
