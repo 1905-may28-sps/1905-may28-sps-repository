@@ -1,33 +1,6 @@
-<div id="scoped-content">
-<input type="text" id="username" placeholder="Username" class="form-control col-6">
-<input type="password" id="password" placeholder="Password" class="form-control col-6">
-<button id="doLogin" class="btn btn-primary">Log In!</button>
-<figure id="move0">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-</figure>
-    <figure id="move1">
-    <span class="dot2"></span>
-    <span class="dot2"></span>
-    <span class="dot2"></span>
-    <span class="dot2"></span>
-    </figure>
-    <figure id="move2">
-        <span class="dot3"></span>
-        <span class="dot3"></span>
-        <span class="dot3"></span>
-        <span class="dot3"></span>
-    </figure>
-        <figure id="move3">
-            <span class="dot4"></span>
-            <span class="dot4"></span>
-            <span class="dot4"></span>
-            <span class="dot4"></span>
-        </figure>
-</div>
-<style type="text/css" scoped>
+body {
+    background-color:blue;
+}
 
 .dot {
     height: 25px;
@@ -63,8 +36,8 @@
   #move0 {
     margin: 0;
     position: absolute;
-    top: 30%;
-    left: 30%;
+    top: 20%;
+    left: 20%;
     /* margin-right: -50%; */
     /* transform: translate(-50%, -50%)  */
 }
@@ -72,8 +45,8 @@
 #move1 {
     margin: 0;
     position: absolute;
-    top: 35%;
-    left: 35%;
+    top: 30%;
+    left: 30%;
     /* margin-right: -50%; */
     /* transform: translate(-50%, -50%)  */
 }
@@ -89,8 +62,8 @@
 #move3 {
     margin: 0;
     position: absolute;
-    top: 45%;
-    left: 45%;
+    top: 50%;
+    left: 50%;
     /* margin-right: -50%; */
     /* transform: translate(-50%, -50%)  */
 }
@@ -127,4 +100,4 @@
     50%  {background-color:blue; left:200px; top:200px;}
     75%  {background-color:green; left:0px; top:200px;}
     100% {background-color:red; left:0px; top:0px;}
-  }</style>
+  }
