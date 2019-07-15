@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revatrue.Dao.UserDao;
 import com.revature.pojo.Reimbursement;
+import com.revature.pojo.User;
 import com.revature.service.UserService;
 
 @WebServlet ("/update")
@@ -30,12 +31,13 @@ public class UpdateServlet extends HttpServlet {
 	    System.out.println("INSIDE UPDATE REIMBURSEMENT SERVLET...");
 	    
 	    reim = mapper.readValue(req.getInputStream(), Reimbursement.class);
-		reim = service.updateReimbursement(reim.getStatusid(), reim.getId());
+		reim = service.updateReimbursement(reim.getId(), reim.getStatusid());
 		System.out.println("Reimbursement Object "+ reim);
 		
 		if(userDao == null) {
 			resp.setStatus(204);
 		}
+		
 		else {
 			HttpSession session = req.getSession();
 			session.setAttribute("UpdateReimbursement", reim);
@@ -45,6 +47,6 @@ public class UpdateServlet extends HttpServlet {
 			resp.setStatus(200);
 			writer.write(mapper.writeValueAsString(reim));
 		}
-		System.out.println("Reimbursement has been added successfully");
+		System.out.println("Update Succesfull");
 	}
 }

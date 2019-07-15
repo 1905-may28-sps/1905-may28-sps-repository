@@ -70,6 +70,8 @@ function loadmanager() {
 				$(`#view`).html(xhr.responseText);
 				$('#logout').on('click', loadLoginView);
 				$('#update').on('click', submission);
+				$('#refreshM').on('click', loadmanager);
+
 
 				managerview();
 			}
@@ -181,8 +183,8 @@ function getEmpData() {
 						var cell5 = $(`<td>${i.description}</td>`);
 						var cell6 = $(`<td>${i.author}</td>`);
 						var cell7 = $(`<td>${i.resolver}</td>`);
-						var cell8 = $(`<td>${i.status}</td>`);
-						var cell9 = $(`<td>${i.typeId}</td>`);
+						var cell8 = $(`<td>${i.statusid}</td>`);
+						var cell9 = $(`<td>${i.typeid}</td>`);
 						row.append(cell1);
 						row.append(cell2);
 						row.append(cell3);
@@ -279,7 +281,7 @@ function submission(){
 function updatestatus(){
 		console.log("update reimburse working");
 		var reimb = {
-				Statusid: $('#statusdrop').val(),
+				statusid: $('#statusdrop').val(),
 				id: $('#reimbId').val(),
 		}
 		var xhr = new XMLHttpRequest();
@@ -288,7 +290,8 @@ function updatestatus(){
 				if (xhr.status == 200){
 					console.log("Editing reimbursement");
 					var reimb = JSON.parse(xhr.responseText);
-					loadManagerPage();
+					console.log("posting")
+					managerdata();
 					}
 				else if(xhr.status == 204){
 					$('#message2').html("Please fill in all required fields");
@@ -298,4 +301,3 @@ function updatestatus(){
 		xhr.open('POST','update');
 		xhr.send(JSON.stringify(reimb));
 	}
-

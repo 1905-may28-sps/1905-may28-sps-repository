@@ -34,7 +34,7 @@ public class ReSubmit extends HttpServlet{
 		
 		Reimbursement re = mapper.readValue(req.getInputStream(), Reimbursement.class);
 		
-		service.submit(re.getAmount(),re.getSubmitted(),re.getResolved(), re.getDescription(), user.getUserid(), re.getResolver(), re.getStatusid(), re.getTypeid());
+		service.submit(re.getAmount(),re.getResolved(), re.getDescription(), user.getUserid(), re.getResolver(), re.getStatusid(), re.getTypeid());
 
 		PrintWriter writer = resp.getWriter();
 		resp.setContentType("application/json");

@@ -11,7 +11,7 @@ public class UserService {
 	
 	private UserDao userDao = new UserDao();
 	private Reimbursement reim = new Reimbursement();
-
+	private User user= new User();
 	
 //	public List<User> findAllUsers(){
 //		return userDao.findAll();
@@ -34,14 +34,18 @@ public class UserService {
 		return userDao.getallRe();
 	}
 	
-	public void submit(int amount, String submitted, String resolved, String description, int author,
+	public Reimbursement submit(int amount, String resolved, String description, int author,
 			int resolver, int statusid, int typeid) {
-		userDao.submit(amount, submitted, resolved, description, author, resolver, statusid, typeid);
+		userDao.submit(amount, resolved, description, author, resolver, statusid, typeid);
+		return reim;
 }
 	
-	public Reimbursement updateReimbursement(int id, int Statusid) {
+	public Reimbursement updateReimbursement(int id, int statusid) {
+		
 		reim.setId(id);
-		reim.setStatusid(Statusid);
+		reim.setStatusid(statusid);
+		
+
 		
 		return userDao.updateReim(reim);
 		

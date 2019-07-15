@@ -5,7 +5,6 @@
 <div class="jumbotron" id="manhome">
 
     <div id="home">
-        <h1>Manager Portal</h1>
         <h2>
             Welcome! <span id="manager"></span>
         </h2>
@@ -32,6 +31,7 @@
         </table>
 
         <button style="float: center;" class="btn btn-primary" id="logout"> Log Out</button>
+        <button id="refreshM" class="btn btn-info">Refresh Page</button>
         <button type="button" class="btn btn-success" id="update">Update Status</button>
 
 
@@ -43,15 +43,21 @@
 
             <input type="text" id="reimbId" placeholder="ReimbursementId" class="form-control col-6">
             <div class="btn-group">
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                <!-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     Select Status
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#" value="2"> Approved</a>
-                    <a class="dropdown-item" href="#" value="3"> Denied </a>
+                </button> -->
+                <!-- <div class="dropdown-menu">
+                    <a class="dropdown-item" value="2"> Approved</a>
+                    <a class="dropdown-item" value="3"> Denied </a>
                      </div>
-            </div>
+            </div> -->
+
+            <label>Select Status:</label>
+            <select id="statusdrop">
+            <option value = "2">2-Approved</option>
+            <option value = "3">3-Denied</option>
+            </select>
 
             <br>
             <button id="editStatus" class="btn btn-primary">Submit!!</button>
