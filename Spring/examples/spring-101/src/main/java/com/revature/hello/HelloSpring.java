@@ -19,11 +19,14 @@ public class HelloSpring {
 	
 	private String message;
 	
-	public HelloSpring() {}
+	public HelloSpring() {
+		System.out.println("HELLO SPRING NO ARG CONSTRUCTOR");
+	}
 
 	public HelloSpring(String message) {
 		super();
 		this.message = message;
+		System.out.println("HELLO SPRING CONSTRUCTOR WITH PROPERTIES");
 	}
 
 	public String getMessage() {
@@ -32,6 +35,7 @@ public class HelloSpring {
 
 	public void setMessage(String message) {
 		this.message = message;
+		System.out.println("HELLO SPRING SETMESSAGE()");
 	}
 
 	@Override

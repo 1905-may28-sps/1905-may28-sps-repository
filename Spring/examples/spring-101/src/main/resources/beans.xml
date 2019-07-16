@@ -12,4 +12,10 @@ managed by the spring container), and the container
 itself (what modules will it use, where should it 
 look for annotations, and more) -->
 
+<!--                          Bean configuration with XML                           -->
+
+	<bean id="thisIsABean" class="com.revature.hello.HelloSpring">
+		<property name="message" value="This is dependency injection! Welcome to Spring!" />
+	</bean>
+
 </beans>
