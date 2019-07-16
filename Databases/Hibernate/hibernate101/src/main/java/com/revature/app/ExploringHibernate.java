@@ -28,7 +28,7 @@ public class ExploringHibernate {
 	 * - persists transient instance, returns whatever Serializable
 	 * identifier is used for the instance 
 	 * - saving a persisted instance does nothing 
-	 * - saving a detached instance creates a new persistant instance
+	 * - saving a detached instance creates a new persistent instance
 	 * and assigns it a new identifier, which results in a duplicate
 	 * record. do not do!
 	 */

@@ -12,9 +12,9 @@
  		org.hibernate.dialect.Oracle10gDialect</property>
  		<property name="hibernate.connection.driver_class">
  		oracle.jdbc.driver.OracleDriver</property>
- 		<property name="hibernate.connection.url">jdbc:oracle:thin:@demo1905may28sps.cjrlr2je5uec.us-east-1.rds.amazonaws.com:1519/ORCL</property>
- 		<property name="hibernate.connection.username">demo1905may28sps</property>
- 		<property name="hibernate.connection.password">p4ssw0rd</property>
+ 		<property name="hibernate.connection.url">jdbc:oracle:thin:@[URL]:[PORT]/ORCL</property>
+ 		<property name="hibernate.connection.username">[USERNAME]</property>
+ 		<property name="hibernate.connection.password">[PASSWORD]</property>
  		
  	<!-- show HQL commands as theyre carried out in the console -->
  		<property name="show_sql">true</property>
