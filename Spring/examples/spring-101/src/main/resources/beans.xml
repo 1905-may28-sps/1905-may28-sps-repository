@@ -20,5 +20,11 @@ look for annotations, and more) -->
 	<!-- The following is CONSTRUCTOR injection -->
 		<constructor-arg name="message" value="This is constructor injection!" />
 	</bean>
+	
+<!--  bean wiring, which is the process of injecting beans into other beans 
+we can do this manually or with autowiring. below we will explore manual bean wiring -->
+	<bean id="parentBean" class="com.revature.hello.ParentBean">
+		<property name="dependency" ref="thisIsABean" />
+	</bean>
 
 </beans>

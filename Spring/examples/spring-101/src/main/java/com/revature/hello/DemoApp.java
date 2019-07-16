@@ -6,6 +6,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class DemoApp {
 	
 	public static void main(String[] args) {
+	
+//		ParentBean b = new ParentBean();
+//		System.out.println(b.getDependency().getMessage());
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		ParentBean pb = (ParentBean) context.getBean(ParentBean.class);
+		System.out.println(pb.getDependency().getMessage());
+		
+	}
+	
+	static void exploringDI() {
 		//The following instantiation uses the new keyword, and therefore does not rely on IoC
 		HelloSpring spring = new HelloSpring();
 		System.out.println(spring.getMessage());
