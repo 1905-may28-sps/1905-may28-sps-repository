@@ -14,6 +14,13 @@ public class DemoApp {
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		HelloSpring hello = (HelloSpring) context.getBean("thisIsABean");
 		System.out.println(hello.getMessage());
+		
+		HelloSpring anotherInstance = (HelloSpring) context.getBean(HelloSpring.class);
+		System.out.println(anotherInstance.getMessage());
+		
+		hello.setMessage("changing instance method");
+		
+		System.out.println(anotherInstance.getMessage());
 	}
 
 }

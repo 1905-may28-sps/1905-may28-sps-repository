@@ -14,8 +14,11 @@ look for annotations, and more) -->
 
 <!--                          Bean configuration with XML                           -->
 
-	<bean id="thisIsABean" class="com.revature.hello.HelloSpring">
-		<property name="message" value="This is dependency injection! Welcome to Spring!" />
+	<bean id="thisIsABean" class="com.revature.hello.HelloSpring" scope="prototype">
+	<!-- The following is SETTER injection 
+		<property name="message" value="This is dependency injection! Welcome to Spring!" />-->
+	<!-- The following is CONSTRUCTOR injection -->
+		<constructor-arg name="message" value="This is constructor injection!" />
 	</bean>
 
 </beans>
