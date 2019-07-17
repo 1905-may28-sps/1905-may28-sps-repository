@@ -17,19 +17,58 @@ By doing this, we are able to leverage Spring's transaction management
 functionality and no longer need to manage transactions ourselves
  -->
  
+ <!-- below, we are simply telling our spring app where to find our 
+ properties  -->
+<context:property-placeholder location="classpath:db.properties"/>
+ 
+ <!-- This bean holds everything we need to establish a basic connection from a 
+ Java app to a database including our driver, db location(url), and db credentials
+ (username and password) -->
  <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+ 	<property name="driverClassName" value="${db.driver}" />
+ 	<property name="url" value="${db.url}" />
+ 	<property name="username" value="${db.user}" />
+ 	<property name="password" value="${db.password}"/>
  </bean>
  
+ <!-- This bean is the hibernate sessionFactory. Recall that 
+ when creating a standalone Hibernate project, we used the 
+ hibernate.cfg.xml file to configure how hibernate was 
+ going to establish a connection. We then created a connectionutil 
+ class that created a singleton sessionFactory so that 
+ we could open sessions in our DAOs. Now, all we must do is 
+ @Autowired
+ SessionFactory sf;
+ 
+ in our DAOs and we will be able to leverage dependency injection 
+ to to grab our singleton sessionfactory instance and open sessions -->
  <bean id="mySessionFactory" 
  	class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-
-	<property name="dataSource" ref="myDataSource"/>
-	
+	<property name="dataSource" ref="myDataSource" />
+	<property name="packagesToScan" value="com.revature" />
+	<property name="hibernateProperties">
+		<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+			<prop key="hibernate.hbm2ddl.auto">update</prop>
+			<prop key="hibernate.show_sql">true</prop>
+		</props>
+	</property>
  </bean>
  
+ <!--  this bean is the reason we configure spring with hibernate! recall 
+ that in hibernate we had to begin transactions and end them by committing 
+ but in spring orm, we simply annotate our daos and/or dao methods 
+ with @Transactional and the transaction manager will handle that for us -->
  <bean id="transactionManager" 
  	class="org.springframework.orm.hibernate4.HibernateTransactionManager">
  	<property name="sessionFactory" ref="mySessionFactory"/>
  </bean>
+ 
+ <!-- enable application to be annotation driven -->
+<context:annotation-config />
+<context:component-scan base-package="com.revature"></context:component-scan>
+
+<!-- enable spring to search for @Transactional -->
+<tx:annotation-driven />
 
 </beans>
