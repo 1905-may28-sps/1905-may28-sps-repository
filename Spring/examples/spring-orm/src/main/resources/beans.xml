@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+
+<!--  SPRING ORM 
+In order to use Hibernate with this module, we must configure CONTEXTUAL SESSIONS
+which is wiring together the following beans 
+	DataSource => SessionFactory => TransactionManager & DAOs
+
+By doing this, we are able to leverage Spring's transaction management 
+functionality and no longer need to manage transactions ourselves
+ -->
+ 
+ <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+ </bean>
+ 
+ <bean id="mySessionFactory" 
+ 	class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+	<property name="dataSource" ref="myDataSource"/>
+	
+ </bean>
+ 
+ <bean id="transactionManager" 
+ 	class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+ 	<property name="sessionFactory" ref="mySessionFactory"/>
+ </bean>
+
+</beans>
