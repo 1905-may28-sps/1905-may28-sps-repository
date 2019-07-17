@@ -5,37 +5,42 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-<!-- Spring Bean Configuration File, 
-typically named beans.xml or context.xml
-Here, we hold configuration for our beans (classes
-managed by the spring container), and the container
-itself (what modules will it use, where should it 
-look for annotations, and more) -->
+	<!-- Spring Bean Configuration File, typically named beans.xml or context.xml 
+		Here, we hold configuration for our beans (classes managed by the spring 
+		container), and the container itself (what modules will it use, where should 
+		it look for annotations, and more) -->
 
-<!--                          Bean configuration with XML                           -->
+	<!-- Bean configuration with XML -->
 
-	<bean id="thisIsABean" class="com.revature.hello.HelloSpring" scope="prototype">
-	<!-- The following is SETTER injection 
-		<property name="message" value="This is dependency injection! Welcome to Spring!" />-->
-	<!-- The following is CONSTRUCTOR injection -->
-		<constructor-arg name="message" value="This is constructor injection!" />
+	<bean id="thisIsABean" class="com.revature.hello.HelloSpring"
+		scope="prototype">
+		<!-- The following is SETTER injection <property name="message" value="This 
+			is dependency injection! Welcome to Spring!" /> -->
+		<!-- The following is CONSTRUCTOR injection -->
+		<constructor-arg name="message"
+			value="This is constructor injection!" />
 	</bean>
-	
-<!--  bean wiring
 
-which is the process of injecting beans into other beans 
-we can do this manually or with autowiring. below we will explore manual bean wiring -->
+	<!-- bean wiring which is the process of injecting beans into other beans 
+		we can do this manually or with autowiring. below we will explore manual 
+		bean wiring -->
 	<bean id="parentBean" class="com.revature.hello.ParentBean">
 		<property name="dependency" ref="thisIsABean" />
 	</bean>
-	
-	
-	
-	<!--                     bean autowiring with XML                           -->
-	<bean id="employee" class="com.revature.autowired.Employee" autowire="byType">
-	</bean>
-	
-	<bean id="dept" class="com.revature.autowired.Department">
-	</bean>
+
+
+
+	<!-- bean autowiring with XML <bean id="employee" class="com.revature.autowired.Employee" 
+		autowire="byType"> </bean> <bean id="dept" class="com.revature.autowired.Department"> 
+		</bean> -->
+
+	<!-- AUTOWIRING WITH ANNOTATIONS must configure spring to look for annotations 
+		of each type! As it stands, we only need to configure things as beans within 
+		the context of our application, but later we will see more annotation config 
+		tags -->
+
+
+	<context:annotation-config/>
+	<context:component-scan base-package="com.revature"/>
 
 </beans>

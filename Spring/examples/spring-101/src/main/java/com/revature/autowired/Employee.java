@@ -1,9 +1,17 @@
 package com.revature.autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class Employee {
 	
 	private int id;
 	private String name;
+	
+	@Autowired
 	private Department department;
 	
 	public Employee() {}
