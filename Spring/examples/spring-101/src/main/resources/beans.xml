@@ -21,10 +21,21 @@ look for annotations, and more) -->
 		<constructor-arg name="message" value="This is constructor injection!" />
 	</bean>
 	
-<!--  bean wiring, which is the process of injecting beans into other beans 
+<!--  bean wiring
+
+which is the process of injecting beans into other beans 
 we can do this manually or with autowiring. below we will explore manual bean wiring -->
 	<bean id="parentBean" class="com.revature.hello.ParentBean">
 		<property name="dependency" ref="thisIsABean" />
+	</bean>
+	
+	
+	
+	<!--                     bean autowiring with XML                           -->
+	<bean id="employee" class="com.revature.autowired.Employee" autowire="byType">
+	</bean>
+	
+	<bean id="dept" class="com.revature.autowired.Department">
 	</bean>
 
 </beans>
