@@ -27,7 +27,7 @@ public class Post {
 	private String subject;
 	private String body;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="AUTHOR_ID", nullable=false)
 	private User author;
 	
