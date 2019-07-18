@@ -11,16 +11,17 @@ import com.revature.repository.PostRepository;
 import com.revature.repository.UserRepository;
 
 public class App {
-	static ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 	
+	static  ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 	static	UserRepository userRepo = (UserRepository) context.getBean(UserRepository.class);
 	static	PostRepository postRepo = (PostRepository) context.getBean(PostRepository.class);
 
 	public static void main(String[] args) {
 		
-		User u = userRepo.findByUsernameLikeIgnoreCase("Revauser");
-		System.out.println(u);
+		//User u = userRepo.findByUsernameLikeIgnoreCase("Revauser");
+		System.out.println(userRepo.findByUsernameStartingWith("gen"));
 		
+		System.out.println(postRepo.findBySubjectContainingIgnoreCaseOrBodyContainingIgnoreCase("spring", "spring"));
 	}
 	
 	static void doThings() {
