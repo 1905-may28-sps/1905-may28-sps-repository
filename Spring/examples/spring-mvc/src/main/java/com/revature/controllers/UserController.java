@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -45,7 +47,7 @@ public class UserController {
 	@RequestMapping(method=RequestMethod.POST, 
 			consumes=MediaType.APPLICATION_JSON_VALUE,
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> save(@RequestBody User user){
+	public ResponseEntity<User> save(@RequestBody @Valid User user){
 		//lets assume we will always have 201 status
 		user = service.save(user);
 		return new ResponseEntity<User>(user, HttpStatus.CREATED);
