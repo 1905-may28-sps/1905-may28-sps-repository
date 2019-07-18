@@ -60,7 +60,7 @@ public class UserService {
 //		Date time = new java.sql.Date(System.currentTimeMillis());
 		int resolver;
 		Random random13 = new Random();
-		if(random13.nextBoolean()) resolver = 3; else resolver = 1;
+		if(random13.nextInt(2)==0) resolver = 3; else resolver = 1; 
 
 		Account2 esubobj = new Account2(balance, time, description, author, resolver, 101, accountType);
 		
