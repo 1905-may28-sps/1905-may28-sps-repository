@@ -1,13 +1,16 @@
 package com.revature.main;
 
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.revature.beans.Post;
+import com.revature.beans.Reaction;
+import com.revature.beans.ReactionComposite;
+import com.revature.beans.ReactionType;
 import com.revature.beans.User;
 import com.revature.repository.PostRepository;
+import com.revature.repository.ReactionRepository;
+import com.revature.repository.ReactionTypeRepository;
 import com.revature.repository.UserRepository;
 
 public class App {
@@ -15,13 +18,17 @@ public class App {
 	static  ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 	static	UserRepository userRepo = (UserRepository) context.getBean(UserRepository.class);
 	static	PostRepository postRepo = (PostRepository) context.getBean(PostRepository.class);
-
+	static 	ReactionRepository reactionRepo = (ReactionRepository) context.getBean(ReactionRepository.class);
+	static ReactionTypeRepository typeRepo = (ReactionTypeRepository) context.getBean(ReactionTypeRepository.class);
+	
 	public static void main(String[] args) {
 		
-		//User u = userRepo.findByUsernameLikeIgnoreCase("Revauser");
-		System.out.println(userRepo.findByUsernameStartingWith("gen"));
+	//	typeRepo.save(new ReactionType("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/220px-SNice.svg.png"));
+		ReactionType type = typeRepo.findOne(1);
+
+		Reaction r = new Reaction(new ReactionComposite(4, 24), type);
+		reactionRepo.save(r);
 		
-		System.out.println(postRepo.findBySubjectContainingIgnoreCaseOrBodyContainingIgnoreCase("spring", "spring"));
 	}
 	
 	static void doThings() {
