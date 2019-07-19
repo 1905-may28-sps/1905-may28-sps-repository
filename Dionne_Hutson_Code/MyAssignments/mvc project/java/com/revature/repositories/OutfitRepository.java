@@ -1,13 +1,15 @@
 package com.revature.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.revature.models.Outfit;
 
 public interface OutfitRepository  extends JpaRepository<Outfit, Integer> {
-	Outfit findByName(String name);
+
 	
-//	Outfit findByNameContainingIgnoreCase(String name);
-	//Outfit findByWeatherContainingIgnoreCase(String key);
+	List<Outfit> findByNameContainingIgnoreCase(String name);
+	List<Outfit> findByWeatherContainingIgnoreCase(String key);
 
 }

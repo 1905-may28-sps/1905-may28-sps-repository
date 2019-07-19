@@ -24,19 +24,17 @@ public class OutfitService {
 		return outfitRepo.save(o);
 	}
 
-	public Outfit findByName(String name) {
-		return outfitRepo.findByName(name);
-	}
 	
-//	public Outfit findByName(String name) {
-//		return outfitRepo.findByNameContainingIgnoreCase(name);
-//	}
+	
+	public List<Outfit> findByName(String name) {
+		return outfitRepo.findByNameContainingIgnoreCase(name);
+	}
 
 
 
-//	public Outfit findByWeather(String name) {
-//		return outfitRepo.findByWeatherContainingIgnoreCase(name);
-//	}
+	public List<Outfit> findByWeather(String name) {
+		return outfitRepo.findByWeatherContainingIgnoreCase(name);
+	}
 
 
 

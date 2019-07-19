@@ -41,18 +41,18 @@ public class OutfitController {
 	
 	
 	//get by nameish
-	@RequestMapping(method=RequestMethod.GET, value="/name={name}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Outfit> findByName(@PathVariable String name){
-		Outfit o = service.findByName(name);
-		return new ResponseEntity<Outfit>(o, HttpStatus.OK);
+	@RequestMapping(method=RequestMethod.GET, value="/outfits/name~{name}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Outfit>> findByName(@PathVariable String name){
+		List<Outfit> o = service.findByName(name);
+		return new ResponseEntity<List<Outfit>>(o, HttpStatus.OK);
 	}
 	
-	
-//	@RequestMapping(method=RequestMethod.GET, value="/users/weather~{weather}",produces=MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<Outfit> findByWeather(@PathVariable String weather){
-//		Outfit o = service.findByWeather(weather);
-//		return new ResponseEntity<Outfit>(o, HttpStatus.OK);
-//	}
+	//get by weatherish
+	@RequestMapping(method=RequestMethod.GET, value="/outfits/weather~{weather}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Outfit>> findByWeather(@PathVariable String weather){
+		List<Outfit> o = service.findByWeather(weather);
+		return new ResponseEntity<List<Outfit>>(o, HttpStatus.OK);
+	}
 
 	
 
