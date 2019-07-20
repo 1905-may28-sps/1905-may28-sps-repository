@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+
+<context:annotation-config/>
+<context:component-scan base-package="com.revature"></context:component-scan>
+<tx:annotation-driven/>
+<mvc:annotation-driven/>
+
+<context:property-placeholder location="classpath:db.properties"/>
+ 
+ <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+ 	<property name="driverClassName" value="${db.driver}" />
+ 	<property name="url" value="${db.url}" />
+ 	<property name="username" value="${db.user}" />
+ 	<property name="password" value="${db.pwd}"/>
+ </bean>
+	<!-- spring data is not natively compatible with hibernate it is compatible 
+		with JPA, and in turn any "vendor" of an ORM tool that is JPA compliant however 
+		we need to use a vendor adapter -->
+	<bean id="hibernateJpaVendorAdapter" 
+	class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+
+	<bean id="entityManagerFactory" 
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		
+		<property name="dataSource" ref="myDataSource"/>
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+		<property name="packagesToScan" value="com.revature" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle10gDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		
+	</bean>
+	
+	<bean id="transactionManager" 
+	class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+	</beans>
+
