@@ -2,6 +2,7 @@ package com.revature.aspects;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -50,9 +51,14 @@ public class LoggingAspect {
 	 * * com.revature.controllers.*.* (..)
 	 */
 	
-	@Before("execution(* com.revature.beans.*.set*(..))")
-	public void beforeSetters() {
-		System.out.println("SETTER METHOD BEING CALLED");
+	@Before("execution(* com.revature.*.*.*(..))")
+	public void beforeDemo(JoinPoint jp) {
+		System.out.println("CALLING METHOD: " + jp.getSignature());
 	}
+	
+	
+	
+	
+	
 
 }
