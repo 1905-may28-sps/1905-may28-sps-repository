@@ -37,11 +37,11 @@ public class PhoneController {
 		return new ResponseEntity<Phone>(p, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value="/{brand}")
-	public ResponseEntity<List<Phone>> findByBrand(@PathVariable String brand){
-		return new ResponseEntity<List<Phone>>(service.getByBrand(brand), HttpStatus.OK);
-	}
-	
+//	@RequestMapping(value="/{brand}")
+//	public ResponseEntity<List<Phone>> findByBrand(@PathVariable String brand){
+//		return new ResponseEntity<List<Phone>>(service.getByBrand(brand), HttpStatus.OK);
+//	}
+//	
 	
 
 }

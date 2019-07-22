@@ -23,8 +23,8 @@ public class PhoneService {
 		return dao.findAll();
 	}
 	
-	public List<Phone> getByBrand(String brand){
-		return dao.findByBrand(brand);
-	}
+//	public List<Phone> getByBrand(String brand){
+//		return dao.findByBrand(brand);
+//	}
 
 }
