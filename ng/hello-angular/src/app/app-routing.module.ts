@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DirectivesComponent } from './components/directives/directives.component';
 import { DataBindingComponent } from './components/data-binding/data-binding.component';
 import { HttpComponent } from './components/http/http.component';
+import { PhoneAppComponent } from './components/phone-app/phone-app.component';
 
 const routes: Routes = [
   //list of route objects, these will correlate a component w a URL path
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'directives', component: DirectivesComponent },
   { path: 'binding', component: DataBindingComponent },
-  { path: 'http', component: HttpComponent }
+  { path: 'http', component: HttpComponent },
+  { path: 'phone', component: PhoneAppComponent }
 
 
 

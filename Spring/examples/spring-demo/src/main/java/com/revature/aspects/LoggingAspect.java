@@ -53,7 +53,7 @@ public class LoggingAspect {
 	 * () com.revature.controllers.PhoneController.getAll()
 	 * * com.revature.controllers.*.* (..)
 	 */
-	
+	/*
 	@Before("allMethods()")
 	public void beforeDemo(JoinPoint jp) {
 	//	System.out.println("CALLING METHOD: " + jp.getSignature());
@@ -79,7 +79,7 @@ public class LoggingAspect {
 		System.out.println("AFTER METHOD EXECUTION");
 		return toReturn;
 	}
-	
+	*/
 	/*@Around("execution(* com.revature.controllers.*.*(..))")
 	public void aroundControllerMethods(ProceedingJoinPoint pjp) {
 		System.out.println("BEFORE METHOD EXECUTION");

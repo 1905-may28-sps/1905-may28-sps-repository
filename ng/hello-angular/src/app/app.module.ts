@@ -13,6 +13,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpComponent } from './components/http/http.component';
 import { UserService } from './services/user.service';
+import { PhoneAppComponent } from './components/phone-app/phone-app.component';
+import { PhoneService } from './services/phone.service';
 
 /*
 Angular provides its own system of organizing code and funtionality. 
@@ -46,7 +48,8 @@ and has very important elements
     SquarerootPipe,
     NavbarComponent,
     HomeComponent,
-    HttpComponent
+    HttpComponent,
+    PhoneAppComponent
   ],
   imports: [
     /*
@@ -71,7 +74,8 @@ and has very important elements
     with @Injectable, and should be used thoughout the application 
     in many components
     */
-   UserService
+   UserService,
+   PhoneService
   ],
   bootstrap: /**
   Refers to the root component - where the bootstrapping 
