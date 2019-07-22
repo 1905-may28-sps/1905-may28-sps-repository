@@ -30,8 +30,11 @@
 
 
 
-	<!-- bean autowiring with XML <bean id="employee" class="com.revature.autowired.Employee" 
-		autowire="byType"> </bean> <bean id="dept" class="com.revature.autowired.Department"> 
+	<!-- bean autowiring with XML 
+	
+	<bean id="employee" class="com.revature.autowired.Employee" autowire="byType"> </bean> 
+	
+	<bean id="dept" class="com.revature.autowired.Department"> 
 		</bean> -->
 
 	<!-- AUTOWIRING WITH ANNOTATIONS must configure spring to look for annotations 

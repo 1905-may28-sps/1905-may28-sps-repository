@@ -26,8 +26,8 @@ public class App {
 	//	typeRepo.save(new ReactionType("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/220px-SNice.svg.png"));
 		ReactionType type = typeRepo.findOne(1);
 
-		Reaction r = new Reaction(new ReactionComposite(4, 24), type);
-		reactionRepo.save(r);
+//		Reaction r = new Reaction(new ReactionComposite(4, 24), type);
+//		reactionRepo.save(r);
 		
 	}
 	
