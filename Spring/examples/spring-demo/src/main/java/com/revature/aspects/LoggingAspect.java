@@ -3,8 +3,11 @@ package com.revature.aspects;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /*
@@ -51,13 +54,45 @@ public class LoggingAspect {
 	 * * com.revature.controllers.*.* (..)
 	 */
 	
-	@Before("execution(* com.revature.*.*.*(..))")
+	@Before("allMethods()")
 	public void beforeDemo(JoinPoint jp) {
-		System.out.println("CALLING METHOD: " + jp.getSignature());
+	//	System.out.println("CALLING METHOD: " + jp.getSignature());
+		System.out.println("CALLING METHOD: " + jp.getSignature() + "\n"
+				+ "SOURCE LOCATION: " + jp.getSourceLocation() + "\n"
+				+ "ARGUMENTS: " + jp.getArgs() + "\n" 
+				+ "TARGET OBJECT: " + jp.getTarget() + "\n -----------------------------" );
 	}
 	
+	@Pointcut("execution(* com.revature.*.*.*(..))")
+	public void allMethods() {}
 	
+	@Around("execution(* com.revature.controllers.*.*(..))")
+	public Object aroundControllerMethods(ProceedingJoinPoint pjp) {
+		System.out.println("BEFORE METHOD EXECUTION");
+		Object toReturn = null;
+		try {
+			toReturn = pjp.proceed();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("AFTER METHOD EXECUTION");
+		return toReturn;
+	}
 	
+	/*@Around("execution(* com.revature.controllers.*.*(..))")
+	public void aroundControllerMethods(ProceedingJoinPoint pjp) {
+		System.out.println("BEFORE METHOD EXECUTION");
+	
+		try {
+			pjp.proceed();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("AFTER METHOD EXECUTION");
+		
+	}*/
 	
 	
 
