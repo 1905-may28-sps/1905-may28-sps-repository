@@ -1,5 +1,6 @@
 package com.revature.soap;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jws.WebService;
@@ -7,7 +8,7 @@ import javax.jws.WebService;
 @WebService(endpointInterface="com.revature.soap.ServiceEndpointInterface")
 public class Service implements ServiceEndpointInterface{
 	
-	static List<String> data;
+	static List<String> data = new ArrayList<String>();
 	static {
 		data.add("hello SOAP world!");
 		data.add("goodbye");
