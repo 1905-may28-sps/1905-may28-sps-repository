@@ -17,6 +17,7 @@ public class Service implements ServiceEndpointInterface{
 	@Override
 	public void addData(String str) {
 		data.add(str);
+		System.out.println(data);
 	}
 
 	@Override
