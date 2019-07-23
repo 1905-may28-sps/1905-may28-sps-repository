@@ -12,7 +12,7 @@ export class PhoneService {
   constructor(private http: HttpClient) { }
 
   public getAllPhones(): Observable<Phone[]>{
-    return this.http.get<Phone[]>(`${this.url}/phone`);
+    return this.http.get<Phone[]>(`${this.url}/phone`)
   }
 
 

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  phoneAppUrl: 'http://localhost:8088/spring-demo'
+  phoneAppUrl: 'http://localhost:8081/spring-demo'
 };
 
 /*

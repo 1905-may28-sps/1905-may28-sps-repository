@@ -20,6 +20,7 @@ export class PhoneAppComponent implements OnInit {
   getPhones(){
     this.phoneService.getAllPhones().subscribe(
       thisIsABody => {
+        console.log(thisIsABody);
         this.phones = thisIsABody;
       },
       error => console.log('something bad happened')
