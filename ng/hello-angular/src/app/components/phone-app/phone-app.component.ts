@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Phone } from 'src/app/models/phone.model';
 import { PhoneService } from 'src/app/services/phone.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-phone-app',
@@ -11,7 +12,10 @@ export class PhoneAppComponent implements OnInit {
 
   phones: Phone[] = [];
 
-  constructor(private phoneService: PhoneService) { }
+  phone: Phone = new Phone();
+
+
+  constructor(private phoneService: PhoneService, private router: Router) { }
 
   ngOnInit() {
     this.getPhones();
@@ -28,4 +32,26 @@ export class PhoneAppComponent implements OnInit {
 
   }
 
+  addPhone(){
+    console.log(this.phone);
+    //validate that all fields are filled in 
+    this.phoneService.addPhone(this.phone).subscribe(
+      resp => {
+          console.log(resp);
+          this.phones.push(resp);
+          this.phone.version = '';
+          this.phone.brand = '';
+      },
+      error=>{
+        console.log('could not post phone');
+      }
+    )
+   
+  }
+
+  differentRoute(){
+    this.router.navigateByUrl('/home');
+  }
+
 }
+

@@ -1,3 +1,14 @@
+<div class="jumbotron">
+<h3>Add new phone</h3>
+<input type="text" [(ngModel)]="phone.version" 
+  class="form-control col-4" placeholder="Version">
+<input type="text" [(ngModel)]="phone.brand" 
+class="form-control col-4" placeholder="Brand">
+<button (click)="addPhone()">Add Phone</button>
+</div>
+
 <ul>
   <li *ngFor="let p of phones">{{ p.brand }}, {{p.version }}</li>
 </ul>
+
+<button (click)="differentRoute()">Go home!</button>
