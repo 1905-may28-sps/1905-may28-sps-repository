@@ -1,0 +1,14 @@
+server:
+  port: 8765
+  
+spring: 
+  application:
+    name: zuul-gateway
+  
+# we will register zuul as a eureka client 
+eureka:
+  client: 
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+      
