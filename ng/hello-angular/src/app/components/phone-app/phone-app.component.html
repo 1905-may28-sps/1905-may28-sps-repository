@@ -8,7 +8,7 @@ class="form-control col-4" placeholder="Brand">
 </div>
 
 <ul>
-  <li *ngFor="let p of phones">{{ p.brand }}, {{p.version }}</li>
+  <li *ngFor="let p of phones" (click)="test(p)" (click)="testing()">{{ p.brand }}, {{p.version }}</li>
 </ul>
 
 <button (click)="differentRoute()">Go home!</button>

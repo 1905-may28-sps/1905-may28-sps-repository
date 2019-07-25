@@ -53,5 +53,13 @@ export class PhoneAppComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
+  test(p: Phone){
+    console.log(p);
+  }
+
+  testing(){
+    console.log("HI")
+  }
+
 }
 
