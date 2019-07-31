@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3 col-sm-1 "> </div>
+
+    <div class="col-md-6 col-sm-10">
+      <form class="text-center border border-light p-5" id="form">
+
+        <p class="h4 mb-4 titleBar">Sign up</p>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!-- First name -->
+            <input type="text" id="FirstName" [(ngModel)]="user.firstName" class="form-control" placeholder="First name" required name="firstname">
+          </div>
+          <div class="col">
+            <input type="text" id="LastName" [(ngModel)]="user.lastName" class="form-control" placeholder="Last name" required name="lastname" >
+          </div>
+        </div>
+
+        <input type="text" id="email" [(ngModel)]="user.email"  class="form-control mb-4" placeholder="Email"  required name="email">
+
+
+        <input type="text" id="username" [(ngModel)]="user.username" class="form-control mb-4" placeholder="Username"  required name="username" >
+
+
+        <input type="password" id="Password" [(ngModel)]="user.password" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password" required>
+
+        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4  alreadyMember">
+          already a member click here to <a href="/signIn" >login</a> <!-- add angular routing to text link-->
+        </small>
+
+        <button id="but_sub"class="btn btn-info my-4 btn-block" (click)="registerUser()" >Sign Up</button>
+      </form>
+
+    </div>
+    <div class="col-md-3 col-sm-1"> </div>
+  </div>
+</div>
+

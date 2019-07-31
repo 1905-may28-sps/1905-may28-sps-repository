@@ -1,0 +1,10 @@
+<div class="form-group ">
+
+  <textarea style="width:100%;" id="exampleFormControlTextarea6" [(ngModel)]="comment.commentS" class="m-3 form-control form-control z-depth-1"  name="commentS" rows="3"  placeholder="Leave a comment"></textarea>
+  <button class=" m-3 btn btn-primary" (click)="postComment()">Comment </button>
+</div>
+
+<div >
+  <p *ngFor="let c of comments" >{{c. authorId }}| {{ c.postDate | date:'medium' }}<span style="display: block;"> posted: {{c.commentS }}
+  </span>
+</div>

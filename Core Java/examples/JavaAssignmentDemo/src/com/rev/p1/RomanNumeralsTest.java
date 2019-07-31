@@ -1,4 +1,4 @@
-package com.rev.p1;
+package JavaAssignmentDemo.src.com.rev.p1;
 
 import static org.junit.Assert.*;
 

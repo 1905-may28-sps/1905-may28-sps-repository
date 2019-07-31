@@ -1,0 +1,29 @@
+<div style="text-align:justify" class="jumbotron">
+  <h3 style="text-align: center">TOP 10</h3>
+
+  <table class="table table-hover" width="500px">
+
+    <thead>
+    <tr>
+      <th></th>
+      <th>Song</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th>Preview Song</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tr *ngFor="let trk of lsttracks">
+      <td><img src="{{trk.album.cover}}" alt=""></td>
+      <td>{{trk.title}}</td>
+      <td>{{trk.artist.name}}</td>
+      <td>{{trk.album.title}}</td>
+      <td><a class="col-12" href={{trk.preview}}>Preview</a></td>
+      <!--<td><span class="btn btn-danger" style="border-radius: 50%" (click)="addToPlaylist(trk.id)">+</span></td>-->
+      <td><span class="btn btn-danger" style="border-radius: 50%" (click)="addToPlaylist(trk.id)">+</span></td>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+
+    </tr>
+  </table>
+</div>

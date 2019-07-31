@@ -6,7 +6,7 @@ public class ArrayCodingChallenges {
 	
 	public static void main(String[] args) {
 		System.out.println(testMax());
-		usingArraysClass();
+		UnderstandingArrays.usingArraysClass();
 	}
 	/*
 	 * Find largest number in an array

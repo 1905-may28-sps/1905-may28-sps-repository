@@ -1,0 +1,88 @@
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<body>
+  <div class="main-content">
+    <div class="container mt-7">
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Search</h3>
+              <!-- input section -->
+              <div class="input-group mb-3">
+                <input type="text" [(ngModel)]="userinput"  class="form-control" placeholder="Type to search by artist, genre, song etc... "  aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="onClickMe()" type="button">Search</button>
+                </div>
+              </div>
+              
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Song</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Album</th>
+                    <!-- <th scope="col"></th> -->
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let t of lsttracks" >
+                    <th scope="row">
+                      <div class="media align-items-center">
+                          <a href="#" class="avatar rounded-circle mr-3">
+                              <img src="{{t.album.cover}}" alt="">
+                            </a>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{t.title}}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                      {{t.album.title | slice:0:15}} 
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                           {{t.artist.name}}
+                      </span>
+                    </td>
+                    <td>
+                      <div class="avatar-group">
+                          <a class="col-12" href={{t.preview}} target="iframe_a">Preview</a><br>
+                          <iframe  height="75px" width="100%" src="" name="iframe_a"></iframe>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- ignore dark table -->
+
+      <div class="row mt-5">
+        <div class="col">
+         
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- trash footer maybe style later -->
+  <footer class="footer">
+    <div class="row align-items-center justify-content-xl-between">
+      <div class="col-xl-6 m-auto text-center">
+        <div class="copyright"><p>DHAL Music copyright</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+
+
+

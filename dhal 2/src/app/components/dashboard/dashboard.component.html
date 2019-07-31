@@ -1,0 +1,81 @@
+<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">-->
+<!--<body>-->
+  <div class="main-content">
+    <div class="container mt-7">
+      <!-- Table -->
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Top 10</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Song</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Album</th>
+                    <!-- <th scope="col"></th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let t of lsttracks" >
+                    <th scope="row">
+                      <div class="media align-items-center">
+                          <a href="#" class="avatar rounded-circle mr-3">
+                              <img src="{{t.album.cover}}" alt="">
+                            </a>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{t.title}}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                      {{t.album.title | slice:0:25}} 
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                           {{t.artist.name}}
+                      </span>
+                    </td>
+                    <td>
+                      <div class="avatar-group">
+                        <audio src="{{t.preview}}" controls>
+                        </audio>
+
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- ignore dark table -->
+
+      <div class="row mt-5">
+        <div class="col">
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- trash footer maybe style later -->
+  <footer class="footer">
+    <div class="row align-items-center justify-content-xl-between">
+      <div class="col-xl-6 m-auto text-center">
+        <div class="copyright"><p>DHAL Music copyright</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+<!--</body>-->
+
+
+
+

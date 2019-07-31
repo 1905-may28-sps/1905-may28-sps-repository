@@ -1,4 +1,4 @@
-package com.rev.p1;
+package JavaAssignmentDemo.src.com.rev.p1;
 
 public class RomanNumerals {
 	/*

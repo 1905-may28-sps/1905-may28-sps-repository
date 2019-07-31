@@ -1,0 +1,23 @@
+<div style="text-align:justify" class="jumbotron">
+  <h3 style="text-align: center">TOP 10</h3>
+
+  <table class="table table-hover" width="500px">
+
+    <thead>
+    <tr>
+      <th></th>
+      <th>Song</th>
+      <th>Artist</th>
+      <th>Track List</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tr *ngFor="let alb of lstalbum">
+      <td><img src={{alb.cover_small}} alt={{alb.title}}></td>
+      <td>{{alb.title}}</td>
+      <td>{{alb.artist.name}}</td>
+      <td><a class="col-12" href={{alb.tracklist}}>TrackList</a></td>
+    </tr>
+  </table>
+</div>
