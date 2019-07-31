@@ -30,12 +30,10 @@ export class CommentsComponent implements OnInit {
     this.comment.commentRateId = 5;
     this.comment.commentsId = null;
     this.comment.postDate = Date();
-
-
     console.log('POSTING COMMENT');
     this.commentsService.postNewComment(this.comment).subscribe(
       resp => {
-        var data = resp;
+        const data = resp;
       },
 
       error => {
@@ -59,16 +57,18 @@ export class CommentsComponent implements OnInit {
     );
   }
 
-   doDate() {
-    var str = "";
+  doDate() {
+    var str = '';
 
-    var days = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-    var months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'];
 
-    var now = new Date();
+    const now = new Date();
 
-    str += "14. Today is: " + days[now.getDay()] + ", " + now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-    document.getElementById("timeInput").innerHTML = str;
+    str += '14. Today is: ' + days[now.getDay()] + ', ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear()
+      + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+    document.getElementById('timeInput').innerHTML = str;
   }
 
   getCommenterById(commenterId) {

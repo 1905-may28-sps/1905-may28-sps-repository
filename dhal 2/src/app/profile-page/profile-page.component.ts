@@ -63,9 +63,4 @@ export class ProfilePageComponent implements OnInit {
      );
      console.log(this.lsttrk);
    }
-
-//    getCommenterById() {
-//     this.userService.getUserById();
-// }
-
 }

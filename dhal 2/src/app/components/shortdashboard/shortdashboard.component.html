@@ -1,3 +1,4 @@
+
 <div style="text-align:justify" class="jumbotron">
   <h3 style="text-align: center">TOP 10</h3>
 
@@ -21,9 +22,43 @@
       <td>{{trk.album.title}}</td>
       <td><a class="col-12" href={{trk.preview}}>Preview</a></td>
       <!--<td><span class="btn btn-danger" style="border-radius: 50%" (click)="addToPlaylist(trk.id)">+</span></td>-->
-      <td><span class="btn btn-danger" style="border-radius: 50%" (click)="addToPlaylist(trk.id)">+</span></td>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+      <!--<td><span><a href="" class="btn btn-danger" data-toggle="modal" data-target="#myModal">+</a></span></td>-->
+      <button type="button" class="btn btn info btn-lg" data-toggle="modal" data-target="#myModal">Read More</button>
+
+
+
+
+      <!--<div class="text-center">-->
+        <!--<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch-->
+          <!--Modal Login Form</a>-->
+      <!--</div>-->
 
     </tr>
   </table>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">M Saifur Rahman,PMP</h4>
+        </div>
+        <div class="modal-body">
+          <p>Here goes the body content</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
+
+<!--(click)="addToPlaylist(trk.id)"-->
+
+
+
+
