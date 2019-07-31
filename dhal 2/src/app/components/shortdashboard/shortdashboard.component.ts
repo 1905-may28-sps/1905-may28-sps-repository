@@ -11,13 +11,12 @@ import {tracks} from '../../shared/tracks';
 })
 export class ShortdashboardComponent implements OnInit {
 
-  @Input() dashboardId : number;
+  @Input() dashboardId: number;
   title = 'clientSide';
   playlist: Playlist = new Playlist();
   playlists: Playlist[] = [];
-  trkId : number;
+  trkId: number;
   lsttrk: any[] = [];
-
 
 
   constructor(private apiService: ApiService,
@@ -80,7 +79,7 @@ export class ShortdashboardComponent implements OnInit {
   addToPlaylist(id) {
     this.playlist.playlistId = 0;
     this.playlist.ownerId = this.user.id;
-    this.playlist.name = 'food';
+    this.playlist.name = 'My Playlist';
     this.playlist.trackId = id;
     this.playlist.userPlaylistId = 6;
     // console.log(this.playlist);
@@ -99,4 +98,10 @@ export class ShortdashboardComponent implements OnInit {
     );
   }
 
+
+  showInput() {
+    document.getElementById('pickPlaylist').remove();
+    document.getElementById('playlistName').removeAttribute('hidden');
+    document.getElementById('addPlaylist').removeAttribute('hidden');
+  }
 }

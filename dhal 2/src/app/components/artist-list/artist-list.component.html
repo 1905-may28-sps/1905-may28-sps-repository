@@ -51,10 +51,11 @@
                     </td>
                     <td>
                       <div class="avatar-group">
-                          <a class="col-12" href={{t.preview}} target="iframe_a">Preview</a><br>
-                          <iframe  height="75px" width="100%" src="" name="iframe_a"></iframe>
+                        <audio src="{{t.preview}}" controls>
+                        </audio>
                       </div>
                     </td>
+                    <td><span class="btn btn-danger" style="border-radius: 50%" (click)="addToPlaylist(trk.id)">+</span></td>
                   </tr>
                 </tbody>
               </table>

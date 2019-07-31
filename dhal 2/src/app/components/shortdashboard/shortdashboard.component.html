@@ -21,11 +21,24 @@
       <td>{{trk.artist.name}}</td>
       <td>{{trk.album.title}}</td>
       <td><a class="col-12" href={{trk.preview}}>Preview</a></td>
-      <!--<td><span class="btn btn-danger" style="border-radius: 50%" (click)="addToPlaylist(trk.id)">+</span></td>-->
-      <!--<td><span><a href="" class="btn btn-danger" data-toggle="modal" data-target="#myModal">+</a></span></td>-->
-      <button type="button" class="btn btn info btn-lg" data-toggle="modal" data-target="#myModal">Read More</button>
+      <!--<input type="text" [(ngModel)]="user.password" class="form-control col-4" placeholder="Password">-->
+
+      <td><span class="btn btn-danger" style="border-radius: 50%" (click)="addToPlaylist(trk.id)">+</span></td>
+      <!--<td><span><a id="pickPlaylist" class="btn btn-danger" (click)="showInput()">+</a></span></td>-->
+
+       <!--<td>-->
+      <!--<span><input type="text" id="playlistName" [hidden]="true" [(ngModel)]="playlist.name" class="form-control col-4" placeholder="Playlist Name?">-->
+      <!--</span></td>-->
+
+      <!--<td>    <button type='button' class="btn btn-success" data-toggle="modal" data-dismiss="modal" data-target="#popUpWindow">Open Log In Window</button>-->
+      <!--</td>-->
+
+      <!--<td (click)="addToPlaylist()"><span id="addPlaylist" [hidden]="true"><a class="btn btn-danger" >+</a></span></td>-->
 
 
+      <!--<button type="button" class="btn btn info btn-lg" data-toggle="modal" data-target="#myModal">Read More</button>-->
+
+      <!--<input type="text" [(ngModel)]="user.password" class="form-control col-4" placeholder="Password">-->
 
 
       <!--<div class="text-center">-->
@@ -36,28 +49,61 @@
     </tr>
   </table>
 
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+  <!--<div class="modal fade" id="myModal" role="dialog">-->
+    <!--<div class="modal-dialog">-->
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">M Saifur Rahman,PMP</h4>
-        </div>
-        <div class="modal-body">
-          <p>Here goes the body content</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
+      <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+      <!--<div class="modal-content">-->
+        <!--<div class="modal-header">-->
+          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <!--<h4 class="modal-title">M Saifur Rahman,PMP</h4>-->
+        <!--</div>-->
+        <!--<div class="modal-body">-->
+          <!--<p>Here goes the body content</p>-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 
 <!--(click)="addToPlaylist(trk.id)"-->
+
+  <div class="container">
+
+    <h3>Log In Demo</h3>
+
+    <div class="modal fade" id="popUpWindow">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">Login Form</h3>
+          </div>
+          <!-- body -->
+          <div class="modal-header">
+            <form role="form">
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email"/>
+                <input type="password" class="form-control" placeholder="Password" />
+              </div>
+            </form>
+          </div>
+          <!-- footer -->
+          <div class="modal-footer">
+            <button class="btn btn-primary btn-block">Log In</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
 
 
 

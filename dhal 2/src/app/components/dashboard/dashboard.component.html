@@ -7,7 +7,7 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">Top 10</h3>
+              <h3 class="mb-0">Top Songs</h3>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
@@ -44,9 +44,9 @@
                       <div class="avatar-group">
                         <audio src="{{t.preview}}" controls>
                         </audio>
-
                       </div>
                     </td>
+                    <td><span class="btn btn-danger" style="border-radius: 50%" (click)="addToPlaylist(trk.id)">+</span></td>
                   </tr>
                 </tbody>
               </table>

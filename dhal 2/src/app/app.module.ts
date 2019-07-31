@@ -19,6 +19,7 @@ import { AlbumpageComponent } from './components/albumpage/albumpage.component';
 import { ShortdashboardComponent } from './components/shortdashboard/shortdashboard.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import { ProfilelistsComponent } from './components/profilelists/profilelists.component';
+import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ProfilelistsComponent } from './components/profilelists/profilelists.co
     AlbumpageComponent,
     ShortdashboardComponent,
     CommentsComponent,
-    ProfilelistsComponent
+    ProfilelistsComponent,
+    CreatePlaylistComponent
   ],
   imports: [
     BrowserModule,
