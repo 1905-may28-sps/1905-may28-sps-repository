@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Comments} from '../../shared/comments';
 import {CommentsService} from '../../services/comments.service/comments.service';
+import {UsersService} from '../../services/user.service/users.service';
+import {User} from '../../shared/model';
 
 @Component({
   selector: 'app-comments',
@@ -11,8 +13,11 @@ export class CommentsComponent implements OnInit {
   comment: Comments = new Comments();
   user = JSON.parse(localStorage.getItem('userData'));
   comments: Comments[] = [];
+  commenterId: number;
+  commenter: User;
 
-  constructor(private commentsService: CommentsService) {
+  constructor(private commentsService: CommentsService,
+              private userService: UsersService) {
   }
 
   ngOnInit() {
@@ -43,7 +48,10 @@ export class CommentsComponent implements OnInit {
     this.commentsService.getAllComments().subscribe(
       resp => {
         console.log(resp);
+        console.log(resp[0].authorId);
+        this.commenterId = resp[0].authorId;
         this.comments = resp;
+        this.getCommenterById(this.commenterId);
       },
       error => {
         window.alert('something went wrong we are not able to retrieve your comments, try again!');
@@ -63,5 +71,13 @@ export class CommentsComponent implements OnInit {
     document.getElementById("timeInput").innerHTML = str;
   }
 
-
+  getCommenterById(commenterId) {
+    console.log(commenterId);
+    this.userService.getUserById(commenterId).subscribe(
+      resp => {
+        console.log(resp);
+        this.commenter = resp;
+      }
+    );
+  }
 }

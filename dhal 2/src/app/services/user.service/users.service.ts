@@ -27,6 +27,11 @@ export class UsersService {
   public logIn(user: User) {
     return this.http.post<User>(`${this.url}/login`, user, this.reqOptions );
   }
+
+  public getUserById(id) {
+    return this.http.get<User>(`${this.url}/users/id=${id}`);
+  }
+
 }
 
 

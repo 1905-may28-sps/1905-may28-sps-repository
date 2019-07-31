@@ -5,6 +5,6 @@
 </div>
 
 <div >
-  <p *ngFor="let c of comments" >{{c. authorId }}| {{ c.postDate | date:'medium' }}<span style="display: block;"> posted: {{c.commentS }}
+  <p *ngFor="let c of comments" ><b>{{commenter.username }}</b> posted @ :  {{ c.postDate | date:'medium' }}<span style="display: block;">  {{c.commentS }}
   </span>
 </div>

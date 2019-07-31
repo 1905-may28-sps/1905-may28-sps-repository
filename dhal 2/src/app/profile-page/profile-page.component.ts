@@ -3,6 +3,7 @@ import { Playlist } from '../shared/playlist';
 import { tracks } from '../shared/tracks';
 import { ApiService } from '../services/api.service/api.service';
 import { PlaylistService } from '../services/playlist.service/playlist.service';
+import {UsersService} from '../services/user.service/users.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -23,7 +24,8 @@ export class ProfilePageComponent implements OnInit {
 
 
   constructor(private apiService: ApiService,
-              private playlistService: PlaylistService) {
+              private playlistService: PlaylistService,
+              private userService: UsersService) {
 }
 
 
@@ -44,7 +46,7 @@ export class ProfilePageComponent implements OnInit {
         if (resp !== null) {
           this.playlists.forEach(arraryItem => {
             const trackid = arraryItem.trackId;
-            // console.log(trackid);
+            console.log(trackid);
             this.getTracks(trackid);
           });
         }
@@ -54,12 +56,16 @@ export class ProfilePageComponent implements OnInit {
    getTracks(trackid) {
      this.apiService.getTrackById(trackid).subscribe(
        data => {
-         // console.log(data);
+         console.log(data);
          var trk = data;
          this.lsttrk.push(trk);
        }
      );
-     // console.log(this.lsttrk);
+     console.log(this.lsttrk);
    }
+
+//    getCommenterById() {
+//     this.userService.getUserById();
+// }
 
 }
