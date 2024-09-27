@@ -1,0 +1,67 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "empFirstname": "Viji",
+      "empLastname": "Lake",
+      "empUsername": "viji123",
+      "empPassword": "123",
+      "email": "abc@gmail.com",
+      "contact": "111-111-1111"
+    },
+    {
+      "id": 2,
+      "empFirstname": "Billy",
+      "empLastname": "Clara",
+      "empUsername": "billy123",
+      "empPassword": "345",
+      "email": "xyz@gmail.com",
+      "contact": "222-222-2222"
+    },
+    {
+      "empFirstname": "Billy",
+      "empLastname": "Clara",
+      "empUsername": "bil123",
+      "empPassword": "HelloHello",
+      "email": "billy@me.com",
+      "contact": "2125555555",
+      "id": 3
+    },
+    {
+      "empFirstname": "Mena",
+      "empLastname": "M",
+      "empUsername": "mena123",
+      "empPassword": "121212",
+      "email": "mena@me.com",
+      "contact": "2122222121",
+      "id": 4
+    },
+    {
+      "empFirstname": "Dar",
+      "empLastname": "B",
+      "empUsername": "bdar",
+      "empPassword": "121212",
+      "email": "dar@me.com",
+      "contact": "1234554321",
+      "id": 5
+    },
+    {
+      "empFirstname": "Anil",
+      "empLastname": "Kumar",
+      "empUsername": "anilk",
+      "empPassword": "kumar123",
+      "email": "anil@yahoo.com",
+      "contact": "2125554545",
+      "id": 6
+    },
+    {
+      "empFirstname": "Will",
+      "empLastname": "W",
+      "empUsername": "will1234",
+      "empPassword": "343434",
+      "email": "will@me.com",
+      "contact": "2122222222",
+      "id": 7
+    }
+  ]
+}
